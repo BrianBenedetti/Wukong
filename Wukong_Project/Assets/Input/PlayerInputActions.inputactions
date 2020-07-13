@@ -475,7 +475,7 @@
                     "id": "c0c578c3-2bc0-40cc-aa86-1f18b0dc4193",
                     "path": "1DAxis",
                     "interactions": "",
-                    "processors": "Clamp(max=1)",
+                    "processors": "",
                     "groups": "",
                     "action": "Cycle Items",
                     "isComposite": true,
@@ -484,7 +484,7 @@
                 {
                     "name": "negative",
                     "id": "5099f86c-0465-45d1-9bb3-3476c45d5ef3",
-                    "path": "<Mouse>/delta",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -495,7 +495,7 @@
                 {
                     "name": "positive",
                     "id": "129e790b-4e7c-4b10-b917-f35b3ef7ae80",
-                    "path": "<Mouse>/delta",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",

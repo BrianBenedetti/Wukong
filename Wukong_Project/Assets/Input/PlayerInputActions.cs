@@ -15,7 +15,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     ""name"": ""PlayerInputActions"",
     ""maps"": [
         {
-            ""name"": ""Player Controls"",
+            ""name"": ""PlayerControls"",
             ""id"": ""be8ce5d8-9ec9-4751-9b94-551f550a1348"",
             ""actions"": [
                 {
@@ -488,7 +488,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""c0c578c3-2bc0-40cc-aa86-1f18b0dc4193"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
-                    ""processors"": ""Clamp(max=1)"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Cycle Items"",
                     ""isComposite"": true,
@@ -497,7 +497,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""5099f86c-0465-45d1-9bb3-3476c45d5ef3"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
@@ -508,7 +508,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""129e790b-4e7c-4b10-b917-f35b3ef7ae80"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
@@ -769,8 +769,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Player Controls
-        m_PlayerControls = asset.FindActionMap("Player Controls", throwIfNotFound: true);
+        // PlayerControls
+        m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
         m_PlayerControls_Camera = m_PlayerControls.FindAction("Camera", throwIfNotFound: true);
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
@@ -835,7 +835,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player Controls
+    // PlayerControls
     private readonly InputActionMap m_PlayerControls;
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_Move;

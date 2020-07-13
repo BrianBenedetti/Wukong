@@ -91,12 +91,14 @@ public class PlayerController : MonoBehaviour
         //float vertical = movementInput.y;
 
         //Vector3 direction = new Vector3(horizontal, 0, vertical);
+
+        //Debug.Log(direction);
     }
 
     #region Player Actions
     public void Move(Vector3 direction)
     {
-
+        
     }
     public void Jump()
     {
