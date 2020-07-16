@@ -23,7 +23,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""ccc01c8b-c805-404e-833a-5dd17b067a59"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
@@ -31,7 +31,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""72f20253-7b62-46ba-b71f-d71f0f2c4276"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
@@ -40,7 +40,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""28ef0e41-242d-40ac-a130-2bf68d97ede6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Primary Attack"",
@@ -48,7 +48,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""86b76318-f0b6-4244-8d6d-e623865f7f9d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Secondary Attack"",
@@ -56,7 +56,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""c0e3837b-7c9b-4f5b-b609-4dc1fd6fa06e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Interact"",
@@ -64,7 +64,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""8da7bd53-a507-4ad0-81ea-e5b6a0ff12e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Dodge"",
@@ -72,7 +72,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""09c8e0c4-3bfd-449d-9529-fe1fd2b91f2b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Special Attack"",
@@ -80,7 +80,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""eeb6f571-bdcf-4621-8aca-12e4da619caf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Pause"",
@@ -88,7 +88,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""71d090cb-bb17-4c27-86a6-0ca65e9f288f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Rage"",
@@ -96,7 +96,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""157b5a7a-6113-41df-b97d-052a2c7e31fc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Use Item"",
@@ -104,7 +104,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""3af73615-32bc-404f-aae9-3a33f25a0f04"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Cycle Items"",
@@ -120,7 +120,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""ebf8eccc-32dc-489c-b079-a1885a8c01aa"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Water Form"",
@@ -128,7 +128,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""ae1f592b-4337-413a-a445-0507dbd42965"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Air Form"",
@@ -136,7 +136,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""d84e4a4f-0d9d-44de-8d9c-94e2b543d54a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Normal Form"",
@@ -144,7 +144,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""e2e865a4-dcc5-4367-9fbb-238b3817fb77"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Lock On"",
@@ -152,7 +152,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""d2ba923a-96e7-485e-a62f-954a47efe999"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Switch Target"",
@@ -160,7 +160,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""db8509fc-39a0-4f7c-ab19-aef1df47d41e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -244,7 +244,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""fc528deb-7ce4-4d6a-b596-e92ea445455c"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
@@ -454,7 +454,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Left/Right D-pad"",
                     ""id"": ""7370c3dd-d196-4d3f-97ee-a06e4eed55dd"",
                     ""path"": ""1DAxis"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Cycle Items"",
@@ -528,7 +528,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier"",
+                    ""name"": ""button"",
                     ""id"": ""56f66405-5c54-481a-a2f8-2e3b0e202bfd"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
@@ -539,7 +539,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""button"",
+                    ""name"": ""modifier"",
                     ""id"": ""db8ea1d7-a0d3-4bf2-91b6-d3bc944d6158"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -572,7 +572,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier"",
+                    ""name"": ""button"",
                     ""id"": ""70ae928b-0d18-4f47-93d0-993f0e907f01"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -583,7 +583,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""button"",
+                    ""name"": ""modifier"",
                     ""id"": ""838a9867-1b8f-4aa5-adeb-bf4afac81569"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -616,7 +616,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier"",
+                    ""name"": ""button"",
                     ""id"": ""1d0246b2-7bc0-494d-a913-4bd0c156be53"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
@@ -627,7 +627,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""button"",
+                    ""name"": ""modifier"",
                     ""id"": ""945931b4-18d5-4d97-88a6-a4e1a5e41bad"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -660,7 +660,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier"",
+                    ""name"": ""button"",
                     ""id"": ""51f3cb82-639c-4b9c-b2a8-a26ec4c5fb5d"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -671,7 +671,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""button"",
+                    ""name"": ""modifier"",
                     ""id"": ""28f936cd-059c-4815-8674-e16e56942441"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
