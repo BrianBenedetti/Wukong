@@ -2,8 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Shrine))
+        {
+            interactable = other.GetComponent<Iinteractable>();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(Shrine))
+        {
+            if(interactable != null)
+            {
+                interactable = null;
+            }
+        }
+    }
+
     enum ElementalForms
     {
         normal,
@@ -12,49 +30,75 @@ public class PlayerController : MonoBehaviour
         air
     }
 
-    PlayerInputActions inputActions;
-
+    #region Variables
     [Header("Variables")]
-    public int healthMax = 100;
-    public int currentHealth = 100;
+    public int maxHealth = 100;
     public int rageDuration = 15;
+    public int primaryAttackDamage = 25;
+    public int secondaryAttackDamage = 50;
+    public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
+    int currentHealth;
 
     public float speed = 6;
     public float jumpForce = 5;
     public float fallMultiplier = 2.5f;
+    public float attackRate = 2;
     public float groundDistance = 0.4f;
     public float turnSmoothTime = 0.1f;
+    public float dashTime;
+    public float dashSpeed;
+    //public float distanceBetweenGhosts; //if we do ghost images, would be cool
+    public float dashCooldown;
     float turnSmoothVelocity; //don't touch.
+    float nextAttackTime = 0; //don't touch
+    float dashTimeLeft;
+    //float lastGhostXPosition;
+    float lastDash = -100; //so player can dash immidiately from start
 
     public bool Enraged = false;
     public bool isVulnerable = true;
     bool isGrounded;
     bool canDoubleJump = true;
+    bool isDashing;
 
     public Transform cam;
     public Transform groundCheck;
+    public Transform attackPoint;
 
+    public Vector3 attackRange;
     Vector3 direction;
 
     public LayerMask groundMask;
+    public LayerMask enemyMask;
+
+    [Header("Interactables")]
+    Iinteractable interactable;
+
+    string Shrine = "Shrine";
 
     [Header ("Input")]
     Vector2 movementInput;
+    PlayerInputActions inputActions;
 
     [Header("Components")]
     Rigidbody rb;
     Animator animator;
 
     [Header("Animator")]
+    int Horizontal;
+    int Vertical;
+    int VerticalSpeed;
     int JumpTrigger;
     int PrimaryAttackTrigger;
     int SecondaryAttackTrigger;
     int SpecialAttackTrigger;
     int InteractTrigger;
-    int DodgeTrigger;
+    int DashTrigger;
+    int isDeadBool;
+    int isGroundedBool;
 
     [SerializeField] ElementalForms myElement;
-
+    #endregion
 
     private void Awake()
     {
@@ -65,70 +109,126 @@ public class PlayerController : MonoBehaviour
 
         inputActions.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         inputActions.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
-
-        //inputActions.PlayerControls.Jump.performed += ctx => animator.SetTrigger(JumpTrigger);
-
-        //inputActions.PlayerControls.PrimaryAttack.performed += ctx => animator.SetTrigger(PrimaryAttackTrigger);
-
-        //inputActions.PlayerControls.SecondaryAttack.performed += ctx => animator.SetTrigger(SecondaryAttackTrigger);
-
-        //inputActions.PlayerControls.SpecialAttack.performed += ctx => animator.SetTrigger(SpecialAttackTrigger);
-
-        //inputActions.PlayerControls.Interact.performed += ctx => animator.SetTrigger(InteractTrigger);
-
-        //inputActions.PlayerControls.Dodge.performed += ctx => animator.SetTrigger(DodgeTrigger);
-
-        //inputActions.PlayerControls.Rage.performed += ctx => Enraged = true;
-
-        //inputActions.PlayerControls.NormalForm.performed += ctx => myElement = ElementalForms.normal;
-        //inputActions.PlayerControls.FireForm.performed += ctx => myElement = ElementalForms.fire;
-        //inputActions.PlayerControls.WaterForm.performed += ctx => myElement = ElementalForms.water;
-        //inputActions.PlayerControls.AirForm.performed += ctx => myElement = ElementalForms.air;
     }
     void Start()
     {
         myElement = ElementalForms.normal;
         Enraged = false;
         isVulnerable = true;
+        currentHealth = maxHealth;
+        isDashing = false;
 
+        Horizontal = Animator.StringToHash("Horizontal");
+        Vertical = Animator.StringToHash("Vertical");
+        VerticalSpeed = Animator.StringToHash("VerticalSpeed");
         JumpTrigger = Animator.StringToHash("Jump");
         PrimaryAttackTrigger = Animator.StringToHash("Attack1");
         SecondaryAttackTrigger = Animator.StringToHash("Attack2");
         SpecialAttackTrigger = Animator.StringToHash("Attack3");
         InteractTrigger = Animator.StringToHash("Interact");
-        DodgeTrigger = Animator.StringToHash("Dodge");
+        DashTrigger = Animator.StringToHash("Dodge");
+        isDeadBool = Animator.StringToHash("isDead");
+        isGroundedBool = Animator.StringToHash("isGrounded");
     }
 
     void Update()
     {
-        float horizontal = movementInput.x;
-        float vertical = movementInput.y;
-        direction = new Vector3(horizontal, 0, vertical).normalized;
+        //checks if dash has refreshed
+        CheckDash(direction);
 
+        //checks for input to change element
+        if (inputActions.PlayerControls.NormalForm.triggered)
+        {
+            myElement = ElementalForms.normal;
+            //change hair shader
+            //change weapon VFX
+        }
+        else if (inputActions.PlayerControls.FireForm.triggered)
+        {
+            myElement = ElementalForms.fire;
+            //change hair shader
+            //play VFX
+            //change weapon VFX
+        }
+        else if (inputActions.PlayerControls.WaterForm.triggered)
+        {
+            myElement = ElementalForms.water;
+            //change hair shader
+            //play VFX
+            //change weapon VFX
+        }
+        else if (inputActions.PlayerControls.AirForm.triggered)
+        {
+            myElement = ElementalForms.air;
+            //change hair shader
+            //play VFX
+            //change weapon VFX
+        }
+
+        //takes input from keyboard or gamepad and makes into a direction for movement
+        direction = (transform.right * movementInput.x + transform.forward * movementInput.y).normalized;
+
+        //checks if player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        //checks if player can jump or double jump
         if (inputActions.PlayerControls.Jump.triggered && isGrounded)
         {
             //add if SHIFT is being clicked, return.
             //animator.SetTrigger(JumpTrigger); //this works
             Jump();
-        }else if(inputActions.PlayerControls.Jump.triggered && canDoubleJump)
+        }
+        else if(inputActions.PlayerControls.Jump.triggered && canDoubleJump)
         {
+            //add if SHIFT is being clicked, return.
+            //animator.SetTrigger(JumpTrigger); //this works
             Jump();
             canDoubleJump = false;
         }
 
+        //checks if player can dash
+        if (inputActions.PlayerControls.Dodge.triggered)
+        {
+            if(Time.time >= (lastDash + dashCooldown))
+            {
+                AttemptDash();
+            }
+        }
+
+        //checks if player can attack
+        if(Time.time >= attackRate)
+        {
+            if (inputActions.PlayerControls.PrimaryAttack.triggered)
+            {
+                //add if SHIFT is being clicked, return.
+                //animator.SetTrigger(PrimaryAttack); //this works
+                Attack(attackPoint.position, attackRange, attackPoint.rotation, enemyMask);
+                nextAttackTime = Time.time + 1 / attackRate; //won't need this if i use exit time in the animation, hopefully
+            }
+        }
+        
+        //if grounded, double jump is refreshed
         if (isGrounded)
         {
             canDoubleJump = true;
         }
+
+        animator.SetBool(isGroundedBool, isGrounded);
+        animator.SetFloat(Horizontal, movementInput.x);
+        animator.SetFloat(Vertical, movementInput.y);
+        animator.SetFloat(VerticalSpeed, rb.velocity.y);
     }
 
     private void FixedUpdate()
     {
-        Move(direction);
+        //checks if player can move
+        if (!isDashing)
+        {
+            Move(direction); //only for testing purposes
+        }
 
-        if(rb.velocity.y < 0)
+        //checks if player is falling to increase gravity for a less floaty jump
+        if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
         }
@@ -139,47 +239,94 @@ public class PlayerController : MonoBehaviour
     {
         if(direction.magnitude > 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             Quaternion rotation = Quaternion.Euler(0, angle, 0);
             Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
 
             rb.MoveRotation(rotation);
-            rb.MovePosition(transform.position + (moveDir.normalized * speed * Time.fixedDeltaTime));
+            rb.MovePosition(transform.position + (direction * speed * Time.fixedDeltaTime));
         }
     }
     public void Jump()
     {
+        animator.SetTrigger(JumpTrigger);
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.velocity = Vector3.up * jumpForce;
     }
-    public void PrimaryAttack()
+    public void AttemptDash()
     {
-
+        isDashing = true;
+        animator.SetTrigger(DashTrigger);
+        dashTimeLeft = dashTime;
+        lastDash = Time.time;
+        //drop first ghost
+        //make ghostXPos equal to this transform.x
     }
-    public void SecondaryAttack()
+    public void CheckDash(Vector3 direction)
     {
+        if (isDashing)
+        {
+            if (dashTimeLeft > 0)
+            {
+                rb.velocity = new Vector3(dashSpeed * direction.x, 0, dashSpeed * direction.z);
+                dashTimeLeft -= Time.deltaTime;
 
+                //if(Mathf.Abs(transform.position.x - lastGhostXPosition) > distanceBetweenGhosts){
+                //enable another ghost from pool
+                //lastGhostXPos = transform.position.x;
+                //}
+            }
+
+            if (dashTimeLeft <= 0)
+            {
+                rb.velocity = Vector3.zero;
+                isDashing = false;
+            }
+        }
     }
-    public void SpecialAttack()
+    public void Attack(Vector3 attackPosition, Vector3 attackRange, Quaternion rotation, LayerMask whatIsEnemy)
     {
+        Collider[] enemiesHit = Physics.OverlapBox(attackPosition, attackRange, rotation, whatIsEnemy);
 
+        foreach(Collider enemy in enemiesHit)
+        {
+            enemy.GetComponent<IDamageable<int>>().TakeDamage(primaryAttackDamage);
+        }
     }
     public void Interact()
     {
-
+        if(interactable != null)
+        {
+            interactable.Interact();
+        }
     }
     public void TakeDamage(int damage)
     {
-
+        if (isVulnerable)
+        {
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+        }
     }
     public void Die()
     {
-
+        Debug.Log("You died!");
+        //animator.SetBool(isDead, true);
+        //play dissolve shader effect
+        //fade screen to black
+    }
+    public void Respawn()
+    {
+        //reset all variables to original values
     }
     #endregion
+
     #region Coroutines
-    public IEnumerator Rage()
+    IEnumerator Rage()
     {
         speed *= 2;
         isVulnerable = false;
@@ -191,6 +338,14 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    private void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireCube(attackPoint.position, attackRange);
+    }
 
     private void OnEnable()
     {
