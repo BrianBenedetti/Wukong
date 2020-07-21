@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
+public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     private void OnTriggerEnter(Collider other)
     {
@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
     int isGroundedBool;
 
     [SerializeField] ElementalForms myElement;
+    //damage resistance will be separate from the form itself, will have to swap resistance files when swapping forms
     #endregion
 
     private void Awake()
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
         }
 
         //takes input from keyboard or gamepad and makes into a direction for movement
-        direction = (transform.right * movementInput.x + transform.forward * movementInput.y).normalized;
+        direction = transform.right * movementInput.x + transform.forward * movementInput.y;
 
         //checks if player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -239,13 +240,14 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
     {
         if(direction.magnitude > 0.1f)
         {
+            direction = Vector3.ClampMagnitude(direction, 1f);
             float targetAngle = cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             Quaternion rotation = Quaternion.Euler(0, angle, 0);
-            Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            //movedir from brackeys here
 
             rb.MoveRotation(rotation);
-            rb.MovePosition(transform.position + (direction * speed * Time.fixedDeltaTime));
+            rb.velocity = new Vector3(direction.x * speed, rb.velocity.y, direction.z * speed); //jump no longer works here
         }
     }
     public void Jump()
@@ -291,7 +293,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 
         foreach(Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int>>().TakeDamage(primaryAttackDamage);
+            //enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(primaryAttackDamage); //must include damage type
         }
     }
     public void Interact()
@@ -301,11 +303,11 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
             interactable.Interact();
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, DamageTypes damageType)
     {
         if (isVulnerable)
         {
-            currentHealth -= damage;
+            currentHealth -= damage; //this will change to implement resistances
             if (currentHealth <= 0)
             {
                 Die();

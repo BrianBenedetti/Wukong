@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
+public class Enemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     public int maxHealth = 100;
     int currentHealth;
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, DamageTypes damageType)
     {
         currentHealth -= damage;
         //play hurt animation

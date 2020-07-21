@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287df6522e444c54eb40b7c235794793, type: 3}
+  m_Name: Tank Enemy Stats Water
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  currentHealth: 0
+  lightAttackDamage: 50
+  heavyAttackDamage: 80
+  speed: 3
+  dashTime: 0
+  dashSpeed: 0
+  turnSmoothTime: 5
+  lookRadius: 25
+  isAggro: 0
+  attackRange: {x: 0, y: 0, z: 0}
+  attackOrigin: {fileID: 0}
+  target: {fileID: 0}
+  myDamageType: 2
+  whatToDamage:
+    serializedVersion: 2
+    m_Bits: 1024
