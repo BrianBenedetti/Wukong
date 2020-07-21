@@ -36,20 +36,24 @@ public class PauseMenu : MonoBehaviour
     void PauseGame()
     {
         Debug.Log("WW");
-        if (GamePaused == false)
+        if (controlsmenu == false)
         {
-            PauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
-          
-            GamePaused = true;
-            Debug.Log("w");
-        }
-        else
-        {
-          PauseMenuUI.SetActive(false);
-          Time.timeScale = 1f;
-          GamePaused = false;
-          Debug.Log("l");
+            if (GamePaused == false)
+            {
+                PauseMenuUI.SetActive(true);
+                Time.timeScale = 0f;
+
+                GamePaused = true;
+                Debug.Log("w");
+            }
+            else
+            {
+                PauseMenuUI.SetActive(false);
+                Time.timeScale = 1f;
+                GamePaused = false;
+                Debug.Log("l");
+
+            }
 
         }
        
@@ -94,7 +98,7 @@ public class PauseMenu : MonoBehaviour
         {
            PauseMenuUI.SetActive(false);
            GamePaused = false;
-            Time.timeScale = 1f;
+           Time.timeScale = 1f;
         }
     }
    

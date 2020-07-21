@@ -77,6 +77,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5cee3014-c592-4572-9aff-5e1c7a7aaa5a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2847a3e6-9462-49d8-9203-c601848d14c7",
                     "path": "<Keyboard>/backspace",
                     "interactions": "Press",
@@ -91,6 +102,28 @@
                     "id": "72cad36b-8f5f-4a3b-89a5-6e1e78b9f21e",
                     "path": "<HID::ZEROPLUS P4 Wired Gamepad>/button3",
                     "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f511c02a-eca7-44f1-bf02-ca61d2b49c3f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d607fcb9-6e83-4c7e-a4a1-5fd5ba31dd0f",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "BackB",

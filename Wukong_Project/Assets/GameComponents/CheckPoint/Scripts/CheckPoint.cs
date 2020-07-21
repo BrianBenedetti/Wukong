@@ -14,7 +14,8 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Gm.lastCheckPointPos = transform.position; 
+            Gm.lastCheckPointPos = transform.position;
+            FindObjectOfType<AudioManager>().Play("check");
         }
     }
 }
