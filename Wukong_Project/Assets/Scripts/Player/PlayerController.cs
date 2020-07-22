@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
+public class PlayerController : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKillable
 {
     private void OnTriggerEnter(Collider other)
     {
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public int primaryAttackDamage = 25;
     public int secondaryAttackDamage = 50;
     public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
-    int currentHealth;
+    [SerializeField] int currentHealth;
 
     public float speed = 6;
     public float jumpForce = 5;
@@ -293,7 +293,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 
         foreach(Collider enemy in enemiesHit)
         {
-            //enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(primaryAttackDamage); //must include damage type
+            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(primaryAttackDamage); //must include damage type
+            enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
     public void Interact()
@@ -303,23 +304,16 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             interactable.Interact();
         }
     }
-    public void TakeDamage(int damage, DamageTypes damageType)
+    public void TakeDamage(int damage/*, DamageTypes damageType*/)
     {
         if (isVulnerable)
         {
             currentHealth -= damage; //this will change to implement resistances
             if (currentHealth <= 0)
             {
-                Die();
+                animator.SetBool("isDead", true);
             }
         }
-    }
-    public void Die()
-    {
-        Debug.Log("You died!");
-        //animator.SetBool(isDead, true);
-        //play dissolve shader effect
-        //fade screen to black
     }
     public void Respawn()
     {
@@ -333,10 +327,18 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         speed *= 2;
         isVulnerable = false;
 
-        yield return new WaitForSecondsRealtime(rageDuration);
+        yield return new WaitForSeconds(rageDuration);
         Enraged = false;
         speed /= 2;
         isVulnerable = true;
+    }
+
+    public IEnumerator Die()
+    {
+        Debug.Log("You died!");
+        //play dissolve shader effect
+        yield return new WaitForSeconds(2);
+        //You died screen probably
     }
     #endregion
 
