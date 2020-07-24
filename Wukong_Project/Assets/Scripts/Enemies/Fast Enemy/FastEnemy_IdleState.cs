@@ -18,8 +18,8 @@ public class FastEnemy_IdleState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //checks to chase, patrol, or attack (random between light and heavy)
-        distanceToTarget = Vector3.Distance(baseScript.myStats.target.position, animator.transform.position);
-        if (distanceToTarget <= baseScript.myStats.lookRadius && distanceToTarget > baseScript.agent.stoppingDistance)
+        distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
+        if (distanceToTarget <= baseScript.lookRadius && distanceToTarget > baseScript.agent.stoppingDistance)
         {
             animator.SetBool("isChasing", true); //immidiately switches, need to wait with exit time
         }

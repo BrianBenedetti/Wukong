@@ -40,8 +40,8 @@ public class FastEnemy_ChaseState : StateMachineBehaviour
         }
 
         //check to patrol or attack
-        distanceToTarget = Vector3.Distance(baseScript.myStats.target.position, animator.transform.position);
-        if (distanceToTarget > baseScript.myStats.lookRadius)
+        distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
+        if (distanceToTarget > baseScript.lookRadius)
         {
             animator.SetBool("isPatrolling", true);
         }else if(distanceToTarget <= baseScript.agent.stoppingDistance){ //if enemy is in attack range

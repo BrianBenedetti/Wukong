@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKillable
+public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 {
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(Shrine))
-        {
-            interactable = other.GetComponent<Iinteractable>();
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(Shrine))
-        {
-            if(interactable != null)
-            {
-                interactable = null;
-            }
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Shrine"))
+    //    {
+    //        interactable = other.GetComponent<Iinteractable>();
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Shrine"))
+    //    {
+    //        if(interactable != null)
+    //        {
+    //            interactable = null;
+    //        }
+    //    }
+    //}
 
     enum ElementalForms
     {
@@ -74,8 +74,6 @@ public class PlayerController : MonoBehaviour, IDamageable<int/*, DamageTypes*/>
     [Header("Interactables")]
     Iinteractable interactable;
 
-    string Shrine = "Shrine";
-
     [Header ("Input")]
     Vector2 movementInput;
     PlayerInputActions inputActions;
@@ -118,6 +116,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int/*, DamageTypes*/>
         isVulnerable = true;
         currentHealth = maxHealth;
         isDashing = false;
+        interactable = null;
 
         Horizontal = Animator.StringToHash("Horizontal");
         Vertical = Animator.StringToHash("Vertical");
@@ -187,7 +186,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int/*, DamageTypes*/>
             canDoubleJump = false;
         }
 
-        //checks if player can dash
+        //checks if player wants to dash
         if (inputActions.PlayerControls.Dodge.triggered)
         {
             if(Time.time >= (lastDash + dashCooldown))
@@ -203,7 +202,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int/*, DamageTypes*/>
             {
                 //add if SHIFT is being clicked, return.
                 //animator.SetTrigger(PrimaryAttack); //this works
-                Attack(attackPoint.position, attackRange, attackPoint.rotation, enemyMask);
+                Attack(attackPoint, attackRange, attackPoint.rotation, enemyMask);
                 nextAttackTime = Time.time + 1 / attackRate; //won't need this if i use exit time in the animation, hopefully
             }
         }
@@ -287,9 +286,9 @@ public class PlayerController : MonoBehaviour, IDamageable<int/*, DamageTypes*/>
             }
         }
     }
-    public void Attack(Vector3 attackPosition, Vector3 attackRange, Quaternion rotation, LayerMask whatIsEnemy)
+    public void Attack(Transform attackOrigin, Vector3 attackRange, Quaternion rotation, LayerMask whatIsEnemy)
     {
-        Collider[] enemiesHit = Physics.OverlapBox(attackPosition, attackRange, rotation, whatIsEnemy);
+        Collider[] enemiesHit = Physics.OverlapBox(attackOrigin.position, attackRange, rotation, whatIsEnemy);
 
         foreach(Collider enemy in enemiesHit)
         {

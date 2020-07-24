@@ -6,17 +6,24 @@ using UnityEngine.AI;
 public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKillable
 {
     [Header("Variables")]
-    public EnemyStats myStats;
-
-    float distanceToTarget;
-    float waitTime;
+    public float maxHealth;
+    public float turnSmoothTime;
+    public float lookRadius;
     public float startWaitTime;
     public float dashForce;
     public float dashDuration;
+    float currentHealth;
+    float waitTime;
 
+    public int lightAttackDamage;
+    public int heavyAttackDamage;
     int randomWaypoint;
 
     public Transform[] waypoints;
+    public Transform attackOrigin;
+    [HideInInspector] public Transform target;
+
+    public DamageTypes myDamageType;
 
 
     [Header("Components")]
@@ -29,8 +36,8 @@ public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKill
 
     void Start()
     {
-        myStats.currentHealth = myStats.maxHealth;
-        myStats.target = PlayerManager.instance.player.transform;
+        currentHealth = maxHealth;
+        target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
@@ -39,16 +46,16 @@ public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKill
         waitTime = startWaitTime;
     }
 
-    public void faceTarget()
+    public void FaceTarget()
     {
-        Vector3 direction = (myStats.target.position - transform.position).normalized;
+        Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * myStats.turnSmoothTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSmoothTime);
     }
 
     public void ChaseTarget()
     {
-        agent.SetDestination(myStats.target.position);
+        agent.SetDestination(target.position);
     }
 
     public void Patrol()
@@ -68,13 +75,13 @@ public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKill
         }
     }
 
-    public void Attack(Vector3 attackPosition, Vector3 attackRange, Quaternion rotation, LayerMask whatIsEnemy)
+    public void Attack(Transform attackOrigin, float attackRadius, LayerMask whatIsEnemy)
     {
-        Collider[] enemiesHit = Physics.OverlapBox(attackPosition, attackRange, rotation, whatIsEnemy);
+        Collider[] enemiesHit = Physics.OverlapSphere(attackOrigin.position, attackRadius, whatIsEnemy);
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(myStats.lightAttackDamage); //must include damage type
+            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(lightAttackDamage); //must include damage type
             //enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
@@ -82,8 +89,8 @@ public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKill
     public void TakeDamage(int damageTaken/*, DamageTypes damageType*/)
     {
         animator.SetTrigger("Hurt");
-        myStats.currentHealth -= damageTaken; //this will change to implement resitsances
-        if (myStats.currentHealth <= 0)
+        currentHealth -= damageTaken; //this will change to implement resitsances
+        if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
         }
@@ -113,6 +120,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKill
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, myStats.lookRadius);
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 }

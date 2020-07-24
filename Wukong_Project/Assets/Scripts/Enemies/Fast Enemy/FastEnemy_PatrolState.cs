@@ -21,8 +21,8 @@ public class FastEnemy_PatrolState : StateMachineBehaviour
         baseScript.Patrol();
 
         //checks if player is in range to start chasing
-        distanceToTarget = Vector3.Distance(baseScript.myStats.target.position, animator.transform.position);
-        if (distanceToTarget <= baseScript.myStats.lookRadius)
+        distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
+        if (distanceToTarget < baseScript.lookRadius)
         {
             animator.SetBool("isChasing", true);
         }
