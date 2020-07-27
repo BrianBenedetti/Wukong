@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 {
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Shrine"))
-    //    {
-    //        interactable = other.GetComponent<Iinteractable>();
-    //    }
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Shrine"))
-    //    {
-    //        if(interactable != null)
-    //        {
-    //            interactable = null;
-    //        }
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        var item = other.GetComponent<Item>(); //must change to interactable interface
+        if (item)
+        {
+            inventory.AddItem(item.item, 1);
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Shrine"))
+        {
+            interactable = other.GetComponent<Iinteractable>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Shrine"))
+        {
+            if (interactable != null)
+            {
+                interactable = null;
+            }
+        }
+    }
 
     enum ElementalForms
     {
@@ -79,6 +87,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
     PlayerInputActions inputActions;
 
     [Header("Components")]
+    public InventoryObject inventory;
+
     Rigidbody rb;
     Animator animator;
 
@@ -348,6 +358,11 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
             return;
         }
         Gizmos.DrawWireCube(attackPoint.position, attackRange);
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear(); //clears inventory when leaving play mode
     }
 
     private void OnEnable()
