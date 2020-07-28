@@ -6,22 +6,26 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 {
     private void OnTriggerEnter(Collider other)
     {
-        var item = other.GetComponent<Item>(); //must change to interactable interface
-        if (item)
-        {
-            inventory.AddItem(item.item, 1);
-            Destroy(other.gameObject);
-        }
-
         if (other.CompareTag("Shrine"))
         {
-            interactable = other.GetComponent<Iinteractable>();
+            interactable = other.GetComponent<IInteractable>();
+        }
+        else if (other.CompareTag("Object"))
+        {
+            interactable = other.GetComponent<IInteractable>();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Shrine"))
+        {
+            if (interactable != null)
+            {
+                interactable = null;
+            }
+        }
+        else if (other.CompareTag("Object"))
         {
             if (interactable != null)
             {
@@ -80,10 +84,11 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
     public LayerMask enemyMask;
 
     [Header("Interactables")]
-    Iinteractable interactable;
+    [HideInInspector] public IInteractable interactable;
 
     [Header ("Input")]
     Vector2 movementInput;
+    float itemsScroll;
     PlayerInputActions inputActions;
 
     [Header("Components")]
@@ -118,6 +123,9 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 
         inputActions.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         inputActions.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
+
+        inputActions.PlayerControls.MouseCycle.performed += ctx => itemsScroll = ctx.ReadValue<float>();
+        inputActions.PlayerControls.MouseCycle.canceled += ctx => itemsScroll = 0;
     }
     void Start()
     {
@@ -174,6 +182,23 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
             //play VFX
             //change weapon VFX
         }
+
+        //checks to interact with objects
+        if (inputActions.PlayerControls.Interact.triggered)
+        {
+            Interact();
+        }
+
+        //cycles the items in inventory
+        if (itemsScroll < -0.1f || inputActions.PlayerControls.GamepadCycleRight.triggered)
+        {
+            inventory.MoveItem(0, inventory.Container.Items.Count - 1);
+        }
+        else if (itemsScroll > 0.1f || inputActions.PlayerControls.GamepadCycleLeft.triggered)
+        {
+            inventory.MoveItem(inventory.Container.Items.Count - 1, 0);
+        }
+
 
         //takes input from keyboard or gamepad and makes into a direction for movement
         direction = transform.right * movementInput.x + transform.forward * movementInput.y;
@@ -362,7 +387,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear(); //clears inventory when leaving play mode
+        inventory.Container.Items.Clear(); //clears inventory when leaving play mode
     }
 
     private void OnEnable()

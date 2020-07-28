@@ -2,62 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
 
-    public int x_Start;
-    public int y_Start;
-    public int x_SpaceBetweenItems;
-    public int columns;
-    public int y_SpaceBetweenItems;
+    public bool isLeftIcon;
 
-    Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+    public int indexToDisplay;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        CreateDisplay();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        UpdateDisplay();
-    }
-
-    public void CreateDisplay()
-    {
-        for (int i = 0; i < inventory.Container.Count; i++)
+        if (inventory.Container.Items.Count > indexToDisplay)
         {
-            var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
-            itemsDisplayed.Add(inventory.Container[i], obj);
-        }
-    }
-
-    public void UpdateDisplay()
-    {
-        for (int i = 0; i < inventory.Container.Count; i++)
-        {
-            if (itemsDisplayed.ContainsKey(inventory.Container[i]))
+            if (!isLeftIcon)
             {
-                itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
+                transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[inventory.Container.Items[indexToDisplay].item.Id].uiDisplay;
+                GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[indexToDisplay].amount.ToString("n0");
             }
-            else
+            else if(isLeftIcon && inventory.Container.Items.Count >= 3)
             {
-                var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
-                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
-                itemsDisplayed.Add(inventory.Container[i], obj);
+                transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[inventory.Container.Items[inventory.Container.Items.Count - 1].item.Id].uiDisplay;
+                GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[inventory.Container.Items.Count - 1].amount.ToString("n0");
             }
+            
         }
-    }
-
-    public Vector3 GetPosition(int i)
-    {
-        return new Vector3(x_Start + (x_SpaceBetweenItems * (i % columns)), y_Start + ((-y_SpaceBetweenItems * (i/columns))), 0);
     }
 }

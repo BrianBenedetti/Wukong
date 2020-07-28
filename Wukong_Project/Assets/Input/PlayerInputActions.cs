@@ -107,14 +107,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Cycle Items"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""c34f5439-ee79-4b41-9cef-1fdb473e5bd6"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Fire Form"",
                     ""type"": ""PassThrough"",
                     ""id"": ""ebf8eccc-32dc-489c-b079-a1885a8c01aa"",
@@ -158,6 +150,30 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Switch Target"",
                     ""type"": ""Button"",
                     ""id"": ""db8509fc-39a0-4f7c-ab19-aef1df47d41e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Mouse Cycle"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""6fd161c8-53ec-43d0-a443-eb0b33a33699"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Gamepad Cycle Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""424cb6da-9907-4b12-bb56-d17e10b541e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Gamepad Cycle Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b37284d-e421-4945-806d-d516fc30870c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -451,72 +467,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Left/Right D-pad"",
-                    ""id"": ""7370c3dd-d196-4d3f-97ee-a06e4eed55dd"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cycle Items"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""df0c4aad-b874-4148-9e4c-a79ab20d0166"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Cycle Items"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""6138f687-2e60-4509-b42f-3d87884578b8"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Cycle Items"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Mouse Scroll"",
-                    ""id"": ""c0c578c3-2bc0-40cc-aa86-1f18b0dc4193"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cycle Items"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""5099f86c-0465-45d1-9bb3-3476c45d5ef3"",
-                    ""path"": ""<Mouse>/scroll/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Cycle Items"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""129e790b-4e7c-4b10-b917-f35b3ef7ae80"",
-                    ""path"": ""<Mouse>/scroll/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Cycle Items"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""Button With One Modifier"",
                     ""id"": ""49225814-824e-47a1-9485-b3a036509cd7"",
                     ""path"": ""ButtonWithOneModifier"",
@@ -735,6 +685,39 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Switch Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e6f2fe6-407f-4c55-884f-845071977402"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Mouse Cycle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53624ee4-58e8-4053-87ee-1a249dd03860"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Gamepad Cycle Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1773b05-bfbb-4349-99c1-bc6435c894de"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Gamepad Cycle Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -782,13 +765,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_PlayerControls_Pause = m_PlayerControls.FindAction("Pause", throwIfNotFound: true);
         m_PlayerControls_Rage = m_PlayerControls.FindAction("Rage", throwIfNotFound: true);
         m_PlayerControls_UseItem = m_PlayerControls.FindAction("Use Item", throwIfNotFound: true);
-        m_PlayerControls_CycleItems = m_PlayerControls.FindAction("Cycle Items", throwIfNotFound: true);
         m_PlayerControls_FireForm = m_PlayerControls.FindAction("Fire Form", throwIfNotFound: true);
         m_PlayerControls_WaterForm = m_PlayerControls.FindAction("Water Form", throwIfNotFound: true);
         m_PlayerControls_AirForm = m_PlayerControls.FindAction("Air Form", throwIfNotFound: true);
         m_PlayerControls_NormalForm = m_PlayerControls.FindAction("Normal Form", throwIfNotFound: true);
         m_PlayerControls_LockOn = m_PlayerControls.FindAction("Lock On", throwIfNotFound: true);
         m_PlayerControls_SwitchTarget = m_PlayerControls.FindAction("Switch Target", throwIfNotFound: true);
+        m_PlayerControls_MouseCycle = m_PlayerControls.FindAction("Mouse Cycle", throwIfNotFound: true);
+        m_PlayerControls_GamepadCycleRight = m_PlayerControls.FindAction("Gamepad Cycle Right", throwIfNotFound: true);
+        m_PlayerControls_GamepadCycleLeft = m_PlayerControls.FindAction("Gamepad Cycle Left", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -849,13 +834,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Pause;
     private readonly InputAction m_PlayerControls_Rage;
     private readonly InputAction m_PlayerControls_UseItem;
-    private readonly InputAction m_PlayerControls_CycleItems;
     private readonly InputAction m_PlayerControls_FireForm;
     private readonly InputAction m_PlayerControls_WaterForm;
     private readonly InputAction m_PlayerControls_AirForm;
     private readonly InputAction m_PlayerControls_NormalForm;
     private readonly InputAction m_PlayerControls_LockOn;
     private readonly InputAction m_PlayerControls_SwitchTarget;
+    private readonly InputAction m_PlayerControls_MouseCycle;
+    private readonly InputAction m_PlayerControls_GamepadCycleRight;
+    private readonly InputAction m_PlayerControls_GamepadCycleLeft;
     public struct PlayerControlsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -871,13 +858,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_PlayerControls_Pause;
         public InputAction @Rage => m_Wrapper.m_PlayerControls_Rage;
         public InputAction @UseItem => m_Wrapper.m_PlayerControls_UseItem;
-        public InputAction @CycleItems => m_Wrapper.m_PlayerControls_CycleItems;
         public InputAction @FireForm => m_Wrapper.m_PlayerControls_FireForm;
         public InputAction @WaterForm => m_Wrapper.m_PlayerControls_WaterForm;
         public InputAction @AirForm => m_Wrapper.m_PlayerControls_AirForm;
         public InputAction @NormalForm => m_Wrapper.m_PlayerControls_NormalForm;
         public InputAction @LockOn => m_Wrapper.m_PlayerControls_LockOn;
         public InputAction @SwitchTarget => m_Wrapper.m_PlayerControls_SwitchTarget;
+        public InputAction @MouseCycle => m_Wrapper.m_PlayerControls_MouseCycle;
+        public InputAction @GamepadCycleRight => m_Wrapper.m_PlayerControls_GamepadCycleRight;
+        public InputAction @GamepadCycleLeft => m_Wrapper.m_PlayerControls_GamepadCycleLeft;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -920,9 +909,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @UseItem.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnUseItem;
                 @UseItem.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnUseItem;
                 @UseItem.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnUseItem;
-                @CycleItems.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCycleItems;
-                @CycleItems.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCycleItems;
-                @CycleItems.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCycleItems;
                 @FireForm.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireForm;
                 @FireForm.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireForm;
                 @FireForm.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireForm;
@@ -941,6 +927,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @SwitchTarget.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchTarget;
                 @SwitchTarget.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchTarget;
                 @SwitchTarget.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchTarget;
+                @MouseCycle.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseCycle;
+                @MouseCycle.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseCycle;
+                @MouseCycle.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseCycle;
+                @GamepadCycleRight.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGamepadCycleRight;
+                @GamepadCycleRight.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGamepadCycleRight;
+                @GamepadCycleRight.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGamepadCycleRight;
+                @GamepadCycleLeft.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGamepadCycleLeft;
+                @GamepadCycleLeft.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGamepadCycleLeft;
+                @GamepadCycleLeft.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnGamepadCycleLeft;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -978,9 +973,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @UseItem.started += instance.OnUseItem;
                 @UseItem.performed += instance.OnUseItem;
                 @UseItem.canceled += instance.OnUseItem;
-                @CycleItems.started += instance.OnCycleItems;
-                @CycleItems.performed += instance.OnCycleItems;
-                @CycleItems.canceled += instance.OnCycleItems;
                 @FireForm.started += instance.OnFireForm;
                 @FireForm.performed += instance.OnFireForm;
                 @FireForm.canceled += instance.OnFireForm;
@@ -999,6 +991,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @SwitchTarget.started += instance.OnSwitchTarget;
                 @SwitchTarget.performed += instance.OnSwitchTarget;
                 @SwitchTarget.canceled += instance.OnSwitchTarget;
+                @MouseCycle.started += instance.OnMouseCycle;
+                @MouseCycle.performed += instance.OnMouseCycle;
+                @MouseCycle.canceled += instance.OnMouseCycle;
+                @GamepadCycleRight.started += instance.OnGamepadCycleRight;
+                @GamepadCycleRight.performed += instance.OnGamepadCycleRight;
+                @GamepadCycleRight.canceled += instance.OnGamepadCycleRight;
+                @GamepadCycleLeft.started += instance.OnGamepadCycleLeft;
+                @GamepadCycleLeft.performed += instance.OnGamepadCycleLeft;
+                @GamepadCycleLeft.canceled += instance.OnGamepadCycleLeft;
             }
         }
     }
@@ -1034,12 +1035,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnRage(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
-        void OnCycleItems(InputAction.CallbackContext context);
         void OnFireForm(InputAction.CallbackContext context);
         void OnWaterForm(InputAction.CallbackContext context);
         void OnAirForm(InputAction.CallbackContext context);
         void OnNormalForm(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
         void OnSwitchTarget(InputAction.CallbackContext context);
+        void OnMouseCycle(InputAction.CallbackContext context);
+        void OnGamepadCycleRight(InputAction.CallbackContext context);
+        void OnGamepadCycleLeft(InputAction.CallbackContext context);
     }
 }

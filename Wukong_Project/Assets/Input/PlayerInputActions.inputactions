@@ -94,14 +94,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Cycle Items",
-                    "type": "PassThrough",
-                    "id": "c34f5439-ee79-4b41-9cef-1fdb473e5bd6",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Fire Form",
                     "type": "PassThrough",
                     "id": "ebf8eccc-32dc-489c-b079-a1885a8c01aa",
@@ -145,6 +137,30 @@
                     "name": "Switch Target",
                     "type": "Button",
                     "id": "db8509fc-39a0-4f7c-ab19-aef1df47d41e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Mouse Cycle",
+                    "type": "PassThrough",
+                    "id": "6fd161c8-53ec-43d0-a443-eb0b33a33699",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Gamepad Cycle Right",
+                    "type": "Button",
+                    "id": "424cb6da-9907-4b12-bb56-d17e10b541e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Gamepad Cycle Left",
+                    "type": "Button",
+                    "id": "9b37284d-e421-4945-806d-d516fc30870c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -438,72 +454,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Left/Right D-pad",
-                    "id": "7370c3dd-d196-4d3f-97ee-a06e4eed55dd",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cycle Items",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "df0c4aad-b874-4148-9e4c-a79ab20d0166",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Cycle Items",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "6138f687-2e60-4509-b42f-3d87884578b8",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Cycle Items",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Mouse Scroll",
-                    "id": "c0c578c3-2bc0-40cc-aa86-1f18b0dc4193",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cycle Items",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "5099f86c-0465-45d1-9bb3-3476c45d5ef3",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "Cycle Items",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "129e790b-4e7c-4b10-b917-f35b3ef7ae80",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "Cycle Items",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "Button With One Modifier",
                     "id": "49225814-824e-47a1-9485-b3a036509cd7",
                     "path": "ButtonWithOneModifier",
@@ -720,6 +670,39 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Switch Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e6f2fe6-407f-4c55-884f-845071977402",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Mouse Cycle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53624ee4-58e8-4053-87ee-1a249dd03860",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Gamepad Cycle Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1773b05-bfbb-4349-99c1-bc6435c894de",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Gamepad Cycle Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
