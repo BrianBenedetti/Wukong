@@ -12,21 +12,40 @@ public class DisplayInventory : MonoBehaviour
 
     public int indexToDisplay;
 
+    Sprite emptySprite;
+
+    private void Start()
+    {
+        emptySprite = transform.GetChild(0).GetComponentInChildren<Image>().sprite;
+    }
+
     void Update()
     {
-        if (inventory.Container.Items.Count > indexToDisplay)
+        if (isLeftIcon)
         {
-            if (!isLeftIcon)
-            {
-                transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[inventory.Container.Items[indexToDisplay].item.Id].uiDisplay;
-                GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[indexToDisplay].amount.ToString("n0");
-            }
-            else if(isLeftIcon && inventory.Container.Items.Count >= 3)
+            if(inventory.Container.Items.Count >= 3)
             {
                 transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[inventory.Container.Items[inventory.Container.Items.Count - 1].item.Id].uiDisplay;
                 GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[inventory.Container.Items.Count - 1].amount.ToString("n0");
             }
-            
+            else
+            {
+                transform.GetChild(0).GetComponentInChildren<Image>().sprite = emptySprite;
+                GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+        }
+        else
+        {
+            if (inventory.Container.Items.Count > indexToDisplay)
+            {
+                transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[inventory.Container.Items[indexToDisplay].item.Id].uiDisplay;
+                GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[indexToDisplay].amount.ToString("n0");
+            }
+            else
+            {
+                transform.GetChild(0).GetComponentInChildren<Image>().sprite = emptySprite;
+                GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
         }
     }
 }

@@ -38,6 +38,24 @@ public class InventoryObject : ScriptableObject
         }
     }
 
+    public void UseItem()
+    {
+        if(Container.Items.Count > 0)
+        {
+            var itemToUse = Container.Items[0];
+
+            //add values to player
+            PlayerManager.instance.player.GetComponent<PlayerController>().RestoreValues(itemToUse.item.healthValue, itemToUse.item.rageValue, itemToUse.item.specialValue);
+
+            itemToUse.ReduceAmount(1);
+
+            if (itemToUse.amount <= 0)
+            {
+                Container.Items.Remove(itemToUse);
+            }
+        } 
+    }
+
     [ContextMenu("Save")]
     public void Save()
     {

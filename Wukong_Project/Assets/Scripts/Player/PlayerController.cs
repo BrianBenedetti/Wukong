@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
     public int primaryAttackDamage = 25;
     public int secondaryAttackDamage = 50;
     public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
-    [SerializeField] int currentHealth;
+    [SerializeField] int currentHealth = 0;
 
     public float speed = 6;
     public float jumpForce = 5;
@@ -151,6 +151,9 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 
     void Update()
     {
+        //makes sure health doesn't go above 100%
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
         //checks if dash has refreshed
         CheckDash(direction);
 
@@ -199,6 +202,11 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
             inventory.MoveItem(inventory.Container.Items.Count - 1, 0);
         }
 
+        //checks to use item
+        if (inputActions.PlayerControls.UseItem.triggered)
+        {
+            inventory.UseItem();
+        }
 
         //takes input from keyboard or gamepad and makes into a direction for movement
         direction = transform.right * movementInput.x + transform.forward * movementInput.y;
@@ -348,6 +356,11 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
                 animator.SetBool("isDead", true);
             }
         }
+    }
+    public void RestoreValues(int health, int rage, int special)
+    {
+        currentHealth += health;
+        //same for other two
     }
     public void Respawn()
     {
