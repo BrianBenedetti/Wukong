@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shrine
   - Object
+  - Enemy
   layers:
   - Default
   - TransparentFX
