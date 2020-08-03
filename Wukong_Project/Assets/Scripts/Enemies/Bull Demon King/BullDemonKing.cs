@@ -103,7 +103,9 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        if(currentHealth > (maxHealth / 2))
+        CinemachineShake.Instance.Shake(1, 0.1f);
+
+        if (currentHealth > (maxHealth / 2))
         {
             animator.SetTrigger("Hurt");
         }

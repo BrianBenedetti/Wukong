@@ -89,6 +89,8 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
+        CinemachineShake.Instance.Shake(1, 0.1f);
+
         animator.SetTrigger("Hurt");
         currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType); //this will change to implement resitsances
         if (currentHealth <= 0)

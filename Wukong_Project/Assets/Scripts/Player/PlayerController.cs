@@ -352,6 +352,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     {
         if (isVulnerable)
         {
+            CinemachineShake.Instance.Shake(1, 0.1f);
+
             currentHealth -= myResistances.CalculateDamageWithResistance(damage, damageType);
             if (currentHealth <= 0)
             {

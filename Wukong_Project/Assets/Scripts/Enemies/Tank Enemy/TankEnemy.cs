@@ -86,6 +86,8 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
+        CinemachineShake.Instance.Shake(1, 0.1f);
+
         currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         if (currentHealth <= 0)
         {
