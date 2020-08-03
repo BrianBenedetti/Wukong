@@ -61,12 +61,10 @@ public class LockOnSystem : MonoBehaviour
         }
         else if(inputActions.PlayerControls.LockOn.triggered && isLockedOn || enemiesInRange.Count < 1 || Vector3.Distance(this.gameObject.transform.position, target.position) > lockOnRange)
         {
-            mainVirtualCamera.gameObject.SetActive(true);
-            lockOnCamera.gameObject.SetActive(false);
+            mainVirtualCamera.enabled = true;
+            lockOnCamera.enabled = false;
             lockOnCursor.SetActive(false);
             isLockedOn = false;
-            //problem is it is blendin and not immidiate
-            targetGroup.m_Targets[1].target = null;
             target = null;
             enemiesInRange.Clear();
         }
@@ -88,8 +86,8 @@ public class LockOnSystem : MonoBehaviour
     {
         isLockedOn = true;
         lockOnCursor.SetActive(true);
-        lockOnCamera.gameObject.SetActive(true);
-        mainVirtualCamera.gameObject.SetActive(false);
+        lockOnCamera.enabled = true;
+        mainVirtualCamera.enabled = false;
     }
 
     void FindAllEnemies()

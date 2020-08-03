@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 7367528742561610538}
   m_Layer: 9
   m_Name: BullDemonKing
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,6 +317,7 @@ MonoBehaviour:
   - {fileID: 2213173311301775879, guid: ec00ccf1001c6b049bb633b7e4bb0b5b, type: 3}
   - {fileID: 2213173311301775879, guid: 8042a1bbe5129264aa799f7b7c01740d, type: 3}
   myDamageType: 0
+  myResistances: {fileID: 11400000, guid: 3573ddf6923a7a240be139edc96abc96, type: 2}
   agent: {fileID: 0}
 --- !u!95 &7367528742561610538
 Animator:

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2213173311301776893}
   m_Layer: 9
   m_Name: Fast_Enemy_Fire
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,6 +80,7 @@ MonoBehaviour:
   attackOrigin: {fileID: 8297063223718898326}
   target: {fileID: 0}
   myDamageType: 1
+  myResistances: {fileID: 11400000, guid: 194e749a1648886438dd69fa1ee95d40, type: 2}
   agent: {fileID: 0}
 --- !u!195 &2213173311301776892
 NavMeshAgent:

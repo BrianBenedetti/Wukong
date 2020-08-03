@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<IDamageable<int>>().TakeDamage(parent.projectileDamage); //add damage type
+            other.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(parent.projectileDamage, parent.myDamageType);
             Destroy(gameObject);
         }
     }

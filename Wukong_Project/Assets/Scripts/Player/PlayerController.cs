@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
+public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     private void OnTriggerEnter(Collider other)
     {
@@ -111,7 +111,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
     int isGroundedBool;
 
     [SerializeField] ElementalForms myElement;
-    //damage resistance will be separate from the form itself, will have to swap resistance files when swapping forms
+    public DamageTypes myDamageType;
+    public DamageResistances myResistances;
     #endregion
 
     private void Awake()
@@ -129,6 +130,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
     }
     void Start()
     {
+        myDamageType = DamageTypes.normal;
         myElement = ElementalForms.normal;
         Enraged = false;
         isVulnerable = true;
@@ -335,8 +337,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
 
         foreach(Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(primaryAttackDamage); //must include damage type
-            enemy.GetComponent<Animator>().SetTrigger("Hurt");
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(primaryAttackDamage, myDamageType);
+            //enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
     public void Interact()
@@ -346,14 +348,14 @@ public class PlayerController : MonoBehaviour, IDamageable<int>, IKillable
             interactable.Interact();
         }
     }
-    public void TakeDamage(int damage/*, DamageTypes damageType*/)
+    public void TakeDamage(int damage, DamageTypes damageType)
     {
         if (isVulnerable)
         {
-            currentHealth -= damage; //this will change to implement resistances
+            currentHealth -= myResistances.CalculateDamageWithResistance(damage, damageType);
             if (currentHealth <= 0)
             {
-                animator.SetBool("isDead", true);
+                animator.SetBool(isDeadBool, true);
             }
         }
     }

@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3836620668870234547}
   m_Layer: 9
   m_Name: Tank_Enemy_Air
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
   attackOrigin: {fileID: 3836620667759315608}
   target: {fileID: 0}
   myDamageType: 3
+  myResistances: {fileID: 11400000, guid: be032b3c7b9703042b3abd64d16fa0d6, type: 2}
   agent: {fileID: 0}
 --- !u!95 &3836620668870234547
 Animator:

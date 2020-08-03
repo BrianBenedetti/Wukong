@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AverageEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKillable
+public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     [Header("Variables")]
     public float maxHealth;
@@ -28,7 +28,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IK
 
     public DamageTypes myDamageType;
 
-    //public DamageResistance myResistances;
+    public DamageResistances myResistances;
 
     [Header("Components")]
     [HideInInspector] public NavMeshAgent agent;
@@ -91,7 +91,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IK
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(projectileDamage); //must include damage type
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(projectileDamage, myDamageType);
             //enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
@@ -109,10 +109,10 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IK
         }
     }
 
-    public void TakeDamage(int damageTaken/*, DamageTypes damageType*/)
+    public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
         animator.SetTrigger("Hurt");
-        currentHealth -= damageTaken; //this will change to implement resitsances
+        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);

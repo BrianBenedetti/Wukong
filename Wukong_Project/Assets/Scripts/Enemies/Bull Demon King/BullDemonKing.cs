@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BullDemonKing : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKillable
+public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     [Header("Variables")]
     public float maxHealth;
@@ -32,7 +32,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, I
 
     public DamageTypes myDamageType;
 
-    //public DamageResistance myResistances;
+    public DamageResistances myResistances;
 
     [Header("Components")]
     [HideInInspector] public NavMeshAgent agent;
@@ -96,19 +96,19 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, I
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(lightAttackDamage); //must include damage type
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType); //must include damage type
             //enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
 
-    public void TakeDamage(int damageTaken)
+    public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
         if(currentHealth > (maxHealth / 2))
         {
             animator.SetTrigger("Hurt");
         }
 
-        currentHealth -= damageTaken; //this will change to implement resitsances
+        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType); //this will change to implement resitsances
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);

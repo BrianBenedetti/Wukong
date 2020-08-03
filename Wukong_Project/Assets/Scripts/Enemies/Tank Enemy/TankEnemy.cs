@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TankEnemy : MonoBehaviour, IDamageable<int>, IKillable
+public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     [Header("Variables")]
     public float maxHealth;
@@ -22,7 +22,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int>, IKillable
     [HideInInspector] public Transform target;
 
     public DamageTypes myDamageType;
-
+    public DamageResistances myResistances;
 
     [Header("Components")]
     [HideInInspector] public NavMeshAgent agent;
@@ -79,14 +79,14 @@ public class TankEnemy : MonoBehaviour, IDamageable<int>, IKillable
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(lightAttackDamage); //must include damage type
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
             //enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
 
-    public void TakeDamage(int damageTaken/*, DamageTypes damageType*/)
+    public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        currentHealth -= damageTaken; //this will change to implement resitsances
+        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);

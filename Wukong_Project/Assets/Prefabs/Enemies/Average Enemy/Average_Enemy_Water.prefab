@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 3797914584394110919}
   m_Layer: 9
   m_Name: Average_Enemy_Water
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,6 +257,7 @@ MonoBehaviour:
   myProjectile: {fileID: 6733021858860138975, guid: 4398afde7f03c1b4696549b501438128,
     type: 3}
   myDamageType: 2
+  myResistances: {fileID: 11400000, guid: 1a4d80dd87a1fbb4abfe764119759dfe, type: 2}
   agent: {fileID: 0}
 --- !u!54 &3797914584394110914
 Rigidbody:

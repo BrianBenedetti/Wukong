@@ -2379,6 +2379,7 @@ MonoBehaviour:
     m_Bits: 512
   inventory: {fileID: 11400000, guid: 2c19093a3fae1c54caead5387dea5e11, type: 2}
   myElement: 0
+  myResistances: {fileID: 11400000, guid: 3573ddf6923a7a240be139edc96abc96, type: 2}
 --- !u!114 &8521399714276449040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2408,7 +2409,7 @@ MonoBehaviour:
   mainVirtualCamera: {fileID: 0}
   lockOnCamera: {fileID: 0}
   targetGroup: {fileID: 0}
-  lockOnRange: 20
+  lockOnRange: 10
   allEnemies: []
   enemiesInRange: []
   lockOnCursor: {fileID: 0}

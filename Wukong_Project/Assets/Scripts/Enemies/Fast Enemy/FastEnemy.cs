@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKillable
+public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     [Header("Variables")]
     public float maxHealth;
@@ -24,6 +24,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKill
     [HideInInspector] public Transform target;
 
     public DamageTypes myDamageType;
+    public DamageResistances myResistances;
 
 
     [Header("Components")]
@@ -81,15 +82,15 @@ public class FastEnemy : MonoBehaviour, IDamageable<int/*, DamageTypes*/>, IKill
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int/*, DamageTypes*/>>().TakeDamage(lightAttackDamage); //must include damage type
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
             //enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
 
-    public void TakeDamage(int damageTaken/*, DamageTypes damageType*/)
+    public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
         animator.SetTrigger("Hurt");
-        currentHealth -= damageTaken; //this will change to implement resitsances
+        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType); //this will change to implement resitsances
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
