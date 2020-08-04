@@ -96,15 +96,19 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType); //must include damage type
-            //enemy.GetComponent<Animator>().SetTrigger("Hurt");
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
+            
+            Vector3 dir = transform.position - enemy.transform.position;
+            dir.y = 0;
+
+            Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
+            enemyRb.velocity = Vector3.zero;
+            enemyRb.velocity = -dir.normalized * 10;
         }
     }
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        CinemachineShake.Instance.Shake(1, 0.1f);
-
         if (currentHealth > (maxHealth / 2))
         {
             animator.SetTrigger("Hurt");

@@ -5,21 +5,15 @@ using Cinemachine;
 
 public class CinemachineShake : MonoBehaviour
 {
-    public static CinemachineShake Instance { get; private set; }
-
     public bool isMainCam;
 
     CinemachineFreeLook mainCam;
     CinemachineVirtualCamera lockOnCam;
 
-    CinemachineBasicMultiChannelPerlin noise;
-
     float shakeTimer;
 
     private void Awake()
     {
-        Instance = this;
-
         if (isMainCam)
         {
             mainCam = GetComponent<CinemachineFreeLook>();
@@ -34,7 +28,7 @@ public class CinemachineShake : MonoBehaviour
     {
         if(!isMainCam)
         {
-            noise = lockOnCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            CinemachineBasicMultiChannelPerlin noise = lockOnCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             noise.m_AmplitudeGain = intensity;
             shakeTimer = duration;
         }
@@ -56,7 +50,7 @@ public class CinemachineShake : MonoBehaviour
             {
                 if (!isMainCam)
                 {
-                    noise = lockOnCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+                    CinemachineBasicMultiChannelPerlin noise = lockOnCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
                     noise.m_AmplitudeGain = 0;
                 }
                 else

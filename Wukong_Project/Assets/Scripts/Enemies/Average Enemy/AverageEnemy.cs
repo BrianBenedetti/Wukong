@@ -20,6 +20,8 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public int slamDamage;
     int randomWaypoint;
 
+    bool knockback;
+
     public Transform[] waypoints;
     public Transform projectileOrigin;
     [HideInInspector] public Transform target;
@@ -41,6 +43,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     void Start()
     {
         currentHealth = maxHealth;
+        knockback = false;
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
@@ -49,6 +52,17 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         randomWaypoint = Random.Range(0, waypoints.Length);
         waitTime = startWaitTime;
         timeBetweenShots = startTimeBetweenShots;
+    }
+
+    private void FixedUpdate()
+    {
+        if (knockback)
+        {
+            Vector3 direction = transform.position - target.position;
+            direction.y = 0;
+
+            agent.velocity = direction.normalized * 5;
+        }
     }
 
     public void FaceTarget()
@@ -65,7 +79,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void Retreat()
     {
-        agent.Move((transform.position - target.position).normalized * 0.1f);
+        agent.Move((transform.position - target.position).normalized * 0.05f);
     }
 
     public void Patrol()
@@ -92,7 +106,13 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         foreach (Collider enemy in enemiesHit)
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(projectileDamage, myDamageType);
-            //enemy.GetComponent<Animator>().SetTrigger("Hurt");
+
+            Vector3 dir = transform.position - enemy.transform.position;
+            dir.y = 0;
+
+            Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
+            enemyRb.velocity = Vector3.zero;
+            enemyRb.velocity = -dir.normalized * 8;
         }
     }
 
@@ -111,7 +131,10 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        CinemachineShake.Instance.Shake(1, 0.1f);
+        PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
+        PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+
+        StartCoroutine(Knockback());
 
         animator.SetTrigger("Hurt");
         currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
@@ -129,6 +152,17 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         agent.enabled = false;
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
+    }
+
+    IEnumerator Knockback()
+    {
+        knockback = true;
+        agent.angularSpeed = 0;
+
+        yield return new WaitForSeconds(0.1f);
+
+        knockback = false;
+        agent.angularSpeed = 120;
     }
 
     private void OnDrawGizmosSelected()

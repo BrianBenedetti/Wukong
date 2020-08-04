@@ -33,6 +33,14 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(parent.projectileDamage, parent.myDamageType);
+
+            Vector3 dir = transform.position - player.transform.position;
+            dir.y = 0;
+
+            Rigidbody enemyRb = player.GetComponent<Rigidbody>();
+            enemyRb.velocity = Vector3.zero;
+            enemyRb.velocity = -dir.normalized * 3;
+
             Destroy(gameObject);
         }
     }

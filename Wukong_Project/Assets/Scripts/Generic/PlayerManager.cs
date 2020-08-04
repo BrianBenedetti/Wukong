@@ -14,4 +14,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject player;
+
+    public CinemachineShake mainCamShake;
+    public CinemachineShake lockOnShake;
 }

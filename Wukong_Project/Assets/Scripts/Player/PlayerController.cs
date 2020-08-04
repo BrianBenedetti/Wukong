@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public float dashSpeed;
     //public float distanceBetweenGhosts; //if we do ghost images, would be cool
     public float dashCooldown;
+    public float knockbackStrength;
     float turnSmoothVelocity; //don't touch.
     float nextAttackTime = 0; //don't touch
     float dashTimeLeft;
@@ -107,6 +109,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     int SpecialAttackTrigger;
     int InteractTrigger;
     int DashTrigger;
+    int HurtTrigger;
     int isDeadBool;
     int isGroundedBool;
 
@@ -147,6 +150,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         SpecialAttackTrigger = Animator.StringToHash("Attack3");
         InteractTrigger = Animator.StringToHash("Interact");
         DashTrigger = Animator.StringToHash("Dodge");
+        HurtTrigger = Animator.StringToHash("Hurt");
         isDeadBool = Animator.StringToHash("isDead");
         isGroundedBool = Animator.StringToHash("isGrounded");
     }
@@ -338,7 +342,6 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         foreach(Collider enemy in enemiesHit)
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(primaryAttackDamage, myDamageType);
-            //enemy.GetComponent<Animator>().SetTrigger("Hurt");
         }
     }
     public void Interact()
@@ -352,7 +355,10 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     {
         if (isVulnerable)
         {
-            CinemachineShake.Instance.Shake(1, 0.1f);
+            PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
+            PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+
+            animator.SetTrigger(HurtTrigger);
 
             currentHealth -= myResistances.CalculateDamageWithResistance(damage, damageType);
             if (currentHealth <= 0)

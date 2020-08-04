@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AverageEnemy_DieState : StateMachineBehaviour
 {
-    FastEnemy baseScript;
+    AverageEnemy baseScript;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        baseScript = animator.GetComponent<FastEnemy>();
+        baseScript = animator.GetComponent<AverageEnemy>();
         baseScript.StartCoroutine("Die");
     }
 }

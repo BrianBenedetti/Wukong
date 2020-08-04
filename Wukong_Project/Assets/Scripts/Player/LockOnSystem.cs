@@ -61,12 +61,11 @@ public class LockOnSystem : MonoBehaviour
         }
         else if(inputActions.PlayerControls.LockOn.triggered && isLockedOn || enemiesInRange.Count < 1 || Vector3.Distance(this.gameObject.transform.position, target.position) > lockOnRange)
         {
+            enemiesInRange.Clear();
             mainVirtualCamera.enabled = true;
             lockOnCamera.enabled = false;
             lockOnCursor.SetActive(false);
             isLockedOn = false;
-            target = null;
-            enemiesInRange.Clear();
         }
 
         if(inputActions.PlayerControls.SwitchTarget.triggered && isLockedOn)

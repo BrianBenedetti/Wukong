@@ -19,6 +19,8 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public int heavyAttackDamage;
     int randomWaypoint;
 
+    bool knockback;
+
     public Transform[] waypoints;
     public Transform attackOrigin;
     [HideInInspector] public Transform target;
@@ -38,6 +40,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     void Start()
     {
         currentHealth = maxHealth;
+        knockback = false;
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
@@ -45,6 +48,17 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
         randomWaypoint = Random.Range(0, waypoints.Length);
         waitTime = startWaitTime;
+    }
+
+    private void FixedUpdate()
+    {
+        if (knockback)
+        {
+            Vector3 direction = transform.position - target.position;
+            direction.y = 0;
+
+            agent.velocity = direction.normalized * 5;
+        }
     }
 
     public void FaceTarget()
@@ -83,16 +97,22 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         foreach (Collider enemy in enemiesHit)
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
-            //enemy.GetComponent<Animator>().SetTrigger("Hurt");
+
+            Vector3 dir = transform.position - enemy.transform.position;
+            dir.y = 0;
+
+            Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
+            enemyRb.velocity = Vector3.zero;
+            enemyRb.velocity = -dir.normalized * 5;
         }
     }
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        CinemachineShake.Instance.Shake(1, 0.1f);
+        StartCoroutine(Knockback());
 
         animator.SetTrigger("Hurt");
-        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType); //this will change to implement resitsances
+        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
@@ -118,6 +138,17 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         agent.enabled = false;
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
+    }
+
+    IEnumerator Knockback()
+    {
+        knockback = true;
+        agent.angularSpeed = 0;
+
+        yield return new WaitForSeconds(0.1f);
+
+        knockback = false;
+        agent.angularSpeed = 120;
     }
 
     private void OnDrawGizmosSelected()

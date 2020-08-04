@@ -80,14 +80,18 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         foreach (Collider enemy in enemiesHit)
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
-            //enemy.GetComponent<Animator>().SetTrigger("Hurt");
+
+            Vector3 dir = transform.position - enemy.transform.position;
+            dir.y = 0;
+
+            Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
+            enemyRb.velocity = Vector3.zero;
+            enemyRb.velocity = -dir.normalized * 8;
         }
     }
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        CinemachineShake.Instance.Shake(1, 0.1f);
-
         currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         if (currentHealth <= 0)
         {
