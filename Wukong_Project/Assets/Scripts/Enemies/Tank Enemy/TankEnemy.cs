@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -16,13 +17,18 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public int lightAttackDamage;
     public int heavyAttackDamage;
     int randomWaypoint;
+    int actualDamage;
 
     public Transform[] waypoints;
     public Transform attackOrigin;
     [HideInInspector] public Transform target;
+    public Transform damageTextPos;
 
     public DamageTypes myDamageType;
     public DamageResistances myResistances;
+
+    public GameObject damageText;
+    public GameObject[] loot;
 
     [Header("Components")]
     [HideInInspector] public NavMeshAgent agent;
@@ -92,10 +98,39 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
+        PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
+        PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+
+        actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
+
+        if (damageText)
+        {
+            ShowDamageText();
+        }
+
+        currentHealth -= actualDamage;
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
+        }
+    }
+
+    void ShowDamageText()
+    {
+        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
+    }
+
+    void DropLoot()
+    {
+        for (int i = 0; i < maxHealth / 50; i++)
+        {
+            int rand = Random.Range(0, 3);
+
+            Instantiate(loot[rand], transform.position + new Vector3(Random.Range(-1, 1),
+                2,
+                Random.Range(-1, 1)),
+                Quaternion.identity);
         }
     }
 
@@ -106,6 +141,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
         yield return new WaitForSeconds(2);
+        DropLoot();
         Destroy(gameObject);
     }
 

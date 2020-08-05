@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -19,14 +20,18 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public int projectileDamage;
     public int slamDamage;
     int randomWaypoint;
+    int actualDamage;
 
     bool knockback;
 
     public Transform[] waypoints;
     public Transform projectileOrigin;
     [HideInInspector] public Transform target;
+    public Transform damageTextPos;
 
     public GameObject myProjectile;
+    public GameObject damageText;
+    public GameObject[] loot;
 
     public DamageTypes myDamageType;
 
@@ -137,10 +142,37 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         StartCoroutine(Knockback());
 
         animator.SetTrigger("Hurt");
-        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType);
+
+        actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
+        currentHealth -= actualDamage;
+
+        if (damageText)
+        {
+            ShowDamageText();
+        }
+
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
+        }
+    }
+
+    void ShowDamageText()
+    {
+        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
+    }
+
+    void DropLoot()
+    {
+        for (int i = 0; i < maxHealth / 50; i++)
+        {
+            int rand = Random.Range(0, 3);
+
+            Instantiate(loot[rand], transform.position + new Vector3(Random.Range(-1, 1),
+                2,
+                Random.Range(-1, 1)),
+                Quaternion.identity);
         }
     }
 
@@ -151,6 +183,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
         yield return new WaitForSeconds(2);
+        DropLoot();
         Destroy(gameObject);
     }
 

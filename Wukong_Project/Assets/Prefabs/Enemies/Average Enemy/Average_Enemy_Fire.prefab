@@ -223,6 +223,7 @@ Transform:
   m_Children:
   - {fileID: 3797914583999517243}
   - {fileID: 3797914583589567557}
+  - {fileID: 419242493869167196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -246,16 +247,18 @@ MonoBehaviour:
   startTimeBetweenShots: 2
   projectileDamage: 20
   slamDamage: 30
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   projectileOrigin: {fileID: 3797914583589567557}
   target: {fileID: 0}
+  damageTextPos: {fileID: 419242493869167196}
   myProjectile: {fileID: 6733021858860138975, guid: 4398afde7f03c1b4696549b501438128,
     type: 3}
+  damageText: {fileID: 7474053542849833887, guid: 071e7badf76c2154fb6373a9ea9080c1,
+    type: 3}
+  loot:
+  - {fileID: 6792597386113538823, guid: 9411abd3f6e0eb348be8f2234632e0be, type: 3}
+  - {fileID: 5616739221024941611, guid: b5d52b2f78c049942a7aaa21efea47f8, type: 3}
+  - {fileID: 707541107377667249, guid: f3354833efa5c3e47bc28eb2fc7b55ae, type: 3}
   myDamageType: 1
   myResistances: {fileID: 11400000, guid: 194e749a1648886438dd69fa1ee95d40, type: 2}
   agent: {fileID: 0}
@@ -330,3 +333,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &4431825235637441668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 419242493869167196}
+  m_Layer: 9
+  m_Name: Damage Text Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &419242493869167196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431825235637441668}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3797914584394110972}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -316,6 +316,8 @@ Transform:
   - {fileID: 2025368601}
   - {fileID: 627230805}
   - {fileID: 6233243974197469204}
+  - {fileID: 1268179627}
+  - {fileID: 1131432529}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -365,6 +367,7 @@ MonoBehaviour:
   cam: {fileID: 1063584138}
   groundCheck: {fileID: 2025368601}
   attackPoint: {fileID: 627230805}
+  damageTextPos: {fileID: 1268179627}
   attackRange: {x: 5, y: 2, z: 5}
   groundMask:
     serializedVersion: 2
@@ -372,6 +375,8 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 512
+  damageText: {fileID: 7474053542849833887, guid: 071e7badf76c2154fb6373a9ea9080c1,
+    type: 3}
   inventory: {fileID: 11400000, guid: 2c19093a3fae1c54caead5387dea5e11, type: 2}
   myElement: 0
   myDamageType: 0
@@ -435,7 +440,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289284346}
-  m_LocalRotation: {x: 0.1080637, y: 0.000000017769295, z: -0.0000000019315267, w: 0.994144}
+  m_LocalRotation: {x: 0.108063705, y: -0.000000028498196, z: 0.0000000030977616,
+    w: 0.994144}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1710,7 +1716,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884185084}
-  m_LocalRotation: {x: 0.1080637, y: -0.000000017632104, z: 0.0000000019166138, w: 0.994144}
+  m_LocalRotation: {x: 0.1080637, y: 0.000000016552226, z: -0.0000000017992311, w: 0.994144}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1938,7 +1944,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063584135}
-  m_LocalRotation: {x: 0.10806372, y: 0.000000017632066, z: -0.00000000191661, w: 0.994144}
+  m_LocalRotation: {x: 0.108063735, y: 0.000000016552226, z: -0.0000000017992317,
+    w: 0.994144}
   m_LocalPosition: {x: -1.47, y: 2.5, z: -4.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1979,6 +1986,36 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1131432528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131432529}
+  m_Layer: 10
+  m_Name: Loot Receiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1131432529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131432528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97867131}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1131566728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +2045,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983609481}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1268179626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268179627}
+  m_Layer: 10
+  m_Name: Damage Text Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1268179627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268179626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97867131}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412423641
 GameObject:
@@ -2363,8 +2430,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 97867129}
+  lootReceiver: {fileID: 1131432529}
   mainCamShake: {fileID: 1412423645}
   lockOnShake: {fileID: 2101697825}
+  cam: {fileID: 1063584137}
 --- !u!4 &1540210147
 Transform:
   m_ObjectHideFlags: 0
@@ -2403,7 +2472,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687803303}
-  m_LocalRotation: {x: 0.1080637, y: 0.00000001763206, z: -0.0000000019166093, w: 0.994144}
+  m_LocalRotation: {x: 0.10806372, y: 0.000000016299296, z: -0.0000000017717379, w: 0.994144}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

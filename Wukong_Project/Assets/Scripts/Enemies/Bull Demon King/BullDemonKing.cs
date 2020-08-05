@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -18,17 +19,20 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
     public int lightAttackDamage;
     public int heavyAttackDamage;
     public int leapAttackDamage;
+    int actualDamage;
 
     [HideInInspector] public Transform target;
     public Transform spawn1;
     public Transform spawn2;
     public Transform attackPosition;
+    public Transform damageTextPos;
 
     [HideInInspector] public Vector3 leapDestination;
     [HideInInspector] public Vector3 leapStart;
 
     public GameObject[] averageEnemies;
     public GameObject[] fastEnemies;
+    public GameObject damageText;
 
     public DamageTypes myDamageType;
 
@@ -109,16 +113,32 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
+        PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
+        PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+
+        actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
+        currentHealth -= actualDamage;
+
+        if (damageText)
+        {
+            ShowDamageText();
+        }
+
         if (currentHealth > (maxHealth / 2))
         {
             animator.SetTrigger("Hurt");
         }
 
-        currentHealth -= myResistances.CalculateDamageWithResistance(damageTaken, damageType); //this will change to implement resitsances
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
         }
+    }
+
+    void ShowDamageText()
+    {
+        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
 
     public IEnumerator LeapAttack()

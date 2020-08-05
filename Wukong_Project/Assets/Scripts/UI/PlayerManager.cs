@@ -15,6 +15,10 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject player;
 
+    public Transform lootReceiver;
+
     public CinemachineShake mainCamShake;
     public CinemachineShake lockOnShake;
+
+    public Camera cam;
 }

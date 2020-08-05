@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public int secondaryAttackDamage = 50;
     public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
     [SerializeField] int currentHealth = 0;
+    int actualDamage;
 
     public float speed = 6;
     public float jumpForce = 5;
@@ -78,12 +79,15 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public Transform cam;
     public Transform groundCheck;
     public Transform attackPoint;
+    public Transform damageTextPos;
 
     public Vector3 attackRange;
     Vector3 direction;
 
     public LayerMask groundMask;
     public LayerMask enemyMask;
+
+    public GameObject damageText;
 
     [Header("Interactables")]
     [HideInInspector] public IInteractable interactable;
@@ -298,12 +302,14 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             rb.velocity = new Vector3(direction.x * speed, rb.velocity.y, direction.z * speed); //jump no longer works here
         }
     }
+
     public void Jump()
     {
         animator.SetTrigger(JumpTrigger);
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.velocity = Vector3.up * jumpForce;
     }
+
     public void AttemptDash()
     {
         isDashing = true;
@@ -313,6 +319,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         //drop first ghost
         //make ghostXPos equal to this transform.x
     }
+
     public void CheckDash(Vector3 direction)
     {
         if (isDashing)
@@ -335,6 +342,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             }
         }
     }
+
     public void Attack(Transform attackOrigin, Vector3 attackRange, Quaternion rotation, LayerMask whatIsEnemy)
     {
         Collider[] enemiesHit = Physics.OverlapBox(attackOrigin.position, attackRange, rotation, whatIsEnemy);
@@ -344,6 +352,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(primaryAttackDamage, myDamageType);
         }
     }
+
     public void Interact()
     {
         if(interactable != null)
@@ -351,6 +360,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             interactable.Interact();
         }
     }
+
     public void TakeDamage(int damage, DamageTypes damageType)
     {
         if (isVulnerable)
@@ -360,21 +370,36 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 
             animator.SetTrigger(HurtTrigger);
 
-            currentHealth -= myResistances.CalculateDamageWithResistance(damage, damageType);
+            actualDamage = myResistances.CalculateDamageWithResistance(damage, damageType);
+            currentHealth -= actualDamage;
+
+            if (damageText)
+            {
+                ShowDamageText();
+            }
+
             if (currentHealth <= 0)
             {
                 animator.SetBool(isDeadBool, true);
             }
         }
     }
+
     public void RestoreValues(int health, int rage, int special)
     {
         currentHealth += health;
         //same for other two
     }
+
     public void Respawn()
     {
         //reset all variables to original values
+    }
+
+    void ShowDamageText()
+    {
+        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
     #endregion
 

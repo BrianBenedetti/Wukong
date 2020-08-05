@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &516151050421962071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6957537596824038935}
+  m_Layer: 9
+  m_Name: Damage Text Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6957537596824038935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516151050421962071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7367528742561610536}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7367528741505257173
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +255,7 @@ Transform:
   - {fileID: 7367528742733308240}
   - {fileID: 7367528741817302381}
   - {fileID: 7367528742631095493}
+  - {fileID: 6957537596824038935}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -304,6 +335,7 @@ MonoBehaviour:
   spawn1: {fileID: 7367528741817302381}
   spawn2: {fileID: 7367528742631095493}
   attackPosition: {fileID: 7367528742733308240}
+  damageTextPos: {fileID: 6957537596824038935}
   leapDestination: {x: 0, y: 0, z: 0}
   leapStart: {x: 0, y: 0, z: 0}
   averageEnemies:
@@ -316,6 +348,8 @@ MonoBehaviour:
   - {fileID: 2213173311301775879, guid: 5abf3a49d1c5ad14292df8f15d0e9037, type: 3}
   - {fileID: 2213173311301775879, guid: ec00ccf1001c6b049bb633b7e4bb0b5b, type: 3}
   - {fileID: 2213173311301775879, guid: 8042a1bbe5129264aa799f7b7c01740d, type: 3}
+  damageText: {fileID: 7474053542849833887, guid: 071e7badf76c2154fb6373a9ea9080c1,
+    type: 3}
   myDamageType: 0
   myResistances: {fileID: 11400000, guid: 3573ddf6923a7a240be139edc96abc96, type: 2}
   agent: {fileID: 0}
