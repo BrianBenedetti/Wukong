@@ -21,4 +21,8 @@ public class PlayerManager : MonoBehaviour
     public CinemachineShake lockOnShake;
 
     public Camera cam;
+
+    [HideInInspector] public Vector3 lastCheckpointPlayerPosition;
+
+    public AudioManager audioManager;
 }

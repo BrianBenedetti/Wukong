@@ -393,7 +393,9 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 
     public void Respawn()
     {
-        //reset all variables to original values
+        //reset all values
+        //puts player at last checkpoint position
+        transform.position = PlayerManager.instance.lastCheckpointPlayerPosition;
     }
 
     void ShowDamageText()
