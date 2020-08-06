@@ -30,18 +30,12 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(parent.projectileDamage, parent.myDamageType);
-
-            Vector3 dir = transform.position - player.transform.position;
-            dir.y = 0;
-
-            Rigidbody enemyRb = player.GetComponent<Rigidbody>();
-            enemyRb.velocity = Vector3.zero;
-            enemyRb.velocity = -dir.normalized * 3;
-
-            Destroy(gameObject);
-        }
+        other.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(parent.projectileDamage, parent.myDamageType);
+        Vector3 dir = transform.position - player.transform.position;
+        dir.y = 0;
+        Rigidbody enemyRb = player.GetComponent<Rigidbody>();
+        enemyRb.velocity = Vector3.zero;
+        enemyRb.velocity = -dir.normalized * 3;
+        Destroy(gameObject);
     }
 }

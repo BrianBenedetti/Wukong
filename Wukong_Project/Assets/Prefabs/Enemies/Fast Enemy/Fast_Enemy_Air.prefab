@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2213173311301776892}
   - component: {fileID: 2213173311301775873}
   - component: {fileID: 2213173311301776893}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Fast_Enemy_Air
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -72,7 +72,12 @@ MonoBehaviour:
   dashDuration: 0.1
   lightAttackDamage: 25
   heavyAttackDamage: 35
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   attackOrigin: {fileID: 8297063223718898326}
   target: {fileID: 0}
   damageTextPos: {fileID: 3593297050072062253}
@@ -153,7 +158,7 @@ GameObject:
   - component: {fileID: 2213173311720373563}
   - component: {fileID: 2213173311720373557}
   - component: {fileID: 2213173311720373556}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +238,7 @@ GameObject:
   - component: {fileID: 2213173312201968979}
   - component: {fileID: 2213173312201968974}
   - component: {fileID: 2213173312201968973}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3593297050072062253}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Damage Text Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8297063223718898326}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Attack Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

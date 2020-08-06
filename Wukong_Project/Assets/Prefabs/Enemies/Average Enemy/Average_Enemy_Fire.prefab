@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3797914583589567557}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Projectile Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 3797914583601969521}
   - component: {fileID: 3797914583601969523}
   - component: {fileID: 3797914583601969522}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3797914583999517243}
   - component: {fileID: 3797914583999517237}
   - component: {fileID: 3797914583999517236}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3797914584394110913}
   - component: {fileID: 3797914584394110912}
   - component: {fileID: 3797914584394110919}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Average_Enemy_Fire
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -247,7 +247,12 @@ MonoBehaviour:
   startTimeBetweenShots: 2
   projectileDamage: 20
   slamDamage: 30
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   projectileOrigin: {fileID: 3797914583589567557}
   target: {fileID: 0}
   damageTextPos: {fileID: 419242493869167196}
@@ -342,7 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419242493869167196}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Damage Text Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}

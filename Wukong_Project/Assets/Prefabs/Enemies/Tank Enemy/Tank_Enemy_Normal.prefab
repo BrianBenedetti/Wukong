@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5289934429167217035}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Damage Text Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8164888773748839711}
   - component: {fileID: 8164888773748839706}
   - component: {fileID: 8164888773748839707}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Tank_Enemy_Normal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -139,7 +139,12 @@ MonoBehaviour:
   currentHealth: 0
   lightAttackDamage: 40
   heavyAttackDamage: 60
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   attackOrigin: {fileID: 8164888774648925744}
   target: {fileID: 0}
   damageTextPos: {fileID: 5289934429167217035}
@@ -182,7 +187,7 @@ GameObject:
   - component: {fileID: 8164888774340379808}
   - component: {fileID: 8164888774340379811}
   - component: {fileID: 8164888774340379810}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8164888774648925744}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Attack Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +297,7 @@ GameObject:
   - component: {fileID: 8164888774700248310}
   - component: {fileID: 8164888774700248309}
   - component: {fileID: 8164888774700248308}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

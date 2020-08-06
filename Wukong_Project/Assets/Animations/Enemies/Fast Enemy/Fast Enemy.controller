@@ -237,7 +237,7 @@ MonoBehaviour:
   attackRadius: 3
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 512
 --- !u!1101 &-5192074513643036207
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -926,7 +926,7 @@ MonoBehaviour:
   attackRadius: 3
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 512
 --- !u!1101 &7040922915857028466
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
