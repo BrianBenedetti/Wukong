@@ -4,9 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Shrine
   - Object
   - Enemy
+=======
+  - GM
+>>>>>>> aedb55bc15913be9b409f4d531e2d37503567dac
   layers:
   - Default
   - TransparentFX
