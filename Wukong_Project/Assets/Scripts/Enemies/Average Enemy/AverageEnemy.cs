@@ -42,16 +42,12 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     Animator animator;
 
-    Rigidbody rb;
-
-
     void Start()
     {
         currentHealth = maxHealth;
         knockback = false;
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
         randomWaypoint = Random.Range(0, waypoints.Length);
@@ -61,7 +57,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     private void FixedUpdate()
     {
-        if (knockback)
+        if (agent.isActiveAndEnabled && knockback)
         {
             Vector3 direction = transform.position - target.position;
             direction.y = 0;

@@ -43,15 +43,12 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
     Animator animator;
 
-    Rigidbody rb;
-
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 

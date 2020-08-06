@@ -13,17 +13,18 @@ public class LockOnSystem : MonoBehaviour
     public CinemachineVirtualCamera lockOnCamera;
     public CinemachineTargetGroup targetGroup;
 
-    bool isLockedOn;
+    [SerializeField] bool isLockedOn;
 
     int index;
 
     public float lockOnRange;
 
-    string enemyTag = "Enemy";
+    readonly string enemyTag = "Enemy";
 
+    public Transform emptyTarget;
     Transform target;
 
-    [SerializeField] List<Transform> allEnemies = new List<Transform>();
+    [SerializeField] protected List<Transform> allEnemies = new List<Transform>();
     [SerializeField] List<Transform> enemiesInRange = new List<Transform>();
 
     GameObject[] enemiesFound;
@@ -49,7 +50,22 @@ public class LockOnSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(inputActions.PlayerControls.LockOn.triggered && !isLockedOn)
+        //constantly removes null transforms after they die
+        allEnemies.RemoveAll(Transform => Transform == null);
+        enemiesInRange.RemoveAll(Transform => Transform == null);
+
+        if (index > enemiesInRange.Count - 1)
+        {
+            index = 0;
+        }
+
+        if(enemiesInRange.Count > 0)
+        {
+            target = enemiesInRange[index];
+        }
+
+        //locks on
+        if (inputActions.PlayerControls.LockOn.triggered && !isLockedOn)
         {
             FindAllEnemies();
             CheckForEnemiesInRange();
@@ -59,8 +75,10 @@ public class LockOnSystem : MonoBehaviour
                 LockOn();
             }
         }
-        else if(inputActions.PlayerControls.LockOn.triggered && isLockedOn || enemiesInRange.Count < 1 || Vector3.Distance(this.gameObject.transform.position, target.position) > lockOnRange)
+        //locks off
+        else if(inputActions.PlayerControls.LockOn.triggered && isLockedOn || enemiesInRange.Count <= 0 || Vector3.Distance(this.gameObject.transform.position, target.position) > lockOnRange)
         {
+            targetGroup.m_Targets[1].target = emptyTarget;
             enemiesInRange.Clear();
             mainVirtualCamera.enabled = true;
             lockOnCamera.enabled = false;
@@ -68,14 +86,15 @@ public class LockOnSystem : MonoBehaviour
             isLockedOn = false;
         }
 
-        if(inputActions.PlayerControls.SwitchTarget.triggered && isLockedOn)
+        //checks to cycle
+        if (inputActions.PlayerControls.SwitchTarget.triggered && isLockedOn)
         {
             CycleThroughEnemies();
         }
 
+        //checks if is locked on
         if (isLockedOn)
         {
-            target = enemiesInRange[index];
             targetGroup.m_Targets[1].target = target;
             lockOnCursor.transform.position = mainCamera.WorldToScreenPoint(target.position);
         }
@@ -92,11 +111,11 @@ public class LockOnSystem : MonoBehaviour
     void FindAllEnemies()
     {
         enemiesFound = GameObject.FindGameObjectsWithTag(enemyTag);
-        foreach (GameObject e in enemiesFound)
+        for (int i = enemiesFound.Length - 1; i > -1; i--)
         {
-            if (!allEnemies.Contains(e.transform))
+            if (!allEnemies.Contains(enemiesFound[i].transform))
             {
-                allEnemies.Add(e.transform);
+                allEnemies.Add(enemiesFound[i].transform);
             }
         }
     }
@@ -105,17 +124,17 @@ public class LockOnSystem : MonoBehaviour
     {
         if(allEnemies.Count > 0)
         {
-            foreach (Transform e in allEnemies)
+            for (int i = allEnemies.Count - 1; i > -1; i--)
             {
-                Vector3 ePos = mainCamera.WorldToViewportPoint(e.position);
+                Vector3 ePos = mainCamera.WorldToViewportPoint(allEnemies[i].position);
 
-                if ((Vector3.Distance(this.gameObject.transform.position, e.position) <= lockOnRange) && !enemiesInRange.Contains(e))
+                if ((Vector3.Distance(this.gameObject.transform.position, allEnemies[i].position) <= lockOnRange) && !enemiesInRange.Contains(allEnemies[i]))
                 {
-                    enemiesInRange.Add(e);
+                    enemiesInRange.Add(allEnemies[i]);
                 }
                 else
                 {
-                    enemiesInRange.Remove(e);
+                    enemiesInRange.Remove(allEnemies[i]);
                 }
             }
         }        
@@ -130,11 +149,7 @@ public class LockOnSystem : MonoBehaviour
 
             if(enemiesInRange.Count > 0)
             {
-                index++;
-                if (index > enemiesInRange.Count - 1)
-                {
-                    index = 0;
-                }
+                index++;                
             }            
         }
     }

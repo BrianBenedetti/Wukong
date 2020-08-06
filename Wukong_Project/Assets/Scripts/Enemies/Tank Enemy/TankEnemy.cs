@@ -35,15 +35,12 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     Animator animator;
 
-    Rigidbody rb;
-
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
         randomWaypoint = Random.Range(0, waypoints.Length);
