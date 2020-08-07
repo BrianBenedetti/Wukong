@@ -255,14 +255,10 @@ MonoBehaviour:
   projectileOrigin: {fileID: 3797914583589567557}
   target: {fileID: 0}
   damageTextPos: {fileID: 9180139174090832822}
-  myProjectile: {fileID: 6733021858860138975, guid: 4398afde7f03c1b4696549b501438128,
-    type: 3}
-  damageText: {fileID: 7474053542849833887, guid: 071e7badf76c2154fb6373a9ea9080c1,
-    type: 3}
-  loot:
-  - {fileID: 6792597386113538823, guid: 9411abd3f6e0eb348be8f2234632e0be, type: 3}
-  - {fileID: 5616739221024941611, guid: b5d52b2f78c049942a7aaa21efea47f8, type: 3}
-  - {fileID: 707541107377667249, guid: f3354833efa5c3e47bc28eb2fc7b55ae, type: 3}
+  myProjectile: Water Projectile
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
   myDamageType: 2
   myResistances: {fileID: 11400000, guid: 1a4d80dd87a1fbb4abfe764119759dfe, type: 2}
   agent: {fileID: 0}

@@ -32,7 +32,12 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
     public GameObject[] averageEnemies;
     public GameObject[] fastEnemies;
-    public GameObject damageText;
+
+    ObjectPooler objectPooler;
+
+    public LayerMask whatIsEnemy;
+
+    readonly string damageText = "Damage Text";
 
     public DamageTypes myDamageType;
 
@@ -50,6 +55,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        objectPooler = ObjectPooler.Instance;
     }
 
     // Update is called once per frame
@@ -91,13 +97,13 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
         //Instantiate(fastEnemies[rand2], spawn2.position, Quaternion.identity);
     }
 
-    public void Attack(Transform attackPosition, float radius, LayerMask whatIsEnemy)
+    public void Attack(Transform attackPosition, float radius, LayerMask whatIsEnemy, int damage)
     {
         Collider[] enemiesHit = Physics.OverlapSphere(attackPosition.position, radius, whatIsEnemy);
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
             
             Vector3 dir = transform.position - enemy.transform.position;
             dir.y = 0;
@@ -116,10 +122,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         currentHealth -= actualDamage;
 
-        if (damageText)
-        {
-            ShowDamageText();
-        }
+        ShowDamageText();
 
         if (currentHealth > (maxHealth / 2))
         {
@@ -134,7 +137,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
     void ShowDamageText()
     {
-        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        var obj = objectPooler.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
         obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
 

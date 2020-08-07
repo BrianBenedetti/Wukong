@@ -8,18 +8,13 @@ public class FastEnemy_LightAttackState : StateMachineBehaviour
 
     float distanceToTarget;
 
-    Transform attackOrigin; //for now
-
     public float attackRadius; //for now
-
-    public LayerMask whatIsEnemy; //for now
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<FastEnemy>();
-        attackOrigin = baseScript.attackOrigin;
-        baseScript.Attack(attackOrigin, attackRadius, whatIsEnemy); //for now
+        baseScript.Attack(baseScript.attackOrigin, attackRadius, baseScript.whatIsEnemy, baseScript.lightAttackDamage); //for now
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

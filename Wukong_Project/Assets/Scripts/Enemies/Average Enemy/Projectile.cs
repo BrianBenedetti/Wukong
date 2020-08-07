@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IPooledObject
 {
     public float speed;
 
@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     Vector3 target;
 
-    private void Start()
+    public void OnObjectSpawn()
     {
         player = PlayerManager.instance.player.transform;
         target = new Vector3(player.position.x, transform.position.y, player.position.z);
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
 
         if(transform.position.x == target.x && transform.position.z == target.z)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -36,6 +36,6 @@ public class Projectile : MonoBehaviour
         Rigidbody enemyRb = player.GetComponent<Rigidbody>();
         enemyRb.velocity = Vector3.zero;
         enemyRb.velocity = -dir.normalized * 3;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

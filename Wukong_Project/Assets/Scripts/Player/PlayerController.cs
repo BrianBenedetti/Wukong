@@ -87,7 +87,9 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public LayerMask groundMask;
     public LayerMask enemyMask;
 
-    public GameObject damageText;
+    readonly string damageText = "Damage Text";
+
+    ObjectPooler objectPooler;
 
     [Header("Interactables")]
     [HideInInspector] public IInteractable interactable;
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         currentHealth = maxHealth;
         isDashing = false;
         interactable = null;
+        objectPooler = ObjectPooler.Instance;
 
         Horizontal = Animator.StringToHash("Horizontal");
         Vertical = Animator.StringToHash("Vertical");
@@ -255,7 +258,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             {
                 //add if SHIFT is being clicked, return.
                 //animator.SetTrigger(PrimaryAttack); //this works
-                Attack(attackPoint, attackRange, attackPoint.rotation, enemyMask);
+                Attack(attackPoint, attackRange, attackPoint.rotation, enemyMask, primaryAttackDamage);
                 nextAttackTime = Time.time + 1 / attackRate; //won't need this if i use exit time in the animation, hopefully
             }
         }
@@ -343,13 +346,13 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         }
     }
 
-    public void Attack(Transform attackOrigin, Vector3 attackRange, Quaternion rotation, LayerMask whatIsEnemy)
+    public void Attack(Transform attackOrigin, Vector3 attackRange, Quaternion rotation, LayerMask whatIsEnemy, int damage)
     {
         Collider[] enemiesHit = Physics.OverlapBox(attackOrigin.position, attackRange, rotation, whatIsEnemy);
 
         foreach(Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(primaryAttackDamage, myDamageType);
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
         }
     }
 
@@ -373,10 +376,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             actualDamage = myResistances.CalculateDamageWithResistance(damage, damageType);
             currentHealth -= actualDamage;
 
-            if (damageText)
-            {
-                ShowDamageText();
-            }
+            ShowDamageText();
 
             if (currentHealth <= 0)
             {
@@ -400,7 +400,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 
     void ShowDamageText()
     {
-        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        var obj = objectPooler.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
         obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
     #endregion

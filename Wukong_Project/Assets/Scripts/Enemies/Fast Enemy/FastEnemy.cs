@@ -31,8 +31,11 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public DamageTypes myDamageType;
     public DamageResistances myResistances;
 
-    public GameObject damageText;
-    public GameObject[] loot;
+    readonly string damageText = "Damage Text";
+
+    ObjectPooler objectPooler;
+
+    public LayerMask whatIsEnemy;
 
     [Header("Components")]
     [HideInInspector] public NavMeshAgent agent;
@@ -50,6 +53,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        objectPooler = ObjectPooler.Instance;
 
         randomWaypoint = Random.Range(0, waypoints.Length);
         waitTime = startWaitTime;
@@ -95,13 +99,13 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         }
     }
 
-    public void Attack(Transform attackOrigin, float attackRadius, LayerMask whatIsEnemy)
+    public void Attack(Transform attackOrigin, float attackRadius, LayerMask whatIsEnemy, int damage)
     {
         Collider[] enemiesHit = Physics.OverlapSphere(attackOrigin.position, attackRadius, whatIsEnemy);
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
 
             Vector3 dir = transform.position - enemy.transform.position;
             dir.y = 0;
@@ -124,10 +128,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         currentHealth -= actualDamage;
 
-        if (damageText)
-        {
-            ShowDamageText();
-        }
+        ShowDamageText();
 
         if (currentHealth <= 0)
         {
@@ -137,7 +138,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     void ShowDamageText()
     {
-        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        var obj = objectPooler.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
         obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
 
@@ -146,11 +147,24 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         for (int i = 0; i < maxHealth / 50; i++)
         {
             int rand = Random.Range(0, 3);
+            string randomOrb = null;
 
-            Instantiate(loot[rand], transform.position + new Vector3(Random.Range(-1, 1),
-                2,
-                Random.Range(-1, 1)),
-                Quaternion.identity);
+            switch (rand)
+            {
+                case 2:
+                    randomOrb = "Special Orb";
+                    break;
+                case 1:
+                    randomOrb = "Rage Orb";
+                    break;
+                case 0:
+                    randomOrb = "Health Orb";
+                    break;
+                default:
+                    randomOrb = null;
+                    break;
+            }
+            objectPooler.SpawnFromPool(randomOrb, transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
         }
     }
 

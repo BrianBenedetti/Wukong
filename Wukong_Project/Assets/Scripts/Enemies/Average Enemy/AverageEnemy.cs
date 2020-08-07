@@ -29,9 +29,13 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     [HideInInspector] public Transform target;
     public Transform damageTextPos;
 
-    public GameObject myProjectile;
-    public GameObject damageText;
-    public GameObject[] loot;
+    public string myProjectile;
+
+    readonly string damageText = "Damage Text";
+
+    ObjectPooler objectPooler;
+
+    public LayerMask whatIsEnemy;
 
     public DamageTypes myDamageType;
 
@@ -49,6 +53,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        objectPooler = ObjectPooler.Instance;
 
         randomWaypoint = Random.Range(0, waypoints.Length);
         waitTime = startWaitTime;
@@ -100,13 +105,13 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         }
     }
 
-    public void Attack(Transform attackPosition, float radius, LayerMask whatIsEnemy)
+    public void Attack(Transform attackPosition, float radius, LayerMask whatIsEnemy, int damage)
     {
         Collider[] enemiesHit = Physics.OverlapSphere(attackPosition.position, radius, whatIsEnemy);
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(projectileDamage, myDamageType);
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
 
             Vector3 dir = transform.position - enemy.transform.position;
             dir.y = 0;
@@ -121,7 +126,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         if(timeBetweenShots <= 0)
         {
-            Instantiate(myProjectile, projectileOrigin.position, Quaternion.identity);
+            objectPooler.SpawnFromPool(myProjectile, projectileOrigin.position, Quaternion.identity);
             timeBetweenShots = startTimeBetweenShots;
         }
         else
@@ -142,10 +147,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         currentHealth -= actualDamage;
 
-        if (damageText)
-        {
-            ShowDamageText();
-        }
+        ShowDamageText();
 
         if (currentHealth <= 0)
         {
@@ -155,7 +157,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     void ShowDamageText()
     {
-        var obj = Instantiate(damageText, damageTextPos.position, Quaternion.identity, transform);
+        var obj = objectPooler.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
         obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
 
@@ -164,11 +166,24 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         for (int i = 0; i < maxHealth / 50; i++)
         {
             int rand = Random.Range(0, 3);
+            string randomOrb = null;
 
-            Instantiate(loot[rand], transform.position + new Vector3(Random.Range(-1, 1),
-                2,
-                Random.Range(-1, 1)),
-                Quaternion.identity);
+            switch (rand)
+            {
+                case 2:
+                    randomOrb = "Special Orb";
+                    break;
+                case 1:
+                    randomOrb = "Rage Orb";
+                    break;
+                case 0:
+                    randomOrb = "Health Orb";
+                    break;
+                default:
+                    randomOrb = null;
+                    break;
+            }
+            objectPooler.SpawnFromPool(randomOrb, transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
         }
     }
 
