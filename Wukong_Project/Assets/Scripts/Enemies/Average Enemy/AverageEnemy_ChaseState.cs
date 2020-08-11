@@ -9,6 +9,12 @@ public class AverageEnemy_ChaseState : StateMachineBehaviour
     float distanceToTarget;
     float timer;
 
+    readonly int PatrolBool = Animator.StringToHash("isPatrolling");
+    readonly int ShootBool = Animator.StringToHash("isShooting");
+    readonly int RetreatBool = Animator.StringToHash("isRetreating");
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int IdleBool = Animator.StringToHash("isIdle");
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -25,28 +31,28 @@ public class AverageEnemy_ChaseState : StateMachineBehaviour
 
         if (timer <= 0)
         {
-            animator.SetBool("isIdle", true);
+            animator.SetBool(IdleBool, true);
         }
 
         //check to patrol
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget > baseScript.lookRadius)
         {
-            animator.SetBool("isPatrolling", true);
+            animator.SetBool(PatrolBool, true);
         }
         else if (distanceToTarget < baseScript.agent.stoppingDistance && distanceToTarget > baseScript.retreatDistance)
         {
-            animator.SetBool("isShooting", true);
+            animator.SetBool(ShootBool, true);
         }
         else if(distanceToTarget < baseScript.retreatDistance)
         {
-            animator.SetBool("isRetreating", true);
+            animator.SetBool(RetreatBool, true);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isChasing", false);
+        animator.SetBool(ChaseBool, false);
     }
 }

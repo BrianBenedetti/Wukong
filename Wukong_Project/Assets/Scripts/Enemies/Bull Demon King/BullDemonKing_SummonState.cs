@@ -6,6 +6,8 @@ public class BullDemonKing_SummonState : StateMachineBehaviour
 {
     BullDemonKing baseScript;
 
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -15,6 +17,6 @@ public class BullDemonKing_SummonState : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        animator.SetBool("isChasing", true);
+        animator.SetBool(ChaseBool, true);
     }
 }

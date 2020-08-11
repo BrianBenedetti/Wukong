@@ -18,6 +18,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public int heavyAttackDamage;
     int randomWaypoint;
     int actualDamage;
+    readonly int DieBool = Animator.StringToHash("isDead");
 
     public Transform[] waypoints;
     public Transform attackOrigin;
@@ -109,7 +110,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         currentHealth -= actualDamage;
         if (currentHealth <= 0)
         {
-            animator.SetBool("isDead", true);
+            animator.SetBool(DieBool, true);
         }
     }
 

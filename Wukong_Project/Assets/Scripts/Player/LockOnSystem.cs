@@ -43,8 +43,6 @@ public class LockOnSystem : MonoBehaviour
         lockOnCursor.SetActive(false);
         isLockedOn = false;
         index = 0;
-
-        FindAllEnemies();
     }
 
     // Update is called once per frame

@@ -7,11 +7,11 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Shrine"))
+        if (other.CompareTag(ShrineTag))
         {
             interactable = other.GetComponent<IInteractable>();
         }
-        else if (other.CompareTag("Object"))
+        else if (other.CompareTag(ObjectTag))
         {
             interactable = other.GetComponent<IInteractable>();
         }
@@ -76,6 +76,10 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     bool canDoubleJump = true;
     bool isDashing;
 
+    readonly string ShrineTag = "Shrine";
+    readonly string ObjectTag = "Object";
+    readonly string damageText = "Damage Text";
+
     public Transform cam;
     public Transform groundCheck;
     public Transform attackPoint;
@@ -86,8 +90,6 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 
     public LayerMask groundMask;
     public LayerMask enemyMask;
-
-    readonly string damageText = "Damage Text";
 
     ObjectPooler objectPooler;
 
@@ -419,7 +421,6 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 
     public IEnumerator Die()
     {
-        Debug.Log("You died!");
         //play dissolve shader effect
         yield return new WaitForSeconds(2);
         //You died screen probably

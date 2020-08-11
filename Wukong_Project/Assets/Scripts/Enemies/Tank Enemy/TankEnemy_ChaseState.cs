@@ -9,6 +9,12 @@ public class TankEnemy_ChaseState : StateMachineBehaviour
     float distanceToTarget;
     float timer;
 
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int PatrolBool = Animator.StringToHash("isPatrolling");
+    readonly int IdleBool = Animator.StringToHash("isIdle");
+    readonly int SlamTrigger = Animator.StringToHash("Slam");
+    readonly int SwipeTrigger = Animator.StringToHash("Swipe");
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -26,25 +32,25 @@ public class TankEnemy_ChaseState : StateMachineBehaviour
 
         if (timer <= 0)
         {
-            animator.SetBool("isIdle", true);
+            animator.SetBool(IdleBool, true);
         }
 
         //check to patrol
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget > baseScript.lookRadius)
         {
-            animator.SetBool("isPatrolling", true);
+            animator.SetBool(PatrolBool, true);
         }
         else if (distanceToTarget < baseScript.agent.stoppingDistance)
         {
             int random = Random.Range(1, 3);
             if(random == 1)
             {
-                animator.SetTrigger("Swipe");
+                animator.SetTrigger(SwipeTrigger);
             }
             else
             {
-                animator.SetTrigger("Slam");
+                animator.SetTrigger(SlamTrigger);
             }
         }
     }
@@ -52,8 +58,8 @@ public class TankEnemy_ChaseState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isChasing", false);
-        animator.ResetTrigger("Slam");
-        animator.ResetTrigger("Swipe");
+        animator.SetBool(ChaseBool, false);
+        animator.ResetTrigger(SlamTrigger);
+        animator.ResetTrigger(SwipeTrigger);
     }
 }

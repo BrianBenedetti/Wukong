@@ -8,6 +8,9 @@ public class FastEnemy_PatrolState : StateMachineBehaviour
 
     float distanceToTarget;
 
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int PatrolBool = Animator.StringToHash("isPatrolling");
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -24,13 +27,13 @@ public class FastEnemy_PatrolState : StateMachineBehaviour
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget < baseScript.lookRadius)
         {
-            animator.SetBool("isChasing", true);
+            animator.SetBool(ChaseBool, true);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isPatrolling", false);
+        animator.SetBool(PatrolBool, false);
     }
 }

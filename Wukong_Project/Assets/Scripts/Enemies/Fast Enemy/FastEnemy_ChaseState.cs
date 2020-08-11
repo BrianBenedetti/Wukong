@@ -8,7 +8,13 @@ public class FastEnemy_ChaseState : StateMachineBehaviour
 
     float distanceToTarget;
     float timer;
+
     int randomAction;
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int PatrolBool = Animator.StringToHash("isPatrolling");
+    readonly int IdleBool = Animator.StringToHash("isIdle");
+    readonly int LightTrigger = Animator.StringToHash("Light Attack");
+    readonly int HeavyTrigger = Animator.StringToHash("Heavy Attack");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -31,11 +37,11 @@ public class FastEnemy_ChaseState : StateMachineBehaviour
 
             if(randomAction == 1)
             {
-                animator.SetTrigger("Heavy Attack");
+                animator.SetTrigger(HeavyTrigger);
             }
             else
             {
-                animator.SetBool("isIdle", true);
+                animator.SetBool(IdleBool, true);
             }
         }
 
@@ -43,17 +49,19 @@ public class FastEnemy_ChaseState : StateMachineBehaviour
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget > baseScript.lookRadius)
         {
-            animator.SetBool("isPatrolling", true);
-        }else if(distanceToTarget <= baseScript.agent.stoppingDistance){ //if enemy is in attack range
-            animator.SetTrigger("Light Attack");
+            animator.SetBool(PatrolBool, true);
+        }
+        else if(distanceToTarget <= baseScript.agent.stoppingDistance)
+        {
+            animator.SetTrigger(LightTrigger);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isChasing", false);
-        animator.ResetTrigger("Light Attack");
-        animator.ResetTrigger("Heavy Attack");
+        animator.SetBool(ChaseBool, false);
+        animator.ResetTrigger(LightTrigger);
+        animator.ResetTrigger(HeavyTrigger);
     }
 }

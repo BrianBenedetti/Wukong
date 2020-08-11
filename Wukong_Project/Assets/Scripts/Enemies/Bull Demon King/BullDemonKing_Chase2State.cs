@@ -8,7 +8,13 @@ public class BullDemonKing_Chase2State : StateMachineBehaviour
 
     float distanceToTarget;
     float timer;
+
     int randomAction;
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int LightTrigger = Animator.StringToHash("Light Attack");
+    readonly int HeavyTrigger = Animator.StringToHash("Heavy Attack");
+    readonly int SummonTrigger = Animator.StringToHash("Summon");
+    readonly int LeapTrigger = Animator.StringToHash("Leap");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -29,12 +35,12 @@ public class BullDemonKing_Chase2State : StateMachineBehaviour
         {
             if(Random.Range(0, 11) <= 5)
             {
-                animator.SetTrigger("Summon");
+                animator.SetTrigger(SummonTrigger);
 
             }
             else
             {
-                animator.SetTrigger("Leap");
+                animator.SetTrigger(LeapTrigger);
             }
         }
 
@@ -42,15 +48,15 @@ public class BullDemonKing_Chase2State : StateMachineBehaviour
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget <= baseScript.agent.stoppingDistance)
         { //if enemy is in attack range
-            randomAction = Random.Range(1, 6); //max has to be 1 more than actual max
+            randomAction = Random.Range(0, 11); //max has to be 1 more than actual max
 
-            if (randomAction <= 3)
+            if (randomAction <= 5)
             {
-                animator.SetTrigger("Light Attack");
+                animator.SetTrigger(LightTrigger);
             }
             else
             {
-                animator.SetTrigger("Heavy Attack");
+                animator.SetTrigger(HeavyTrigger);
             }
         }
     }
@@ -58,10 +64,10 @@ public class BullDemonKing_Chase2State : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isChasing", false);
-        animator.ResetTrigger("Light Attack");
-        animator.ResetTrigger("Heavy Attack");
-        animator.ResetTrigger("Leap");
-        animator.ResetTrigger("Summon");
+        animator.SetBool(ChaseBool, false);
+        animator.ResetTrigger(LightTrigger);
+        animator.ResetTrigger(HeavyTrigger);
+        animator.ResetTrigger(LeapTrigger);
+        animator.ResetTrigger(SummonTrigger);
     }
 }

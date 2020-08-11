@@ -8,6 +8,11 @@ public class BullDemonKing_IdleState : StateMachineBehaviour
 
     float distanceToTarget;
 
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int IdleBool = Animator.StringToHash("isIdle");
+    readonly int LightTrigger = Animator.StringToHash("Light Attack");
+    readonly int HeavyTrigger = Animator.StringToHash("Heavy Attack");
+
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,18 +26,18 @@ public class BullDemonKing_IdleState : StateMachineBehaviour
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget > baseScript.agent.stoppingDistance)
         {
-            animator.SetBool("isChasing", true); //immidiately switches, need to wait with exit time
+            animator.SetBool(ChaseBool, true); //immidiately switches, need to wait with exit time
         }
         else if (distanceToTarget <= baseScript.agent.stoppingDistance)
         {
             int rand = Random.Range(1, 6);
             if (rand <= 3)
             {
-                animator.SetTrigger("Light Attack");
+                animator.SetTrigger(LightTrigger);
             }
             else
             {
-                animator.SetTrigger("Heavy Attack");
+                animator.SetTrigger(HeavyTrigger);
             }
         }
     }
@@ -40,8 +45,8 @@ public class BullDemonKing_IdleState : StateMachineBehaviour
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isIdle", false);
-        animator.ResetTrigger("Light Attack");
-        animator.ResetTrigger("Heavy Attack");
+        animator.SetBool(IdleBool, false);
+        animator.ResetTrigger(LightTrigger);
+        animator.ResetTrigger(HeavyTrigger);
     }
 }

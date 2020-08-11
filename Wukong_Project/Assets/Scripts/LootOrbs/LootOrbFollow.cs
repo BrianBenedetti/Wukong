@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootOrbFollow : MonoBehaviour, IPooledObject
+public class LootOrbFollow : MonoBehaviour
 {
     float minSpeed = 20;
     float maxSpeed = 35;
@@ -16,7 +16,7 @@ public class LootOrbFollow : MonoBehaviour, IPooledObject
     private void OnTriggerEnter(Collider other)
     {
         PlayerManager.instance.player.GetComponent<PlayerController>().RestoreValues(healthValue, rageValue, specialValue);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,11 +25,5 @@ public class LootOrbFollow : MonoBehaviour, IPooledObject
         transform.position = Vector3.MoveTowards(transform.position,
             PlayerManager.instance.lootReceiver.transform.position,
             Time.deltaTime * Random.Range(minSpeed, maxSpeed));
-    }
-
-    //needs to be implemented due to interface
-    public void OnObjectSpawn()
-    {
-
     }
 }

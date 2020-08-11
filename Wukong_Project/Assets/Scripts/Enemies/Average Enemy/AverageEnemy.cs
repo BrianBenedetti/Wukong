@@ -21,6 +21,8 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public int slamDamage;
     int randomWaypoint;
     int actualDamage;
+    readonly int HurtTrigger = Animator.StringToHash("Hurt");
+    readonly int DieBool = Animator.StringToHash("isDead");
 
     bool knockback;
 
@@ -142,7 +144,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
         StartCoroutine(Knockback());
 
-        animator.SetTrigger("Hurt");
+        animator.SetTrigger(HurtTrigger);
 
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         currentHealth -= actualDamage;
@@ -151,7 +153,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
         if (currentHealth <= 0)
         {
-            animator.SetBool("isDead", true);
+            animator.SetBool(DieBool, true);
         }
     }
 

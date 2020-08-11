@@ -8,6 +8,12 @@ public class AverageEnemy_IdleState : StateMachineBehaviour
 
     float distanceToTarget;
 
+    readonly int ShootBool = Animator.StringToHash("isShooting");
+    readonly int RetreatBool = Animator.StringToHash("isRetreating");
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int IdleBool = Animator.StringToHash("isIdle");
+    readonly int SlamTrigger = Animator.StringToHash("Slam");
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -20,28 +26,28 @@ public class AverageEnemy_IdleState : StateMachineBehaviour
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if(distanceToTarget >= baseScript.retreatDistance && distanceToTarget <= baseScript.agent.stoppingDistance)
         {
-            animator.SetBool("isShooting", true);
+            animator.SetBool(ShootBool, true);
         }else if (distanceToTarget < baseScript.retreatDistance)
         {
             int random = Random.Range(1, 3);
             if(random == 1)
             {
-                animator.SetTrigger("Slam");
+                animator.SetTrigger(SlamTrigger);
             }
             else
             {
-                animator.SetBool("isRetreating", true);
+                animator.SetBool(RetreatBool, true);
             }
         }else if(distanceToTarget > baseScript.agent.stoppingDistance)
         {
-            animator.SetBool("isChasing", true);
+            animator.SetBool(ChaseBool, true);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isIdle", false);
-        animator.ResetTrigger("Slam");
+        animator.SetBool(IdleBool, false);
+        animator.ResetTrigger(SlamTrigger);
     }
 }

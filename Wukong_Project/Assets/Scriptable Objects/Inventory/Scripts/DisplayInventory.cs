@@ -9,6 +9,7 @@ public class DisplayInventory : MonoBehaviour
     public InventoryObject inventory;
 
     public bool isLeftIcon;
+    public bool isRightIcon;
 
     public int indexToDisplay;
 
@@ -26,12 +27,21 @@ public class DisplayInventory : MonoBehaviour
             if(inventory.Container.Items.Count >= 3)
             {
                 transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[inventory.Container.Items[inventory.Container.Items.Count - 1].item.Id].uiDisplay;
-                GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[inventory.Container.Items.Count - 1].amount.ToString("n0");
             }
             else
             {
                 transform.GetChild(0).GetComponentInChildren<Image>().sprite = emptySprite;
-                GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+        }
+        else if (isRightIcon)
+        {
+            if (inventory.Container.Items.Count > indexToDisplay)
+            {
+                transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[inventory.Container.Items[indexToDisplay].item.Id].uiDisplay;
+            }
+            else
+            {
+                transform.GetChild(0).GetComponentInChildren<Image>().sprite = emptySprite;
             }
         }
         else

@@ -6,10 +6,13 @@ public class BullDemonKing_DieState : StateMachineBehaviour
 {
     BullDemonKing baseScript;
 
+    IEnumerator DieCoroutine;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<BullDemonKing>();
-        baseScript.Die();
+        DieCoroutine = baseScript.Die();
+        baseScript.StartCoroutine(DieCoroutine);
     }
 }

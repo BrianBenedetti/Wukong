@@ -20,6 +20,8 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public int heavyAttackDamage;
     int randomWaypoint;
     int actualDamage;
+    readonly int HurtTrigger = Animator.StringToHash("Hurt");
+    readonly int DieBool = Animator.StringToHash("isDead");
 
     bool knockback;
 
@@ -123,7 +125,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
         StartCoroutine(Knockback());
 
-        animator.SetTrigger("Hurt");
+        animator.SetTrigger(HurtTrigger);
 
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         currentHealth -= actualDamage;
@@ -132,7 +134,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
         if (currentHealth <= 0)
         {
-            animator.SetBool("isDead", true);
+            animator.SetBool(DieBool, true);
         }
     }
 

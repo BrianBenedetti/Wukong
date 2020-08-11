@@ -8,11 +8,17 @@ public class FastEnemy_DodgeState : StateMachineBehaviour
 
     float distanceToTarget;
 
+    readonly int ChaseBool = Animator.StringToHash("isChasing");
+    readonly int IdleBool = Animator.StringToHash("isIdle");
+
+    IEnumerator DodgeCoroutine;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<FastEnemy>();
-        baseScript.StartCoroutine("Dodge");
+        DodgeCoroutine = baseScript.Dodge();
+        baseScript.StartCoroutine(DodgeCoroutine);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -22,17 +28,17 @@ public class FastEnemy_DodgeState : StateMachineBehaviour
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget <= baseScript.lookRadius)
         {
-            animator.SetBool("isChasing", true);
+            animator.SetBool(ChaseBool, true);
         }
         else
         {
-            animator.SetBool("isIdle", true);
+            animator.SetBool(IdleBool, true);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        baseScript.StopCoroutine("Dodge");
+        baseScript.StopCoroutine(DodgeCoroutine);
     }
 }

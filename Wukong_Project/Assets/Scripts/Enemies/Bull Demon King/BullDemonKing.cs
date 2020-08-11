@@ -20,6 +20,10 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
     public int heavyAttackDamage;
     public int leapAttackDamage;
     int actualDamage;
+    readonly int LandTrigger = Animator.StringToHash("Land");
+    readonly int HurtTrigger = Animator.StringToHash("Hurt");
+    readonly int DieBool = Animator.StringToHash("isDead");
+    readonly int RageBool = Animator.StringToHash("isEnraged");
 
     [HideInInspector] public Transform target;
     public Transform spawn1;
@@ -64,7 +68,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
         //checks if health is half to rage
         if(currentHealth <= (maxHealth / 2))
         {
-            animator.SetBool("isEnraged", true);
+            animator.SetBool(RageBool, true);
         }
     }
 
@@ -126,12 +130,12 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
         if (currentHealth > (maxHealth / 2))
         {
-            animator.SetTrigger("Hurt");
+            animator.SetTrigger(HurtTrigger);
         }
 
         if (currentHealth <= 0)
         {
-            animator.SetBool("isDead", true);
+            animator.SetBool(DieBool, true);
         }
     }
 
@@ -154,7 +158,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
         leapCurrentTime = 0;
         transform.position = leapDestination;
-        animator.SetTrigger("Land");
+        animator.SetTrigger(LandTrigger);
     }
 
     public IEnumerator Die()
