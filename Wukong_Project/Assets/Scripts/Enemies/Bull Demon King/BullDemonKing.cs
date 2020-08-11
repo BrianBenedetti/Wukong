@@ -120,22 +120,26 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
-        PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
-
-        actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
-        currentHealth -= actualDamage;
-
-        ShowDamageText();
-
-        if (currentHealth > (maxHealth / 2))
+        if (isVulnerable)
         {
-            animator.SetTrigger(HurtTrigger);
-        }
+            PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
+            PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+            PlayerManager.instance.hitStop.Stop(0.1f);
 
-        if (currentHealth <= 0)
-        {
-            animator.SetBool(DieBool, true);
+            actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
+            currentHealth -= actualDamage;
+
+            ShowDamageText();
+
+            if (currentHealth > (maxHealth / 2))
+            {
+                animator.SetTrigger(HurtTrigger);
+            }
+
+            if (currentHealth <= 0)
+            {
+                animator.SetBool(DieBool, true);
+            }
         }
     }
 

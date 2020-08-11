@@ -122,6 +122,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     {
         PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
         PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+        PlayerManager.instance.hitStop.Stop(0.1f);
 
         StartCoroutine(Knockback());
 

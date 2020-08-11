@@ -25,4 +25,11 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public Vector3 lastCheckpointPlayerPosition;
 
     public AudioManager audioManager;
+
+    public HitStop hitStop;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }
