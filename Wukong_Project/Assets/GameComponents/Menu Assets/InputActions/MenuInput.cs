@@ -41,6 +41,14 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""6396fda3-0612-4083-9aae-a8e057b4f135"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -148,7 +156,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""id"": ""e35955cb-2ed2-4081-a7d4-1d3a4f535317"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""AxisDeadzone"",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": true,
@@ -157,7 +165,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""12c6b0cc-85e5-45e1-8b8a-73945590b30d"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -180,7 +188,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""name"": ""Keyboardpress"",
                     ""id"": ""f96fa434-c85b-4dd7-8c7e-f03a6dbaa47b"",
                     ""path"": ""1DAxis"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
@@ -213,7 +221,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""name"": ""WASD"",
                     ""id"": ""b284c3df-55dc-47c0-8072-f187480dfe8c"",
                     ""path"": ""1DAxis"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
@@ -241,6 +249,61 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""10d12682-faca-4c45-b796-71503474bbda"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""f1b5bc07-1f52-4b9a-8e72-0ab2680eaed8"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1208e74e-3019-4a45-828f-890af2ed33ea"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2419cc05-2b37-4ba1-8087-a3a8690f26fd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24fae5b4-1bb5-49d4-82af-03be46d455ee"",
+                    ""path"": ""<HID::ZEROPLUS P4 Wired Gamepad>/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -576,6 +639,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
         m_PlayerInput_Select = m_PlayerInput.FindAction("Select", throwIfNotFound: true);
         m_PlayerInput_BackB = m_PlayerInput.FindAction("BackB", throwIfNotFound: true);
         m_PlayerInput_Move = m_PlayerInput.FindAction("Move", throwIfNotFound: true);
+        m_PlayerInput_Pause = m_PlayerInput.FindAction("Pause", throwIfNotFound: true);
         // PauseInput
         m_PauseInput = asset.FindActionMap("PauseInput", throwIfNotFound: true);
         m_PauseInput_Pause = m_PauseInput.FindAction("Pause", throwIfNotFound: true);
@@ -644,6 +708,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerInput_Select;
     private readonly InputAction m_PlayerInput_BackB;
     private readonly InputAction m_PlayerInput_Move;
+    private readonly InputAction m_PlayerInput_Pause;
     public struct PlayerInputActions
     {
         private @MenuInput m_Wrapper;
@@ -651,6 +716,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
         public InputAction @Select => m_Wrapper.m_PlayerInput_Select;
         public InputAction @BackB => m_Wrapper.m_PlayerInput_BackB;
         public InputAction @Move => m_Wrapper.m_PlayerInput_Move;
+        public InputAction @Pause => m_Wrapper.m_PlayerInput_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -669,6 +735,9 @@ public class @MenuInput : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMove;
+                @Pause.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -682,6 +751,9 @@ public class @MenuInput : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -846,6 +918,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnBackB(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IPauseInputActions
     {
