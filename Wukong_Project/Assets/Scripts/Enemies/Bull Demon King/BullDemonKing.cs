@@ -96,9 +96,9 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
     {
         int rand1 = Random.Range(0, averageEnemies.Length);
         int rand2 = Random.Range(0, fastEnemies.Length);
-        
-        //Instantiate(averageEnemies[rand1], spawn1.position, Quaternion.identity);
-        //Instantiate(fastEnemies[rand2], spawn2.position, Quaternion.identity);
+
+        Instantiate(averageEnemies[rand1], spawn1.position, Quaternion.identity);
+        Instantiate(fastEnemies[rand2], spawn2.position, Quaternion.identity);
     }
 
     public void Attack(Transform attackPosition, float radius, LayerMask whatIsEnemy, int damage)

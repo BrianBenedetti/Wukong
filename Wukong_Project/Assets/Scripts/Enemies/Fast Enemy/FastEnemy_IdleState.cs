@@ -9,7 +9,6 @@ public class FastEnemy_IdleState : StateMachineBehaviour
     float distanceToTarget;
 
     readonly int ChaseBool = Animator.StringToHash("isChasing");
-    readonly int PatrolBool = Animator.StringToHash("isPatrolling");
     readonly int IdleBool = Animator.StringToHash("isIdle");
     readonly int LightTrigger = Animator.StringToHash("Light Attack");
     readonly int HeavyTrigger = Animator.StringToHash("Heavy Attack");
@@ -25,14 +24,10 @@ public class FastEnemy_IdleState : StateMachineBehaviour
     {
         //checks to chase, patrol, or attack (random between light and heavy)
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
-        if (distanceToTarget <= baseScript.lookRadius && distanceToTarget > baseScript.agent.stoppingDistance)
+        if (distanceToTarget <= baseScript.agent.stoppingDistance)
         {
-            animator.SetBool(ChaseBool, true); //immidiately switches, need to wait with exit time
-        }
-        else if (distanceToTarget <= baseScript.agent.stoppingDistance)
-        {
-            int rand = Random.Range(1, 3);
-            if(rand == 1)
+            int rand = Random.Range(0, 11);
+            if(rand <= 5)
             {
                 animator.SetTrigger(LightTrigger);
             }
@@ -43,7 +38,7 @@ public class FastEnemy_IdleState : StateMachineBehaviour
         }
         else
         {
-            animator.SetBool(PatrolBool, true); //immidiately switches, need to wait with exit time
+            animator.SetBool(ChaseBool, true); //immidiately switches, need to wait with exit time
         }
     }
 
