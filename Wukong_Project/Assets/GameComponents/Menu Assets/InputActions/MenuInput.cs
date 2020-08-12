@@ -341,6 +341,232 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""InventoryInput"",
+            ""id"": ""5c4a2fb1-609e-4974-a7cc-c12e85a388e0"",
+            ""actions"": [
+                {
+                    ""name"": ""Cycle"",
+                    ""type"": ""Value"",
+                    ""id"": ""8ad2b737-aae0-4078-aa20-218c8ead38c9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CycleLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""66a3fa58-42d2-4603-b8cc-f41b4bd92a37"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""SelectItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""fbae43ca-54ac-452a-9912-7f3b387d65a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CycleRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e97dacf-9b7b-4fd0-bbf9-ff467e7b0de2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""CycleItemMK"",
+                    ""id"": ""b7163820-43dd-4eeb-b7f2-aef29e812d44"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a601795e-f51f-4484-9c90-3b9d895c9b8a"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""f0af6bc7-a844-44a8-990b-1e8b83afe376"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a93e17d-e328-4e42-9721-c4f1b91d60ae"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de8bee06-3425-432a-8e27-c113d6df844d"",
+                    ""path"": ""<HID::ZEROPLUS P4 Wired Gamepad>/hat/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48e7c5bf-93bb-4620-a9c0-085f021ba4c5"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cda240fa-b476-4991-9a92-b06a02e0a65c"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94840888-3ce2-4836-93c6-9e14f9e7b7ee"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e5be3dc-fb1b-4284-bdd7-ad096726d7cf"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6833cb3c-352c-4ee1-8ed4-27df0d307670"",
+                    ""path"": ""<HID::ZEROPLUS P4 Wired Gamepad>/hat/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ac128aa-30f2-4482-9b0c-4f2a8f468f6e"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CycleRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerDMG"",
+            ""id"": ""c12fc9d1-0d16-41e3-876f-75c76e660a94"",
+            ""actions"": [
+                {
+                    ""name"": ""Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""50335d24-435d-41ce-9b9b-4d8b46993df1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Action2"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c9377da-05d1-498b-a95e-11bfa4bc79b6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Action3"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed5843d5-a5b1-4562-b496-990297782704"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c64b4cb7-6fbd-4408-8fc6-e372c48b99ca"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0a86463-433e-47ab-8f74-c2b3f002549d"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Action2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5643acce-c5a7-44e9-9fd4-46319cec2a6d"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Action3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -355,6 +581,17 @@ public class @MenuInput : IInputActionCollection, IDisposable
         m_PauseInput_Pause = m_PauseInput.FindAction("Pause", throwIfNotFound: true);
         m_PauseInput_select = m_PauseInput.FindAction("select", throwIfNotFound: true);
         m_PauseInput_Resume = m_PauseInput.FindAction("Resume", throwIfNotFound: true);
+        // InventoryInput
+        m_InventoryInput = asset.FindActionMap("InventoryInput", throwIfNotFound: true);
+        m_InventoryInput_Cycle = m_InventoryInput.FindAction("Cycle", throwIfNotFound: true);
+        m_InventoryInput_CycleLeft = m_InventoryInput.FindAction("CycleLeft", throwIfNotFound: true);
+        m_InventoryInput_SelectItem = m_InventoryInput.FindAction("SelectItem", throwIfNotFound: true);
+        m_InventoryInput_CycleRight = m_InventoryInput.FindAction("CycleRight", throwIfNotFound: true);
+        // PlayerDMG
+        m_PlayerDMG = asset.FindActionMap("PlayerDMG", throwIfNotFound: true);
+        m_PlayerDMG_Action = m_PlayerDMG.FindAction("Action", throwIfNotFound: true);
+        m_PlayerDMG_Action2 = m_PlayerDMG.FindAction("Action2", throwIfNotFound: true);
+        m_PlayerDMG_Action3 = m_PlayerDMG.FindAction("Action3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -498,6 +735,112 @@ public class @MenuInput : IInputActionCollection, IDisposable
         }
     }
     public PauseInputActions @PauseInput => new PauseInputActions(this);
+
+    // InventoryInput
+    private readonly InputActionMap m_InventoryInput;
+    private IInventoryInputActions m_InventoryInputActionsCallbackInterface;
+    private readonly InputAction m_InventoryInput_Cycle;
+    private readonly InputAction m_InventoryInput_CycleLeft;
+    private readonly InputAction m_InventoryInput_SelectItem;
+    private readonly InputAction m_InventoryInput_CycleRight;
+    public struct InventoryInputActions
+    {
+        private @MenuInput m_Wrapper;
+        public InventoryInputActions(@MenuInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Cycle => m_Wrapper.m_InventoryInput_Cycle;
+        public InputAction @CycleLeft => m_Wrapper.m_InventoryInput_CycleLeft;
+        public InputAction @SelectItem => m_Wrapper.m_InventoryInput_SelectItem;
+        public InputAction @CycleRight => m_Wrapper.m_InventoryInput_CycleRight;
+        public InputActionMap Get() { return m_Wrapper.m_InventoryInput; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InventoryInputActions set) { return set.Get(); }
+        public void SetCallbacks(IInventoryInputActions instance)
+        {
+            if (m_Wrapper.m_InventoryInputActionsCallbackInterface != null)
+            {
+                @Cycle.started -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycle;
+                @Cycle.performed -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycle;
+                @Cycle.canceled -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycle;
+                @CycleLeft.started -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycleLeft;
+                @CycleLeft.performed -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycleLeft;
+                @CycleLeft.canceled -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycleLeft;
+                @SelectItem.started -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnSelectItem;
+                @SelectItem.performed -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnSelectItem;
+                @SelectItem.canceled -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnSelectItem;
+                @CycleRight.started -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycleRight;
+                @CycleRight.performed -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycleRight;
+                @CycleRight.canceled -= m_Wrapper.m_InventoryInputActionsCallbackInterface.OnCycleRight;
+            }
+            m_Wrapper.m_InventoryInputActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Cycle.started += instance.OnCycle;
+                @Cycle.performed += instance.OnCycle;
+                @Cycle.canceled += instance.OnCycle;
+                @CycleLeft.started += instance.OnCycleLeft;
+                @CycleLeft.performed += instance.OnCycleLeft;
+                @CycleLeft.canceled += instance.OnCycleLeft;
+                @SelectItem.started += instance.OnSelectItem;
+                @SelectItem.performed += instance.OnSelectItem;
+                @SelectItem.canceled += instance.OnSelectItem;
+                @CycleRight.started += instance.OnCycleRight;
+                @CycleRight.performed += instance.OnCycleRight;
+                @CycleRight.canceled += instance.OnCycleRight;
+            }
+        }
+    }
+    public InventoryInputActions @InventoryInput => new InventoryInputActions(this);
+
+    // PlayerDMG
+    private readonly InputActionMap m_PlayerDMG;
+    private IPlayerDMGActions m_PlayerDMGActionsCallbackInterface;
+    private readonly InputAction m_PlayerDMG_Action;
+    private readonly InputAction m_PlayerDMG_Action2;
+    private readonly InputAction m_PlayerDMG_Action3;
+    public struct PlayerDMGActions
+    {
+        private @MenuInput m_Wrapper;
+        public PlayerDMGActions(@MenuInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Action => m_Wrapper.m_PlayerDMG_Action;
+        public InputAction @Action2 => m_Wrapper.m_PlayerDMG_Action2;
+        public InputAction @Action3 => m_Wrapper.m_PlayerDMG_Action3;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerDMG; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerDMGActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerDMGActions instance)
+        {
+            if (m_Wrapper.m_PlayerDMGActionsCallbackInterface != null)
+            {
+                @Action.started -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction;
+                @Action.performed -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction;
+                @Action.canceled -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction;
+                @Action2.started -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction2;
+                @Action2.performed -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction2;
+                @Action2.canceled -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction2;
+                @Action3.started -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction3;
+                @Action3.performed -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction3;
+                @Action3.canceled -= m_Wrapper.m_PlayerDMGActionsCallbackInterface.OnAction3;
+            }
+            m_Wrapper.m_PlayerDMGActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Action.started += instance.OnAction;
+                @Action.performed += instance.OnAction;
+                @Action.canceled += instance.OnAction;
+                @Action2.started += instance.OnAction2;
+                @Action2.performed += instance.OnAction2;
+                @Action2.canceled += instance.OnAction2;
+                @Action3.started += instance.OnAction3;
+                @Action3.performed += instance.OnAction3;
+                @Action3.canceled += instance.OnAction3;
+            }
+        }
+    }
+    public PlayerDMGActions @PlayerDMG => new PlayerDMGActions(this);
     public interface IPlayerInputActions
     {
         void OnSelect(InputAction.CallbackContext context);
@@ -509,5 +852,18 @@ public class @MenuInput : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnResume(InputAction.CallbackContext context);
+    }
+    public interface IInventoryInputActions
+    {
+        void OnCycle(InputAction.CallbackContext context);
+        void OnCycleLeft(InputAction.CallbackContext context);
+        void OnSelectItem(InputAction.CallbackContext context);
+        void OnCycleRight(InputAction.CallbackContext context);
+    }
+    public interface IPlayerDMGActions
+    {
+        void OnAction(InputAction.CallbackContext context);
+        void OnAction2(InputAction.CallbackContext context);
+        void OnAction3(InputAction.CallbackContext context);
     }
 }
