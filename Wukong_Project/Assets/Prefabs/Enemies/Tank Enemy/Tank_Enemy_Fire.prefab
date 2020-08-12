@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4605421644077041839}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Damage Text Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 2760853768874146722}
   - component: {fileID: 2760853768874146721}
   - component: {fileID: 2760853768874146720}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760853768959007076}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Attack Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 2760853769800401483}
   - component: {fileID: 2760853769800401486}
   - component: {fileID: 2760853769800401487}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Tank_Enemy_Fire
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 2760853770798470132}
   - component: {fileID: 2760853770798470135}
   - component: {fileID: 2760853770798470134}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6957537596824038935}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Damage Text Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 7367528741505257172}
   - component: {fileID: 7367528741505257178}
   - component: {fileID: 7367528741505257179}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7367528741817302381}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Spawn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 7367528742366301745}
   - component: {fileID: 7367528742366301751}
   - component: {fileID: 7367528742366301744}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 7367528742561610537}
   - component: {fileID: 7367528742561610543}
   - component: {fileID: 7367528742561610538}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BullDemonKing
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7367528742631095493}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Spawn2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7367528742733308240}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Attack Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}

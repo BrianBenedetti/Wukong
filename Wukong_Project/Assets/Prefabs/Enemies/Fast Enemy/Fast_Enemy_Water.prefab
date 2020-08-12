@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2213173311301776892}
   - component: {fileID: 2213173311301776893}
   - component: {fileID: 4461291527533805845}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Fast_Enemy_Water
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 2213173311720373563}
   - component: {fileID: 2213173311720373557}
   - component: {fileID: 2213173311720373556}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 2213173312201968979}
   - component: {fileID: 2213173312201968974}
   - component: {fileID: 2213173312201968973}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4553401199481082195}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Damage Text Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8297063223718898326}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Attack Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
