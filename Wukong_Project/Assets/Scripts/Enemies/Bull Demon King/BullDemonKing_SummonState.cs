@@ -13,6 +13,7 @@ public class BullDemonKing_SummonState : StateMachineBehaviour
     {
         baseScript = animator.GetComponent<BullDemonKing>();
         baseScript.SummonMinions();
+        baseScript.CreateShield();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)

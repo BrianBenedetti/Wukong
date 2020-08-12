@@ -36,6 +36,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
     public GameObject[] averageEnemies;
     public GameObject[] fastEnemies;
+    public GameObject shieldPrefab;
 
     ObjectPooler objectPooler;
 
@@ -141,6 +142,12 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
                 animator.SetBool(DieBool, true);
             }
         }
+    }
+
+    public void CreateShield()
+    {
+        Vector3 shieldSpawnPos = new Vector3(transform.position.x, 1.5f, transform.position.z);
+        Instantiate(shieldPrefab, shieldSpawnPos, Quaternion.identity, transform);
     }
 
     void ShowDamageText()
