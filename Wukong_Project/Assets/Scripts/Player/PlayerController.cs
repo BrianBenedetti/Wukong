@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public float speed = 6;
     public float jumpForce = 5;
     public float fallMultiplier = 2.5f;
-    public float attackRate = 2;
-    public float groundDistance = 0.4f;
+    //public float attackRate = 2;
+    public float groundDistance = 0.1f;
     public float turnSmoothTime = 0.1f;
     public float dashTime;
     public float dashSpeed;
@@ -65,15 +65,15 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public float dashCooldown;
     public float knockbackStrength;
     float turnSmoothVelocity; //don't touch.
-    float nextAttackTime = 0; //don't touch
+    //float nextAttackTime = 0; //don't touch
     float dashTimeLeft;
     //float lastGhostXPosition;
     float lastDash = -100; //so player can dash immidiately from start
 
     public bool Enraged = false;
     public bool isVulnerable = true;
-    bool isGrounded;
-    bool canDoubleJump = true;
+    [HideInInspector] public bool isGrounded;
+    [HideInInspector] public bool canDoubleJump = true;
     bool isDashing;
 
     readonly string ShrineTag = "Shrine";
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public Transform damageTextPos;
 
     public Vector3 attackRange;
-    Vector3 direction;
+    [HideInInspector] public Vector3 direction;
 
     public LayerMask groundMask;
     public LayerMask enemyMask;
@@ -97,25 +97,24 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     [HideInInspector] public IInteractable interactable;
 
     [Header ("Input")]
+    [HideInInspector] public PlayerInputActions inputActions;
     Vector2 movementInput;
     float itemsScroll;
-    PlayerInputActions inputActions;
 
     [Header("Components")]
     public InventoryObject inventory;
 
-    Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
     Animator animator;
 
     [Header("Animator")]
     int Horizontal;
     int Vertical;
     int VerticalSpeed;
-    int JumpTrigger;
-    int PrimaryAttackTrigger;
-    int SecondaryAttackTrigger;
-    int SpecialAttackTrigger;
-    int InteractTrigger;
+    //int JumpTrigger;
+    //int PrimaryAttackTrigger;
+    //int SecondaryAttackTrigger;
+    //int SpecialAttackTrigger;
     int DashTrigger;
     int HurtTrigger;
     int isDeadBool;
@@ -153,11 +152,10 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         Horizontal = Animator.StringToHash("Horizontal");
         Vertical = Animator.StringToHash("Vertical");
         VerticalSpeed = Animator.StringToHash("VerticalSpeed");
-        JumpTrigger = Animator.StringToHash("Jump");
-        PrimaryAttackTrigger = Animator.StringToHash("Attack1");
-        SecondaryAttackTrigger = Animator.StringToHash("Attack2");
-        SpecialAttackTrigger = Animator.StringToHash("Attack3");
-        InteractTrigger = Animator.StringToHash("Interact");
+        //JumpTrigger = Animator.StringToHash("Jump");
+        //PrimaryAttackTrigger = Animator.StringToHash("PrimaryAttack");
+        //SecondaryAttackTrigger = Animator.StringToHash("SecondaryAttack");
+        //SpecialAttackTrigger = Animator.StringToHash("SpecialAttack");
         DashTrigger = Animator.StringToHash("Dodge");
         HurtTrigger = Animator.StringToHash("Hurt");
         isDeadBool = Animator.StringToHash("isDead");
@@ -168,9 +166,6 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     {
         //makes sure health doesn't go above 100%
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
-        //checks if dash has refreshed
-        CheckDash(direction);
 
         //checks for input to change element
         if (inputActions.PlayerControls.NormalForm.triggered)
@@ -229,21 +224,6 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         //checks if player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        //checks if player can jump or double jump
-        if (inputActions.PlayerControls.Jump.triggered && isGrounded)
-        {
-            //add if SHIFT is being clicked, return.
-            //animator.SetTrigger(JumpTrigger); //this works
-            Jump();
-        }
-        else if(inputActions.PlayerControls.Jump.triggered && canDoubleJump)
-        {
-            //add if SHIFT is being clicked, return.
-            //animator.SetTrigger(JumpTrigger); //this works
-            Jump();
-            canDoubleJump = false;
-        }
-
         //checks if player wants to dash
         if (inputActions.PlayerControls.Dodge.triggered)
         {
@@ -253,18 +233,6 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             }
         }
 
-        //checks if player can attack
-        if(Time.time >= attackRate)
-        {
-            if (inputActions.PlayerControls.PrimaryAttack.triggered)
-            {
-                //add if SHIFT is being clicked, return.
-                //animator.SetTrigger(PrimaryAttack); //this works
-                Attack(attackPoint, attackRange, attackPoint.rotation, enemyMask, primaryAttackDamage);
-                nextAttackTime = Time.time + 1 / attackRate; //won't need this if i use exit time in the animation, hopefully
-            }
-        }
-        
         //if grounded, double jump is refreshed
         if (isGrounded)
         {
@@ -279,11 +247,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
 
     private void FixedUpdate()
     {
-        //checks if player can move
-        if (!isDashing)
-        {
-            Move(direction); //only for testing purposes
-        }
+        //checks if dash has refreshed
+        CheckDash(direction);
 
         //checks if player is falling to increase gravity for a less floaty jump
         if (rb.velocity.y < 0)
@@ -304,13 +269,12 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             //movedir from brackeys here
 
             rb.MoveRotation(rotation);
-            rb.velocity = new Vector3(direction.x * speed, rb.velocity.y, direction.z * speed); //jump no longer works here
+            rb.velocity = new Vector3(direction.x * speed, rb.velocity.y, direction.z * speed);
         }
     }
 
     public void Jump()
     {
-        animator.SetTrigger(JumpTrigger);
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.velocity = Vector3.up * jumpForce;
     }
@@ -331,6 +295,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         {
             if (dashTimeLeft > 0)
             {
+                direction.Normalize();
                 rb.velocity = new Vector3(dashSpeed * direction.x, 0, dashSpeed * direction.z);
                 dashTimeLeft -= Time.deltaTime;
 
@@ -423,6 +388,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public IEnumerator Die()
     {
         //play dissolve shader effect
+        Debug.Log(currentHealth);
         yield return new WaitForSeconds(2);
         //You died screen probably
     }
@@ -435,6 +401,8 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
             return;
         }
         Gizmos.DrawWireCube(attackPoint.position, attackRange);
+
+        Gizmos.DrawSphere(groundCheck.position, groundDistance);
     }
 
     private void OnApplicationQuit()

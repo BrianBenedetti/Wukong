@@ -431,20 +431,22 @@ MonoBehaviour:
   speed: 6
   jumpForce: 15
   fallMultiplier: 10
-  attackRate: 2
-  groundDistance: 0.4
+  groundDistance: 0.1
   turnSmoothTime: 0.1
   dashTime: 0.1
   dashSpeed: 50
-  dashCooldown: 1.5
+  dashCooldown: 0.5
   knockbackStrength: 3
   Enraged: 0
   isVulnerable: 0
+  isGrounded: 0
+  canDoubleJump: 1
   cam: {fileID: 1063584138}
   groundCheck: {fileID: 2025368601}
   attackPoint: {fileID: 627230805}
   damageTextPos: {fileID: 1268179627}
   attackRange: {x: 4, y: 1, z: 4}
+  direction: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -452,6 +454,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8448
   inventory: {fileID: 11400000, guid: 2c19093a3fae1c54caead5387dea5e11, type: 2}
+  rb: {fileID: 0}
   myElement: 0
   myDamageType: 0
   myResistances: {fileID: 11400000, guid: 3573ddf6923a7a240be139edc96abc96, type: 2}
@@ -463,7 +466,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97867129}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3fd586a31964904796d86315ebc1a27, type: 3}
   m_Controller: {fileID: 9100000, guid: 9c7c5770834745c43829ec2ff10cd7e9, type: 2}
   m_CullingMode: 0
@@ -625,6 +628,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367528742561610533, guid: ab93f208707927d40a4627ad08465f27,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7367528742561610536, guid: ab93f208707927d40a4627ad08465f27,
         type: 3}
@@ -822,7 +830,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289284346}
-  m_LocalRotation: {x: 0.3006394, y: -0.000000016410356, z: 0.000000005172908, w: 0.9537379}
+  m_LocalRotation: {x: 0.3006394, y: 0.00000001530962, z: -0.000000004825931, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2201,7 +2209,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884185084}
-  m_LocalRotation: {x: 0.3006394, y: 0.000000016410379, z: -0.0000000051729154, w: 0.9537379}
+  m_LocalRotation: {x: 0.3006394, y: -0.000000016410379, z: 0.0000000051729154, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2429,7 +2437,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063584135}
-  m_LocalRotation: {x: 0.30063942, y: -0.000000016410356, z: 0.0000000051729083, w: 0.9537379}
+  m_LocalRotation: {x: 0.30063942, y: 0.00000001530962, z: -0.0000000048259317, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 7, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3170,7 +3178,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687803303}
-  m_LocalRotation: {x: 0.3006394, y: -0.000000016410356, z: 0.000000005172908, w: 0.9537379}
+  m_LocalRotation: {x: 0.3006394, y: 0.00000001530962, z: -0.000000004825931, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
