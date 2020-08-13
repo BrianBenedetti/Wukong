@@ -156,7 +156,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""id"": ""e35955cb-2ed2-4081-a7d4-1d3a4f535317"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
-                    ""processors"": ""AxisDeadzone"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": true,
@@ -165,7 +165,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""12c6b0cc-85e5-45e1-8b8a-73945590b30d"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""path"": ""<Joystick>/stick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
