@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AverageEnemy_IdleState : StateMachineBehaviour
 {
@@ -29,8 +27,8 @@ public class AverageEnemy_IdleState : StateMachineBehaviour
             animator.SetBool(ShootBool, true);
         }else if (distanceToTarget < baseScript.retreatDistance)
         {
-            int random = Random.Range(1, 3);
-            if(random == 1)
+            int random = Random.Range(0, 11);
+            if(random <= 5)
             {
                 animator.SetTrigger(SlamTrigger);
             }

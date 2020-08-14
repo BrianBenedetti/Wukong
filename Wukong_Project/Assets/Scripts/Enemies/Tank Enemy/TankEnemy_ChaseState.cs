@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TankEnemy_ChaseState : StateMachineBehaviour
 {
@@ -43,8 +41,8 @@ public class TankEnemy_ChaseState : StateMachineBehaviour
         }
         else if (distanceToTarget < baseScript.agent.stoppingDistance)
         {
-            int random = Random.Range(1, 3);
-            if(random == 1)
+            int random = Random.Range(0, 11);
+            if(random <= 5)
             {
                 animator.SetTrigger(SwipeTrigger);
             }

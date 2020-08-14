@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -13,6 +12,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public float startWaitTime;
     public float dashForce;
     public float dashDuration;
+    public float knockbackAmount = 5;
     float currentHealth;
     float waitTime;
 
@@ -68,7 +68,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
             Vector3 direction = transform.position - target.position;
             direction.y = 0;
 
-            agent.velocity = direction.normalized * 5;
+            agent.velocity = direction.normalized * knockbackAmount;
         }
     }
 
@@ -114,7 +114,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
             Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
             enemyRb.velocity = Vector3.zero;
-            enemyRb.velocity = -dir.normalized * 5;
+            enemyRb.velocity = -dir.normalized * knockbackAmount;
         }
     }
 

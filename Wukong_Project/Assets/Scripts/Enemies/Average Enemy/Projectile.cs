@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour, IPooledObject
 {
     public float speed;
+    public float knockbackAmount;
 
     public AverageEnemy parent;
 
@@ -35,7 +34,7 @@ public class Projectile : MonoBehaviour, IPooledObject
         dir.y = 0;
         Rigidbody enemyRb = player.GetComponent<Rigidbody>();
         enemyRb.velocity = Vector3.zero;
-        enemyRb.velocity = -dir.normalized * 3;
+        enemyRb.velocity = -dir.normalized * knockbackAmount;
         gameObject.SetActive(false);
     }
 }

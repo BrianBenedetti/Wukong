@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BullDemonKing_IdleState : StateMachineBehaviour
 {
@@ -30,8 +28,8 @@ public class BullDemonKing_IdleState : StateMachineBehaviour
         }
         else if (distanceToTarget <= baseScript.agent.stoppingDistance)
         {
-            int rand = Random.Range(1, 6);
-            if (rand <= 3)
+            int rand = Random.Range(0, 11);
+            if (rand <= 5)
             {
                 animator.SetTrigger(LightTrigger);
             }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FastMinion_ChaseState : StateMachineBehaviour
 {
@@ -32,9 +30,9 @@ public class FastMinion_ChaseState : StateMachineBehaviour
         if(timer <= 0)
         {
             //choose something at random
-            randomAction = Random.Range(1, 5); //max has to be 1 more than actual max
+            randomAction = Random.Range(0, 11); //max has to be 1 more than actual max
 
-            if(randomAction == 1)
+            if(randomAction <= 5)
             {
                 animator.SetTrigger(HeavyTrigger);
             }

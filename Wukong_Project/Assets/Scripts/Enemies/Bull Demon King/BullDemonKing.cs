@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -11,6 +10,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
     public float turnSmoothTime;
     public float leapHeight;
     public float leapDuration;
+    public float knockbackAmount = 10;
     float leapCurrentTime;
     float currentHealth;
 
@@ -115,7 +115,7 @@ public class BullDemonKing : MonoBehaviour, IDamageable<int, DamageTypes>, IKill
 
             Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
             enemyRb.velocity = Vector3.zero;
-            enemyRb.velocity = -dir.normalized * 10;
+            enemyRb.velocity = -dir.normalized * knockbackAmount;
         }
     }
 

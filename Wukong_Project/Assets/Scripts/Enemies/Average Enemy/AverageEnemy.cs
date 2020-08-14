@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -13,6 +12,8 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public float startWaitTime;
     public float retreatDistance;
     public float startTimeBetweenShots;
+    public float knockbackAmount = 8;
+    float retreatSpeed = 0.05f;
     float currentHealth;
     float waitTime;
     float timeBetweenShots;
@@ -69,7 +70,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             Vector3 direction = transform.position - target.position;
             direction.y = 0;
 
-            agent.velocity = direction.normalized * 5;
+            agent.velocity = direction.normalized * knockbackAmount;
         }
     }
 
@@ -87,7 +88,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void Retreat()
     {
-        agent.Move((transform.position - target.position).normalized * 0.05f);
+        agent.Move((transform.position - target.position).normalized * retreatSpeed);
     }
 
     public void Patrol()
@@ -120,7 +121,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
             Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
             enemyRb.velocity = Vector3.zero;
-            enemyRb.velocity = -dir.normalized * 8;
+            enemyRb.velocity = -dir.normalized * knockbackAmount;
         }
     }
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -11,6 +10,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public float turnSmoothTime;
     public float lookRadius;
     public float startWaitTime;
+    public float knockbackAmount = 8;
     [SerializeField]float currentHealth;
     float waitTime;
 
@@ -94,7 +94,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
             Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
             enemyRb.velocity = Vector3.zero;
-            enemyRb.velocity = -dir.normalized * 8;
+            enemyRb.velocity = -dir.normalized * knockbackAmount;
         }
     }
 

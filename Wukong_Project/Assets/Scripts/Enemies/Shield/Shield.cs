@@ -13,7 +13,7 @@ public class Shield : MonoBehaviour, IDamageable<int, DamageTypes>
     public int maxHealth;
     [SerializeField] int currentHealth;
     int actualDamage;
-    int DestroyBool = Animator.StringToHash("Destroy");
+    readonly int DestroyBool = Animator.StringToHash("Destroy");
 
     // Start is called before the first frame update
     void Start()
