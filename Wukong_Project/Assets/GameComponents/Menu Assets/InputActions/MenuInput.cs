@@ -49,6 +49,22 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Cursor"",
+                    ""type"": ""Value"",
+                    ""id"": ""ed5d6356-e2e2-4d84-9b97-b9ceff5aa2b7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseSelect"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5a249c1-a7bf-492e-8435-3caddca40aca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -69,17 +85,6 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e5a17607-55bd-46d2-b2d5-6967f86bc892"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": ""AxisDeadzone"",
                     ""groups"": """",
                     ""action"": ""Select"",
                     ""isComposite"": false,
@@ -302,6 +307,28 @@ public class @MenuInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2c941b1-ffc2-4d2a-8395-622360ef69e7"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a92b865-eb71-4c56-a0d4-37319d5e2e50"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -640,6 +667,8 @@ public class @MenuInput : IInputActionCollection, IDisposable
         m_PlayerInput_BackB = m_PlayerInput.FindAction("BackB", throwIfNotFound: true);
         m_PlayerInput_Move = m_PlayerInput.FindAction("Move", throwIfNotFound: true);
         m_PlayerInput_Pause = m_PlayerInput.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerInput_Cursor = m_PlayerInput.FindAction("Cursor", throwIfNotFound: true);
+        m_PlayerInput_MouseSelect = m_PlayerInput.FindAction("MouseSelect", throwIfNotFound: true);
         // PauseInput
         m_PauseInput = asset.FindActionMap("PauseInput", throwIfNotFound: true);
         m_PauseInput_Pause = m_PauseInput.FindAction("Pause", throwIfNotFound: true);
@@ -709,6 +738,8 @@ public class @MenuInput : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerInput_BackB;
     private readonly InputAction m_PlayerInput_Move;
     private readonly InputAction m_PlayerInput_Pause;
+    private readonly InputAction m_PlayerInput_Cursor;
+    private readonly InputAction m_PlayerInput_MouseSelect;
     public struct PlayerInputActions
     {
         private @MenuInput m_Wrapper;
@@ -717,6 +748,8 @@ public class @MenuInput : IInputActionCollection, IDisposable
         public InputAction @BackB => m_Wrapper.m_PlayerInput_BackB;
         public InputAction @Move => m_Wrapper.m_PlayerInput_Move;
         public InputAction @Pause => m_Wrapper.m_PlayerInput_Pause;
+        public InputAction @Cursor => m_Wrapper.m_PlayerInput_Cursor;
+        public InputAction @MouseSelect => m_Wrapper.m_PlayerInput_MouseSelect;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -738,6 +771,12 @@ public class @MenuInput : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnPause;
+                @Cursor.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCursor;
+                @Cursor.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCursor;
+                @Cursor.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCursor;
+                @MouseSelect.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMouseSelect;
+                @MouseSelect.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMouseSelect;
+                @MouseSelect.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMouseSelect;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -754,6 +793,12 @@ public class @MenuInput : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Cursor.started += instance.OnCursor;
+                @Cursor.performed += instance.OnCursor;
+                @Cursor.canceled += instance.OnCursor;
+                @MouseSelect.started += instance.OnMouseSelect;
+                @MouseSelect.performed += instance.OnMouseSelect;
+                @MouseSelect.canceled += instance.OnMouseSelect;
             }
         }
     }
@@ -919,6 +964,8 @@ public class @MenuInput : IInputActionCollection, IDisposable
         void OnBackB(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnCursor(InputAction.CallbackContext context);
+        void OnMouseSelect(InputAction.CallbackContext context);
     }
     public interface IPauseInputActions
     {

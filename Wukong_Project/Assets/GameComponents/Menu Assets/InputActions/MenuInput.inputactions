@@ -36,6 +36,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Cursor",
+                    "type": "Value",
+                    "id": "ed5d6356-e2e2-4d84-9b97-b9ceff5aa2b7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MouseSelect",
+                    "type": "Button",
+                    "id": "b5a249c1-a7bf-492e-8435-3caddca40aca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -56,17 +72,6 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e5a17607-55bd-46d2-b2d5-6967f86bc892",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "AxisDeadzone",
                     "groups": "",
                     "action": "Select",
                     "isComposite": false,
@@ -289,6 +294,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2c941b1-ffc2-4d2a-8395-622360ef69e7",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cursor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a92b865-eb71-4c56-a0d4-37319d5e2e50",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
