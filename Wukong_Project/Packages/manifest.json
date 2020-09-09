@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.unity.2d.spriteshape": "3.0.12",
     "com.unity.animation.rigging": "0.2.6-preview",
     "com.unity.cinemachine": "2.6.0",
     "com.unity.collab-proxy": "1.2.16",

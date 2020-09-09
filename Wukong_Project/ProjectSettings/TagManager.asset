@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GM
+  - Enemy
+  - Object
+  - Shrine
+  - Canvas
+  - Pointer
   layers:
   - Default
   - TransparentFX
@@ -14,12 +18,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Ground
+  - Loot
+  - Projectile
+  - Shield
   - 
   - 
   - 
