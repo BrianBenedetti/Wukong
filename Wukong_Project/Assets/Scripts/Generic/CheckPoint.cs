@@ -1,12 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class CheckPoint : MonoBehaviour, IInteractable
+public class CheckPoint : MonoBehaviour
 {
-    //make audio file here and play thhat instead of looking it up
+    private GameMaster Gm;
 
-    public void Interact()
+    private void Start()
     {
-        PlayerManager.instance.lastCheckpointPlayerPosition = transform.position;
-        //PlayerManager.instance.audioManager.Play("check");
+        Gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Gm.lastCheckPointPos = transform.position;
+            FindObjectOfType<AudioManager>().Play("check");
+        }
     }
 }
