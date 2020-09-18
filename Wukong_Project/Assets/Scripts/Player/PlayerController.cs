@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public float jumpForce = 5;
     public float fallMultiplier = 2.5f;
     //public float attackRate = 2;
-    public float groundDistance = 0.1f;
+    public float groundDistance = 0.01f;
     public float turnSmoothTime = 0.1f;
     public float dashTime;
     public float dashSpeed;
@@ -110,10 +111,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     int Horizontal;
     int Vertical;
     int VerticalSpeed;
-    //int JumpTrigger;
-    //int PrimaryAttackTrigger;
-    //int SecondaryAttackTrigger;
-    //int SpecialAttackTrigger;
+    int JumpTrigger;
     int DashTrigger;
     int HurtTrigger;
     int isDeadBool;
@@ -151,10 +149,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
         Horizontal = Animator.StringToHash("Horizontal");
         Vertical = Animator.StringToHash("Vertical");
         VerticalSpeed = Animator.StringToHash("VerticalSpeed");
-        //JumpTrigger = Animator.StringToHash("Jump");
-        //PrimaryAttackTrigger = Animator.StringToHash("PrimaryAttack");
-        //SecondaryAttackTrigger = Animator.StringToHash("SecondaryAttack");
-        //SpecialAttackTrigger = Animator.StringToHash("SpecialAttack");
+        JumpTrigger = Animator.StringToHash("Jump");
         DashTrigger = Animator.StringToHash("Dodge");
         HurtTrigger = Animator.StringToHash("Hurt");
         isDeadBool = Animator.StringToHash("isDead");
@@ -275,7 +270,7 @@ public class PlayerController : MonoBehaviour, IDamageable<int, DamageTypes>, IK
     public void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        rb.velocity = Vector3.up * jumpForce;
+        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
     }
 
     public void AttemptDash()
