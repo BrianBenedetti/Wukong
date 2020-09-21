@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4de8e371dc94645828448b44e4f923, type: 3}
   m_Name: SpecialPotion_Medium
   m_EditorClassIdentifier: 
-  Id: 0
-  uiDisplay: {fileID: 0}
+  Id: 5
+  uiDisplay: {fileID: 21300000, guid: 24d1578d1d32c25418a484373071beac, type: 3}
   type: 2
   description: 
   healthRestoreValue: 0

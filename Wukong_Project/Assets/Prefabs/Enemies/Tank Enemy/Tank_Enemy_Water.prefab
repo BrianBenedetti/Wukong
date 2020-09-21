@@ -2202,7 +2202,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 4
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 4
@@ -2239,6 +2239,7 @@ MonoBehaviour:
   turnSmoothTime: 5
   lookRadius: 20
   startWaitTime: 2
+  knockbackAmount: 8
   currentHealth: 0
   lightAttackDamage: 40
   heavyAttackDamage: 60

@@ -476,14 +476,10 @@ MonoBehaviour:
   startWaitTime: 5
   dashForce: 50
   dashDuration: 0.1
+  knockbackAmount: 5
   lightAttackDamage: 25
   heavyAttackDamage: 35
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   attackOrigin: {fileID: 8297063223718898326}
   target: {fileID: 0}
   damageTextPos: {fileID: 3593297050072062253}
@@ -508,7 +504,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 300
   m_StoppingDistance: 2.5
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2

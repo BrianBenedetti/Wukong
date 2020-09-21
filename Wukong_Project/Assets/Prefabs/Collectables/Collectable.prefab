@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8067774020055353482}
   - component: {fileID: 8067774020055353483}
   m_Layer: 0
-  m_Name: Potion
+  m_Name: Collectable
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f15784bdf56cb4993dd3c836c9d584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9c1265e249ac82445b8a1e0902234da1, type: 2}
+  item: {fileID: 0}
 --- !u!135 &8067774020055353483
 SphereCollider:
   m_ObjectHideFlags: 0
