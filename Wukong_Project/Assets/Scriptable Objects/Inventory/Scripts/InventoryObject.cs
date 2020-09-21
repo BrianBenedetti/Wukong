@@ -43,7 +43,7 @@ public class InventoryObject : ScriptableObject
             var itemToUse = Container.Items[0];
 
             //add values to player
-            PlayerManager.instance.player.GetComponent<PlayerController>().RestoreValues(itemToUse.item.healthValue, itemToUse.item.rageValue, itemToUse.item.specialValue);
+            PlayerManager.instance.player.GetComponent<PlayerCombat>().RestoreValues(itemToUse.item.healthValue, itemToUse.item.rageValue, itemToUse.item.specialValue);
 
             itemToUse.ReduceAmount(1);
 

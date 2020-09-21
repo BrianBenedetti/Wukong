@@ -13,7 +13,7 @@ public class LootOrbFollow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerManager.instance.player.GetComponent<PlayerController>().RestoreValues(healthValue, rageValue, specialValue);
+        PlayerManager.instance.player.GetComponent<PlayerCombat>().RestoreValues(healthValue, rageValue, specialValue);
         gameObject.SetActive(false);
     }
 

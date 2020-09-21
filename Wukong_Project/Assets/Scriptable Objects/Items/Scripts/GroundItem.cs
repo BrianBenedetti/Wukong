@@ -13,9 +13,10 @@ public class GroundItem : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        var playerController = player.GetComponent<PlayerController>();
-        playerController.inventory.AddItem(new Item(item), 1);
-        playerController.interactable = null;
+        var playerItemsScript = player.GetComponent<PlayerItems>();
+        playerItemsScript.inventory.AddItem(new Item(item), 1);
+        var playerInteractionsScript = player.GetComponent<PlayerInteractions>();
+        playerInteractionsScript.interactable = null;
         Destroy(gameObject);
     }
 }
