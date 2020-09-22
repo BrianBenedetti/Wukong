@@ -14,11 +14,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     [SerializeField] int currentHealth = 0;
 
     PlayerElementalForms elementalFormsScript;
+    PlayerAnimations playerAnimationsScript;
 
     public float knockbackStrength;
 
     public bool Enraged = false;
     public bool isVulnerable = true;
+    bool canDetectInput;
 
     readonly string damageText = "Damage Text";
 
@@ -36,12 +38,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     private void Awake()
     {
         inputActions = new PlayerInputActions();
+
+        elementalFormsScript = GetComponent<PlayerElementalForms>();
+        playerAnimationsScript = GetComponent<PlayerAnimations>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        elementalFormsScript = GetComponent<PlayerElementalForms>();
         currentHealth = maxHealth;
 
         Enraged = false;
@@ -54,6 +58,37 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     void Update()
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        if (canDetectInput)
+        {
+            if (inputActions.PlayerControls.PrimaryAttack.triggered)
+            {
+                playerAnimationsScript.PlayLightAttack();
+            }
+            else if (inputActions.PlayerControls.SecondaryAttack.triggered)
+            {
+                playerAnimationsScript.PlayHeavyAttack();
+            }
+            else
+            {
+                playerAnimationsScript.PlayNoCombo();
+            }
+        }
+    }
+
+    public void ResetCombo()
+    {
+        playerAnimationsScript.PlayNoCombo();
+    }
+
+    public void StartDetectingInput()
+    {
+        canDetectInput = true;
+    }
+
+    public void StopDetectingInput()
+    {
+        canDetectInput = false;
     }
 
     public void CheckForEnemiesHit(Transform attackOrigin, Vector3 attackRange, LayerMask whatIsEnemy, int damage)
@@ -81,7 +116,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
             if (currentHealth <= 0)
             {
-
+                //play dead anim
             }
         }
     }
@@ -130,5 +165,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             return;
         }
         Gizmos.DrawWireCube(attackPoint.position, attackRange);
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+    private void OnDisable()
+    {
+        inputActions.Disable();
     }
 }

@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
 
+    PlayerAnimations playerAnimationsScript;
+
     float turnSmoothVelocity; //don't touch
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
@@ -14,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 2.1f;
     public float fallMultiplier = 1.5f;
 
-    bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     bool canDoubleJump;
 
     public Transform cam;
@@ -25,15 +27,23 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public PlayerInputActions inputActions;
     Vector2 movementInput;
 
+    [HideInInspector] public Vector3 direction;
     [HideInInspector] public Vector3 velocity;
     [HideInInspector] public Vector3 moveDir;
 
     private void Awake()
     {
+        playerAnimationsScript = GetComponent<PlayerAnimations>();
+
         inputActions = new PlayerInputActions();
 
         inputActions.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         inputActions.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
+    }
+
+    private void Start()
+    {
+        isGrounded = true;
     }
 
     // Update is called once per frame
@@ -57,11 +67,11 @@ public class PlayerMovement : MonoBehaviour
         //stops gravity from increasing while grounded
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2;
+            velocity.y = -1;
         }
 
         //takes input from keyboard or gamepad and makes into a direction for movement
-        Vector3 direction = new Vector3(movementInput.x, 0, movementInput.y);
+        direction = new Vector3(movementInput.x, 0, movementInput.y);
         direction = Vector3.ClampMagnitude(direction, 1);
 
         //moves player according to input
@@ -79,26 +89,22 @@ public class PlayerMovement : MonoBehaviour
             moveDir = Vector3.ClampMagnitude(moveDir, 1);
 
             controller.Move(moveDir * speed * Time.deltaTime);
-
-
-            //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            //transform.rotation = Quaternion.Euler(0, angle, 0);
-
-            //moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-            //controller.Move(moveDir.normalized * speed * Time.deltaTime);
-            //player always moves at top speed no matter the analogue amount
         }
+
+        //animates player locomotion
+        playerAnimationsScript.PlayMovementAnimation(direction.magnitude);
 
         //handles jumps
         if (inputActions.PlayerControls.Jump.triggered && isGrounded)
         {
-            Jump();
+            Jump(); //mechanical jump
+            playerAnimationsScript.PlayJumpAnimation(); //plays animation
         }
         //and double jump
         else if(inputActions.PlayerControls.Jump.triggered && canDoubleJump)
         {
-            DoubleJump();
+            DoubleJump(); //mechanical jump
+            playerAnimationsScript.PlayJumpAnimation(); //plays animation
         }
 
         //applies regular gravity to player
