@@ -10,6 +10,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public int primaryAttackDamage = 25;
     public int secondaryAttackDamage = 50;
     public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
+    public int lightAttackCounter = 0;
+    public int heavyAttackCounter = 0;
     int actualDamage;
     [SerializeField] int currentHealth = 0;
 
@@ -17,10 +19,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     PlayerAnimations playerAnimationsScript;
 
     public float knockbackStrength;
+    public float maxComboDelay = 1.5f;
+    float lastClickedTime = 0;
 
     public bool Enraged = false;
     public bool isVulnerable = true;
-    bool canDetectInput;
 
     readonly string damageText = "Damage Text";
 
@@ -59,36 +62,119 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        if (canDetectInput)
+        //resets combo timer
+        if(Time.time - lastClickedTime >= maxComboDelay)
         {
-            if (inputActions.PlayerControls.PrimaryAttack.triggered)
+            lightAttackCounter = 0;
+            heavyAttackCounter = 0;
+        }
+
+        //light attack
+        if (inputActions.PlayerControls.PrimaryAttack.triggered)
+        {
+            lastClickedTime = Time.time;
+            lightAttackCounter++;
+
+            if(lightAttackCounter == 1)
             {
-                playerAnimationsScript.PlayLightAttack();
+                playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, true);
             }
-            else if (inputActions.PlayerControls.SecondaryAttack.triggered)
+            lightAttackCounter = Mathf.Clamp(lightAttackCounter, 0, 3);
+        }
+        //heavy attack
+        else if (inputActions.PlayerControls.SecondaryAttack.triggered)
+        {
+            lastClickedTime = Time.time;
+            heavyAttackCounter++;
+
+            if (heavyAttackCounter == 1)
             {
-                playerAnimationsScript.PlayHeavyAttack();
+                playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, true);
             }
-            else
-            {
-                playerAnimationsScript.PlayNoCombo();
-            }
+            heavyAttackCounter = Mathf.Clamp(heavyAttackCounter, 0, 3);
         }
     }
 
-    public void ResetCombo()
+    public void LightAttack1End()
     {
-        playerAnimationsScript.PlayNoCombo();
+        if(lightAttackCounter > 1)
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, true);
+        }
+        else
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+            lightAttackCounter = 0;
+        }
     }
 
-    public void StartDetectingInput()
+    public void HeavyAttack1End()
     {
-        canDetectInput = true;
+        if (heavyAttackCounter > 1)
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack2Bool, true);
+        }
+        else
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, false);
+            heavyAttackCounter = 0;
+        }
     }
 
-    public void StopDetectingInput()
+    public void LightAttack2End()
     {
-        canDetectInput = false;
+        if (lightAttackCounter > 2)
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, true);
+        }
+        else
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+            lightAttackCounter = 0;
+        }
+    }
+
+    public void HeavyAttack2End()
+    {
+        if (heavyAttackCounter > 2)
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack3Bool, true);
+        }
+        else
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack2Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, false);
+            heavyAttackCounter = 0;
+        }
+    }
+
+    public void LightAttack3End()
+    {
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack2Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack3Bool, false);
+        lightAttackCounter = 0;
+    }
+
+    public void HeavyAttack3End()
+    {
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack2Bool, false);
+        playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack3Bool, false);
+        heavyAttackCounter = 0;
     }
 
     public void CheckForEnemiesHit(Transform attackOrigin, Vector3 attackRange, LayerMask whatIsEnemy, int damage)

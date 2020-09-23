@@ -6,17 +6,22 @@ public class PlayerAnimations : MonoBehaviour
 {
     PlayerMovement movementScript;
 
-    Animator anim;
+    [HideInInspector] public Animator anim;
 
-    readonly int speedFloat = Animator.StringToHash("Speed");
-    readonly int verticalSpeedFloat = Animator.StringToHash("Vertical Speed");
-    readonly int jumpTrigger = Animator.StringToHash("Jump");
-    readonly int dodgeTrigger = Animator.StringToHash("Dodge");
-    readonly int nextAttackInteger = Animator.StringToHash("Next Attack");
-    readonly int hurtTrigger = Animator.StringToHash("Hurt");
-    readonly int respawnTrigger = Animator.StringToHash("Respawn");
-    readonly int isGroundedBool = Animator.StringToHash("isGrounded");
-    readonly int isDeadBool = Animator.StringToHash("isDead");
+    public readonly int speedFloat = Animator.StringToHash("Speed");
+    public readonly int verticalSpeedFloat = Animator.StringToHash("Vertical Speed");
+    public readonly int jumpTrigger = Animator.StringToHash("Jump");
+    public readonly int dodgeTrigger = Animator.StringToHash("Dodge");
+    public readonly int hurtTrigger = Animator.StringToHash("Hurt");
+    public readonly int respawnTrigger = Animator.StringToHash("Respawn");
+    public readonly int isGroundedBool = Animator.StringToHash("isGrounded");
+    public readonly int isDeadBool = Animator.StringToHash("isDead");
+    public readonly int lightAttack1Bool = Animator.StringToHash("Light Attack 1");
+    public readonly int lightAttack2Bool = Animator.StringToHash("Light Attack 2");
+    public readonly int lightAttack3Bool = Animator.StringToHash("Light Attack 3");
+    public readonly int heavyAttack1Bool = Animator.StringToHash("Heavy Attack 1");
+    public readonly int heavyAttack2Bool = Animator.StringToHash("Heavy Attack 2");
+    public readonly int heavyAttack3Bool = Animator.StringToHash("Heavy Attack 3");
 
     // Start is called before the first frame update
     void Start()
@@ -37,19 +42,9 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetFloat(speedFloat, directionMagnitude);
     }
 
-    public void PlayLightAttack()
+    public void SetAnimationBool(int boolToChange, bool value)
     {
-        anim.SetInteger(nextAttackInteger, 1);
-    }
-
-    public void PlayHeavyAttack()
-    {
-        anim.SetInteger(nextAttackInteger, 2);
-    }
-
-    public void PlayNoCombo()
-    {
-        anim.SetInteger(nextAttackInteger, 0);
+        anim.SetBool(boolToChange, value);
     }
 
     public void PlayJumpAnimation()
