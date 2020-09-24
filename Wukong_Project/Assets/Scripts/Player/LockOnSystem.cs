@@ -18,7 +18,7 @@ public class LockOnSystem : MonoBehaviour
 
     public float lockOnRange;
 
-    readonly string enemyTag = "Enemy";
+    const string enemyTag = "Enemy";
 
     public Transform emptyTarget;
     Transform target;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     PlayerMovement moveScript;
+    PlayerAnimations animationsScript;
 
     public float dashTime;
     public float dashSpeed;
@@ -21,6 +22,7 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
         moveScript = GetComponent<PlayerMovement>();
+        animationsScript = GetComponent<PlayerAnimations>();
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class PlayerDash : MonoBehaviour
         if (inputActions.PlayerControls.Dodge.triggered)
         {
             StartCoroutine(Dash());
+            animationsScript.PlayDodgeAnimation();
         }
     }
     

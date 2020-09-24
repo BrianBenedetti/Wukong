@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Disable();
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(groundCheck.position, groundDistance);
     }

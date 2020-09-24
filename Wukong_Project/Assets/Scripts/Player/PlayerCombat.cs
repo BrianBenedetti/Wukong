@@ -10,8 +10,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public int primaryAttackDamage = 25;
     public int secondaryAttackDamage = 50;
     public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
-    public int lightAttackCounter = 0;
-    public int heavyAttackCounter = 0;
+    int lightAttackCounter = 0;
+    int heavyAttackCounter = 0;
     int actualDamage;
     [SerializeField] int currentHealth = 0;
 
@@ -27,16 +27,19 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     readonly string damageText = "Damage Text";
 
-    public Transform attackPoint;
     public Transform damageTextPos;
 
-    public Vector3 attackRange;
+    public Vector3 attackSize;
+    public Vector3 attackPositionOffsetFromPlayerCenter;
+    public float attackRadius;
 
     public LayerMask enemyMask;
 
     ObjectPooler objectPooler;
 
     [HideInInspector] public PlayerInputActions inputActions;
+
+    bool m_Started;
 
     private void Awake()
     {
@@ -49,6 +52,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     // Start is called before the first frame update
     void Start()
     {
+        m_Started = true;
+
         currentHealth = maxHealth;
 
         Enraged = false;
@@ -177,13 +182,15 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         heavyAttackCounter = 0;
     }
 
-    public void CheckForEnemiesHit(Transform attackOrigin, Vector3 attackRange, LayerMask whatIsEnemy, int damage)
+    public void CheckForEnemiesHit(int damage)
     {
-        Collider[] enemiesHit = Physics.OverlapBox(attackOrigin.position, attackRange, attackOrigin.rotation, whatIsEnemy);
+        Collider[] enemiesHit = Physics.OverlapSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius, enemyMask);
+            //OverlapBox(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackSize, transform.rotation, enemyMask);
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.myDamageType);
+            Debug.Log(enemy.name);
+            //enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.myDamageType);
         }
     }
 
@@ -195,7 +202,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
             PlayerManager.instance.hitStop.Stop(0.1f);
 
-            actualDamage = elementalFormsScript.myResistances.CalculateDamageWithResistance(damage, damageType);
+            actualDamage = elementalFormsScript.currentResistances.CalculateDamageWithResistance(damage, damageType);
             currentHealth -= actualDamage;
 
             ShowDamageText();
@@ -244,13 +251,15 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         //You died screen probably
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        if (attackPoint == null)
+        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+        if (m_Started)
         {
-            return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius);
+            //Gizmos.DrawWireCube(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackSize);
         }
-        Gizmos.DrawWireCube(attackPoint.position, attackRange);
     }
 
     private void OnEnable()

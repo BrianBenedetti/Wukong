@@ -47,8 +47,8 @@ public class PlayerItems : MonoBehaviour
         inputActions.Disable();
     }
 
-    //private void OnApplicationQuit()
-    //{
-    //    inventory.Container.Items.Clear(); //clears inventory when leaving play mode
-    //}
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Items.Clear(); //clears inventory when leaving play mode
+    }
 }

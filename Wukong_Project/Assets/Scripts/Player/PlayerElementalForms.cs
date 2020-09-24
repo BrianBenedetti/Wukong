@@ -12,11 +12,21 @@ public class PlayerElementalForms : MonoBehaviour
         air
     }
 
+    public Material[] elementalHairMaterials;
+    public Material[] elementalBodyMaterials;
+
+    //public GameObject[] weaponElementalVFX;
+    public GameObject[] transitionElementalVFX;
+
+    public SkinnedMeshRenderer myHairRenderer;
+    public SkinnedMeshRenderer myBodyRenderer;
+
     [HideInInspector] public PlayerInputActions inputActions;
 
-    [SerializeField] ElementalForms myElement;
-    public DamageTypes myDamageType;
-    public DamageResistances myResistances;
+    [SerializeField] ElementalForms currentElement;
+    [SerializeField] DamageTypes currentDamageType;
+    public DamageResistances currentResistances;
+    public DamageResistances[] allResistances;
 
     private void Awake()
     {
@@ -25,41 +35,80 @@ public class PlayerElementalForms : MonoBehaviour
     
     private void Start()
     {
-        myDamageType = DamageTypes.normal;
-        myElement = ElementalForms.normal;
+        currentElement = ElementalForms.normal;
+        currentResistances = allResistances[3];
+        currentDamageType = DamageTypes.normal;
     }
 
     // Update is called once per frame
     void Update()
     {
         //checks for input to change element
-        if (inputActions.PlayerControls.NormalForm.triggered)
+        if (inputActions.PlayerControls.NormalForm.triggered && currentElement != ElementalForms.normal)
         {
-            myElement = ElementalForms.normal;
-            //change hair shader
+            //set new element
+            currentElement = ElementalForms.normal;
+            //set new resistances
+            currentResistances = allResistances[3];
+            //set new damage type
+            currentDamageType = DamageTypes.normal;
+            //change hair and body materials
+            SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[3]);
+            SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[3]);
+            //play transition VFX
             //change weapon VFX
         }
-        else if (inputActions.PlayerControls.FireForm.triggered)
+        else if (inputActions.PlayerControls.FireForm.triggered && currentElement != ElementalForms.fire)
         {
-            myElement = ElementalForms.fire;
-            //change hair shader
+            //set new element
+            currentElement = ElementalForms.fire;
+            //set new resistances
+            currentResistances = allResistances[0];
+            //set new damage type
+            currentDamageType = DamageTypes.fire;
+            //change hair and body materials
+            SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[0]);
+            SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[0]);
+            //play transition VFX
+            //change weapon VFX
+        }
+        else if (inputActions.PlayerControls.WaterForm.triggered && currentElement != ElementalForms.water)
+        {
+            //set new element
+            currentElement = ElementalForms.water;
+            //set new resistances
+            currentResistances = allResistances[1];
+            //set new damage type
+            currentDamageType = DamageTypes.water;
+            //change hair and body materials
+            SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[1]);
+            SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[1]);
+            //play transition VFX
+            //change weapon VFX
+        }
+        else if (inputActions.PlayerControls.AirForm.triggered && currentElement != ElementalForms.air)
+        {
+            //set new element
+            currentElement = ElementalForms.air;
+            //set new resistances
+            currentResistances = allResistances[2];
+            //set new damage type
+            currentDamageType = DamageTypes.air;
+            //change hair and body materials
+            SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[2]);
+            SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[2]);
             //play VFX
             //change weapon VFX
         }
-        else if (inputActions.PlayerControls.WaterForm.triggered)
-        {
-            myElement = ElementalForms.water;
-            //change hair shader
-            //play VFX
-            //change weapon VFX
-        }
-        else if (inputActions.PlayerControls.AirForm.triggered)
-        {
-            myElement = ElementalForms.air;
-            //change hair shader
-            //play VFX
-            //change weapon VFX
-        }
+    }
+
+    void SetSkinnedMaterial(SkinnedMeshRenderer renderer, int Mat_Nr, Material Mat)
+    {
+        Material[] mats = renderer.materials;
+
+        mats[Mat_Nr] = Mat;
+
+        renderer.materials = mats;
     }
 
     private void OnEnable()
