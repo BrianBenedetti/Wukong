@@ -24,7 +24,7 @@ public class PlayerElementalForms : MonoBehaviour
     [HideInInspector] public PlayerInputActions inputActions;
 
     [SerializeField] ElementalForms currentElement;
-    [SerializeField] DamageTypes currentDamageType;
+    public DamageTypes currentDamageType;
     public DamageResistances currentResistances;
     public DamageResistances[] allResistances;
 

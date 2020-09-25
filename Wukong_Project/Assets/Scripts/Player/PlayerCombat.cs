@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public float knockbackStrength;
     public float maxComboDelay = 1.5f;
     float lastClickedTime = 0;
+    public float attackRadius;
 
     public bool Enraged = false;
     public bool isVulnerable = true;
@@ -31,15 +32,12 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public Vector3 attackSize;
     public Vector3 attackPositionOffsetFromPlayerCenter;
-    public float attackRadius;
 
     public LayerMask enemyMask;
 
     ObjectPooler objectPooler;
 
     [HideInInspector] public PlayerInputActions inputActions;
-
-    bool m_Started;
 
     private void Awake()
     {
@@ -52,8 +50,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     // Start is called before the first frame update
     void Start()
     {
-        m_Started = true;
-
         currentHealth = maxHealth;
 
         Enraged = false;
@@ -185,12 +181,10 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public void CheckForEnemiesHit(int damage)
     {
         Collider[] enemiesHit = Physics.OverlapSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius, enemyMask);
-            //OverlapBox(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackSize, transform.rotation, enemyMask);
 
         foreach (Collider enemy in enemiesHit)
         {
-            Debug.Log(enemy.name);
-            //enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.myDamageType);
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.currentDamageType);
         }
     }
 
@@ -253,13 +247,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     private void OnDrawGizmos()
     {
-        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
-        if (m_Started)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius);
-            //Gizmos.DrawWireCube(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackSize);
-        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius);
     }
 
     private void OnEnable()
