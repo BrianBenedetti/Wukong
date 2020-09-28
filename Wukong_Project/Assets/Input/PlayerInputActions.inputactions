@@ -454,39 +454,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Button With One Modifier",
-                    "id": "49225814-824e-47a1-9485-b3a036509cd7",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire Form",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "button",
-                    "id": "56f66405-5c54-481a-a2f8-2e3b0e202bfd",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Fire Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier",
-                    "id": "db8ea1d7-a0d3-4bf2-91b6-d3bc944d6158",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Fire Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "46bfb48e-6c31-413e-aa6f-ca88f7613bef",
                     "path": "<Keyboard>/1",
@@ -496,39 +463,6 @@
                     "action": "Fire Form",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Button With One Modifier",
-                    "id": "a2d03e0b-ef1c-4590-a7bc-faa6b5af584f",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Water Form",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "button",
-                    "id": "70ae928b-0d18-4f47-93d0-993f0e907f01",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Water Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier",
-                    "id": "838a9867-1b8f-4aa5-adeb-bf4afac81569",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Water Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -542,39 +476,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Button With One Modifier",
-                    "id": "49de9e05-b272-4b2d-91d1-851cf1215e18",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Air Form",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "button",
-                    "id": "1d0246b2-7bc0-494d-a913-4bd0c156be53",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Air Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier",
-                    "id": "945931b4-18d5-4d97-88a6-a4e1a5e41bad",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Air Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "79a0dfd1-9931-4e77-bc27-98f9a4ec5c65",
                     "path": "<Keyboard>/3",
@@ -584,39 +485,6 @@
                     "action": "Air Form",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Button With One Modifier",
-                    "id": "ced567a1-45a5-4403-93c5-66c68546739e",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Normal Form",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "button",
-                    "id": "51f3cb82-639c-4b9c-b2a8-a26ec4c5fb5d",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Normal Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier",
-                    "id": "28f936cd-059c-4815-8674-e16e56942441",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Normal Form",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

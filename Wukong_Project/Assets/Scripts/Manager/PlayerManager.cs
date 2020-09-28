@@ -26,6 +26,8 @@ public class PlayerManager : MonoBehaviour
 
     public HitStop hitStop;
 
+    public LockOnSystem lockOnSystem;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

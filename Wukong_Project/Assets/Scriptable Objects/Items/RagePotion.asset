@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RagePotion
   m_EditorClassIdentifier: 
   Id: 3
-  uiDisplay: {fileID: 21300000, guid: 24d1578d1d32c25418a484373071beac, type: 3}
+  uiDisplay: {fileID: -7583409310137716746, guid: 05c2c12f61d127e41af1d5b5a5f2bd6c,
+    type: 3}
   type: 1
   description: 
   healthRestoreValue: 0

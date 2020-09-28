@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -10,15 +11,15 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public int primaryAttackDamage = 25;
     public int secondaryAttackDamage = 50;
     public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
+    public int currentHealth = 0;
     int lightAttackCounter = 0;
     int heavyAttackCounter = 0;
     int actualDamage;
-    [SerializeField] int currentHealth = 0;
 
     PlayerElementalForms elementalFormsScript;
     PlayerAnimations playerAnimationsScript;
 
-    public float knockbackStrength;
+    //public float knockbackStrength;
     public float maxComboDelay = 1.5f;
     float lastClickedTime = 0;
     public float attackRadius;
@@ -64,35 +65,66 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         //resets combo timer
-        if(Time.time - lastClickedTime >= maxComboDelay)
+        if (Time.time - lastClickedTime >= maxComboDelay)
         {
             lightAttackCounter = 0;
             heavyAttackCounter = 0;
         }
 
-        //light attack
-        if (inputActions.PlayerControls.PrimaryAttack.triggered)
-        {
-            lastClickedTime = Time.time;
-            lightAttackCounter++;
+        var gamepad = Gamepad.current;
 
-            if(lightAttackCounter == 1)
+        if (gamepad != null)
+        {
+            if (inputActions.PlayerControls.PrimaryAttack.triggered && !gamepad.leftShoulder.isPressed)
             {
-                playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, true);
+                lastClickedTime = Time.time;
+                lightAttackCounter++;
+
+                if (lightAttackCounter == 1)
+                {
+                    playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, true);
+                }
+                lightAttackCounter = Mathf.Clamp(lightAttackCounter, 0, 3);
             }
-            lightAttackCounter = Mathf.Clamp(lightAttackCounter, 0, 3);
+            //heavy attack
+            else if (inputActions.PlayerControls.SecondaryAttack.triggered && !gamepad.leftShoulder.isPressed)
+            {
+                lastClickedTime = Time.time;
+                heavyAttackCounter++;
+
+                if (heavyAttackCounter == 1)
+                {
+                    playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, true);
+                }
+                heavyAttackCounter = Mathf.Clamp(heavyAttackCounter, 0, 3);
+            }
         }
-        //heavy attack
-        else if (inputActions.PlayerControls.SecondaryAttack.triggered)
+        else
         {
-            lastClickedTime = Time.time;
-            heavyAttackCounter++;
-
-            if (heavyAttackCounter == 1)
+            //light attack
+            if (inputActions.PlayerControls.PrimaryAttack.triggered)
             {
-                playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, true);
+                lastClickedTime = Time.time;
+                lightAttackCounter++;
+
+                if (lightAttackCounter == 1)
+                {
+                    playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, true);
+                }
+                lightAttackCounter = Mathf.Clamp(lightAttackCounter, 0, 3);
             }
-            heavyAttackCounter = Mathf.Clamp(heavyAttackCounter, 0, 3);
+            //heavy attack
+            else if (inputActions.PlayerControls.SecondaryAttack.triggered)
+            {
+                lastClickedTime = Time.time;
+                heavyAttackCounter++;
+
+                if (heavyAttackCounter == 1)
+                {
+                    playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, true);
+                }
+                heavyAttackCounter = Mathf.Clamp(heavyAttackCounter, 0, 3);
+            }
         }
     }
 

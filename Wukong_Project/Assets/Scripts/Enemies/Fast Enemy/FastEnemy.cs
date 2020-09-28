@@ -42,10 +42,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     [Header("Components")]
     [HideInInspector] public NavMeshAgent agent;
 
-    Animator animator;
-
-    Rigidbody rb;
-    
+    Animator animator;    
 
     void Start()
     {
@@ -53,7 +50,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         knockback = false;
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
 
@@ -109,12 +105,12 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
 
-            Vector3 dir = transform.position - enemy.transform.position;
-            dir.y = 0;
+            //Vector3 dir = transform.position - enemy.transform.position;
+            //dir.y = 0;
 
-            Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
-            enemyRb.velocity = Vector3.zero;
-            enemyRb.velocity = -dir.normalized * knockbackAmount;
+            //Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
+            //enemyRb.velocity = Vector3.zero;
+            //enemyRb.velocity = -dir.normalized * knockbackAmount;
         }
     }
 
@@ -174,11 +170,8 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public IEnumerator Dodge()
     {
         agent.isStopped = true;
-        rb.isKinematic = false;
-        rb.AddForce(-transform.forward * dashForce, ForceMode.VelocityChange);
 
         yield return new WaitForSeconds(dashDuration);
-        rb.isKinematic = true;
         agent.isStopped = false;
     }
 
@@ -188,6 +181,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         //instantiate particle effect
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
+        PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);
         yield return new WaitForSeconds(2);
         DropLoot();
         Destroy(gameObject);

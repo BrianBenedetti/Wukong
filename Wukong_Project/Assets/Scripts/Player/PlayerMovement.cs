@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         direction = Vector3.ClampMagnitude(direction, 1);
 
         //moves player according to input
-        if(direction.magnitude >= 0.1f)
+        if(direction.magnitude >= 0.05f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -94,17 +95,36 @@ public class PlayerMovement : MonoBehaviour
         //animates player locomotion
         playerAnimationsScript.PlayMovementAnimation(direction.magnitude);
 
-        //handles jumps
-        if (inputActions.PlayerControls.Jump.triggered && isGrounded)
+        var gamepad = Gamepad.current;
+
+        if(gamepad != null)
         {
-            Jump(); //mechanical jump
-            playerAnimationsScript.PlayJumpAnimation(); //plays animation
+            if (inputActions.PlayerControls.Jump.triggered && isGrounded && !gamepad.leftShoulder.isPressed)
+            {
+                Jump(); //mechanical jump
+                playerAnimationsScript.PlayJumpAnimation(); //plays animation
+            }
+            //and double jump
+            else if (inputActions.PlayerControls.Jump.triggered && canDoubleJump && !gamepad.leftShoulder.isPressed)
+            {
+                DoubleJump(); //mechanical jump
+                playerAnimationsScript.PlayJumpAnimation(); //plays animation
+            }
         }
-        //and double jump
-        else if(inputActions.PlayerControls.Jump.triggered && canDoubleJump)
+        else
         {
-            DoubleJump(); //mechanical jump
-            playerAnimationsScript.PlayJumpAnimation(); //plays animation
+            //handles jumps
+            if (inputActions.PlayerControls.Jump.triggered && isGrounded)
+            {
+                Jump(); //mechanical jump
+                playerAnimationsScript.PlayJumpAnimation(); //plays animation
+            }
+            //and double jump
+            else if (inputActions.PlayerControls.Jump.triggered && canDoubleJump)
+            {
+                DoubleJump(); //mechanical jump
+                playerAnimationsScript.PlayJumpAnimation(); //plays animation
+            }
         }
 
         //applies regular gravity to player

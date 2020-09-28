@@ -116,12 +116,12 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
 
-            Vector3 dir = transform.position - enemy.transform.position;
-            dir.y = 0;
+            //Vector3 dir = transform.position - enemy.transform.position;
+            //dir.y = 0;
 
-            Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
-            enemyRb.velocity = Vector3.zero;
-            enemyRb.velocity = -dir.normalized * knockbackAmount;
+            //Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
+            //enemyRb.velocity = Vector3.zero;
+            //enemyRb.velocity = -dir.normalized * knockbackAmount;
         }
     }
 
@@ -197,6 +197,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         //instantiate particle effect
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
+        PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);
         yield return new WaitForSeconds(2);
         DropLoot();
         Destroy(gameObject);

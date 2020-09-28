@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerDash : MonoBehaviour
 {
@@ -28,10 +29,22 @@ public class PlayerDash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputActions.PlayerControls.Dodge.triggered)
+        var gamepad = Gamepad.current;
+        if(gamepad != null)
         {
-            StartCoroutine(Dash());
-            animationsScript.PlayDodgeAnimation();
+            if (inputActions.PlayerControls.Dodge.triggered && !gamepad.leftShoulder.isPressed)
+            {
+                StartCoroutine(Dash());
+                animationsScript.PlayDodgeAnimation();
+            }
+        }
+        else
+        {
+            if (inputActions.PlayerControls.Dodge.triggered)
+            {
+                StartCoroutine(Dash());
+                animationsScript.PlayDodgeAnimation();
+            }
         }
     }
     

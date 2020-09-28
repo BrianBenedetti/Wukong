@@ -47,9 +47,9 @@ public class LockOnSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //constantly removes null transforms after they die
-        allEnemies.RemoveAll(Transform => Transform == null);
-        enemiesInRange.RemoveAll(Transform => Transform == null);
+        ////constantly removes null transforms after they die
+        //allEnemies.RemoveAll(Transform => Transform == null);
+        //enemiesInRange.RemoveAll(Transform => Transform == null);
 
         if (index > enemiesInRange.Count - 1)
         {
@@ -94,6 +94,18 @@ public class LockOnSystem : MonoBehaviour
         {
             targetGroup.m_Targets[1].target = target;
             lockOnCursor.transform.position = mainCamera.WorldToScreenPoint(target.position);
+        }
+    }
+
+    public void KilledOpponent(GameObject opponent)
+    {
+        if (allEnemies.Contains(opponent.transform))
+        {
+            allEnemies.Remove(opponent.transform);
+        }
+        if (enemiesInRange.Contains(opponent.transform))
+        {
+            enemiesInRange.Remove(opponent.transform);
         }
     }
 

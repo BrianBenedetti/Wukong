@@ -760,7 +760,6 @@ GameObject:
   - component: {fileID: 2213173311301775872}
   - component: {fileID: 2213173311301776892}
   - component: {fileID: 2213173311301776893}
-  - component: {fileID: 8215796740347182650}
   m_Layer: 8
   m_Name: Fast_Enemy_Fire
   m_TagString: Enemy
@@ -871,22 +870,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &8215796740347182650
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2213173311301775879}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 5
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 3
 --- !u!1 &2233650869574713516
 GameObject:
   m_ObjectHideFlags: 0

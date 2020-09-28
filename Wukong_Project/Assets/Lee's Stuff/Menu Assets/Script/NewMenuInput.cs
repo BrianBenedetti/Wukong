@@ -81,15 +81,15 @@ public class NewMenuInput : MonoBehaviour
             if (SelectedButton == 1)
             {
                 FindObjectOfType<AudioManager>().Play("click");
-                GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+                GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
-                SceneManager.LoadScene("test");
+                SceneManager.LoadScene(1);
                 //StartCoroutine(Delay());                            
             }
             else if (SelectedButton == 2)
             {
                 FindObjectOfType<AudioManager>().Play("click");
-                GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+                GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
                 ControlsM = true;
                 ControlsMenu.SetActive(true);
@@ -101,7 +101,7 @@ public class NewMenuInput : MonoBehaviour
             else if (SelectedButton == 3)
             {
                 FindObjectOfType<AudioManager>().Play("click");
-                GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+                GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
                 ControlsM = false;
                 ControlsMenu.SetActive(false);
@@ -113,7 +113,7 @@ public class NewMenuInput : MonoBehaviour
             else if (SelectedButton == 4)
             {
                 FindObjectOfType<AudioManager>().Play("click");
-                GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+                GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
                 Application.Quit();                
             }
@@ -197,7 +197,7 @@ public class NewMenuInput : MonoBehaviour
                     FindObjectOfType<AudioManager>().Play("click");
                     GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
-                    SceneManager.LoadScene("test");                    
+                    SceneManager.LoadScene(1);                    
                 }
             }
             else if (mousePos.y <= 520 && mousePos.y >= 410 && mousePos.x > 950 && mousePos.x < 1270)
@@ -206,7 +206,7 @@ public class NewMenuInput : MonoBehaviour
                 if (SelectedButton == 2 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
                     FindObjectOfType<AudioManager>().Play("click");
-                    GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+                    GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
                     ControlsM = true;
                     ControlsMenu.SetActive(true);
@@ -221,7 +221,7 @@ public class NewMenuInput : MonoBehaviour
                 if (SelectedButton == 3 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
                     FindObjectOfType<AudioManager>().Play("click");
-                    GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+                    GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
                     ControlsM = false;
                     ControlsMenu.SetActive(false);
@@ -237,7 +237,7 @@ public class NewMenuInput : MonoBehaviour
                 if (SelectedButton == 4 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
                     FindObjectOfType<AudioManager>().Play("click");
-                    GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+                    GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
                     Application.Quit();                             
                 }
@@ -400,10 +400,5 @@ public class NewMenuInput : MonoBehaviour
         Menu.SetActive(true);
         ControllerControls.SetActive(false);
         SelectedButton = 1;
-    }
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(1f);
-
-    }       
+    }     
 }
