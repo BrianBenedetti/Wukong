@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public bool isGrounded;
     bool canDoubleJump;
+    public bool canMove;
 
     public Transform cam;
     public Transform groundCheck;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         isGrounded = true;
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -76,20 +78,23 @@ public class PlayerMovement : MonoBehaviour
         direction = Vector3.ClampMagnitude(direction, 1);
 
         //moves player according to input
-        if(direction.magnitude >= 0.05f)
+        if (canMove)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+            if (direction.magnitude >= 0.05f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0, angle, 0);
 
-            Vector3 camForward = cam.transform.forward;
-            Vector3 camRight = cam.transform.right;
+                Vector3 camForward = cam.transform.forward;
+                Vector3 camRight = cam.transform.right;
 
-            moveDir = camForward * direction.z + camRight * direction.x;
-            moveDir.y = 0;
-            moveDir = Vector3.ClampMagnitude(moveDir, 1);
+                moveDir = camForward * direction.z + camRight * direction.x;
+                moveDir.y = 0;
+                moveDir = Vector3.ClampMagnitude(moveDir, 1);
 
-            controller.Move(moveDir * speed * Time.deltaTime);
+                controller.Move(moveDir * speed * Time.deltaTime);
+            }
         }
 
         //animates player locomotion

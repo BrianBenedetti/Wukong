@@ -7,17 +7,27 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
     public int maxHealth = 100;
+    public int maxMana = 100;
+    public int maxRage = 100;
     public int rageDuration = 15;
     public int primaryAttackDamage = 25;
     public int secondaryAttackDamage = 50;
     public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
     public int currentHealth = 0;
+    public int currentMana = 0;
+    public int currentRage = 0;
     int lightAttackCounter = 0;
     int heavyAttackCounter = 0;
     int actualDamage;
+    readonly int deathBool = Animator.StringToHash("isDead");
 
     PlayerElementalForms elementalFormsScript;
     PlayerAnimations playerAnimationsScript;
+    PlayerMovement playerMovementScript;
+
+    public UIBar healthBar;
+    public UIBar manaBar;
+    public UIBar rageBar;
 
     //public float knockbackStrength;
     public float maxComboDelay = 1.5f;
@@ -40,18 +50,31 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     [HideInInspector] public PlayerInputActions inputActions;
 
+    Animator anim;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
 
         elementalFormsScript = GetComponent<PlayerElementalForms>();
         playerAnimationsScript = GetComponent<PlayerAnimations>();
+        playerMovementScript = GetComponent<PlayerMovement>();
+
+        anim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxValue(maxHealth);
+        healthBar.SetValue(maxHealth);
+        currentMana = 0;
+        manaBar.SetMaxValue(maxMana);
+        manaBar.SetValue(currentMana);
+        currentRage = 0;
+        rageBar.SetMaxValue(maxRage);
+        rageBar.SetValue(currentRage);
 
         Enraged = false;
         isVulnerable = true;
@@ -69,6 +92,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         {
             lightAttackCounter = 0;
             heavyAttackCounter = 0;
+            playerMovementScript.canMove = true;
         }
 
         var gamepad = Gamepad.current;
@@ -79,6 +103,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
+                playerMovementScript.canMove = false;
 
                 if (lightAttackCounter == 1)
                 {
@@ -91,6 +116,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
+                playerMovementScript.canMove = false;
 
                 if (heavyAttackCounter == 1)
                 {
@@ -106,6 +132,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
+                playerMovementScript.canMove = false;
 
                 if (lightAttackCounter == 1)
                 {
@@ -118,6 +145,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
+                playerMovementScript.canMove = false;
 
                 if (heavyAttackCounter == 1)
                 {
@@ -230,26 +258,33 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
             actualDamage = elementalFormsScript.currentResistances.CalculateDamageWithResistance(damage, damageType);
             currentHealth -= actualDamage;
+            healthBar.SetValue(currentHealth);
 
             ShowDamageText();
 
             if (currentHealth <= 0)
             {
-                //play dead anim
+                //anim.SetBool(deathBool, true);
+                Respawn();
             }
         }
     }
 
-    public void RestoreValues(int health, int rage, int special)
+    public void RestoreValues(int health, int rage, int mana)
     {
         currentHealth += health;
-        //same for other two
+        healthBar.SetValue(currentHealth);
+        currentMana += mana;
+        manaBar.SetValue(currentMana);
+        currentRage += rage;
+        rageBar.SetValue(currentRage);
     }
 
     public void Respawn()
     {
         //reset all values
         //puts player at last checkpoint position
+        //anim.SetBool(deathBool, false);
         transform.position = PlayerManager.instance.lastCheckpointPlayerPosition;
     }
 

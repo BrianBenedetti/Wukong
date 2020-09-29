@@ -217,8 +217,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 9134955fafc43764b8ce57c6cc167a6c, type: 2}
   - {fileID: 2100000, guid: bf8684afa3d36aa4d8195dddcf1af5d4, type: 2}
   transitionElementalVFX: []
-  myHairRenderer: {fileID: 0}
-  myBodyRenderer: {fileID: 0}
+  myHairRenderer: {fileID: 440758123050895670}
+  myBodyRenderer: {fileID: 7649518820358968473}
   currentElement: 0
   currentDamageType: 0
   currentResistances: {fileID: 11400000, guid: 3573ddf6923a7a240be139edc96abc96, type: 2}
@@ -240,11 +240,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  maxMana: 100
+  maxRage: 100
   rageDuration: 15
   primaryAttackDamage: 25
   secondaryAttackDamage: 50
   specialAttackDamage: 100
   currentHealth: 0
+  currentMana: 0
+  currentRage: 0
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  rageBar: {fileID: 0}
   maxComboDelay: 2
   attackRadius: 2.5
   Enraged: 0
@@ -543,6 +550,18 @@ PrefabInstance:
 --- !u!4 &5216349835301325620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c70f663e73784f04ab0267bbbb4e8883,
+    type: 3}
+  m_PrefabInstance: {fileID: 5759694857097506015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7649518820358968473 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6501501168280553402, guid: c70f663e73784f04ab0267bbbb4e8883,
+    type: 3}
+  m_PrefabInstance: {fileID: 5759694857097506015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &440758123050895670 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5328718068273243625, guid: c70f663e73784f04ab0267bbbb4e8883,
     type: 3}
   m_PrefabInstance: {fileID: 5759694857097506015}
   m_PrefabAsset: {fileID: 0}
