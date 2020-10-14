@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public float jumpHeight = 2.1f;
     public float fallMultiplier = 1.5f;
+    public float timeToMaxSpeed;
+    public float knockbackTime;
+    float currentTime = 0;
+    float currentKnockbackTime = 0;
+
+    Animator anim;
 
     [HideInInspector] public bool isGrounded;
     bool canDoubleJump;
@@ -36,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerAnimationsScript = GetComponent<PlayerAnimations>();
+
+        anim = GetComponent<Animator>();
 
         inputActions = new PlayerInputActions();
 
@@ -78,14 +86,14 @@ public class PlayerMovement : MonoBehaviour
         direction = Vector3.ClampMagnitude(direction, 1);
 
         //moves player according to input
-        if (canMove)
+        if (direction.magnitude >= 0.05f)
         {
-            if (direction.magnitude >= 0.05f)
-            {
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0, angle, 0);
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0, angle, 0);
 
+            if (canMove)
+            {
                 Vector3 camForward = cam.transform.forward;
                 Vector3 camRight = cam.transform.right;
 
@@ -94,6 +102,41 @@ public class PlayerMovement : MonoBehaviour
                 moveDir = Vector3.ClampMagnitude(moveDir, 1);
 
                 controller.Move(moveDir * speed * Time.deltaTime);
+            }
+        }
+
+        if (direction.magnitude >= 0.95f
+            && (anim.GetBool(playerAnimationsScript.lightAttack1Bool) == false
+            && anim.GetBool(playerAnimationsScript.heavyAttack1Bool) == false))
+        {
+            currentTime += Time.deltaTime;
+
+            if(currentTime >= timeToMaxSpeed)
+            {
+                speed = 10;
+                playerAnimationsScript.SetAnimationBool(playerAnimationsScript.nimbusBool, true);
+            }
+        }
+        else
+        {
+            playerAnimationsScript.SetAnimationBool(playerAnimationsScript.nimbusBool, false);
+
+            //resets speed and time to default
+            currentTime = 0;
+            speed = 6;
+        }
+
+        if(anim.GetBool(playerAnimationsScript.nimbusBool) == true)
+        {
+            //prevents animations from playing when nimbus ends
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
+
+            if (!isGrounded)
+            {
+                //cant attack mid air while on nimbus
+                playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+                playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, false);
             }
         }
 
@@ -146,6 +189,19 @@ public class PlayerMovement : MonoBehaviour
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         canDoubleJump = false;
+    }
+
+    public IEnumerator PlayerKnockback(Vector3 direction, float knockbackStrength)
+    {
+        currentKnockbackTime = 0;
+        direction.y = 0;
+        
+        while(currentKnockbackTime < knockbackTime)
+        {
+            currentKnockbackTime += Time.deltaTime;
+            controller.Move(direction * knockbackStrength * Time.deltaTime * 2);
+            yield return null;
+        }
     }
 
     private void OnEnable()

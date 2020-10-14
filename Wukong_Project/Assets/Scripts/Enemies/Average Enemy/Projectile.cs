@@ -29,12 +29,14 @@ public class Projectile : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(parent.projectileDamage, parent.myDamageType);
-        Vector3 dir = transform.position - player.transform.position;
-        //dir.y = 0;
-        //Rigidbody enemyRb = player.GetComponent<Rigidbody>();
-        //enemyRb.velocity = Vector3.zero;
-        //enemyRb.velocity = -dir.normalized * knockbackAmount;
+        var damageScript = other.gameObject.GetComponent<IDamageable<int, DamageTypes>>();
+        if (damageScript != null)
+        {
+            damageScript.TakeDamage(parent.projectileDamage, parent.myDamageType);
+
+            Vector3 dir = transform.forward;
+            StartCoroutine(other.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
+        }
         gameObject.SetActive(false);
     }
 }

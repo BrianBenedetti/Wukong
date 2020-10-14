@@ -105,14 +105,20 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
 
-            //Vector3 dir = transform.position - enemy.transform.position;
-            //dir.y = 0;
-
-            //Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
-            //enemyRb.velocity = Vector3.zero;
-            //enemyRb.velocity = -dir.normalized * knockbackAmount;
+            Vector3 dir = transform.forward;
+            StartCoroutine(enemy.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
         }
     }
+
+    //public void CheckForEnemiesHit(int damage)
+    //{
+    //    Collider[] enemiesHit = Physics.OverlapSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius, enemyMask);
+
+    //    foreach (Collider enemy in enemiesHit)
+    //    {
+    //        enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.currentDamageType);
+    //    }
+    //}
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {

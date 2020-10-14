@@ -22,6 +22,7 @@ public class PlayerAnimations : MonoBehaviour
     public readonly int heavyAttack1Bool = Animator.StringToHash("Heavy Attack 1");
     public readonly int heavyAttack2Bool = Animator.StringToHash("Heavy Attack 2");
     public readonly int heavyAttack3Bool = Animator.StringToHash("Heavy Attack 3");
+    public readonly int nimbusBool = Animator.StringToHash("Nimbus");
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,11 @@ public class PlayerAnimations : MonoBehaviour
     public void SetAnimationBool(int boolToChange, bool value)
     {
         anim.SetBool(boolToChange, value);
+    }
+
+    public void ResetTrigger(int triggerToReset)
+    {
+        anim.ResetTrigger(triggerToReset);
     }
 
     public void PlayJumpAnimation()

@@ -165,6 +165,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         else
         {
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
         }
     }
@@ -181,6 +183,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, false);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
         }
     }
@@ -195,6 +199,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         {
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
         }
     }
@@ -212,6 +218,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, false);
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, false);
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, false);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
+            playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
         }
     }
@@ -224,6 +232,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, false);
         playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack2Bool, false);
         playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack3Bool, false);
+        playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
+        playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         lightAttackCounter = 0;
     }
 
@@ -235,6 +245,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack1Bool, false);
         playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack2Bool, false);
         playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack3Bool, false);
+        playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
+        playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         heavyAttackCounter = 0;
     }
 
@@ -258,6 +270,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
             actualDamage = elementalFormsScript.currentResistances.CalculateDamageWithResistance(damage, damageType);
             currentHealth -= actualDamage;
+            playerAnimationsScript.PlayHurtAnimation();
             healthBar.SetValue(currentHealth);
 
             ShowDamageText();

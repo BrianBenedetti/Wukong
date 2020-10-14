@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   turnSmoothTime: 5
-  lookRadius: 20
+  lookRadius: 15
   startWaitTime: 3
   retreatDistance: 5
   startTimeBetweenShots: 2
@@ -1145,7 +1145,7 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 15
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1

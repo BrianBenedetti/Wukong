@@ -25,7 +25,8 @@ public class AverageEnemy_IdleState : StateMachineBehaviour
         if(distanceToTarget >= baseScript.retreatDistance && distanceToTarget <= baseScript.agent.stoppingDistance)
         {
             animator.SetBool(ShootBool, true);
-        }else if (distanceToTarget < baseScript.retreatDistance)
+        }
+        else if (distanceToTarget < baseScript.retreatDistance)
         {
             int random = Random.Range(0, 11);
             if(random <= 5)
@@ -36,7 +37,8 @@ public class AverageEnemy_IdleState : StateMachineBehaviour
             {
                 animator.SetBool(RetreatBool, true);
             }
-        }else if(distanceToTarget > baseScript.agent.stoppingDistance)
+        }
+        else if(distanceToTarget > baseScript.agent.stoppingDistance)
         {
             animator.SetBool(ChaseBool, true);
         }

@@ -36,7 +36,7 @@ public class FastEnemy_IdleState : StateMachineBehaviour
         }
         else
         {
-            animator.SetBool(ChaseBool, true); //immidiately switches, need to wait with exit time
+            animator.SetBool(ChaseBool, true);
         }
     }
 

@@ -8,8 +8,12 @@ public class PlayerDash : MonoBehaviour
     PlayerMovement moveScript;
     PlayerAnimations animationsScript;
 
+    bool canDash;
+
     public float dashTime;
     public float dashSpeed;
+    public float dashCooldown;
+    float currentCooldown;
 
     [HideInInspector] public PlayerInputActions inputActions;
 
@@ -22,6 +26,8 @@ public class PlayerDash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canDash = true;
+
         moveScript = GetComponent<PlayerMovement>();
         animationsScript = GetComponent<PlayerAnimations>();
     }
@@ -32,7 +38,7 @@ public class PlayerDash : MonoBehaviour
         var gamepad = Gamepad.current;
         if(gamepad != null)
         {
-            if (inputActions.PlayerControls.Dodge.triggered && !gamepad.leftShoulder.isPressed)
+            if (inputActions.PlayerControls.Dodge.triggered && !gamepad.leftShoulder.isPressed && canDash)
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
@@ -40,24 +46,38 @@ public class PlayerDash : MonoBehaviour
         }
         else
         {
-            if (inputActions.PlayerControls.Dodge.triggered)
+            if (inputActions.PlayerControls.Dodge.triggered && canDash)
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
+            }
+        }
+
+        if (canDash)
+        {
+            currentCooldown = dashCooldown;
+        }
+        else
+        {
+            currentCooldown -= Time.deltaTime;
+            if(currentCooldown <= 0)
+            {
+                canDash = true;
             }
         }
     }
     
     IEnumerator Dash()
     {
-        //can dash infinitely
+        canDash = false;
+
         float startTime = Time.time;
 
         moveScript.velocity.y = 0;
 
-        while(Time.time < startTime + dashTime)
+        while (Time.time < startTime + dashTime)
         {
-            moveScript.controller.Move(moveScript.moveDir.normalized * dashSpeed * Time.deltaTime);
+            moveScript.controller.Move(transform.forward * dashSpeed * Time.deltaTime);
 
             yield return null;
         }
