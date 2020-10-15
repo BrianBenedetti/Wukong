@@ -1067,8 +1067,8 @@ MonoBehaviour:
   startWaitTime: 2
   knockbackAmount: 8
   currentHealth: 0
-  lightAttackDamage: 40
-  heavyAttackDamage: 60
+  lightAttackDamage: 25
+  heavyAttackDamage: 35
   waypoints: []
   attackOrigin: {fileID: 3836620667759315608}
   target: {fileID: 0}

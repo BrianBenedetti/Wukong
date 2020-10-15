@@ -52,6 +52,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     Animator anim;
 
+    CharacterController controller;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -61,6 +63,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerMovementScript = GetComponent<PlayerMovement>();
 
         anim = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
     }
 
     // Start is called before the first frame update
@@ -277,8 +280,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
             if (currentHealth <= 0)
             {
-                //anim.SetBool(deathBool, true);
-                Respawn();
+                anim.SetBool(deathBool, true);
+                StartCoroutine(Die());
             }
         }
     }
@@ -295,10 +298,10 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void Respawn()
     {
-        //reset all values
-        //puts player at last checkpoint position
-        //anim.SetBool(deathBool, false);
         transform.position = PlayerManager.instance.lastCheckpointPlayerPosition;
+        RestoreValues(60, 0, 0);
+        controller.enabled = true;
+        anim.SetBool(deathBool, false);
     }
 
     void ShowDamageText()
@@ -321,8 +324,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public IEnumerator Die()
     {
         //play dissolve shader effect
+        controller.enabled = false;
         yield return new WaitForSeconds(2);
-        //You died screen probably
+        Respawn();
     }
 
     private void OnDrawGizmos()

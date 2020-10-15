@@ -38,7 +38,7 @@ public class PlayerDash : MonoBehaviour
         var gamepad = Gamepad.current;
         if(gamepad != null)
         {
-            if (inputActions.PlayerControls.Dodge.triggered && !gamepad.leftShoulder.isPressed && canDash)
+            if (inputActions.PlayerControls.Dodge.triggered && !gamepad.leftShoulder.isPressed && canDash && moveScript.direction.magnitude > 0)
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
@@ -46,7 +46,7 @@ public class PlayerDash : MonoBehaviour
         }
         else
         {
-            if (inputActions.PlayerControls.Dodge.triggered && canDash)
+            if (inputActions.PlayerControls.Dodge.triggered && canDash && moveScript.direction.magnitude > 0)
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();

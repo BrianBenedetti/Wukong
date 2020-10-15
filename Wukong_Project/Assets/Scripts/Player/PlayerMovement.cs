@@ -88,20 +88,23 @@ public class PlayerMovement : MonoBehaviour
         //moves player according to input
         if (direction.magnitude >= 0.05f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0, angle, 0);
-
-            if (canMove)
+            if(controller.enabled == true)
             {
-                Vector3 camForward = cam.transform.forward;
-                Vector3 camRight = cam.transform.right;
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0, angle, 0);
 
-                moveDir = camForward * direction.z + camRight * direction.x;
-                moveDir.y = 0;
-                moveDir = Vector3.ClampMagnitude(moveDir, 1);
+                if (canMove)
+                {
+                    Vector3 camForward = cam.transform.forward;
+                    Vector3 camRight = cam.transform.right;
 
-                controller.Move(moveDir * speed * Time.deltaTime);
+                    moveDir = camForward * direction.z + camRight * direction.x;
+                    moveDir.y = 0;
+                    moveDir = Vector3.ClampMagnitude(moveDir, 1);
+
+                    controller.Move(moveDir * speed * Time.deltaTime);
+                }
             }
         }
 

@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848fc5155a179c84399ee2e2a7dc4b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  knockbackAmount: 0
+  speed: 5
+  knockbackAmount: 4
   parent: {fileID: 3797914584394110915, guid: 6afc39152306c824ca0c7e7544173e62, type: 3}
 --- !u!54 &-3408946468253908858
 Rigidbody:

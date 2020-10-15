@@ -1189,8 +1189,8 @@ MonoBehaviour:
   retreatDistance: 5
   startTimeBetweenShots: 2
   knockbackAmount: 8
-  projectileDamage: 20
-  slamDamage: 30
+  projectileDamage: 10
+  slamDamage: 20
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

@@ -147,7 +147,7 @@ MonoBehaviour:
   jumpHeight: 2.1
   fallMultiplier: 2.5
   timeToMaxSpeed: 3
-  knockbackTime: 0.25
+  knockbackTime: 0.1
   isGrounded: 0
   canMove: 0
   cam: {fileID: 0}
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashTime: 0.1
   dashSpeed: 40
+  dashCooldown: 0.5
 --- !u!114 &409033512456417231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,8 +247,8 @@ MonoBehaviour:
   maxMana: 100
   maxRage: 100
   rageDuration: 15
-  primaryAttackDamage: 25
-  secondaryAttackDamage: 50
+  primaryAttackDamage: 15
+  secondaryAttackDamage: 25
   specialAttackDamage: 100
   currentHealth: 0
   currentMana: 0

@@ -731,8 +731,8 @@ MonoBehaviour:
   dashForce: 50
   dashDuration: 0.1
   knockbackAmount: 5
-  lightAttackDamage: 25
-  heavyAttackDamage: 35
+  lightAttackDamage: 15
+  heavyAttackDamage: 20
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

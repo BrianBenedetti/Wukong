@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
 
     public Camera cam;
 
-    [HideInInspector] public Vector3 lastCheckpointPlayerPosition;
+    public Vector3 lastCheckpointPlayerPosition;
 
     public AudioManager audioManager;
 
