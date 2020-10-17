@@ -273,7 +273,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
             actualDamage = elementalFormsScript.currentResistances.CalculateDamageWithResistance(damage, damageType);
             currentHealth -= actualDamage;
-            playerAnimationsScript.PlayHurtAnimation();
+            //dont play hurt animation if damage was zero AKA same element
+            if(actualDamage != 0)
+            {
+                playerAnimationsScript.PlayHurtAnimation();
+            }
             healthBar.SetValue(currentHealth);
 
             ShowDamageText();

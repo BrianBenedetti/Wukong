@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerElementalForms : MonoBehaviour
 {
-    enum ElementalForms
+    public enum ElementalForms
     {
         normal,
         fire,
@@ -24,7 +24,7 @@ public class PlayerElementalForms : MonoBehaviour
 
     [HideInInspector] public PlayerInputActions inputActions;
 
-    [SerializeField] ElementalForms currentElement;
+    public ElementalForms currentElement;
     public DamageTypes currentDamageType;
     public DamageResistances currentResistances;
     public DamageResistances[] allResistances;

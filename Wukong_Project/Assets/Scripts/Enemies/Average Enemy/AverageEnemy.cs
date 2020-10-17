@@ -146,16 +146,17 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
-        PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
-        PlayerManager.instance.hitStop.Stop(0.1f);
-
-        StartCoroutine(Knockback());
-
-        animator.SetTrigger(HurtTrigger);
-
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
         currentHealth -= actualDamage;
+
+        if (actualDamage > 10)
+        {
+            animator.SetTrigger(HurtTrigger);
+            StartCoroutine(Knockback());
+            PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
+            PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+            PlayerManager.instance.hitStop.Stop(0.1f);
+        }
 
         ShowDamageText();
 
