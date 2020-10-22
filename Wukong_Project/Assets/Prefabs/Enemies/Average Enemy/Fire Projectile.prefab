@@ -110,6 +110,7 @@ MonoBehaviour:
   speed: 5
   knockbackAmount: 4
   parent: {fileID: 3797914584394110915, guid: 6afc39152306c824ca0c7e7544173e62, type: 3}
+  myDamageType: 1
 --- !u!54 &-3408946468253908858
 Rigidbody:
   m_ObjectHideFlags: 0

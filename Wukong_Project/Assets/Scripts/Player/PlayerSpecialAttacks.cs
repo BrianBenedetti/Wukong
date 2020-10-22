@@ -7,16 +7,15 @@ public class PlayerSpecialAttacks : MonoBehaviour
     PlayerInputActions inputActions;
 
     PlayerElementalForms elementalFormScript;
+    PlayerAnimations animationsScript;
 
     PlayerCombat combatScript;
 
     PlayerMovement movementScript;
 
-    ObjectPooler objectPooler;
-
-    readonly string fireSpecialAttack = "Fire Special Attack";
-    readonly string waterSpecialAttack = "Water Special Attack";
-    readonly string airSpecialAttack = "Air Special Attack";
+    public GameObject fireSpecialAttack;
+    public GameObject waterSpecialAttack;
+    public GameObject airSpecialAttack;
 
     private void Awake()
     {
@@ -25,11 +24,7 @@ public class PlayerSpecialAttacks : MonoBehaviour
         elementalFormScript = GetComponent<PlayerElementalForms>();
         combatScript = GetComponent<PlayerCombat>();
         movementScript = GetComponent<PlayerMovement>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        objectPooler = ObjectPooler.Instance;
+        animationsScript = GetComponent<PlayerAnimations>();
     }
 
     // Update is called once per frame
@@ -40,22 +35,22 @@ public class PlayerSpecialAttacks : MonoBehaviour
             switch (elementalFormScript.currentElement)
             {
                 case PlayerElementalForms.ElementalForms.fire:
-                    //Debug.Log("Used Fire attack");
-                    objectPooler.SpawnFromPool(fireSpecialAttack, transform.position, Quaternion.identity);
-                    combatScript.currentMana = 0;
-                    combatScript.manaBar.SetValue(combatScript.currentMana);
+                    animationsScript.PlaySpecialAttackAnimation();
+                    Instantiate(fireSpecialAttack, transform.position, Quaternion.identity);
+                    //combatScript.currentMana = 0;
+                    //combatScript.manaBar.SetValue(combatScript.currentMana);
                     break;
 
                 case PlayerElementalForms.ElementalForms.water:
-                    Debug.Log("Used Water attack");
-                    //objectPooler.SpawnFromPool(waterSpecialAttack, transform.position, Quaternion.identity);
+                    animationsScript.PlaySpecialAttackAnimation();
+                    Instantiate(waterSpecialAttack, transform.position + transform.forward, transform.rotation);
                     //combatScript.currentMana = 0;
                     //combatScript.manaBar.SetValue(combatScript.currentMana);
                     break;
 
                 case PlayerElementalForms.ElementalForms.air:
-                    Debug.Log("Used Air attack");
-                    //objectPooler.SpawnFromPool(airSpecialAttack, transform.position, Quaternion.identity);
+                    animationsScript.PlaySpecialAttackAnimation();
+                    Instantiate(airSpecialAttack, transform.position, Quaternion.identity);
                     //combatScript.currentMana = 0;
                     //combatScript.manaBar.SetValue(combatScript.currentMana);
                     break;

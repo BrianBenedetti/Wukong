@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using System.Collections.Generic;
 
 public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
@@ -25,6 +26,14 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     readonly int HurtTrigger = Animator.StringToHash("Hurt");
     readonly int DieBool = Animator.StringToHash("isDead");
 
+    public int[] lootTable ={
+        50, //health
+        35, //mana
+        15 //rage
+    };
+
+    int lootTotalTally = 0;
+
     bool knockback;
 
     public Transform[] waypoints;
@@ -35,6 +44,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public string myProjectile;
 
     readonly string damageText = "Damage Text";
+    public List<string> lootOrbs = new List<string>();
 
     ObjectPooler objectPooler;
 
@@ -61,6 +71,11 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         randomWaypoint = Random.Range(0, waypoints.Length);
         waitTime = startWaitTime;
         timeBetweenShots = startTimeBetweenShots;
+
+        foreach (int i in lootTable)
+        {
+            lootTotalTally += i;
+        }
     }
 
     private void FixedUpdate()
@@ -176,25 +191,20 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         for (int i = 0; i < maxHealth / 50; i++)
         {
-            int rand = Random.Range(0, 3);
-            string randomOrb = null;
+            int randomNumber = Random.Range(0, lootTotalTally + 1);
 
-            switch (rand)
+            for (int j = 0; j < lootTable.Length; j++)
             {
-                case 2:
-                    randomOrb = "Special Orb";
+                if (randomNumber <= lootTable[j])
+                {
+                    objectPooler.SpawnFromPool(lootOrbs[j].ToString(), transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
                     break;
-                case 1:
-                    randomOrb = "Rage Orb";
-                    break;
-                case 0:
-                    randomOrb = "Health Orb";
-                    break;
-                default:
-                    randomOrb = null;
-                    break;
+                }
+                else
+                {
+                    randomNumber -= lootTable[j];
+                }
             }
-            objectPooler.SpawnFromPool(randomOrb, transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
         }
     }
 

@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1958f62d6df0d4091f741c95306180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 100
   turnSmoothTime: 5
   lookRadius: 15
   startWaitTime: 3
@@ -1065,6 +1065,7 @@ MonoBehaviour:
   knockbackAmount: 8
   projectileDamage: 10
   slamDamage: 25
+  lootTable: 32000000230000000f000000
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1075,6 +1076,10 @@ MonoBehaviour:
   target: {fileID: 0}
   damageTextPos: {fileID: 9180139174090832822}
   myProjectile: Water Projectile
+  lootOrbs:
+  - Health Orb
+  - Mana Orb
+  - Rage Orb
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512

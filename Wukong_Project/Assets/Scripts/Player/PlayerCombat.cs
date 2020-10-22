@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,13 +8,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public int maxHealth = 100;
     public int maxMana = 100;
     public int maxRage = 100;
-    public int rageDuration = 15;
+    public int rageDuration = 10;
     public int primaryAttackDamage = 25;
     public int secondaryAttackDamage = 50;
-    public int specialAttackDamage = 100; //this has to change cause of different types of special attacks
     public int currentHealth = 0;
     public int currentMana = 0;
     public int currentRage = 0;
+    public int comboHits = 0;
     int lightAttackCounter = 0;
     int heavyAttackCounter = 0;
     int actualDamage;
@@ -29,8 +28,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public UIBar manaBar;
     public UIBar rageBar;
 
-    //public float knockbackStrength;
     public float maxComboDelay = 1.5f;
+    public float lastTimeHit = 0;
     float lastClickedTime = 0;
     public float attackRadius;
 
@@ -43,6 +42,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public Vector3 attackSize;
     public Vector3 attackPositionOffsetFromPlayerCenter;
+    Vector3 comboCounterScale;
 
     public LayerMask enemyMask;
 
@@ -54,6 +54,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     CharacterController controller;
 
+    public TextMeshProUGUI comboCounter;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -64,6 +66,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+        comboCounterScale = comboCounter.GetComponent<RectTransform>().localScale;
     }
 
     // Start is called before the first frame update
@@ -72,10 +75,10 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(maxHealth);
-        currentMana = 0;
+        currentMana = 100;
         manaBar.SetMaxValue(maxMana);
         manaBar.SetValue(currentMana);
-        currentRage = 0;
+        currentRage = 100;
         rageBar.SetMaxValue(maxRage);
         rageBar.SetValue(currentRage);
 
@@ -83,12 +86,26 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         isVulnerable = true;
 
         objectPooler = ObjectPooler.Instance;
+
+        comboCounter.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentMana = Mathf.Clamp(currentMana, 0, maxMana);
+        currentRage = Mathf.Clamp(currentRage, 0, maxRage);
+
+        if (comboHits > 0)
+        {
+            comboCounter.enabled = true;
+            comboCounter.text = "x" + comboHits.ToString();
+        }
+        else
+        {
+            comboCounter.enabled = false;
+        }
 
         //resets combo timer
         if (Time.time - lastClickedTime >= maxComboDelay)
@@ -98,10 +115,16 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerMovementScript.canMove = true;
         }
 
+        if(Time.time - lastTimeHit >= maxComboDelay)
+        {
+            comboHits = 0;
+        }
+
         var gamepad = Gamepad.current;
 
         if (gamepad != null)
         {
+            //light attack
             if (inputActions.PlayerControls.PrimaryAttack.triggered && !gamepad.leftShoulder.isPressed)
             {
                 lastClickedTime = Time.time;
@@ -156,6 +179,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 }
                 heavyAttackCounter = Mathf.Clamp(heavyAttackCounter, 0, 3);
             }
+        }
+
+        if (inputActions.PlayerControls.Rage.triggered && currentRage == maxRage && !Enraged)
+        {
+            StartCoroutine(Rage());
         }
     }
 
@@ -259,7 +287,18 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.currentDamageType);
+            if (Enraged)
+            {
+                enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage * 2, elementalFormsScript.currentDamageType);
+            }
+            else
+            {
+                enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.currentDamageType);
+            }
+
+            comboHits++;
+            lastTimeHit = Time.time;
+            //playerAnimationsScript.PlayComboPulse();  //not workin
         }
     }
 
@@ -267,17 +306,18 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         if (isVulnerable)
         {
-            PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
-            PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
-            PlayerManager.instance.hitStop.Stop(0.1f);
-
             actualDamage = elementalFormsScript.currentResistances.CalculateDamageWithResistance(damage, damageType);
             currentHealth -= actualDamage;
             //dont play hurt animation if damage was zero AKA same element
             if(actualDamage != 0)
             {
+                PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
+                PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+                PlayerManager.instance.hitStop.Stop(0.1f);
+
                 playerAnimationsScript.PlayHurtAnimation();
             }
+
             healthBar.SetValue(currentHealth);
 
             ShowDamageText();
@@ -316,13 +356,41 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     IEnumerator Rage()
     {
-        //speed *= 2;
+        Enraged = true;
+        playerMovementScript.speed *= 2;
         isVulnerable = false;
+        playerAnimationsScript.PlayRageAnimation();
+        //activate shader
+        Debug.Log(Enraged);
+        StartCoroutine(DecreaseRageBarOverTime(rageDuration));
 
         yield return new WaitForSeconds(rageDuration);
+
         Enraged = false;
-        //speed /= 2;
+        playerMovementScript.speed /= 2;
         isVulnerable = true;
+        Debug.Log(Enraged);
+        //deactivate shader
+    }
+
+    IEnumerator DecreaseRageBarOverTime(float time)
+    {
+        float timePassed = 0;
+
+        int currentRageAtStart = currentRage;
+
+        while(timePassed < 1)
+        {
+            timePassed += Time.deltaTime / time;
+
+            currentRage = (int)Mathf.Lerp(currentRageAtStart, 0, timePassed);
+            rageBar.SetValue(currentRage);
+
+            yield return null;
+        }
+
+        currentRage = 0;
+        rageBar.SetValue(currentRage);
     }
 
     public IEnumerator Die()

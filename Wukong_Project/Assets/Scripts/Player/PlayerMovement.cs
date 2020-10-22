@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform cam;
     public Transform groundCheck;
 
+    public GameObject nimbus;
+
     public LayerMask groundMask;
 
     [HideInInspector] public PlayerInputActions inputActions;
@@ -55,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = true;
         canMove = true;
+
+        nimbus.SetActive(false);
     }
 
     // Update is called once per frame
@@ -118,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = 10;
                 playerAnimationsScript.SetAnimationBool(playerAnimationsScript.nimbusBool, true);
+                nimbus.SetActive(true);
             }
         }
         else
@@ -127,9 +132,10 @@ public class PlayerMovement : MonoBehaviour
             //resets speed and time to default
             currentTime = 0;
             speed = 6;
+            nimbus.SetActive(false);
         }
 
-        if(anim.GetBool(playerAnimationsScript.nimbusBool) == true)
+        if (anim.GetBool(playerAnimationsScript.nimbusBool) == true)
         {
             //prevents animations from playing when nimbus ends
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);

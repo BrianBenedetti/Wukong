@@ -2243,12 +2243,17 @@ MonoBehaviour:
   currentHealth: 0
   lightAttackDamage: 25
   heavyAttackDamage: 35
+  lootTable: 32000000230000000f000000
   waypoints: []
   attackOrigin: {fileID: 7871201216646405470}
   target: {fileID: 0}
   damageTextPos: {fileID: 4554690933885622837}
   myDamageType: 2
   myResistances: {fileID: 11400000, guid: 1a4d80dd87a1fbb4abfe764119759dfe, type: 2}
+  lootOrbs:
+  - Health Orb
+  - Mana Orb
+  - Rage Orb
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 512

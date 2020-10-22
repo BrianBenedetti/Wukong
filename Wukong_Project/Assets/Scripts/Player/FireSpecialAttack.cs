@@ -14,6 +14,8 @@ public class FireSpecialAttack : MonoBehaviour
 
     readonly string enemyTag = "Enemy";
 
+    PlayerCombat playerCombatScript;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(enemyTag))
@@ -46,9 +48,11 @@ public class FireSpecialAttack : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Start()
     {
         StartCoroutine(TimerToDestruction(attackLifespan));
+
+        playerCombatScript = PlayerManager.instance.player.GetComponent<PlayerCombat>();
     }
 
     IEnumerator DamageOverTime(IDamageable<int, DamageTypes> damageable)
@@ -57,15 +61,18 @@ public class FireSpecialAttack : MonoBehaviour
         {
             //calls the damage function on the interface
             damageable.TakeDamage(damage, myDamageType);
+            //adds to combo counter
+            playerCombatScript.comboHits++;
+            playerCombatScript.lastTimeHit = Time.time;
             //waits for a certain amount of time to apply damage again
             yield return new WaitForSeconds(damageRateInSeconds);
         }
     }
 
-    IEnumerator TimerToDestruction(float time)
+    IEnumerator TimerToDestruction(int time)
     {
         yield return new WaitForSeconds(time);
 
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
