@@ -28,6 +28,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public UIBar manaBar;
     public UIBar rageBar;
 
+    public GameObject staff;
+
     public float maxComboDelay = 1.5f;
     public float lastTimeHit = 0;
     float lastClickedTime = 0;
@@ -88,6 +90,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         objectPooler = ObjectPooler.Instance;
 
         comboCounter.enabled = false;
+        staff.SetActive(false);
     }
 
     // Update is called once per frame
@@ -130,6 +133,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
                 playerMovementScript.canMove = false;
+                staff.SetActive(true);
 
                 if (lightAttackCounter == 1)
                 {
@@ -143,6 +147,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
                 playerMovementScript.canMove = false;
+                staff.SetActive(true);
 
                 if (heavyAttackCounter == 1)
                 {
@@ -159,6 +164,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
                 playerMovementScript.canMove = false;
+                staff.SetActive(true);
 
                 if (lightAttackCounter == 1)
                 {
@@ -172,6 +178,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
                 playerMovementScript.canMove = false;
+                staff.SetActive(true);
 
                 if (heavyAttackCounter == 1)
                 {
@@ -199,6 +206,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
+            staff.SetActive(false);
         }
     }
 
@@ -217,6 +225,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
+            staff.SetActive(false);
         }
     }
 
@@ -233,6 +242,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
+            staff.SetActive(false);
         }
     }
 
@@ -252,6 +262,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
+            staff.SetActive(false);
         }
     }
 
@@ -266,6 +277,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         lightAttackCounter = 0;
+        staff.SetActive(false);
     }
 
     public void HeavyAttack3End()
@@ -279,6 +291,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         heavyAttackCounter = 0;
+        staff.SetActive(false);
     }
 
     public void CheckForEnemiesHit(int damage)
@@ -298,7 +311,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
             comboHits++;
             lastTimeHit = Time.time;
-            //playerAnimationsScript.PlayComboPulse();  //not workin
         }
     }
 
@@ -357,7 +369,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     IEnumerator Rage()
     {
         Enraged = true;
-        playerMovementScript.speed *= 2;
+        playerMovementScript.currentSpeed = playerMovementScript.rageSpeed;
         isVulnerable = false;
         playerAnimationsScript.PlayRageAnimation();
         //activate shader
@@ -367,7 +379,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         yield return new WaitForSeconds(rageDuration);
 
         Enraged = false;
-        playerMovementScript.speed /= 2;
+        playerMovementScript.currentSpeed = playerMovementScript.normalSpeed;
         isVulnerable = true;
         Debug.Log(Enraged);
         //deactivate shader

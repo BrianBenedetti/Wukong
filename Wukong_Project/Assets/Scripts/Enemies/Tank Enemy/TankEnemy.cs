@@ -12,7 +12,9 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public float lookRadius;
     public float startWaitTime;
     public float knockbackAmount = 8;
-    [SerializeField]float currentHealth;
+    public float attackRadius;
+    public float slamRadius;
+    float currentHealth;
     float waitTime;
 
     public int lightAttackDamage;
@@ -96,28 +98,31 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         }
     }
 
-    public void Attack(Transform attackOrigin, float attackRadius, LayerMask whatIsEnemy, int damage)
+    public void Attack()
     {
         Collider[] enemiesHit = Physics.OverlapSphere(attackOrigin.position, attackRadius, whatIsEnemy);
 
+        Vector3 dir = transform.forward;
+
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
-
-            Vector3 dir = transform.forward;
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(lightAttackDamage, myDamageType);
             StartCoroutine(enemy.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
         }
     }
 
-    //public void CheckForEnemiesHit(int damage)
-    //{
-    //    Collider[] enemiesHit = Physics.OverlapSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius, enemyMask);
+    public void Slam()
+    {
+        Collider[] enemiesHit = Physics.OverlapSphere(transform.position, attackRadius, whatIsEnemy);
 
-    //    foreach (Collider enemy in enemiesHit)
-    //    {
-    //        enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.currentDamageType);
-    //    }
-    //}
+        Vector3 dir = transform.forward;
+
+        foreach (Collider enemy in enemiesHit)
+        {
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(heavyAttackDamage, myDamageType);
+            StartCoroutine(enemy.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
+        }
+    }
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {

@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0b29c35857fc9c74eb67657ff0547b96, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
   speed: 5
   knockbackAmount: 4
   parent: {fileID: 3797914584394110915, guid: 6afc39152306c824ca0c7e7544173e62, type: 3}
+  myDamageType: 0
 --- !u!54 &1202700969790319029
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -20,7 +20,6 @@ public class AverageEnemy_ShootState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript.FaceTarget();
-        baseScript.Shoot();
 
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget < baseScript.retreatDistance)

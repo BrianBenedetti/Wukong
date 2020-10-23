@@ -5,7 +5,6 @@ public class TankEnemy_SwipeState : StateMachineBehaviour
     TankEnemy baseScript;
 
     float distanceToTarget;
-    public float attackRadius; //for now
 
     readonly int ChaseBool = Animator.StringToHash("isChasing");
     readonly int IdleBool = Animator.StringToHash("isIdle");
@@ -14,7 +13,6 @@ public class TankEnemy_SwipeState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<TankEnemy>();
-        baseScript.Attack(baseScript.attackOrigin, attackRadius, baseScript.whatIsEnemy, baseScript.lightAttackDamage); //for now
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

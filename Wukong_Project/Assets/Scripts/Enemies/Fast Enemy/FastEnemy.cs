@@ -11,9 +11,10 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public float turnSmoothTime;
     public float lookRadius;
     public float startWaitTime;
-    public float dashForce;
-    public float dashDuration;
     public float knockbackAmount = 5;
+    public float attackRadius;
+    public float dashForce = 50;
+    public float dashDuration = 0.1f;
     float currentHealth;
     float waitTime;
 
@@ -112,28 +113,18 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         }
     }
 
-    public void Attack(Transform attackOrigin, float attackRadius, LayerMask whatIsEnemy, int damage)
+    public void Attack(int damage)
     {
         Collider[] enemiesHit = Physics.OverlapSphere(attackOrigin.position, attackRadius, whatIsEnemy);
+
+        Vector3 dir = transform.forward;
 
         foreach (Collider enemy in enemiesHit)
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
-
-            Vector3 dir = transform.forward;
             StartCoroutine(enemy.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
         }
     }
-
-    //public void CheckForEnemiesHit(int damage)
-    //{
-    //    Collider[] enemiesHit = Physics.OverlapSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius, enemyMask);
-
-    //    foreach (Collider enemy in enemiesHit)
-    //    {
-    //        enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.currentDamageType);
-    //    }
-    //}
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {

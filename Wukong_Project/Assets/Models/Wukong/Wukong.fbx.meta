@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c70f663e73784f04ab0267bbbb4e8883
+guid: 842ec1242a52d9047aeccffaa2a2ad89
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -25,7 +25,7 @@ ModelImporter:
       74: 5539831331247536789
     second: Jump
   - first:
-      74: -5344662404720709193
+      74: 4397059466156116884
     second: Airborne
   - first:
       74: -7497848331705974981
@@ -34,29 +34,44 @@ ModelImporter:
       74: -4626348630705726067
     second: Double Jump
   - first:
-      74: -7789838170890588459
-    second: Light Attack 1
+      74: 8017390324079358001
+    second: Hurt
   - first:
-      74: 2251136669961277374
-    second: Light Attack 2
-  - first:
-      74: 7216948879280740181
-    second: Light Attack 3
-  - first:
-      74: -4687051492549439003
-    second: Heavy Attack 1
-  - first:
-      74: -4718594673180331417
-    second: Heavy Attack 2
-  - first:
-      74: 3548762286804856193
-    second: Heavy Attack 3
+      74: -8444228808809566427
+    second: Dash
   - first:
       74: 4348485665485846014
     second: Death
   - first:
-      74: 8017390324079358001
-    second: Hurt
+      74: -3499061159965903495
+    second: Light 1
+  - first:
+      74: 6298507983667069621
+    second: Light 2
+  - first:
+      74: -2270840955452572432
+    second: Light 3
+  - first:
+      74: -4515837162296784655
+    second: Heavy 1
+  - first:
+      74: -9122456640193852358
+    second: Heavy 2
+  - first:
+      74: 1834442251105103980
+    second: Heavy 3
+  - first:
+      74: 6381016060304972148
+    second: Special Attack
+  - first:
+      74: 4419032846506926745
+    second: Rage
+  - first:
+      74: -4441285600944154771
+    second: Menu Spin
+  - first:
+      74: 2286811783503516370
+    second: Menu Bounce
   externalObjects: {}
   materials:
     materialImportMode: 0
@@ -72,7 +87,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event HeavyAttack1End has a time (1.583333) outside
+      the clip's valid range (0.000000..1.583332). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -90,7 +106,7 @@ ModelImporter:
       takeName: rig|rigAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 518
+      lastFrame: 1340
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -156,7 +172,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -185,7 +201,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -214,7 +230,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -234,8 +250,8 @@ ModelImporter:
       name: Jump
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 214
-      lastFrame: 221
+      firstFrame: 212
+      lastFrame: 217
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -272,7 +288,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -292,8 +308,8 @@ ModelImporter:
       name: Land
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 300
-      lastFrame: 304
+      firstFrame: 304
+      lastFrame: 306
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -347,11 +363,98 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Light Attack 1
+      name: Hurt
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 400
-      lastFrame: 414
+      firstFrame: 550
+      lastFrame: 562
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Dash
+      takeName: rig|rigAction
+      internalID: 0
+      firstFrame: 590
+      lastFrame: 598
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: rig|rigAction
+      internalID: 0
+      firstFrame: 623
+      lastFrame: 680
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Light 1
+      takeName: rig|rigAction
+      internalID: 0
+      firstFrame: 760
+      lastFrame: 773
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -378,7 +481,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6409273
+      - time: 0.5482642
         functionName: CheckForEnemiesHit
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -390,11 +493,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Light Attack 2
+      name: Light 2
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 415
-      lastFrame: 426
+      firstFrame: 774
+      lastFrame: 793
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -421,7 +524,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5366814
+      - time: 0.7953655
         functionName: CheckForEnemiesHit
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -433,11 +536,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Light Attack 3
+      name: Light 3
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 427
-      lastFrame: 443
+      firstFrame: 794
+      lastFrame: 815
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -464,7 +567,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.61389995
+      - time: 0.51351494
         functionName: CheckForEnemiesHit
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -476,11 +579,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Heavy Attack 1
+      name: Heavy 1
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 475
-      lastFrame: 489
+      firstFrame: 856
+      lastFrame: 894
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -507,7 +610,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6563703
+      - time: 0.5096528
         functionName: CheckForEnemiesHit
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -519,11 +622,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Heavy Attack 2
+      name: Heavy 2
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 490
-      lastFrame: 501
+      firstFrame: 895
+      lastFrame: 928
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -550,23 +653,37 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.51737624
+      - time: 0.5444003
         functionName: CheckForEnemiesHit
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 25
+        intParameter: 15
+        messageOptions: 0
+      - time: 0.7567555
+        functionName: CheckForEnemiesHit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 15
+        messageOptions: 0
+      - time: 0.96911067
+        functionName: CheckForEnemiesHit
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 15
         messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Heavy Attack 3
+      name: Heavy 3
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 502
-      lastFrame: 518
+      firstFrame: 929
+      lastFrame: 965
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -593,7 +710,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6602313
+      - time: 0.4942093
         functionName: CheckForEnemiesHit
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -605,11 +722,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Death
+      name: Special Attack
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 375
-      lastFrame: 380
+      firstFrame: 990
+      lastFrame: 1015
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -634,11 +751,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Hurt
+      name: Rage
       takeName: rig|rigAction
       internalID: 0
-      firstFrame: 340
-      lastFrame: 350
+      firstFrame: 1050
+      lastFrame: 1074
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -646,6 +763,64 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Menu Spin
+      takeName: rig|rigAction
+      internalID: 0
+      firstFrame: 1080
+      lastFrame: 1133
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Menu Bounce
+      takeName: rig|rigAction
+      internalID: 0
+      firstFrame: 1140
+      lastFrame: 1220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -715,7 +890,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: root
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

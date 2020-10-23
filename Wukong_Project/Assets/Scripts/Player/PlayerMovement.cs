@@ -8,9 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
 
     PlayerAnimations playerAnimationsScript;
+    PlayerCombat playerCombatScript;
 
     float turnSmoothVelocity; //don't touch
-    public float speed = 6f;
+    public float currentSpeed;
+    public float normalSpeed = 6f;
+    public float nimbusSpeed = 10;
+    public float rageSpeed = 10;
     public float turnSmoothTime = 0.1f;
     public float gravity = -9.81f;
     public float groundDistance = 0.4f;
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerAnimationsScript = GetComponent<PlayerAnimations>();
+        playerCombatScript = GetComponent<PlayerCombat>();
 
         anim = GetComponent<Animator>();
 
@@ -55,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        currentSpeed = normalSpeed;
+
         isGrounded = true;
         canMove = true;
 
@@ -107,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
                     moveDir.y = 0;
                     moveDir = Vector3.ClampMagnitude(moveDir, 1);
 
-                    controller.Move(moveDir * speed * Time.deltaTime);
+                    controller.Move(moveDir * currentSpeed * Time.deltaTime);
                 }
             }
         }
@@ -120,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
 
             if(currentTime >= timeToMaxSpeed)
             {
-                speed = 10;
+                currentSpeed = nimbusSpeed;
                 playerAnimationsScript.SetAnimationBool(playerAnimationsScript.nimbusBool, true);
                 nimbus.SetActive(true);
             }
@@ -131,7 +138,10 @@ public class PlayerMovement : MonoBehaviour
 
             //resets speed and time to default
             currentTime = 0;
-            speed = 6;
+            if (!playerCombatScript.Enraged)
+            {
+                currentSpeed = normalSpeed;
+            }
             nimbus.SetActive(false);
         }
 

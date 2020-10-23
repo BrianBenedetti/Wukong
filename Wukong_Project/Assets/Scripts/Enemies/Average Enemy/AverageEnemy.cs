@@ -12,12 +12,11 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public float lookRadius;
     public float startWaitTime;
     public float retreatDistance;
-    public float startTimeBetweenShots;
     public float knockbackAmount = 8;
+    public float slamRadius;
     float retreatSpeed = 0.05f;
     float currentHealth;
     float waitTime;
-    float timeBetweenShots;
 
     public int projectileDamage;
     public int slamDamage;
@@ -70,7 +69,6 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
         randomWaypoint = Random.Range(0, waypoints.Length);
         waitTime = startWaitTime;
-        timeBetweenShots = startTimeBetweenShots;
 
         foreach (int i in lootTable)
         {
@@ -123,40 +121,22 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         }
     }
 
-    public void Attack(Transform attackPosition, float radius, LayerMask whatIsEnemy, int damage)
+    public void Slam()
     {
-        Collider[] enemiesHit = Physics.OverlapSphere(attackPosition.position, radius, whatIsEnemy);
+        Collider[] enemiesHit = Physics.OverlapSphere(transform.position, slamRadius, whatIsEnemy);
+
+        Vector3 dir = transform.forward;
 
         foreach (Collider enemy in enemiesHit)
         {
-            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, myDamageType);
-
-            Vector3 dir = transform.forward;
+            enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(slamDamage, myDamageType);
             StartCoroutine(enemy.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
         }
     }
 
-    //public void CheckForEnemiesHit(int damage)
-    //{
-    //    Collider[] enemiesHit = Physics.OverlapSphere(transform.TransformPoint(attackPositionOffsetFromPlayerCenter), attackRadius, enemyMask);
-
-    //    foreach (Collider enemy in enemiesHit)
-    //    {
-    //        enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(damage, elementalFormsScript.currentDamageType);
-    //    }
-    //}
-
     public void Shoot()
     {
-        if(timeBetweenShots <= 0)
-        {
-            objectPooler.SpawnFromPool(myProjectile, projectileOrigin.position, Quaternion.identity);
-            timeBetweenShots = startTimeBetweenShots;
-        }
-        else
-        {
-            timeBetweenShots -= Time.deltaTime;
-        }
+        objectPooler.SpawnFromPool(myProjectile, projectileOrigin.position, Quaternion.identity);
     }
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)

@@ -5,7 +5,6 @@ public class AverageEnemy_SlamState : StateMachineBehaviour
     AverageEnemy baseScript;
 
     float distanceToTarget;
-    public float attackRadius; //for now
 
     readonly int ShootBool = Animator.StringToHash("isShooting");
     readonly int RetreatBool = Animator.StringToHash("isRetreating");
@@ -15,7 +14,6 @@ public class AverageEnemy_SlamState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<AverageEnemy>();
-        baseScript.Attack(animator.transform, attackRadius, baseScript.whatIsEnemy, baseScript.slamDamage); //for now
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
