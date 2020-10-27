@@ -19,6 +19,7 @@ public class AverageEnemy_RetreatState : StateMachineBehaviour
     {
         baseScript = animator.GetComponent<AverageEnemy>();
         baseScript.agent.updateRotation = false;
+        baseScript.agent.isStopped = false;
         timer = 5;
     }
 
@@ -36,11 +37,11 @@ public class AverageEnemy_RetreatState : StateMachineBehaviour
         }
 
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
-        if (distanceToTarget > baseScript.retreatDistance && distanceToTarget < baseScript.agent.stoppingDistance)
+        if (distanceToTarget > baseScript.retreatDistance && distanceToTarget < 10)
         { //if reached safe distance, shoot
             animator.SetBool(ShootBool, true);
         }
-        else if(distanceToTarget > baseScript.agent.stoppingDistance)
+        else if(distanceToTarget > 10)
         { //if enemy too far, chase
             animator.SetBool(ChaseBool, true);
         }

@@ -16,6 +16,7 @@ public class FastEnemy_DodgeState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<FastEnemy>();
+        baseScript.agent.isStopped = false;
         DodgeCoroutine = baseScript.Dodge();
         baseScript.StartCoroutine(DodgeCoroutine);
     }

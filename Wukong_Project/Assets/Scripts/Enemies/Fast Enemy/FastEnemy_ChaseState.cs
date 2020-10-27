@@ -18,6 +18,8 @@ public class FastEnemy_ChaseState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<FastEnemy>();
+        baseScript.agent.isStopped = false;
+        baseScript.agent.ResetPath();
         timer = 10;
     }
 
@@ -49,7 +51,7 @@ public class FastEnemy_ChaseState : StateMachineBehaviour
         {
             animator.SetBool(PatrolBool, true);
         }
-        else if(distanceToTarget <= baseScript.agent.stoppingDistance)
+        else if(distanceToTarget <= 2.5f)
         {
             animator.SetTrigger(LightTrigger);
         }

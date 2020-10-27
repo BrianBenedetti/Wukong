@@ -13,6 +13,7 @@ public class FastEnemy_LightAttackState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<FastEnemy>();
+        baseScript.agent.isStopped = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

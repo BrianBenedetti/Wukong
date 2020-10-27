@@ -20,6 +20,27 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     int actualDamage;
     readonly int deathBool = Animator.StringToHash("isDead");
 
+    #region Rage Mat and Model Components
+    public Material clothesMaterial;
+    public Material bodyMaterial;
+    public Material hairMaterial;
+    public Material rageMaterial;
+    public Material staffMaterial;
+
+    public SkinnedMeshRenderer hair;
+    public SkinnedMeshRenderer body;
+    public SkinnedMeshRenderer shirt;
+    public SkinnedMeshRenderer rope;
+    public MeshRenderer plateL;
+    public MeshRenderer plateR;
+    public MeshRenderer plateB;
+    public MeshRenderer ring;
+    public SkinnedMeshRenderer staff;
+
+    public GameObject rageEyes;
+    public GameObject rageSteam;
+    #endregion
+
     PlayerElementalForms elementalFormsScript;
     PlayerAnimations playerAnimationsScript;
     PlayerMovement playerMovementScript;
@@ -28,7 +49,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public UIBar manaBar;
     public UIBar rageBar;
 
-    public GameObject staff;
+    public GameObject staffObject;
 
     public float maxComboDelay = 1.5f;
     public float lastTimeHit = 0;
@@ -90,7 +111,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         objectPooler = ObjectPooler.Instance;
 
         comboCounter.enabled = false;
-        staff.SetActive(false);
+        staffObject.SetActive(false);
+        rageEyes.SetActive(false);
+        rageSteam.SetActive(false);
     }
 
     // Update is called once per frame
@@ -118,7 +141,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerMovementScript.canMove = true;
         }
 
-        if(Time.time - lastTimeHit >= maxComboDelay)
+        if(Time.time - lastTimeHit >= maxComboDelay * 2)
         {
             comboHits = 0;
         }
@@ -133,7 +156,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
                 playerMovementScript.canMove = false;
-                staff.SetActive(true);
+                staffObject.SetActive(true);
 
                 if (lightAttackCounter == 1)
                 {
@@ -147,7 +170,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
                 playerMovementScript.canMove = false;
-                staff.SetActive(true);
+                staffObject.SetActive(true);
 
                 if (heavyAttackCounter == 1)
                 {
@@ -164,7 +187,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
                 playerMovementScript.canMove = false;
-                staff.SetActive(true);
+                staffObject.SetActive(true);
 
                 if (lightAttackCounter == 1)
                 {
@@ -178,7 +201,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
                 playerMovementScript.canMove = false;
-                staff.SetActive(true);
+                staffObject.SetActive(true);
 
                 if (heavyAttackCounter == 1)
                 {
@@ -206,7 +229,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
-            staff.SetActive(false);
+            staffObject.SetActive(false);
         }
     }
 
@@ -225,7 +248,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
-            staff.SetActive(false);
+            staffObject.SetActive(false);
         }
     }
 
@@ -242,7 +265,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
-            staff.SetActive(false);
+            staffObject.SetActive(false);
         }
     }
 
@@ -262,7 +285,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
-            staff.SetActive(false);
+            staffObject.SetActive(false);
         }
     }
 
@@ -277,7 +300,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         lightAttackCounter = 0;
-        staff.SetActive(false);
+        staffObject.SetActive(false);
     }
 
     public void HeavyAttack3End()
@@ -291,7 +314,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         heavyAttackCounter = 0;
-        staff.SetActive(false);
+        staffObject.SetActive(false);
     }
 
     public void CheckForEnemiesHit(int damage)
@@ -369,11 +392,22 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     IEnumerator Rage()
     {
         Enraged = true;
+        yield return new WaitForSeconds(0.01f);
         playerMovementScript.currentSpeed = playerMovementScript.rageSpeed;
         isVulnerable = false;
         playerAnimationsScript.PlayRageAnimation();
         //activate shader
-        Debug.Log(Enraged);
+        elementalFormsScript.SetSkinnedMaterial(hair, 0, rageMaterial);
+        elementalFormsScript.SetSkinnedMaterial(body, 0, rageMaterial);
+        elementalFormsScript.SetSkinnedMaterial(rope, 0, rageMaterial);
+        elementalFormsScript.SetSkinnedMaterial(shirt, 0, rageMaterial);
+        elementalFormsScript.SetSkinnedMaterial(staff, 0, rageMaterial);
+        elementalFormsScript.SetMaterial(plateB, 0, rageMaterial);
+        elementalFormsScript.SetMaterial(plateL, 0, rageMaterial);
+        elementalFormsScript.SetMaterial(plateR, 0, rageMaterial);
+        elementalFormsScript.SetMaterial(ring, 0, rageMaterial);
+        rageEyes.SetActive(true);
+        rageSteam.SetActive(true);
         StartCoroutine(DecreaseRageBarOverTime(rageDuration));
 
         yield return new WaitForSeconds(rageDuration);
@@ -381,8 +415,18 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         Enraged = false;
         playerMovementScript.currentSpeed = playerMovementScript.normalSpeed;
         isVulnerable = true;
-        Debug.Log(Enraged);
         //deactivate shader
+        elementalFormsScript.SetSkinnedMaterial(hair, 0, hairMaterial);
+        elementalFormsScript.SetSkinnedMaterial(body, 0, bodyMaterial);
+        elementalFormsScript.SetSkinnedMaterial(rope, 0, clothesMaterial);
+        elementalFormsScript.SetSkinnedMaterial(shirt, 0, clothesMaterial);
+        elementalFormsScript.SetSkinnedMaterial(staff, 0, staffMaterial);
+        elementalFormsScript.SetMaterial(plateB, 0, clothesMaterial);
+        elementalFormsScript.SetMaterial(plateL, 0, clothesMaterial);
+        elementalFormsScript.SetMaterial(plateR, 0, clothesMaterial);
+        elementalFormsScript.SetMaterial(ring, 0, clothesMaterial);
+        rageEyes.SetActive(false);
+        rageSteam.SetActive(false);
     }
 
     IEnumerator DecreaseRageBarOverTime(float time)

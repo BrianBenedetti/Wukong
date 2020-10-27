@@ -11,6 +11,7 @@ public class FastEnemy_DieState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<FastEnemy>();
+        baseScript.agent.isStopped = true;
         DieCoroutine = baseScript.Die();
         baseScript.StartCoroutine(DieCoroutine);
     }

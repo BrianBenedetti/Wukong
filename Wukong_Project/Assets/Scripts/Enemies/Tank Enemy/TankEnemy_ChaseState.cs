@@ -17,6 +17,8 @@ public class TankEnemy_ChaseState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<TankEnemy>();
+        baseScript.agent.isStopped = false;
+        baseScript.agent.ResetPath();
         timer = 8;
     }
 
@@ -39,7 +41,7 @@ public class TankEnemy_ChaseState : StateMachineBehaviour
         {
             animator.SetBool(PatrolBool, true);
         }
-        else if (distanceToTarget < baseScript.agent.stoppingDistance)
+        else if (distanceToTarget < 4)
         {
             int random = Random.Range(0, 11);
             if(random <= 5)

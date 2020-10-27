@@ -7,7 +7,6 @@ public class AirSpecialAttack : MonoBehaviour
     public int damage;
 
     public float attackLifespan;
-    public float speed;
 
     readonly string enemyTag = "Enemy";
 
@@ -34,20 +33,29 @@ public class AirSpecialAttack : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(TimerToDestruction(attackLifespan));
+        StartCoroutine(TimerToDestruction(attackLifespan + 0.2f));
+
+        StartCoroutine(IncreaseSizeOverTime(attackLifespan));
 
         playerCombatScript = PlayerManager.instance.player.GetComponent<PlayerCombat>();
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator IncreaseSizeOverTime(float time)
     {
-        Expand();
-    }
+        float timePassed = 0;
 
-    public void Expand()
-    {
-        transform.localScale += new Vector3(1, 1, 1) * speed * Time.deltaTime;
+        Vector3 currentSizeAtStart = transform.localScale;
+
+        while (timePassed < 1)
+        {
+            timePassed += Time.deltaTime / time;
+
+            transform.localScale = Vector3.Lerp(currentSizeAtStart, new Vector3(10, 10, 10), timePassed);
+
+            yield return null;
+        }
+
+        transform.localScale = new Vector3(10,10,10);
     }
 
     IEnumerator TimerToDestruction(float time)

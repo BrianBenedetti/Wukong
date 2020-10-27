@@ -10,20 +10,19 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public float maxHealth;
     public float turnSmoothTime;
     public float lookRadius;
-    public float startWaitTime;
     public float retreatDistance;
     public float knockbackAmount = 8;
     public float slamRadius;
     float retreatSpeed = 0.05f;
     float currentHealth;
-    float waitTime;
 
     public int projectileDamage;
     public int slamDamage;
-    int randomWaypoint;
+    int randomWaypoint = -1;
     int actualDamage;
     readonly int HurtTrigger = Animator.StringToHash("Hurt");
     readonly int DieBool = Animator.StringToHash("isDead");
+    readonly int IdleBool = Animator.StringToHash("isIdle");
 
     public int[] lootTable ={
         50, //health
@@ -67,9 +66,6 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
 
-        randomWaypoint = Random.Range(0, waypoints.Length);
-        waitTime = startWaitTime;
-
         foreach (int i in lootTable)
         {
             lootTotalTally += i;
@@ -104,20 +100,27 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         agent.Move((transform.position - target.position).normalized * retreatSpeed);
     }
 
-    public void Patrol()
+    public void StartPatrol()
     {
-        agent.SetDestination(waypoints[randomWaypoint].position);
-        if (Vector3.Distance(transform.position, waypoints[randomWaypoint].position) < agent.stoppingDistance)
+        agent.ResetPath();
+
+        if (randomWaypoint < 0)
         {
-            if (waitTime <= 0)
-            {
-                randomWaypoint = Random.Range(0, waypoints.Length);
-                waitTime = startWaitTime;
-            }
-            else
-            {
-                waitTime -= Time.deltaTime;
-            }
+            randomWaypoint = Random.Range(0, waypoints.Length);
+        }
+        else
+        {
+            randomWaypoint = (randomWaypoint + 1) % waypoints.Length;
+        }
+
+        agent.SetDestination(waypoints[randomWaypoint].position);
+    }
+
+    public void CheckPatrol()
+    {
+        if (Vector3.Distance(transform.position, waypoints[randomWaypoint].position) <= 1)
+        {
+            animator.SetBool(IdleBool, true);
         }
     }
 
