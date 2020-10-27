@@ -8,6 +8,7 @@ TagManager:
   - Object
   - Shrine
   - Pointer
+  - Ground
   layers:
   - Default
   - TransparentFX

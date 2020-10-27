@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
 
     public GameObject nimbus;
+    public GameObject dustEffect;
+    public GameObject jumpEffect;
 
     public LayerMask groundMask;
 
@@ -44,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public Vector3 direction;
     [HideInInspector] public Vector3 velocity;
     [HideInInspector] public Vector3 moveDir;
+
 
     private void Awake()
     {
@@ -202,6 +205,8 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+
+        Instantiate(jumpEffect, transform.position, Quaternion.identity);
     }
 
     void DoubleJump()

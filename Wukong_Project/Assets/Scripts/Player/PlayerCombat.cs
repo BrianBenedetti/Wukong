@@ -41,6 +41,24 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public GameObject rageSteam;
     #endregion
 
+    #region Slashes
+    public GameObject fireSlashTop;
+    public GameObject fireSlash45;
+    public GameObject fireSlashNegative45;
+
+    public GameObject waterSlashTop;
+    public GameObject waterSlash45;
+    public GameObject waterSlashNegative45;
+
+    public GameObject airSlashTop;
+    public GameObject airSlash45;
+    public GameObject airSlashNegative45;
+
+    public GameObject normalSlashTop;
+    public GameObject normalSlash45;
+    public GameObject normalSlashNegative45;
+    #endregion
+
     PlayerElementalForms elementalFormsScript;
     PlayerAnimations playerAnimationsScript;
     PlayerMovement playerMovementScript;
@@ -111,9 +129,27 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         objectPooler = ObjectPooler.Instance;
 
         comboCounter.enabled = false;
+
         staffObject.SetActive(false);
+
         rageEyes.SetActive(false);
         rageSteam.SetActive(false);
+
+        //fireSlash45.SetActive(false);
+        //fireSlashNegative45.SetActive(false);
+        //fireSlashTop.SetActive(false);
+
+        //waterSlash45.SetActive(false);
+        //waterSlashNegative45.SetActive(false);
+        //waterSlashTop.SetActive(false);
+
+        //airSlash45.SetActive(false);
+        //airSlashNegative45.SetActive(false);
+        //airSlashTop.SetActive(false);
+
+        //normalSlash45.SetActive(false);
+        //normalSlashNegative45.SetActive(false);
+        //normalSlashTop.SetActive(false);
     }
 
     // Update is called once per frame
@@ -192,6 +228,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 if (lightAttackCounter == 1)
                 {
                     playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, true);
+                    //try animation events with no argument and switch inside according to currentElement
                 }
                 lightAttackCounter = Mathf.Clamp(lightAttackCounter, 0, 3);
             }
@@ -315,6 +352,69 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         heavyAttackCounter = 0;
         staffObject.SetActive(false);
+    }
+
+    public void PlaySlashTop(DamageTypes damageTypes)
+    {
+        switch (damageTypes)
+        {
+            case DamageTypes.fire:
+                fireSlashTop.SetActive(true);
+                break;
+            case DamageTypes.water:
+                waterSlashTop.SetActive(true);
+                break;
+            case DamageTypes.air:
+                airSlashTop.SetActive(true);
+                break;
+            case DamageTypes.normal:
+                normalSlashTop.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void PlaySlash45(DamageTypes damageTypes)
+    {
+        switch (damageTypes)
+        {
+            case DamageTypes.fire:
+                fireSlash45.SetActive(true);
+                break;
+            case DamageTypes.water:
+                waterSlash45.SetActive(true);
+                break;
+            case DamageTypes.air:
+                airSlash45.SetActive(true);
+                break;
+            case DamageTypes.normal:
+                normalSlash45.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void PlaySlashNegative45(DamageTypes damageTypes)
+    {
+        switch (damageTypes)
+        {
+            case DamageTypes.fire:
+                fireSlashNegative45.SetActive(true);
+                break;
+            case DamageTypes.water:
+                waterSlashNegative45.SetActive(true);
+                break;
+            case DamageTypes.air:
+                airSlashNegative45.SetActive(true);
+                break;
+            case DamageTypes.normal:
+                normalSlashNegative45.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     public void CheckForEnemiesHit(int damage)
