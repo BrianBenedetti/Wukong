@@ -17,6 +17,10 @@ public class PlayerDash : MonoBehaviour
 
     [HideInInspector] public PlayerInputActions inputActions;
 
+    public GameObject dustTrail;
+    //public GameObject distortionTrail;
+
+    //public Transform spawnPoint;
 
     private void Awake()
     {
@@ -42,6 +46,8 @@ public class PlayerDash : MonoBehaviour
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
+                Instantiate(dustTrail, transform.position, Quaternion.identity);
+                //Instantiate(distortionTrail, spawnPoint.position, Quaternion.identity);
             }
         }
         else
@@ -50,6 +56,8 @@ public class PlayerDash : MonoBehaviour
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
+                Instantiate(dustTrail, transform.position + transform.forward, transform.rotation);
+                //Instantiate(distortionTrail, spawnPoint.position, Quaternion.identity);
             }
         }
 

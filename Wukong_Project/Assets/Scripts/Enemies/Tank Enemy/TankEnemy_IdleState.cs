@@ -16,6 +16,7 @@ public class TankEnemy_IdleState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<TankEnemy>();
+        baseScript.agent.isStopped = true;
     }
 
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -23,11 +24,11 @@ public class TankEnemy_IdleState : StateMachineBehaviour
     {
         //checks to chase, patrol, or attack (random between light and heavy)
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
-        if (distanceToTarget < baseScript.lookRadius && distanceToTarget > baseScript.agent.stoppingDistance)
+        if (distanceToTarget < baseScript.lookRadius && distanceToTarget > 4)
         {
             animator.SetBool(ChaseBool, true); //immidiately switches, need to wait with exit time
         }
-        else if (distanceToTarget < baseScript.agent.stoppingDistance)
+        else if (distanceToTarget < 4)
         {
             int rand = Random.Range(0, 11);
             if (rand <= 5)
@@ -39,9 +40,9 @@ public class TankEnemy_IdleState : StateMachineBehaviour
                 animator.SetTrigger(SlamTrigger);
             }
         }
-        else
+        else if (distanceToTarget > baseScript.lookRadius)
         {
-            animator.SetBool(PatrolBool, true); //immidiately switches, need to wait with exit time
+            animator.SetBool(PatrolBool, true);
         }
     }
 

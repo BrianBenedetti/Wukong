@@ -8,12 +8,16 @@ public class PlayerAnimations : MonoBehaviour
 
     [HideInInspector] public Animator anim;
 
+    public Animator comboCounterAnim;
+
     public readonly int speedFloat = Animator.StringToHash("Speed");
     public readonly int verticalSpeedFloat = Animator.StringToHash("Vertical Speed");
     public readonly int jumpTrigger = Animator.StringToHash("Jump");
     public readonly int dodgeTrigger = Animator.StringToHash("Dodge");
     public readonly int hurtTrigger = Animator.StringToHash("Hurt");
     public readonly int respawnTrigger = Animator.StringToHash("Respawn");
+    public readonly int specialAttackTrigger = Animator.StringToHash("Special Attack");
+    public readonly int rageTrigger = Animator.StringToHash("Rage");
     public readonly int isGroundedBool = Animator.StringToHash("isGrounded");
     public readonly int isDeadBool = Animator.StringToHash("isDead");
     public readonly int lightAttack1Bool = Animator.StringToHash("Light Attack 1");
@@ -23,6 +27,8 @@ public class PlayerAnimations : MonoBehaviour
     public readonly int heavyAttack2Bool = Animator.StringToHash("Heavy Attack 2");
     public readonly int heavyAttack3Bool = Animator.StringToHash("Heavy Attack 3");
     public readonly int nimbusBool = Animator.StringToHash("Nimbus");
+
+    public readonly int comboPulseTrigger = Animator.StringToHash("Pulse");
 
     // Start is called before the first frame update
     void Start()
@@ -77,5 +83,20 @@ public class PlayerAnimations : MonoBehaviour
     {
         anim.SetBool(isDeadBool, false);
         anim.SetTrigger(respawnTrigger);
+    }
+
+    public void PlaySpecialAttackAnimation()
+    {
+        anim.SetTrigger(specialAttackTrigger);
+    }
+
+    public void PlayRageAnimation()
+    {
+        anim.SetTrigger(rageTrigger);
+    }
+
+    public void PlayComboPulse()
+    {
+        comboCounterAnim.SetTrigger(comboPulseTrigger);
     }
 }

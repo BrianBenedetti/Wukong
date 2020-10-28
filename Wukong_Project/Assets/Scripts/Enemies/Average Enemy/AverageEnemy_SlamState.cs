@@ -5,7 +5,6 @@ public class AverageEnemy_SlamState : StateMachineBehaviour
     AverageEnemy baseScript;
 
     float distanceToTarget;
-    public float attackRadius; //for now
 
     readonly int ShootBool = Animator.StringToHash("isShooting");
     readonly int RetreatBool = Animator.StringToHash("isRetreating");
@@ -15,14 +14,14 @@ public class AverageEnemy_SlamState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<AverageEnemy>();
-        baseScript.Attack(animator.transform, attackRadius, baseScript.whatIsEnemy, baseScript.slamDamage); //for now
+        baseScript.agent.isStopped = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
-        if (distanceToTarget < baseScript.lookRadius && distanceToTarget > baseScript.agent.stoppingDistance)
+        if (distanceToTarget < baseScript.lookRadius && distanceToTarget > 10)
         {
             animator.SetBool(ChaseBool, true);
         }
@@ -30,7 +29,7 @@ public class AverageEnemy_SlamState : StateMachineBehaviour
         {
             animator.SetBool(RetreatBool, true);
         }
-        else if(distanceToTarget > baseScript.retreatDistance && distanceToTarget < baseScript.agent.stoppingDistance)
+        else if(distanceToTarget > baseScript.retreatDistance && distanceToTarget < 10)
         {
             animator.SetBool(ShootBool, true);
         }

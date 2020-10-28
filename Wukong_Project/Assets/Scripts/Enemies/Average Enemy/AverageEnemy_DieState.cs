@@ -11,6 +11,7 @@ public class AverageEnemy_DieState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<AverageEnemy>();
+        baseScript.agent.isStopped = true;
         DieCoroutine = baseScript.Die();
         baseScript.StartCoroutine(DieCoroutine);
     }

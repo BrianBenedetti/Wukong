@@ -7,7 +7,11 @@ public class Projectile : MonoBehaviour, IPooledObject
 
     public AverageEnemy parent;
 
+    public DamageTypes myDamageType;
+
     Transform player;
+
+    readonly string playerTag = "Player";
 
     Vector3 target;
 
@@ -40,10 +44,13 @@ public class Projectile : MonoBehaviour, IPooledObject
         var damageScript = other.gameObject.GetComponent<IDamageable<int, DamageTypes>>();
         if (damageScript != null)
         {
-            damageScript.TakeDamage(parent.projectileDamage, parent.myDamageType);
+            damageScript.TakeDamage(parent.projectileDamage, myDamageType);
 
             Vector3 dir = transform.forward;
-            StartCoroutine(other.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
+            if (other.CompareTag(playerTag))
+            {
+                StartCoroutine(other.GetComponent<PlayerMovement>().PlayerKnockback(dir, knockbackAmount));
+            }
         }
 >>>>>>> 64429ae0c6f70c4ba99a9f0d1069938577b46d9a
         gameObject.SetActive(false);

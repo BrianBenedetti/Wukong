@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerElementalForms : MonoBehaviour
 {
-    enum ElementalForms
+    public enum ElementalForms
     {
         normal,
         fire,
         water,
         air
     }
+
+    PlayerCombat combatScript;
 
     public Material[] elementalHairMaterials;
     public Material[] elementalBodyMaterials;
@@ -24,7 +26,7 @@ public class PlayerElementalForms : MonoBehaviour
 
     [HideInInspector] public PlayerInputActions inputActions;
 
-    [SerializeField] ElementalForms currentElement;
+    public ElementalForms currentElement;
     public DamageTypes currentDamageType;
     public DamageResistances currentResistances;
     public DamageResistances[] allResistances;
@@ -32,6 +34,8 @@ public class PlayerElementalForms : MonoBehaviour
     private void Awake()
     {
         inputActions = new PlayerInputActions();
+
+        combatScript = GetComponent<PlayerCombat>();
     }
     
     private void Start()
@@ -47,7 +51,8 @@ public class PlayerElementalForms : MonoBehaviour
         var gamepad = Gamepad.current;
         if (gamepad != null)
         {
-            if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.Jump.triggered && currentElement != ElementalForms.normal)
+            if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.Jump.triggered && currentElement != ElementalForms.normal
+                || combatScript.Enraged && currentElement != ElementalForms.normal)
             {
                 //set new element
                 currentElement = ElementalForms.normal;
@@ -58,10 +63,10 @@ public class PlayerElementalForms : MonoBehaviour
                 //change hair and body materials
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[3]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[3]);
-                //play transition VFX
                 //change weapon VFX
             }
-            else if(gamepad.leftShoulder.isPressed && inputActions.PlayerControls.PrimaryAttack.triggered && currentElement != ElementalForms.fire)
+            else if(gamepad.leftShoulder.isPressed && inputActions.PlayerControls.PrimaryAttack.triggered && currentElement != ElementalForms.fire
+                && !combatScript.Enraged)
             {
                 //set new element
                 currentElement = ElementalForms.fire;
@@ -73,9 +78,11 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[0]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[0]);
                 //play transition VFX
+                Instantiate(transitionElementalVFX[0], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
-            else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.SecondaryAttack.triggered && currentElement != ElementalForms.water)
+            else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.SecondaryAttack.triggered && currentElement != ElementalForms.water
+                && !combatScript.Enraged)
             {
                 //set new element
                 currentElement = ElementalForms.water;
@@ -87,9 +94,11 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[1]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[1]);
                 //play transition VFX
+                Instantiate(transitionElementalVFX[1], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
-            else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.Interact.triggered && currentElement != ElementalForms.air)
+            else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.Interact.triggered && currentElement != ElementalForms.air
+                && !combatScript.Enraged)
             {
                 //set new element
                 currentElement = ElementalForms.air;
@@ -101,13 +110,14 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[2]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[2]);
                 //play VFX
+                Instantiate(transitionElementalVFX[2], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
         }
         else
         {
             //checks for input to change element
-            if (inputActions.PlayerControls.NormalForm.triggered && currentElement != ElementalForms.normal)
+            if (inputActions.PlayerControls.NormalForm.triggered && currentElement != ElementalForms.normal || combatScript.Enraged && currentElement != ElementalForms.normal)
             {
                 //set new element
                 currentElement = ElementalForms.normal;
@@ -121,7 +131,7 @@ public class PlayerElementalForms : MonoBehaviour
                 //play transition VFX
                 //change weapon VFX
             }
-            else if (inputActions.PlayerControls.FireForm.triggered && currentElement != ElementalForms.fire)
+            else if (inputActions.PlayerControls.FireForm.triggered && currentElement != ElementalForms.fire && !combatScript.Enraged)
             {
                 //set new element
                 currentElement = ElementalForms.fire;
@@ -133,9 +143,10 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[0]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[0]);
                 //play transition VFX
+                Instantiate(transitionElementalVFX[0], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
-            else if (inputActions.PlayerControls.WaterForm.triggered && currentElement != ElementalForms.water)
+            else if (inputActions.PlayerControls.WaterForm.triggered && currentElement != ElementalForms.water && !combatScript.Enraged)
             {
                 //set new element
                 currentElement = ElementalForms.water;
@@ -147,9 +158,10 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[1]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[1]);
                 //play transition VFX
+                Instantiate(transitionElementalVFX[1], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
-            else if (inputActions.PlayerControls.AirForm.triggered && currentElement != ElementalForms.air)
+            else if (inputActions.PlayerControls.AirForm.triggered && currentElement != ElementalForms.air && !combatScript.Enraged)
             {
                 //set new element
                 currentElement = ElementalForms.air;
@@ -161,12 +173,22 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[2]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[2]);
                 //play VFX
+                Instantiate(transitionElementalVFX[2], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
         }
     }
 
-    void SetSkinnedMaterial(SkinnedMeshRenderer renderer, int Mat_Nr, Material Mat)
+    public void SetSkinnedMaterial(SkinnedMeshRenderer renderer, int Mat_Nr, Material Mat)
+    {
+        Material[] mats = renderer.materials;
+
+        mats[Mat_Nr] = Mat;
+
+        renderer.materials = mats;
+    }
+
+    public void SetMaterial(MeshRenderer renderer, int Mat_Nr, Material Mat)
     {
         Material[] mats = renderer.materials;
 

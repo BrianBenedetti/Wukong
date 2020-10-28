@@ -14,19 +14,19 @@ public class AverageEnemy_ShootState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<AverageEnemy>();
+        baseScript.agent.isStopped = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript.FaceTarget();
-        baseScript.Shoot();
 
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
         if (distanceToTarget < baseScript.retreatDistance)
         {
             animator.SetBool(RetreatBool, true);
-        }else if(distanceToTarget > baseScript.agent.stoppingDistance)
+        }else if(distanceToTarget > 10)
         {
             animator.SetBool(ChaseBool, true);
         }

@@ -17,6 +17,8 @@ public class AverageEnemy_ChaseState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<AverageEnemy>();
+        baseScript.agent.isStopped = false;
+        baseScript.agent.ResetPath();
         timer = 5;
     }
 
@@ -38,7 +40,7 @@ public class AverageEnemy_ChaseState : StateMachineBehaviour
         {
             animator.SetBool(PatrolBool, true);
         }
-        else if (distanceToTarget < baseScript.agent.stoppingDistance && distanceToTarget > baseScript.retreatDistance)
+        else if (distanceToTarget < 10 && distanceToTarget > baseScript.retreatDistance)
         {
             animator.SetBool(ShootBool, true);
         }

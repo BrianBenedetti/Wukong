@@ -13,13 +13,15 @@ public class FastEnemy_PatrolState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         baseScript = animator.GetComponent<FastEnemy>();
+        baseScript.agent.isStopped = false;
+        baseScript.StartPatrol();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //moves from random spot to random spot
-        baseScript.Patrol();
+        //checks to idle at end of patrol
+        baseScript.CheckPatrol();
 
         //checks if player is in range to start chasing
         distanceToTarget = Vector3.Distance(baseScript.target.position, animator.transform.position);
