@@ -104,12 +104,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if(controller.enabled == true)
             {
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0, angle, 0);
-
                 if (canMove)
                 {
+                    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                    transform.rotation = Quaternion.Euler(0, angle, 0);
+
                     Vector3 camForward = cam.transform.forward;
                     Vector3 camRight = cam.transform.right;
 
@@ -206,13 +206,34 @@ public class PlayerMovement : MonoBehaviour
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
 
-        Instantiate(jumpEffect, transform.position, Quaternion.identity);
+        if (!nimbus.activeInHierarchy)
+        {
+            Instantiate(jumpEffect, transform.position, Quaternion.identity);
+        }
     }
 
     void DoubleJump()
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         canDoubleJump = false;
+    }
+
+    public void ChangeCanMove(int state)
+    {
+        if (state == 0)
+        {
+            canMove = false;
+        }
+        else if(state == 1)
+        {
+            canMove = true;
+        }
+        
+    }
+
+    public void PlayFallVFX()
+    {
+        Instantiate(dustEffect, transform.position, Quaternion.identity);
     }
 
     public IEnumerator PlayerKnockback(Vector3 direction, float knockbackStrength)

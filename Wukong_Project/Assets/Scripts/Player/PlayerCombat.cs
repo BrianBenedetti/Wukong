@@ -42,21 +42,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     #endregion
 
     #region Slashes
-    public GameObject fireSlashTop;
-    public GameObject fireSlash45;
-    public GameObject fireSlashNegative45;
+    public GameObject fireSlash;
 
-    public GameObject waterSlashTop;
-    public GameObject waterSlash45;
-    public GameObject waterSlashNegative45;
+    public GameObject waterSlash;
 
-    public GameObject airSlashTop;
-    public GameObject airSlash45;
-    public GameObject airSlashNegative45;
+    public GameObject airSlash;
 
-    public GameObject normalSlashTop;
-    public GameObject normalSlash45;
-    public GameObject normalSlashNegative45;
+    public GameObject normalSlash;
     #endregion
 
     PlayerElementalForms elementalFormsScript;
@@ -68,6 +60,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public UIBar rageBar;
 
     public GameObject staffObject;
+    public GameObject slamVFX;
 
     public float maxComboDelay = 1.5f;
     public float lastTimeHit = 0;
@@ -80,6 +73,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     readonly string damageText = "Damage Text";
 
     public Transform damageTextPos;
+    public Transform attackSlamPos;
+    public Transform rageSlamPos;
+    public Transform slashSpawn;
 
     public Vector3 attackSize;
     public Vector3 attackPositionOffsetFromPlayerCenter;
@@ -134,22 +130,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
         rageEyes.SetActive(false);
         rageSteam.SetActive(false);
-
-        //fireSlash45.SetActive(false);
-        //fireSlashNegative45.SetActive(false);
-        //fireSlashTop.SetActive(false);
-
-        //waterSlash45.SetActive(false);
-        //waterSlashNegative45.SetActive(false);
-        //waterSlashTop.SetActive(false);
-
-        //airSlash45.SetActive(false);
-        //airSlashNegative45.SetActive(false);
-        //airSlashTop.SetActive(false);
-
-        //normalSlash45.SetActive(false);
-        //normalSlashNegative45.SetActive(false);
-        //normalSlashTop.SetActive(false);
     }
 
     // Update is called once per frame
@@ -174,7 +154,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         {
             lightAttackCounter = 0;
             heavyAttackCounter = 0;
-            playerMovementScript.canMove = true;
         }
 
         if(Time.time - lastTimeHit >= maxComboDelay * 2)
@@ -191,7 +170,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
-                playerMovementScript.canMove = false;
                 staffObject.SetActive(true);
 
                 if (lightAttackCounter == 1)
@@ -205,7 +183,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
-                playerMovementScript.canMove = false;
                 staffObject.SetActive(true);
 
                 if (heavyAttackCounter == 1)
@@ -222,13 +199,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
-                playerMovementScript.canMove = false;
                 staffObject.SetActive(true);
 
                 if (lightAttackCounter == 1)
                 {
                     playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack1Bool, true);
-                    //try animation events with no argument and switch inside according to currentElement
                 }
                 lightAttackCounter = Mathf.Clamp(lightAttackCounter, 0, 3);
             }
@@ -237,7 +212,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
-                playerMovementScript.canMove = false;
                 staffObject.SetActive(true);
 
                 if (heavyAttackCounter == 1)
@@ -351,66 +325,100 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         heavyAttackCounter = 0;
+        lightAttackCounter = 0;
         staffObject.SetActive(false);
     }
 
-    public void PlaySlashTop(DamageTypes damageTypes)
+    public void PlaySlashTop()
     {
-        switch (damageTypes)
+        switch (elementalFormsScript.currentElement)
         {
-            case DamageTypes.fire:
-                fireSlashTop.SetActive(true);
+            case PlayerElementalForms.ElementalForms.fire:
+                Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
                 break;
-            case DamageTypes.water:
-                waterSlashTop.SetActive(true);
+            case PlayerElementalForms.ElementalForms.water:
+                Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
                 break;
-            case DamageTypes.air:
-                airSlashTop.SetActive(true);
+            case PlayerElementalForms.ElementalForms.air:
+                Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
                 break;
-            case DamageTypes.normal:
-                normalSlashTop.SetActive(true);
+            case PlayerElementalForms.ElementalForms.normal:
+                Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
                 break;
             default:
                 break;
         }
     }
 
-    public void PlaySlash45(DamageTypes damageTypes)
+    public void PlaySlashBot()
     {
-        switch (damageTypes)
+        switch (elementalFormsScript.currentElement)
         {
-            case DamageTypes.fire:
-                fireSlash45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.fire:
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
-            case DamageTypes.water:
-                waterSlash45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.water:
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj1.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
-            case DamageTypes.air:
-                airSlash45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.air:
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj2.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
-            case DamageTypes.normal:
-                normalSlash45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.normal:
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj3.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             default:
                 break;
         }
     }
 
-    public void PlaySlashNegative45(DamageTypes damageTypes)
+    public void PlaySlash45()
     {
-        switch (damageTypes)
+        switch (elementalFormsScript.currentElement)
         {
-            case DamageTypes.fire:
-                fireSlashNegative45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.fire:
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
-            case DamageTypes.water:
-                waterSlashNegative45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.water:
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj1.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
-            case DamageTypes.air:
-                airSlashNegative45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.air:
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj2.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
-            case DamageTypes.normal:
-                normalSlashNegative45.SetActive(true);
+            case PlayerElementalForms.ElementalForms.normal:
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj3.transform.localRotation = Quaternion.Euler(180, 0, -45);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void PlaySlashNegative45()
+    {
+        switch (elementalFormsScript.currentElement)
+        {
+            case PlayerElementalForms.ElementalForms.fire:
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj.transform.localRotation = Quaternion.Euler(0, 0, -45);
+                break;
+            case PlayerElementalForms.ElementalForms.water:
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj1.transform.localRotation = Quaternion.Euler(0, 0, -45);
+                break;
+            case PlayerElementalForms.ElementalForms.air:
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj2.transform.localRotation = Quaternion.Euler(0, 0, -45);
+                break;
+            case PlayerElementalForms.ElementalForms.normal:
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj3.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             default:
                 break;
@@ -483,6 +491,18 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         anim.SetBool(deathBool, false);
     }
 
+    public void PlaySlamVFX(int pos)
+    {
+        if(pos == 1)
+        {
+            Instantiate(slamVFX, attackSlamPos.position, Quaternion.identity);
+
+        }else if(pos == 2)
+        {
+            Instantiate(slamVFX, rageSlamPos.position, Quaternion.identity);
+        }
+    }
+
     void ShowDamageText()
     {
         var obj = objectPooler.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
@@ -553,7 +573,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         //play dissolve shader effect
         controller.enabled = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         Respawn();
     }
 

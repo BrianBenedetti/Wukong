@@ -82,13 +82,13 @@ MonoBehaviour:
   maxHealth: 100
   turnSmoothTime: 5
   lookRadius: 15
-  startWaitTime: 3
   retreatDistance: 5
   knockbackAmount: 8
-  slamRadius: 2
+  slamRadius: 3
   projectileDamage: 10
   slamDamage: 25
   lootTable: 32000000230000000f000000
+  slamVFX: {fileID: 118863864665275599, guid: dddaf111c6c4dba419d688ccdd265980, type: 3}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

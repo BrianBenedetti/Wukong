@@ -34,6 +34,8 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     bool knockback;
 
+    public GameObject slamVFX;
+
     public Transform[] waypoints;
     public Transform projectileOrigin;
     [HideInInspector] public Transform target;
@@ -189,6 +191,11 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
                 }
             }
         }
+    }
+
+    public void PlaySlamVFX()
+    {
+        Instantiate(slamVFX, transform.position, Quaternion.identity);
     }
 
     public IEnumerator Die()

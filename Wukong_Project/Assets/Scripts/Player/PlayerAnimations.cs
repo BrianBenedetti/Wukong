@@ -28,8 +28,6 @@ public class PlayerAnimations : MonoBehaviour
     public readonly int heavyAttack3Bool = Animator.StringToHash("Heavy Attack 3");
     public readonly int nimbusBool = Animator.StringToHash("Nimbus");
 
-    public readonly int comboPulseTrigger = Animator.StringToHash("Pulse");
-
     // Start is called before the first frame update
     void Start()
     {
@@ -93,10 +91,5 @@ public class PlayerAnimations : MonoBehaviour
     public void PlayRageAnimation()
     {
         anim.SetTrigger(rageTrigger);
-    }
-
-    public void PlayComboPulse()
-    {
-        comboCounterAnim.SetTrigger(comboPulseTrigger);
     }
 }

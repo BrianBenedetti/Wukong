@@ -30,34 +30,38 @@ public class PlayerSpecialAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputActions.PlayerControls.SpecialAttack.triggered && movementScript.isGrounded && combatScript.currentMana == combatScript.maxMana)
+        if (inputActions.PlayerControls.SpecialAttack.triggered && movementScript.isGrounded &&
+            combatScript.currentMana == combatScript.maxMana &&
+            elementalFormScript.currentElement != PlayerElementalForms.ElementalForms.normal)
         {
-            switch (elementalFormScript.currentElement)
-            {
-                case PlayerElementalForms.ElementalForms.fire:
-                    animationsScript.PlaySpecialAttackAnimation();
-                    Instantiate(fireSpecialAttack, transform.position, Quaternion.identity);
-                    //combatScript.currentMana = 0;
-                    //combatScript.manaBar.SetValue(combatScript.currentMana);
-                    break;
+            animationsScript.PlaySpecialAttackAnimation();
+        }
+    }
 
-                case PlayerElementalForms.ElementalForms.water:
-                    animationsScript.PlaySpecialAttackAnimation();
-                    Instantiate(waterSpecialAttack, transform.position + transform.forward, transform.rotation);
-                    //combatScript.currentMana = 0;
-                    //combatScript.manaBar.SetValue(combatScript.currentMana);
-                    break;
+    public void DoSpecialAttack()
+    {
+        switch (elementalFormScript.currentElement)
+        {
+            case PlayerElementalForms.ElementalForms.fire:
+                Instantiate(fireSpecialAttack, transform.position, Quaternion.identity);
+                //combatScript.currentMana = 0;
+                //combatScript.manaBar.SetValue(combatScript.currentMana);
+                break;
 
-                case PlayerElementalForms.ElementalForms.air:
-                    animationsScript.PlaySpecialAttackAnimation();
-                    Instantiate(airSpecialAttack, transform.position, Quaternion.identity);
-                    //combatScript.currentMana = 0;
-                    //combatScript.manaBar.SetValue(combatScript.currentMana);
-                    break;
+            case PlayerElementalForms.ElementalForms.water:
+                Instantiate(waterSpecialAttack, transform.position + transform.forward, transform.rotation);
+                //combatScript.currentMana = 0;
+                //combatScript.manaBar.SetValue(combatScript.currentMana);
+                break;
 
-                default:
-                    break;
-            }
+            case PlayerElementalForms.ElementalForms.air:
+                Instantiate(airSpecialAttack, transform.position, Quaternion.identity);
+                //combatScript.currentMana = 0;
+                //combatScript.manaBar.SetValue(combatScript.currentMana);
+                break;
+
+            default:
+                break;
         }
     }
 
