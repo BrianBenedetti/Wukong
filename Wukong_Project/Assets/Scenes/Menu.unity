@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10808,12 +10808,12 @@ PrefabInstance:
     - target: {fileID: 1714824940060077368, guid: 5d38b96203f67b34ca4b7f1fdede0fce,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -377
+      value: -400.7
       objectReference: {fileID: 0}
     - target: {fileID: 1714824940060077368, guid: 5d38b96203f67b34ca4b7f1fdede0fce,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 418
+      value: 421.9
       objectReference: {fileID: 0}
     - target: {fileID: 1714824940060077368, guid: 5d38b96203f67b34ca4b7f1fdede0fce,
         type: 3}
@@ -10859,8 +10859,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6189800695036617034, guid: 40bc604334972dd4395c32e715f12a82,
+      objectReference: {fileID: 6189800693804684129}
+    - target: {fileID: 1714824940060077369, guid: 5d38b96203f67b34ca4b7f1fdede0fce,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConBack
+      objectReference: {fileID: 0}
     - target: {fileID: 1714824940060077371, guid: 5d38b96203f67b34ca4b7f1fdede0fce,
         type: 3}
       propertyPath: m_Name
@@ -12734,7 +12738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &6189800695299420177
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13001,8 +13005,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6189800695036617034, guid: 40bc604334972dd4395c32e715f12a82,
+      objectReference: {fileID: 6189800693804684129}
+    - target: {fileID: 3621562480495347114, guid: aa2f06989dba52d40ac9d86ea953a8e2,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ControlsBack
+      objectReference: {fileID: 0}
     - target: {fileID: 3621562480495347115, guid: aa2f06989dba52d40ac9d86ea953a8e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13066,7 +13074,7 @@ PrefabInstance:
     - target: {fileID: 3621562480495347115, guid: aa2f06989dba52d40ac9d86ea953a8e2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 418
+      value: 425.3
       objectReference: {fileID: 0}
     - target: {fileID: 3621562480495347115, guid: aa2f06989dba52d40ac9d86ea953a8e2,
         type: 3}
@@ -13121,8 +13129,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6189800695036617034, guid: 40bc604334972dd4395c32e715f12a82,
+      objectReference: {fileID: 6189800693804684129}
+    - target: {fileID: 4340986915435487154, guid: 3b162c46d5f270b418152090a8f54f5c,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: kMBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4340986915435487156, guid: 3b162c46d5f270b418152090a8f54f5c,
         type: 3}
       propertyPath: m_Name
@@ -13186,12 +13198,12 @@ PrefabInstance:
     - target: {fileID: 4340986915435487157, guid: 3b162c46d5f270b418152090a8f54f5c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -377
+      value: -403.1
       objectReference: {fileID: 0}
     - target: {fileID: 4340986915435487157, guid: 3b162c46d5f270b418152090a8f54f5c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 418
+      value: 425
       objectReference: {fileID: 0}
     - target: {fileID: 4340986915435487157, guid: 3b162c46d5f270b418152090a8f54f5c,
         type: 3}
@@ -13409,7 +13421,7 @@ PrefabInstance:
     - target: {fileID: 4594684018039665466, guid: 22ce09935fd7cf248ad28e3f950dcf74,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4594684018117610854, guid: 22ce09935fd7cf248ad28e3f950dcf74,
         type: 3}
