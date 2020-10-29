@@ -7,6 +7,7 @@ public class PlayerDash : MonoBehaviour
 {
     PlayerMovement moveScript;
     PlayerAnimations animationsScript;
+    PlayerCombat combatScript;
 
     bool canDash;
 
@@ -18,9 +19,6 @@ public class PlayerDash : MonoBehaviour
     [HideInInspector] public PlayerInputActions inputActions;
 
     public GameObject dustTrail;
-    //public GameObject distortionTrail;
-
-    //public Transform spawnPoint;
 
     private void Awake()
     {
@@ -34,6 +32,7 @@ public class PlayerDash : MonoBehaviour
 
         moveScript = GetComponent<PlayerMovement>();
         animationsScript = GetComponent<PlayerAnimations>();
+        combatScript = GetComponent<PlayerCombat>();
     }
 
     // Update is called once per frame
@@ -42,22 +41,30 @@ public class PlayerDash : MonoBehaviour
         var gamepad = Gamepad.current;
         if(gamepad != null)
         {
-            if (inputActions.PlayerControls.Dodge.triggered && !gamepad.leftShoulder.isPressed && canDash && moveScript.direction.magnitude > 0)
+            if (inputActions.PlayerControls.Dodge.triggered && !gamepad.leftShoulder.isPressed && canDash && moveScript.direction.magnitude > 0
+                && !animationsScript.anim.GetBool(animationsScript.isDeadBool))
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
-                Instantiate(dustTrail, transform.position, Quaternion.identity);
-                //Instantiate(distortionTrail, spawnPoint.position, Quaternion.identity);
+
+                if (!moveScript.nimbus.activeInHierarchy)
+                {
+                    Instantiate(dustTrail, transform.position, transform.rotation);
+                }
             }
         }
         else
         {
-            if (inputActions.PlayerControls.Dodge.triggered && canDash && moveScript.direction.magnitude > 0)
+            if (inputActions.PlayerControls.Dodge.triggered && canDash && moveScript.direction.magnitude > 0
+                && !animationsScript.anim.GetBool(animationsScript.isDeadBool))
             {
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
-                Instantiate(dustTrail, transform.position + transform.forward, transform.rotation);
-                //Instantiate(distortionTrail, spawnPoint.position, Quaternion.identity);
+
+                if (!moveScript.nimbus.activeInHierarchy)
+                {
+                    Instantiate(dustTrail, transform.position, transform.rotation);
+                }
             }
         }
 
@@ -82,6 +89,7 @@ public class PlayerDash : MonoBehaviour
         float startTime = Time.time;
 
         moveScript.velocity.y = 0;
+
 
         while (Time.time < startTime + dashTime)
         {
