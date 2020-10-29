@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Wukong_Project/Assets/Lee's Stuff/CheckPoint.meta
+guid: 4326377e43bc5d840b863d0811f9132b
+=======
 guid: ad5431d404413ab40935fd225252e1a2
+>>>>>>> 64429ae0c6f70c4ba99a9f0d1069938577b46d9a:Wukong_Project/Assets/GameComponents/CheckPoint.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

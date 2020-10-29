@@ -9,6 +9,7 @@ TagManager:
   - Shrine
   - Pointer
   - Ground
+  - Canvas
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Projectile
   - Shield
   - Special Attack
-  - 
+  - PP
   - 
   - 
   - 

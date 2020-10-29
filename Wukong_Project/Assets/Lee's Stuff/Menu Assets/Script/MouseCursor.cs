@@ -14,7 +14,7 @@ public class MouseCursor : MonoBehaviour
     private void Awake()
     {
         cursorpos = new MenuInput();
-        cursorpos.PlayerInput.Cursor.performed += ctx => MousePos = ctx.ReadValue<Vector2>();
+       // cursorpos.PlayerInput.Cursor.performed += ctx => MousePos = ctx.ReadValue<Vector2>();
     }
     void Update()
     {
