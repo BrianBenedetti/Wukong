@@ -80,7 +80,7 @@ public class NewMenuInput : MonoBehaviour
         {
             if (SelectedButton == 1)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+                //FindObjectOfType<AudioManager>().Play("click");
                 GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
                 SceneManager.LoadScene(1);
@@ -88,7 +88,7 @@ public class NewMenuInput : MonoBehaviour
             }
             else if (SelectedButton == 2)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+               // FindObjectOfType<AudioManager>().Play("click");
                 GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
                 ControlsM = true;
@@ -100,7 +100,7 @@ public class NewMenuInput : MonoBehaviour
             }
             else if (SelectedButton == 3)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+              //  FindObjectOfType<AudioManager>().Play("click");
                 GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
                 ControlsM = false;
@@ -112,7 +112,7 @@ public class NewMenuInput : MonoBehaviour
             }
             else if (SelectedButton == 4)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+               // FindObjectOfType<AudioManager>().Play("click");
                 GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
                 Application.Quit();                
@@ -122,7 +122,7 @@ public class NewMenuInput : MonoBehaviour
         {
             if (selectB == 1)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+               // FindObjectOfType<AudioManager>().Play("click");
                 ControllerControls.SetActive(true);
                 Pointer.SetActive(false);
                 ControlsMenu.SetActive(false);
@@ -131,7 +131,7 @@ public class NewMenuInput : MonoBehaviour
             }
             else if (selectB == 2)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+              //  FindObjectOfType<AudioManager>().Play("click");
                 KMcontrols.SetActive(true);
                 ControllerControls.SetActive(false);
                 Pointer.SetActive(false);
@@ -144,7 +144,7 @@ public class NewMenuInput : MonoBehaviour
     {
         if (ControlsM == true)
         {
-            FindObjectOfType<AudioManager>().Play("click");
+           // FindObjectOfType<AudioManager>().Play("click");
             SelectedButton = 1;
             ControlsMenu.SetActive(false);
             ControlsM = false;
@@ -156,7 +156,7 @@ public class NewMenuInput : MonoBehaviour
         }
         else if (ControlsM == false)
         {
-            FindObjectOfType<AudioManager>().Play("click");
+           // FindObjectOfType<AudioManager>().Play("click");
             SelectedButton = 1;
             CreditsMenu.SetActive(false);
             Point.SetActive(true);
@@ -168,13 +168,14 @@ public class NewMenuInput : MonoBehaviour
 
     private void Update()
     {
+   
         if (ControlsM == false)
         {
             if (move >= 0.5f)
             {
                 if (SelectedButton > 1)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                  //  FindObjectOfType<AudioManager>().Play("select");
                     SelectedButton -= 1;
                     move = 0;
                 }
@@ -183,29 +184,29 @@ public class NewMenuInput : MonoBehaviour
             {
                 if (SelectedButton < NumberOfButtons)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                   // FindObjectOfType<AudioManager>().Play("select");
                     SelectedButton += 1;
                     move = 0;
                 }
             }
             MoveThePointer();
-            if (mousePos.y >= 530 && mousePos.y < 650 && mousePos.x > 950 && mousePos.x < 1270)
+            if (mousePos.y >= 620 && mousePos.y < 760 && mousePos.x > 950 && mousePos.x < 1500)
             {                
                 SelectedButton = 1;
                 if(SelectedButton == 1 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
-                    FindObjectOfType<AudioManager>().Play("click");
+                   // FindObjectOfType<AudioManager>().Play("click");
                     GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
                     SceneManager.LoadScene(1);                    
                 }
             }
-            else if (mousePos.y <= 520 && mousePos.y >= 410 && mousePos.x > 950 && mousePos.x < 1270)
+            else if (mousePos.y <= 610 && mousePos.y >= 470 && mousePos.x > 950 && mousePos.x < 1500)
             {
                 SelectedButton = 2;
                 if (SelectedButton == 2 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
-                    FindObjectOfType<AudioManager>().Play("click");
+                   // FindObjectOfType<AudioManager>().Play("click");
                     GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
                     ControlsM = true;
@@ -215,12 +216,12 @@ public class NewMenuInput : MonoBehaviour
                     Pointer.SetActive(true);
                 }
             }
-            else if (mousePos.y <= 390f && mousePos.y >= 288f && mousePos.x > 950 && mousePos.x < 1270)
+            else if (mousePos.y <= 460f && mousePos.y >= 340f && mousePos.x > 950 && mousePos.x < 1500)
             {        
                 SelectedButton = 3;
                 if (SelectedButton == 3 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
-                    FindObjectOfType<AudioManager>().Play("click");
+                   // FindObjectOfType<AudioManager>().Play("click");
                     GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
                     ControlsM = false;
@@ -231,12 +232,12 @@ public class NewMenuInput : MonoBehaviour
                     Pointer.SetActive(false);
                 }
             }
-            else if (mousePos.y <= 265f && mousePos.y > 172 && mousePos.x > 950 && mousePos.x < 1270)
+            else if (mousePos.y <= 330f && mousePos.y > 170 && mousePos.x > 950 && mousePos.x < 1500)
             {                              
                 SelectedButton = 4;
                 if (SelectedButton == 4 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
-                    FindObjectOfType<AudioManager>().Play("click");
+                   // FindObjectOfType<AudioManager>().Play("click");
                     GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
                     Application.Quit();                             
@@ -249,7 +250,7 @@ public class NewMenuInput : MonoBehaviour
             {
                 if (selectB > 1)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                    //FindObjectOfType<AudioManager>().Play("select");
                     selectB -= 1;
                     move = 0;                    
                 }
@@ -258,18 +259,18 @@ public class NewMenuInput : MonoBehaviour
             {
                 if (selectB < nButtons)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                    //FindObjectOfType<AudioManager>().Play("select");
                     selectB += 1;
                     move = 0;
                 }
             }
             MoveThePoint();
-            if (mousePos.y >= 510 && mousePos.y <= 670 && mousePos.x > 650 && mousePos.x < 950)
+            if (mousePos.y >= 550 && mousePos.y <= 840 && mousePos.x > 650 && mousePos.x < 1250)
             {
                 selectB = 1;
                 if(selectB == 1 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
-                    FindObjectOfType<AudioManager>().Play("click");
+                    //FindObjectOfType<AudioManager>().Play("click");
                     ControllerControls.SetActive(true);
                     Pointer.SetActive(false);
                     ControlsMenu.SetActive(false);
@@ -277,12 +278,12 @@ public class NewMenuInput : MonoBehaviour
                     ControlsM = false;                   
                 }
             }
-            else if (mousePos.y >= 250 && mousePos.y <= 440 && mousePos.x > 650 && mousePos.x < 950)
+            else if (mousePos.y >= 250 && mousePos.y <= 540 && mousePos.x > 650 && mousePos.x < 1250)
             {
                 selectB = 2;
                 if (selectB == 2 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
-                    FindObjectOfType<AudioManager>().Play("click");
+                   // FindObjectOfType<AudioManager>().Play("click");
                     KMcontrols.SetActive(true);
                     ControllerControls.SetActive(false);
                     Pointer.SetActive(false);
@@ -369,7 +370,7 @@ public class NewMenuInput : MonoBehaviour
     //Back from key board and mouse panel
     public void kMBack()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        //FindObjectOfType<AudioManager>().Play("click");
         ControlsMenu.SetActive(false);
         ControlsM = false;
         Point.SetActive(true);
@@ -381,7 +382,7 @@ public class NewMenuInput : MonoBehaviour
     }
     public void ConBack()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+       // FindObjectOfType<AudioManager>().Play("click");
         ControlsMenu.SetActive(false);
         ControlsM = false;
         Point.SetActive(true);
@@ -393,7 +394,7 @@ public class NewMenuInput : MonoBehaviour
     }
     public void ControlsBack()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        //FindObjectOfType<AudioManager>().Play("click");
         ControlsMenu.SetActive(false);
         ControlsM = false;
         Point.SetActive(true);

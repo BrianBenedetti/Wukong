@@ -5801,7 +5801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1457406894570363021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13742,6 +13742,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ControlsSelect Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 687018337657195506, guid: 3045d4dd524d96c40bbe1a4e52528588,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 687018337657195507, guid: 3045d4dd524d96c40bbe1a4e52528588,
         type: 3}

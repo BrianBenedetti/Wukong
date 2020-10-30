@@ -54,6 +54,7 @@ public class NewPauseMENU : MonoBehaviour
         controlsmenu = false;
         GamePaused = false;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
 
         Pauseinput = new MenuInput();
         Pauseinput.PlayerInput.Select.performed += ctx => StartGame();
@@ -67,9 +68,11 @@ public class NewPauseMENU : MonoBehaviour
     {
         if (controlsmenu == false)
         {
+
             if (SelectedButton == 1 && GamePaused == true)
+
             {
-                FindObjectOfType<AudioManager>().Play("click");
+               // FindObjectOfType<AudioManager>().Play("click");
                 // PausePointer = GameObject.FindGameObjectWithTag("Pointer");
                 //GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 // Destroy(ParticleS, 0.1f);
@@ -79,9 +82,11 @@ public class NewPauseMENU : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
+
             else if (SelectedButton == 2 && GamePaused == true)
+
             {
-                FindObjectOfType<AudioManager>().Play("click");
+               // FindObjectOfType<AudioManager>().Play("click");
                 //  PausePointer = GameObject.FindGameObjectWithTag("Pointer");
                 // GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 //  Destroy(ParticleS, 0.1f);
@@ -91,12 +96,13 @@ public class NewPauseMENU : MonoBehaviour
                 PauseControlsPointer.SetActive(true);
                 PauseMenuUI.SetActive(false);
                 Time.timeScale = 0f;
-           
 
             }
+
             else if (SelectedButton == 3 && GamePaused == true)
+
             {
-                FindObjectOfType<AudioManager>().Play("click");
+               // FindObjectOfType<AudioManager>().Play("click");
                 //PausePointer = GameObject.FindGameObjectWithTag("Pointer");
                 // GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 // Destroy(ParticleS, 0.1f);
@@ -107,7 +113,7 @@ public class NewPauseMENU : MonoBehaviour
         {
             if (selectB == 1)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+                //FindObjectOfType<AudioManager>().Play("click");
                 KMcontrols.SetActive(false);
                 ControllerControls.SetActive(true);
                 PauseMenuUI.SetActive(false);
@@ -119,7 +125,7 @@ public class NewPauseMENU : MonoBehaviour
             }
             else if (selectB == 2)
             {
-                FindObjectOfType<AudioManager>().Play("click");
+               // FindObjectOfType<AudioManager>().Play("click");
                 KMcontrols.SetActive(true);
                 ControllerControls.SetActive(false);
                 PauseMenuUI.SetActive(false);
@@ -195,16 +201,18 @@ public class NewPauseMENU : MonoBehaviour
 
     private void Update()
     {
-        
-        
+
+        Debug.Log(mousePos);
         // Checks if the pointer needs to move down or up, in this case the poiter moves up one button
-        if (controlsmenu == false && GamePaused == true)
+
+ if (controlsmenu == false && GamePaused == true)
+
         {
             if (move >= 0.5)
             {
                 if (SelectedButton > 1)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                   // FindObjectOfType<AudioManager>().Play("select");
                     SelectedButton -= 1;
                     move = 0;
                 }
@@ -213,14 +221,14 @@ public class NewPauseMENU : MonoBehaviour
             {
                 if (SelectedButton < NumberOfButtons)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                    //FindObjectOfType<AudioManager>().Play("select");
                     SelectedButton += 1;
                     move = 0;
                 }
 
             }
             MoveThePointer();
-            if (mousePos.y >= 547 && mousePos.y <= 664 && mousePos.x > 627 && mousePos.x < 974  && GamePaused == true)
+            if (mousePos.y >= 710 && mousePos.y <= 840 && mousePos.x > 780 && mousePos.x < 1130  && GamePaused == true)
             {
                 SelectedButton = 1;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
@@ -230,7 +238,7 @@ public class NewPauseMENU : MonoBehaviour
                 }
 
             }
-            else if (mousePos.y >= 401 && mousePos.y <= 514 && mousePos.x > 627 && mousePos.x < 974 && GamePaused == true)
+            else if (mousePos.y >= 560 && mousePos.y <= 690 && mousePos.x > 780 && mousePos.x < 1130 && GamePaused == true)
             {
                 SelectedButton = 2;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
@@ -239,7 +247,7 @@ public class NewPauseMENU : MonoBehaviour
                     StartGame();
                 }
             }
-            else if (mousePos.y >= 250 && mousePos.y <= 358 && mousePos.x > 627 && mousePos.x < 974 && GamePaused == true)
+            else if (mousePos.y >= 420 && mousePos.y <= 540 && mousePos.x > 780 && mousePos.x < 1130 && GamePaused == true)
             {
                 SelectedButton = 3;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
@@ -250,13 +258,15 @@ public class NewPauseMENU : MonoBehaviour
             }
         
         }
+
         else if (controlsmenu == true && GamePaused == true)
+
         {
             if (move >= 0.5f)
             {
                 if (selectB > 1)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                   // FindObjectOfType<AudioManager>().Play("select");
                     selectB -= 1;
                     move = 0;
                 }
@@ -265,14 +275,14 @@ public class NewPauseMENU : MonoBehaviour
             {
                 if (selectB < nButtons)
                 {
-                    FindObjectOfType<AudioManager>().Play("select");
+                   // FindObjectOfType<AudioManager>().Play("select");
                     selectB += 1;
                     move = 0;
                 }
 
             }
             MoveThePoint();
-            if (mousePos.y >= 510 && mousePos.y <= 670 && mousePos.x > 650 && mousePos.x < 950)
+            if (mousePos.y >= 645 && mousePos.y <= 902 && mousePos.x > 650 && mousePos.x < 1250)
             {
                 selectB = 1;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
@@ -281,7 +291,7 @@ public class NewPauseMENU : MonoBehaviour
                     controlsmenu = false;
                 }
             }
-            else if (mousePos.y >= 250 && mousePos.y <= 440 && mousePos.x > 650 && mousePos.x < 950)
+            else if (mousePos.y >= 356 && mousePos.y <= 640 && mousePos.x > 650 && mousePos.x < 1250)
             {
                 selectB = 2;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
@@ -300,6 +310,7 @@ public class NewPauseMENU : MonoBehaviour
         {
             resumebutton.SetActive(false);
             controlsbutton.SetActive(true);
+            Menubutton.SetActive(true);
             PausePointer.transform.position = PauseButtonPos1.position;
         }
         else if (SelectedButton == 2)
@@ -313,6 +324,7 @@ public class NewPauseMENU : MonoBehaviour
         {
             controlsbutton.SetActive(true);
             Menubutton.SetActive(false);
+            resumebutton.SetActive(true);
             PausePointer.transform.position = PauseButtonPos3.position;
         }
      
