@@ -33,17 +33,14 @@ public class Menu : MonoBehaviour
         else if (currentSelected.name == "Controls Button")
         {
             ControlsMenu.SetActive(true);
-            Debug.Log("controls");
             
         }
         else if (currentSelected.name == "Credits Button")
         {
-            Debug.Log("credits");
             CreditsMenu.SetActive(true);
         }
         else if (currentSelected.name == "Quit Button")
         {
-            Debug.Log("Quit");
             Application.Quit();
         }
 

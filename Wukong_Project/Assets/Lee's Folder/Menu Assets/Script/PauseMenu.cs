@@ -35,7 +35,6 @@ public class PauseMenu : MonoBehaviour
     }
     void PauseGame()
     {
-        Debug.Log("WW");
         if (controlsmenu == false)
         {
             if (GamePaused == false)
@@ -44,14 +43,12 @@ public class PauseMenu : MonoBehaviour
                 Time.timeScale = 0f;
 
                 GamePaused = true;
-                Debug.Log("w");
             }
             else
             {
                 PauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 GamePaused = false;
-                Debug.Log("l");
 
             }
 

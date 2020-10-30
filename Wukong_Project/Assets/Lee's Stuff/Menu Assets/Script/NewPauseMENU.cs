@@ -180,7 +180,6 @@ public class NewPauseMENU : MonoBehaviour
                 Cursor.visible = true;
                 PausePointer.SetActive(true);
                 PauseMenuUI.SetActive(true);
-                Debug.Log(mousePos);
                 GamePaused = true;
                 Time.timeScale = 0f;
             }
@@ -201,8 +200,6 @@ public class NewPauseMENU : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log(mousePos);
         // Checks if the pointer needs to move down or up, in this case the poiter moves up one button
 
  if (controlsmenu == false && GamePaused == true)

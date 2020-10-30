@@ -59,7 +59,6 @@ public class ControlsSelect : MonoBehaviour
     private void Update()
     {
        
-        Debug.Log(move);
         // Checks if the pointer needs to move down or up, in this case the poiter moves up one button
       
         if ( move >= 0.5)
