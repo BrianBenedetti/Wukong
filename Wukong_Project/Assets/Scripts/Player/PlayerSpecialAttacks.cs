@@ -44,20 +44,20 @@ public class PlayerSpecialAttacks : MonoBehaviour
         {
             case PlayerElementalForms.ElementalForms.fire:
                 Instantiate(fireSpecialAttack, transform.position, Quaternion.identity);
-                //combatScript.currentMana = 0;
-                //combatScript.manaBar.SetValue(combatScript.currentMana);
+                combatScript.currentMana = 0;
+                combatScript.manaBar.SetValue(combatScript.currentMana);
                 break;
 
             case PlayerElementalForms.ElementalForms.water:
                 Instantiate(waterSpecialAttack, transform.position + transform.forward, transform.rotation);
-                //combatScript.currentMana = 0;
-                //combatScript.manaBar.SetValue(combatScript.currentMana);
+                combatScript.currentMana = 0;
+                combatScript.manaBar.SetValue(combatScript.currentMana);
                 break;
 
             case PlayerElementalForms.ElementalForms.air:
                 Instantiate(airSpecialAttack, transform.position, Quaternion.identity);
-                //combatScript.currentMana = 0;
-                //combatScript.manaBar.SetValue(combatScript.currentMana);
+                combatScript.currentMana = 0;
+                combatScript.manaBar.SetValue(combatScript.currentMana);
                 break;
 
             default:

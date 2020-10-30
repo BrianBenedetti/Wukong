@@ -182,7 +182,9 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 if (randomNumber <= lootTable[j])
                 {
-                    objectPooler.SpawnFromPool(lootOrbs[j].ToString(), transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
+                    objectPooler.SpawnFromPool(lootOrbs[j].ToString(),
+                        transform.position + new Vector3(Random.Range(-1, 1), 2,
+                        Random.Range(-1, 1)), Quaternion.identity);
                     break;
                 }
                 else
