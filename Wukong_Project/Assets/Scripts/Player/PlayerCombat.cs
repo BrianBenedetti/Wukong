@@ -2,9 +2,19 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
+
+    //lee effects
+    public ParticleSystem RageEffect;
+    public Image RageFull;
+    public GameObject normalFace;
+    public GameObject rageFace;
+    public ParticleSystem ManaEffect;
+
+
     public int maxHealth = 100;
     public int maxMana = 100;
     public int maxRage = 100;
@@ -109,6 +119,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     // Start is called before the first frame update
     void Start()
     {
+        normalFace.SetActive(true);
+        rageFace.SetActive(false);
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(maxHealth);
@@ -138,6 +150,29 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         currentMana = Mathf.Clamp(currentMana, 0, maxMana);
         currentRage = Mathf.Clamp(currentRage, 0, maxRage);
+
+        if(currentRage == maxRage)
+        {
+            normalFace.SetActive(false);
+            rageFace.SetActive(true);
+            RageEffect.Play();
+            RageFull.color = Color.black;
+        }
+        else
+        {
+            normalFace.SetActive(true);
+            rageFace.SetActive(false);
+            RageEffect.Stop();
+            RageFull.color = Color.white;
+        }
+        if (currentMana == maxMana)
+        {
+            ManaEffect.Play();
+        }
+        else
+        {
+            ManaEffect.Stop();
+        }
 
         if (comboHits > 0)
         {
