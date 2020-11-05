@@ -206,6 +206,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 15
         messageOptions: 0
+      - time: 0.740741
+        functionName: PlaySlashBot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -241,6 +248,20 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 20
+        messageOptions: 0
+      - time: 0.55144006
+        functionName: PlaySlash45
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.55144006
+        functionName: PlaySlashNegative45
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
         messageOptions: 0
       transformMask: []
       maskType: 3

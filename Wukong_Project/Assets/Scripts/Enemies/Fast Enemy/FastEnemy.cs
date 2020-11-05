@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -38,6 +38,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public Transform attackOrigin;
     [HideInInspector] public Transform target;
     public Transform damageTextPos;
+    public Transform slashSpawn;
 
     public DamageTypes myDamageType;
     public DamageResistances myResistances;
@@ -52,7 +53,15 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     [Header("Components")]
     [HideInInspector] public NavMeshAgent agent;
 
-    Animator animator;    
+    Animator animator;
+
+    public GameObject fireSlash;
+
+    public GameObject waterSlash;
+
+    public GameObject airSlash;
+
+    public GameObject normalSlash;
 
     void Start()
     {
@@ -174,6 +183,102 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
                     randomNumber -= lootTable[j];
                 }
             }
+        }
+    }
+
+    public void PlaySlashTop()
+    {
+        switch (myDamageType)
+        {
+            case DamageTypes.fire:
+                Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                break;
+            case DamageTypes.water:
+                Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                break;
+            case DamageTypes.air:
+                Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                break;
+            case DamageTypes.normal:
+                Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void PlaySlashBot()
+    {
+        switch (myDamageType)
+        {
+            case DamageTypes.fire:
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj.transform.localRotation = Quaternion.Euler(180, 0, 0);
+                break;
+            case DamageTypes.water:
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj1.transform.localRotation = Quaternion.Euler(180, 0, 0);
+                break;
+            case DamageTypes.air:
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj2.transform.localRotation = Quaternion.Euler(180, 0, 0);
+                break;
+            case DamageTypes.normal:
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj3.transform.localRotation = Quaternion.Euler(180, 0, 0);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void PlaySlash45()
+    {
+        switch (myDamageType)
+        {
+            case DamageTypes.fire:
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj.transform.localRotation = Quaternion.Euler(180, 0, -45);
+                break;
+            case DamageTypes.water:
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj1.transform.localRotation = Quaternion.Euler(180, 0, -45);
+                break;
+            case DamageTypes.air:
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj2.transform.localRotation = Quaternion.Euler(180, 0, -45);
+                break;
+            case DamageTypes.normal:
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj3.transform.localRotation = Quaternion.Euler(180, 0, -45);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void PlaySlashNegative45()
+    {
+        switch (myDamageType)
+        {
+            case DamageTypes.fire:
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj.transform.localRotation = Quaternion.Euler(0, 0, -45);
+                break;
+            case DamageTypes.water:
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj1.transform.localRotation = Quaternion.Euler(0, 0, -45);
+                break;
+            case DamageTypes.air:
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj2.transform.localRotation = Quaternion.Euler(0, 0, -45);
+                break;
+            case DamageTypes.normal:
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj3.transform.localRotation = Quaternion.Euler(0, 0, -45);
+                break;
+            default:
+                break;
         }
     }
 

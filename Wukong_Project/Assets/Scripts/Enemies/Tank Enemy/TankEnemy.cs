@@ -36,6 +36,8 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public Transform attackOrigin;
     [HideInInspector] public Transform target;
     public Transform damageTextPos;
+    public Transform slashSpawn;
+    public Transform attackSlamPos;
 
     public DamageTypes myDamageType;
     public DamageResistances myResistances;
@@ -51,6 +53,16 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     [HideInInspector] public NavMeshAgent agent;
 
     Animator animator;
+
+    public GameObject fireSlash;
+
+    public GameObject waterSlash;
+
+    public GameObject airSlash;
+
+    public GameObject normalSlash;
+
+    public GameObject slamVFX;
 
     // Start is called before the first frame update
     void Start()
@@ -117,7 +129,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public void Slam()
     {
-        Collider[] enemiesHit = Physics.OverlapSphere(transform.position, attackRadius, whatIsEnemy);
+        Collider[] enemiesHit = Physics.OverlapSphere(transform.position, slamRadius, whatIsEnemy);
 
         Vector3 dir = transform.forward;
 
@@ -170,6 +182,37 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
                 }
             }
         }
+    }
+
+    public void PlaySlashTop()
+    {
+        switch (myDamageType)
+        {
+            case DamageTypes.fire:
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj.transform.localScale = new Vector3(4, 4, 4);
+                break;
+            case DamageTypes.water:
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj1.transform.localScale = new Vector3(4, 4, 4);
+                break;
+            case DamageTypes.air:
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj2.transform.localScale = new Vector3(4, 4, 4);
+                break;
+            case DamageTypes.normal:
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                obj3.transform.localScale = new Vector3(4, 4, 4);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void PlaySlamVFX()
+    {
+        var obj = Instantiate(slamVFX, attackSlamPos.position, Quaternion.identity);
+        obj.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 
     public IEnumerator Die()

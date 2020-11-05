@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &659513766763982542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772993728308994427}
+  m_Layer: 8
+  m_Name: Slam Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772993728308994427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659513766763982542}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2760853769800401482}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2558933295757987531
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +124,8 @@ Transform:
   - {fileID: 6069554741439454468}
   - {fileID: 2760853768959007076}
   - {fileID: 4605421644077041839}
+  - {fileID: 2569668916321175656}
+  - {fileID: 772993728308994427}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -151,7 +183,7 @@ MonoBehaviour:
   startWaitTime: 2
   knockbackAmount: 8
   attackRadius: 1.5
-  slamRadius: 4
+  slamRadius: 6
   lightAttackDamage: 25
   heavyAttackDamage: 35
   lootTable: 32000000230000000f000000
@@ -159,6 +191,8 @@ MonoBehaviour:
   attackOrigin: {fileID: 2760853768959007076}
   target: {fileID: 0}
   damageTextPos: {fileID: 4605421644077041839}
+  slashSpawn: {fileID: 2569668916321175656}
+  attackSlamPos: {fileID: 772993728308994427}
   myDamageType: 1
   myResistances: {fileID: 11400000, guid: 194e749a1648886438dd69fa1ee95d40, type: 2}
   lootOrbs:
@@ -169,6 +203,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   agent: {fileID: 0}
+  fireSlash: {fileID: 4406726965804440673, guid: abf61d12582792a419cba0112c4ab25f,
+    type: 3}
+  waterSlash: {fileID: 8531183030959873733, guid: 0b3425f39aeb070458d84b56d9833947,
+    type: 3}
+  airSlash: {fileID: 2718011653336346681, guid: 8e79b3f4a083ec04aa5ff62aea5ed2ce,
+    type: 3}
+  normalSlash: {fileID: 8085470452112974784, guid: e5d6d0649d7b9f44c84bbff66ae9ba25,
+    type: 3}
+  slamVFX: {fileID: 118863864665275599, guid: dddaf111c6c4dba419d688ccdd265980, type: 3}
 --- !u!95 &2760853769800401487
 Animator:
   serializedVersion: 3
@@ -188,6 +231,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2869142486343783845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2569668916321175656}
+  m_Layer: 8
+  m_Name: Slash Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2569668916321175656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2869142486343783845}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2760853769800401482}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6030841741101513455
 PrefabInstance:
   m_ObjectHideFlags: 0
