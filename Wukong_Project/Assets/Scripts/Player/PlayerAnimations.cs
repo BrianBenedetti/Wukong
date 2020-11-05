@@ -8,8 +8,6 @@ public class PlayerAnimations : MonoBehaviour
 
     [HideInInspector] public Animator anim;
 
-    public Animator comboCounterAnim;
-
     public readonly int speedFloat = Animator.StringToHash("Speed");
     public readonly int verticalSpeedFloat = Animator.StringToHash("Vertical Speed");
     public readonly int jumpTrigger = Animator.StringToHash("Jump");

@@ -6,14 +6,11 @@ using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 {
-
-    //lee effects
     public ParticleSystem RageEffect;
     public Image RageFull;
     public GameObject normalFace;
     public GameObject rageFace;
     public ParticleSystem ManaEffect;
-
 
     public int maxHealth = 100;
     public int maxMana = 100;
@@ -64,6 +61,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     PlayerElementalForms elementalFormsScript;
     PlayerAnimations playerAnimationsScript;
     PlayerMovement playerMovementScript;
+    PlayerAudio audioScript;
 
     public UIBar healthBar;
     public UIBar manaBar;
@@ -110,6 +108,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         elementalFormsScript = GetComponent<PlayerElementalForms>();
         playerAnimationsScript = GetComponent<PlayerAnimations>();
         playerMovementScript = GetComponent<PlayerMovement>();
+        audioScript = GetComponent<PlayerAudio>();
 
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
@@ -121,13 +120,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         normalFace.SetActive(true);
         rageFace.SetActive(false);
+
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(maxHealth);
-        currentMana = 0;
+        currentMana = 100;
         manaBar.SetMaxValue(maxMana);
         manaBar.SetValue(currentMana);
-        currentRage = 0;
+        currentRage = 100;
         rageBar.SetMaxValue(maxRage);
         rageBar.SetValue(currentRage);
 
@@ -151,6 +151,20 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         currentMana = Mathf.Clamp(currentMana, 0, maxMana);
         currentRage = Mathf.Clamp(currentRage, 0, maxRage);
 
+        if (playerAnimationsScript.anim.GetCurrentAnimatorStateInfo(0).IsName("Light 1") ||
+            playerAnimationsScript.anim.GetCurrentAnimatorStateInfo(0).IsName("Light 2") ||
+            playerAnimationsScript.anim.GetCurrentAnimatorStateInfo(0).IsName("Light 3") ||
+            playerAnimationsScript.anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy 1") ||
+            playerAnimationsScript.anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy 2") ||
+            playerAnimationsScript.anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy 3"))
+        {
+            staffObject.SetActive(true);
+        }
+        else
+        {
+            staffObject.SetActive(false);
+        }
+
         if(currentRage == maxRage)
         {
             normalFace.SetActive(false);
@@ -165,13 +179,19 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             RageEffect.Stop();
             RageFull.color = Color.white;
         }
-        if (currentMana == maxMana)
+
+        if(currentMana == maxMana)
         {
             ManaEffect.Play();
         }
         else
         {
             ManaEffect.Stop();
+        }
+
+        if (playerAnimationsScript.anim.IsInTransition(0))
+        {
+            staffObject.SetActive(false);
         }
 
         if (comboHits > 0)
@@ -205,7 +225,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
-                staffObject.SetActive(true);
 
                 if (lightAttackCounter == 1)
                 {
@@ -218,7 +237,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
-                staffObject.SetActive(true);
 
                 if (heavyAttackCounter == 1)
                 {
@@ -234,7 +252,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 lightAttackCounter++;
-                staffObject.SetActive(true);
 
                 if (lightAttackCounter == 1)
                 {
@@ -247,7 +264,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 lastClickedTime = Time.time;
                 heavyAttackCounter++;
-                staffObject.SetActive(true);
 
                 if (heavyAttackCounter == 1)
                 {
@@ -275,7 +291,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
-            staffObject.SetActive(false);
         }
     }
 
@@ -294,7 +309,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
-            staffObject.SetActive(false);
         }
     }
 
@@ -311,7 +325,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             lightAttackCounter = 0;
-            staffObject.SetActive(false);
         }
     }
 
@@ -331,7 +344,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
             playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
             heavyAttackCounter = 0;
-            staffObject.SetActive(false);
         }
     }
 
@@ -346,7 +358,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.dodgeTrigger);
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         lightAttackCounter = 0;
-        staffObject.SetActive(false);
     }
 
     public void HeavyAttack3End()
@@ -361,7 +372,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerAnimationsScript.ResetTrigger(playerAnimationsScript.jumpTrigger);
         heavyAttackCounter = 0;
         lightAttackCounter = 0;
-        staffObject.SetActive(false);
     }
 
     public void PlaySlashTop()
@@ -551,6 +561,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         playerMovementScript.currentSpeed = playerMovementScript.rageSpeed;
         isVulnerable = false;
         playerAnimationsScript.PlayRageAnimation();
+        audioScript.PlaySFX(1);
         //activate shader
         elementalFormsScript.SetSkinnedMaterial(hair, 0, rageMaterial);
         elementalFormsScript.SetSkinnedMaterial(body, 0, rageMaterial);
