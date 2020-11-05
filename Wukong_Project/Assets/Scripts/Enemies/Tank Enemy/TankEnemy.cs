@@ -53,6 +53,9 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     [HideInInspector] public NavMeshAgent agent;
 
     Animator animator;
+    AudioSource source;
+
+    public AudioClip death;
 
     public GameObject fireSlash;
 
@@ -72,6 +75,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
+        source = GetComponent<AudioSource>();
 
         foreach (int i in lootTable)
         {
@@ -219,6 +223,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     {
         //play dissolve shader effect
         //instantiate particle effect
+        source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
         PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);

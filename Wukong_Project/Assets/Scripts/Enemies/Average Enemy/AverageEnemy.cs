@@ -58,6 +58,9 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     [HideInInspector] public NavMeshAgent agent;
 
     Animator animator;
+    AudioSource source;
+
+    public AudioClip death;
 
     void Start()
     {
@@ -67,6 +70,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
+        source = GetComponent<AudioSource>();
 
         foreach (int i in lootTable)
         {
@@ -131,6 +135,8 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         Collider[] enemiesHit = Physics.OverlapSphere(transform.position, slamRadius, whatIsEnemy);
 
         Vector3 dir = transform.forward;
+
+        PlaySlamVFX();
 
         foreach (Collider enemy in enemiesHit)
         {
@@ -204,6 +210,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         //play dissolve shader effect
         //instantiate particle effect
+        source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
         PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);
