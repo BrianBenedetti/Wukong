@@ -8646,7 +8646,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063584135}
-  m_LocalRotation: {x: 0.08006206, y: -0.70247674, z: 0.08004292, w: 0.7026448}
+  m_LocalRotation: {x: 0.08006208, y: -0.7024767, z: 0.080042906, w: 0.7026448}
   m_LocalPosition: {x: 252.59145, y: 9.147098, z: 474.9989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -17606,6 +17606,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
         type: 3}
+      propertyPath: RageEffect
+      value: 
+      objectReference: {fileID: 2128986572}
+    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
+        type: 3}
+      propertyPath: RageFull
+      value: 
+      objectReference: {fileID: 940668654}
+    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
+        type: 3}
+      propertyPath: normalFace
+      value: 
+      objectReference: {fileID: 368402073}
+    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
+        type: 3}
+      propertyPath: rageFace
+      value: 
+      objectReference: {fileID: 1458122421}
+    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
+        type: 3}
+      propertyPath: ManaEffect
+      value: 
+      objectReference: {fileID: 14941487}
+    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1798260869}
@@ -17624,31 +17649,6 @@ PrefabInstance:
       propertyPath: comboCounter
       value: 
       objectReference: {fileID: 167996775}
-    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
-        type: 3}
-      propertyPath: RageEffect
-      value: 
-      objectReference: {fileID: 2128986572}
-    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
-        type: 3}
-      propertyPath: rageFace
-      value: 
-      objectReference: {fileID: 1458122421}
-    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
-        type: 3}
-      propertyPath: normalFace
-      value: 
-      objectReference: {fileID: 368402073}
-    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
-        type: 3}
-      propertyPath: RageFull
-      value: 
-      objectReference: {fileID: 940668654}
-    - target: {fileID: 409033512456417228, guid: 8a2b53580be895749bb0a2bedb2e42bc,
-        type: 3}
-      propertyPath: ManaEffect
-      value: 
-      objectReference: {fileID: 14941487}
     - target: {fileID: 409033512456417231, guid: 8a2b53580be895749bb0a2bedb2e42bc,
         type: 3}
       propertyPath: effectpos
@@ -17697,47 +17697,47 @@ PrefabInstance:
     - target: {fileID: 6376216863944075766, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.13558187
+      value: 0.03814912
       objectReference: {fileID: 0}
     - target: {fileID: 6376216863944075766, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6939145
+      value: -0.70599294
       objectReference: {fileID: 0}
     - target: {fileID: 6376216863944075766, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13555253
+      value: 0.038140018
       objectReference: {fileID: 0}
     - target: {fileID: 6376216863944075766, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.69406474
+      value: 0.70616144
       objectReference: {fileID: 0}
     - target: {fileID: 6376216863944075766, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7615967
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6376216863944075766, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3370657
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6376216864572333808, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08006206
+      value: 0.08006207
       objectReference: {fileID: 0}
     - target: {fileID: 6376216864572333808, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70247674
+      value: -0.7024767
       objectReference: {fileID: 0}
     - target: {fileID: 6376216864572333808, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.08004292
+      value: 0.0800429
       objectReference: {fileID: 0}
     - target: {fileID: 6376216864572333808, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
@@ -17817,17 +17817,17 @@ PrefabInstance:
     - target: {fileID: 6376216865913052325, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08006206
+      value: 0.08006207
       objectReference: {fileID: 0}
     - target: {fileID: 6376216865913052325, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70247674
+      value: -0.7024767
       objectReference: {fileID: 0}
     - target: {fileID: 6376216865913052325, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.08004292
+      value: 0.0800429
       objectReference: {fileID: 0}
     - target: {fileID: 6376216865913052325, guid: ec890c2ac2c13cb4684088a1648979d4,
         type: 3}

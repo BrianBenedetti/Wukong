@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mat_WukongDeath_Clothes
+  m_Shader: {fileID: -6465566751694194690, guid: 37cd24de329951e4bbbf6fd838cc9cc9,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_5973EA67:
+        m_Texture: {fileID: 2800000, guid: 32f9cb5fac35706449fa213538d1938a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C36D2FCE:
+        m_Texture: {fileID: 2800000, guid: 2930aa8d3e05c6e42a6589356b65b413, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_D2FC4DCA:
+        m_Texture: {fileID: 2800000, guid: 644e4d58cf740024bb9082974a1ca56f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FC5A60B2:
+        m_Texture: {fileID: 2800000, guid: 77a98bd16947cff42aa419706506c4c5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoA:
+        m_Texture: {fileID: 2800000, guid: 51f0d5a4f99b6c04799301c5610b88e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoB:
+        m_Texture: {fileID: 2800000, guid: 70804f872271c6e4e85705f9e8604331, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlbedoTransition: 0
+    - _EdgeWidth: 5
+    - _NoiseScale: 80
+    - _NoiseStrength: 1
+    m_Colors:
+    - _EdgeColour: {r: 3.4976082, g: 1.9784148, b: 0.37945756, a: 1}
