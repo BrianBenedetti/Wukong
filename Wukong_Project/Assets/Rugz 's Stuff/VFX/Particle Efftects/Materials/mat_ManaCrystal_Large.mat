@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mat_ManaCrystal_Large
+  m_Shader: {fileID: -6465566751694194690, guid: 37193abe7f2b91841a2be35d7b4edabf,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_1C18417D:
+        m_Texture: {fileID: 2800000, guid: fd5549d96d41f974b9961d90544db726, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_7AF7D7AA:
+        m_Texture: {fileID: 2800000, guid: d4d25a1a288c477429b22d30896cc3fd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_E0FE8FD7:
+        m_Texture: {fileID: 2800000, guid: fd5549d96d41f974b9961d90544db726, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_234FA810: 1.54
+    - Vector1_604E6D54: 0.14
+    - Vector1_83F55C05: 3.31
+    - Vector1_AEAE015D: 0.594
+    - Vector1_C4E645D5: 0.38
+    m_Colors:
+    - Color_F841B4FB: {r: 0.33490568, g: 1, b: 0.7385782, a: 0}
