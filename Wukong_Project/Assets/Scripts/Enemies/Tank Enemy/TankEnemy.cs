@@ -219,6 +219,26 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         obj.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 
+    void AwardElement()
+    {
+        var playerElementscript = target.GetComponent<PlayerElementalForms>();
+
+        switch (myDamageType)
+        {
+            case DamageTypes.fire:
+                playerElementscript.hasFire = true;
+                break;
+            case DamageTypes.water:
+                playerElementscript.hasWater = true;
+                break;
+            case DamageTypes.air:
+                playerElementscript.hasAir = true;
+                break;
+            default:
+                break;
+        }
+    }
+
     public IEnumerator Die()
     {
         //play dissolve shader effect
@@ -229,6 +249,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);
         yield return new WaitForSeconds(2);
         DropLoot();
+        AwardElement();
         Destroy(gameObject);
     }
 

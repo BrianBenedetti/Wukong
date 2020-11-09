@@ -236,6 +236,19 @@ public class PlayerMovement : MonoBehaviour
         Instantiate(dustEffect, transform.position, Quaternion.identity);
     }
 
+    public IEnumerator AttackMovement()
+    {
+        //Get the starting positions, the target position and the offset
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = startPosition + (2 * transform.forward);
+
+        while (2 > Vector3.Distance(startPosition, transform.position))
+        {
+            controller.Move(transform.forward * (2 * rageSpeed) * Time.deltaTime);
+            yield return null;
+        }
+    }
+
     public IEnumerator PlayerKnockback(Vector3 direction, float knockbackStrength)
     {
         currentKnockbackTime = 0;

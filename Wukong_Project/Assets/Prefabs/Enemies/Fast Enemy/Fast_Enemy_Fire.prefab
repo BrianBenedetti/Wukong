@@ -71,7 +71,7 @@ MonoBehaviour:
   knockbackAmount: 5
   attackRadius: 1
   dashForce: 50
-  dashDuration: 0.1
+  dashDuration: 0.45
   lightAttackDamage: 15
   heavyAttackDamage: 20
   lootTable: 32000000230000000f000000

@@ -284,6 +284,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         if(lightAttackCounter > 1)
         {
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack2Bool, true);
+            StartCoroutine(playerMovementScript.AttackMovement());
         }
         else
         {
@@ -299,6 +300,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         if (heavyAttackCounter > 1)
         {
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.heavyAttack2Bool, true);
+            StartCoroutine(playerMovementScript.AttackMovement());
         }
         else
         {
@@ -317,6 +319,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         if (lightAttackCounter > 2)
         {
             playerAnimationsScript.SetAnimationBool(playerAnimationsScript.lightAttack3Bool, true);
+            StartCoroutine(playerMovementScript.AttackMovement());
         }
         else
         {

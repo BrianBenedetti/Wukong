@@ -290,7 +290,20 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     {
         agent.isStopped = true;
 
-        yield return new WaitForSeconds(dashDuration);
+        float timePassed = 0;
+
+        Vector3 startPos = transform.position;
+
+        while (timePassed < 1)
+        {
+            timePassed += Time.deltaTime / dashDuration;
+
+            transform.position = Vector3.Lerp(startPos, startPos + (2 * -transform.forward), timePassed);
+
+            yield return null;
+        }
+
+        transform.position = startPos + (2 * -transform.forward);
 
         agent.isStopped = false;
     }

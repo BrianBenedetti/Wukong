@@ -31,6 +31,10 @@ public class PlayerElementalForms : MonoBehaviour
     public DamageResistances currentResistances;
     public DamageResistances[] allResistances;
 
+    public bool hasFire = false;
+    public bool hasWater = false;
+    public bool hasAir = false;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -66,7 +70,7 @@ public class PlayerElementalForms : MonoBehaviour
                 //change weapon VFX
             }
             else if(gamepad.leftShoulder.isPressed && inputActions.PlayerControls.PrimaryAttack.triggered && currentElement != ElementalForms.fire
-                && !combatScript.Enraged)
+                && !combatScript.Enraged && hasFire)
             {
                 //set new element
                 currentElement = ElementalForms.fire;
@@ -82,7 +86,7 @@ public class PlayerElementalForms : MonoBehaviour
                 //change weapon VFX
             }
             else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.SecondaryAttack.triggered && currentElement != ElementalForms.water
-                && !combatScript.Enraged)
+                && !combatScript.Enraged && hasWater)
             {
                 //set new element
                 currentElement = ElementalForms.water;
@@ -98,7 +102,7 @@ public class PlayerElementalForms : MonoBehaviour
                 //change weapon VFX
             }
             else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.Interact.triggered && currentElement != ElementalForms.air
-                && !combatScript.Enraged)
+                && !combatScript.Enraged && hasAir)
             {
                 //set new element
                 currentElement = ElementalForms.air;
@@ -131,7 +135,7 @@ public class PlayerElementalForms : MonoBehaviour
                 //play transition VFX
                 //change weapon VFX
             }
-            else if (inputActions.PlayerControls.FireForm.triggered && currentElement != ElementalForms.fire && !combatScript.Enraged)
+            else if (inputActions.PlayerControls.FireForm.triggered && currentElement != ElementalForms.fire && !combatScript.Enraged && hasFire)
             {
                 //set new element
                 currentElement = ElementalForms.fire;
@@ -146,7 +150,7 @@ public class PlayerElementalForms : MonoBehaviour
                 Instantiate(transitionElementalVFX[0], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
-            else if (inputActions.PlayerControls.WaterForm.triggered && currentElement != ElementalForms.water && !combatScript.Enraged)
+            else if (inputActions.PlayerControls.WaterForm.triggered && currentElement != ElementalForms.water && !combatScript.Enraged && hasWater)
             {
                 //set new element
                 currentElement = ElementalForms.water;
@@ -161,7 +165,7 @@ public class PlayerElementalForms : MonoBehaviour
                 Instantiate(transitionElementalVFX[1], transform.position, Quaternion.identity, transform);
                 //change weapon VFX
             }
-            else if (inputActions.PlayerControls.AirForm.triggered && currentElement != ElementalForms.air && !combatScript.Enraged)
+            else if (inputActions.PlayerControls.AirForm.triggered && currentElement != ElementalForms.air && !combatScript.Enraged && hasAir)
             {
                 //set new element
                 currentElement = ElementalForms.air;
