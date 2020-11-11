@@ -43,8 +43,12 @@ public class NewPauseMENU : MonoBehaviour
     public static bool GamePaused;
     private bool controlsmenu;
 
+    AudioManager audioManager;
+
     void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         ControllerControls.SetActive(false);
         KMcontrols.SetActive(false);
         PausePointer.SetActive(true);
@@ -72,7 +76,7 @@ public class NewPauseMENU : MonoBehaviour
             if (SelectedButton == 1 && GamePaused == true)
 
             {
-               // FindObjectOfType<AudioManager>().Play("click");
+                audioManager.Play("click");
                 // PausePointer = GameObject.FindGameObjectWithTag("Pointer");
                 //GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 // Destroy(ParticleS, 0.1f);
@@ -86,7 +90,7 @@ public class NewPauseMENU : MonoBehaviour
             else if (SelectedButton == 2 && GamePaused == true)
 
             {
-               // FindObjectOfType<AudioManager>().Play("click");
+                audioManager.Play("click");
                 //  PausePointer = GameObject.FindGameObjectWithTag("Pointer");
                 // GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 //  Destroy(ParticleS, 0.1f);
@@ -102,7 +106,7 @@ public class NewPauseMENU : MonoBehaviour
             else if (SelectedButton == 3 && GamePaused == true)
 
             {
-               // FindObjectOfType<AudioManager>().Play("click");
+                audioManager.Play("click");
                 //PausePointer = GameObject.FindGameObjectWithTag("Pointer");
                 // GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 // Destroy(ParticleS, 0.1f);
@@ -113,7 +117,7 @@ public class NewPauseMENU : MonoBehaviour
         {
             if (selectB == 1)
             {
-                //FindObjectOfType<AudioManager>().Play("click");
+                audioManager.Play("click");
                 KMcontrols.SetActive(false);
                 ControllerControls.SetActive(true);
                 PauseMenuUI.SetActive(false);
@@ -125,7 +129,7 @@ public class NewPauseMENU : MonoBehaviour
             }
             else if (selectB == 2)
             {
-               // FindObjectOfType<AudioManager>().Play("click");
+                audioManager.Play("click");
                 KMcontrols.SetActive(true);
                 ControllerControls.SetActive(false);
                 PauseMenuUI.SetActive(false);
@@ -209,7 +213,7 @@ public class NewPauseMENU : MonoBehaviour
             {
                 if (SelectedButton > 1)
                 {
-                   // FindObjectOfType<AudioManager>().Play("select");
+                    audioManager.Play("select");
                     SelectedButton -= 1;
                     move = 0;
                 }
@@ -218,7 +222,7 @@ public class NewPauseMENU : MonoBehaviour
             {
                 if (SelectedButton < NumberOfButtons)
                 {
-                    //FindObjectOfType<AudioManager>().Play("select");
+                    audioManager.Play("select");
                     SelectedButton += 1;
                     move = 0;
                 }
@@ -263,7 +267,7 @@ public class NewPauseMENU : MonoBehaviour
             {
                 if (selectB > 1)
                 {
-                   // FindObjectOfType<AudioManager>().Play("select");
+                    audioManager.Play("select");
                     selectB -= 1;
                     move = 0;
                 }
@@ -272,7 +276,7 @@ public class NewPauseMENU : MonoBehaviour
             {
                 if (selectB < nButtons)
                 {
-                   // FindObjectOfType<AudioManager>().Play("select");
+                    audioManager.Play("select");
                     selectB += 1;
                     move = 0;
                 }
@@ -354,7 +358,7 @@ public class NewPauseMENU : MonoBehaviour
     }
     public void kMBack()
     {
-       
+        audioManager.Play("click");
         KMcontrols.SetActive(false);
         ControllerControls.SetActive(false);
         PauseMenuUI.SetActive(true);
@@ -366,7 +370,7 @@ public class NewPauseMENU : MonoBehaviour
     }
     public void ConBack()
     {
-       
+        audioManager.Play("click");
         KMcontrols.SetActive(false);
         ControllerControls.SetActive(false);
         PauseMenuUI.SetActive(true);
@@ -378,7 +382,7 @@ public class NewPauseMENU : MonoBehaviour
     }
     public void ControlsBack()
     {
-       
+        audioManager.Play("click");
         KMcontrols.SetActive(false);
         ControllerControls.SetActive(false);
         PauseMenuUI.SetActive(true);
@@ -390,7 +394,7 @@ public class NewPauseMENU : MonoBehaviour
     }
     public void BackPause()
     {
-       
+        audioManager.Play("click");
         KMcontrols.SetActive(false);
         ControllerControls.SetActive(false);
         PauseMenuUI.SetActive(false);
@@ -398,7 +402,5 @@ public class NewPauseMENU : MonoBehaviour
         PauseControlsPointer.SetActive(false);
         controlsmenu = false;
         ControlsMenu.SetActive(false);
-       
-
     }
 }
