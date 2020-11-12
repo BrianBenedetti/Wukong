@@ -494,9 +494,119 @@ SkinnedMeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1852055323962190175}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1417021164452872895 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 727779652320340960, guid: 43e899c6b817fa142a306d611c3a5296,
+    type: 3}
+  m_PrefabInstance: {fileID: 1852055323962190175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &7252198915972408748 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -209647194928509709, guid: 43e899c6b817fa142a306d611c3a5296,
     type: 3}
   m_PrefabInstance: {fileID: 1852055323962190175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7513998829966784926
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1417021164452872895}
+    m_Modifications:
+    - target: {fileID: 1289377266554704978, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00162
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00073
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0012
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674601219058026040, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0012
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165334551313008621, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165334551313008621, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165334551313008621, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828670089204898300, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559313419498219447, guid: add3b5c1062db1b4d879a78d21047eaf,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_Water
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: add3b5c1062db1b4d879a78d21047eaf, type: 3}
