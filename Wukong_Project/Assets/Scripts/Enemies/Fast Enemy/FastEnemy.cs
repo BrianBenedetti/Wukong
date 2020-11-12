@@ -66,6 +66,17 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public GameObject normalSlash;
 
+    public SkinnedMeshRenderer body;
+    public MeshRenderer hair1;
+    public MeshRenderer hair2;
+    public MeshRenderer hair3;
+    public MeshRenderer hair4;
+    public MeshRenderer hair5;
+    public MeshRenderer mask;
+
+
+
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -75,6 +86,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
         source = GetComponent<AudioSource>();
+        
 
         foreach(int i in lootTable)
         {
@@ -311,6 +323,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public IEnumerator Die()
     {
         //play dissolve shader effect
+        StartCoroutine(LerpDeathShader(1.9f));
         //instantiate particle effect
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
@@ -336,5 +349,37 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    IEnumerator LerpDeathShader(float time)
+    {
+        float timePassed = 0;
+
+        float currentValueAtStart = body.material.GetFloat("_DissolveCutoff");
+
+        while (timePassed < 1)
+        {
+            timePassed += Time.deltaTime / time;
+            body.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -2f, timePassed));
+            hair1.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -2f, timePassed));
+            hair2.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -2f, timePassed));
+            hair3.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -2f, timePassed));
+            hair4.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -2f, timePassed));
+            hair5.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -2f, timePassed));
+            mask.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -2f, timePassed));
+
+
+
+            yield return null;
+        }
+
+        body.material.SetFloat("_DissolveCutoff", -2f);
+        hair1.material.SetFloat("_DissolveCutoff", -2f);
+        hair2.material.SetFloat("_DissolveCutoff", -2f);
+        hair3.material.SetFloat("_DissolveCutoff", -2f);
+        hair4.material.SetFloat("_DissolveCutoff", -2f);
+        hair5.material.SetFloat("_DissolveCutoff", -2f);
+        mask.material.SetFloat("_DissolveCutoff", -2f);
+
     }
 }

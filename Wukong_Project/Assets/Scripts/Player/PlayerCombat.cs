@@ -58,6 +58,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public GameObject normalSlash;
     #endregion
 
+    #region Death Effect
+    public Material hairDeathMat;
+    public Material bodyDeathMat;
+    public Material clothesDeathMat;
+
+    #endregion
+
     PlayerElementalForms elementalFormsScript;
     PlayerAnimations playerAnimationsScript;
     PlayerMovement playerMovementScript;
@@ -124,10 +131,10 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(maxHealth);
-        currentMana = 0;
+        currentMana = 100;
         manaBar.SetMaxValue(maxMana);
         manaBar.SetValue(currentMana);
-        currentRage = 0;
+        currentRage = 100;
         rageBar.SetMaxValue(maxRage);
         rageBar.SetValue(currentRage);
 
@@ -533,10 +540,20 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void Respawn()
     {
+        elementalFormsScript.SetSkinnedMaterial(body, 0, bodyMaterial);
+        elementalFormsScript.SetSkinnedMaterial(hair, 0, hairMaterial);
+        elementalFormsScript.SetSkinnedMaterial(shirt, 0, clothesMaterial);
+        elementalFormsScript.SetSkinnedMaterial(rope, 0, clothesMaterial);
+        elementalFormsScript.SetMaterial(plateR, 0, clothesMaterial);
+        elementalFormsScript.SetMaterial(plateL, 0, clothesMaterial);
+        elementalFormsScript.SetMaterial(plateB, 0, clothesMaterial);
+        elementalFormsScript.SetMaterial(ring, 0, clothesDeathMat);
+
         transform.position = PlayerManager.instance.lastCheckpointPlayerPosition;
         RestoreValues(60, 0, 0);
         controller.enabled = true;
         anim.SetBool(deathBool, false);
+      
     }
 
     public void PlaySlamVFX(int pos)
@@ -618,9 +635,44 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         rageBar.SetValue(currentRage);
     }
 
+    IEnumerator LerpDeathShader(float time)
+    {
+        float timePassed = 0;
+
+        int currentValueAtStart = 0;
+
+        while (timePassed < 1)
+        {
+            timePassed += Time.deltaTime / time;
+            bodyDeathMat.SetFloat("_AlbedoTransition", Mathf.Lerp(currentValueAtStart, 3, timePassed));
+            hairDeathMat.SetFloat("_AlbedoTransition", Mathf.Lerp(currentValueAtStart, 3, timePassed));
+            clothesDeathMat.SetFloat("_AlbedoTransition", Mathf.Lerp(currentValueAtStart, 3, timePassed));
+
+
+
+            yield return null;
+        }
+
+        bodyDeathMat.SetFloat("_AlbedoTransition", 3);
+        hairDeathMat.SetFloat("_AlbedoTransition", 3);
+        clothesDeathMat.SetFloat("_AlbedoTransition", 3);
+
+    }
+
     public IEnumerator Die()
     {
         //play dissolve shader effect
+        elementalFormsScript.SetSkinnedMaterial(body, 0, bodyDeathMat);
+        elementalFormsScript.SetSkinnedMaterial(hair, 0, hairDeathMat);
+        elementalFormsScript.SetSkinnedMaterial(shirt, 0, clothesDeathMat);
+        elementalFormsScript.SetSkinnedMaterial(rope, 0, clothesDeathMat);
+        elementalFormsScript.SetMaterial(plateR, 0, clothesDeathMat);
+        elementalFormsScript.SetMaterial(plateL, 0, clothesDeathMat);
+        elementalFormsScript.SetMaterial(plateB, 0, clothesDeathMat);
+        elementalFormsScript.SetMaterial(ring, 0, clothesDeathMat);
+
+        StartCoroutine(LerpDeathShader(2f));
+
         controller.enabled = false;
         yield return new WaitForSeconds(3);
         Respawn();

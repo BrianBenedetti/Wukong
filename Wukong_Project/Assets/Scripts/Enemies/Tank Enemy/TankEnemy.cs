@@ -67,6 +67,15 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public GameObject slamVFX;
 
+    public SkinnedMeshRenderer body;
+    public MeshRenderer hair1;
+    public MeshRenderer hair2;
+    public MeshRenderer hair3;
+    public MeshRenderer hair4;
+    public MeshRenderer hair5;
+    public MeshRenderer mask;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -242,6 +251,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public IEnumerator Die()
     {
         //play dissolve shader effect
+        StartCoroutine(LerpDeathShader(1.5f));
         //instantiate particle effect
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
@@ -257,5 +267,37 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    IEnumerator LerpDeathShader(float time)
+    {
+        float timePassed = 0;
+
+        float currentValueAtStart = body.material.GetFloat("_DissolveCutoff");
+
+        while (timePassed < 1)
+        {
+            timePassed += Time.deltaTime / time;
+            body.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -10, timePassed));
+            hair1.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -10, timePassed));
+            hair2.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -10, timePassed));
+            hair3.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -10, timePassed));
+            hair4.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -10, timePassed));
+            hair5.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -10, timePassed));
+            mask.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, -10, timePassed));
+
+
+
+            yield return null;
+        }
+
+        body.material.SetFloat("_DissolveCutoff", -10);
+        hair1.material.SetFloat("_DissolveCutoff", -10);
+        hair2.material.SetFloat("_DissolveCutoff", -10);
+        hair3.material.SetFloat("_DissolveCutoff", -10);
+        hair4.material.SetFloat("_DissolveCutoff", -10);
+        hair5.material.SetFloat("_DissolveCutoff", -10);
+        mask.material.SetFloat("_DissolveCutoff", -10);
+
     }
 }
