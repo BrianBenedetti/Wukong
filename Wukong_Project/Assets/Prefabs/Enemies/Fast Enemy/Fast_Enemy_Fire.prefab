@@ -99,6 +99,7 @@ MonoBehaviour:
     type: 3}
   normalSlash: {fileID: 8085470452112974784, guid: e5d6d0649d7b9f44c84bbff66ae9ba25,
     type: 3}
+  ashes: {fileID: 2229788623701753107}
   body: {fileID: 8133519012131369871}
   hair1: {fileID: 722328736933851387}
   hair2: {fileID: 4017808392377831667}
@@ -492,11 +493,92 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 666145720624742199}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3241030020902377148 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6501839272629720693, guid: 6aa4dd18373e168449304149d289dc28,
+    type: 3}
+  m_PrefabInstance: {fileID: 666145720624742199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &8133519012131369871 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -441721709133689672, guid: 6aa4dd18373e168449304149d289dc28,
     type: 3}
   m_PrefabInstance: {fileID: 666145720624742199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1030436604675617512
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3241030020902377148}
+    m_Modifications:
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290170, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206142615994290171, guid: 7e9bbd47153248842a4ef20d13cd6021,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_DeathAsh
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e9bbd47153248842a4ef20d13cd6021, type: 3}
+--- !u!1 &2229788623701753107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1206142615994290171, guid: 7e9bbd47153248842a4ef20d13cd6021,
+    type: 3}
+  m_PrefabInstance: {fileID: 1030436604675617512}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2418231696021586360
 PrefabInstance:

@@ -1,4 +1,4 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -39,6 +39,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     [HideInInspector] public Transform target;
     public Transform damageTextPos;
     public Transform slashSpawn;
+    
 
     public DamageTypes myDamageType;
     public DamageResistances myResistances;
@@ -66,6 +67,8 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public GameObject normalSlash;
 
+    public GameObject ashes;
+
     public SkinnedMeshRenderer body;
     public MeshRenderer hair1;
     public MeshRenderer hair2;
@@ -86,9 +89,10 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
         source = GetComponent<AudioSource>();
-        
+        ashes.SetActive(false);
 
-        foreach(int i in lootTable)
+
+        foreach (int i in lootTable)
         {
             lootTotalTally += i;
         }
@@ -189,7 +193,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
             for (int j = 0; j < lootTable.Length; j++)
             {
-                if(randomNumber <= lootTable[j])
+                if (randomNumber <= lootTable[j])
                 {
                     objectPooler.SpawnFromPool(lootOrbs[j].ToString(), transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
                     break;
@@ -325,6 +329,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         //play dissolve shader effect
         StartCoroutine(LerpDeathShader(1.9f));
         //instantiate particle effect
+        ashes.SetActive(true);
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
@@ -343,12 +348,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
         knockback = false;
         agent.angularSpeed = 120;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
     IEnumerator LerpDeathShader(float time)
@@ -381,5 +380,11 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         hair5.material.SetFloat("_DissolveCutoff", -2f);
         mask.material.SetFloat("_DissolveCutoff", -2f);
 
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 }

@@ -35,11 +35,13 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     bool knockback;
 
     public GameObject slamVFX;
+    public GameObject ashes;
 
     public Transform[] waypoints;
     public Transform projectileOrigin;
     [HideInInspector] public Transform target;
     public Transform damageTextPos;
+
 
     public string myProjectile;
 
@@ -83,6 +85,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
         source = GetComponent<AudioSource>();
+        ashes.SetActive(false);
 
         foreach (int i in lootTable)
         {
@@ -223,6 +226,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         //play dissolve shader effect
         StartCoroutine(LerpDeathShader(1.9f));
         //instantiate particle effect
+        ashes.SetActive(true);
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;

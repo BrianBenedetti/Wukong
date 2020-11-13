@@ -38,6 +38,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public Transform damageTextPos;
     public Transform slashSpawn;
     public Transform attackSlamPos;
+    
 
     public DamageTypes myDamageType;
     public DamageResistances myResistances;
@@ -66,6 +67,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public GameObject normalSlash;
 
     public GameObject slamVFX;
+    public GameObject ashes;
 
     public SkinnedMeshRenderer body;
     public MeshRenderer hair1;
@@ -85,6 +87,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         animator = GetComponent<Animator>();
         objectPooler = ObjectPooler.Instance;
         source = GetComponent<AudioSource>();
+        ashes.SetActive(false);
 
         foreach (int i in lootTable)
         {
@@ -253,6 +256,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         //play dissolve shader effect
         StartCoroutine(LerpDeathShader(1.5f));
         //instantiate particle effect
+        ashes.SetActive(true);
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
