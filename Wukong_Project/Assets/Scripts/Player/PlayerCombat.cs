@@ -172,7 +172,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             staffObject.SetActive(false);
         }
 
-        if(currentRage == maxRage)
+        if (currentRage == maxRage)
         {
             normalFace.SetActive(false);
             rageFace.SetActive(true);

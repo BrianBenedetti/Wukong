@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
 
     public GameObject nimbus;
+    MeshRenderer nimbusRenderer;
+
     public GameObject dustEffect;
     public GameObject jumpEffect;
 
@@ -50,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        nimbusRenderer = nimbus.GetComponent<MeshRenderer>();
         playerAnimationsScript = GetComponent<PlayerAnimations>();
         playerCombatScript = GetComponent<PlayerCombat>();
 
@@ -68,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = true;
         canMove = true;
 
+        nimbusRenderer.material.SetFloat("_DissolveCutoff", -2.5f);
         nimbus.SetActive(false);
     }
 
@@ -133,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
                 currentSpeed = nimbusSpeed;
                 playerAnimationsScript.SetAnimationBool(playerAnimationsScript.nimbusBool, true);
                 nimbus.SetActive(true);
+                StartCoroutine(LerpNimbusShader(0.5f, 4));
             }
         }
         else
@@ -145,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentSpeed = normalSpeed;
             }
+            nimbusRenderer.material.SetFloat("_DissolveCutoff", -2.5f);
             nimbus.SetActive(false);
         }
 
@@ -206,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
 
-        if (!nimbus.activeInHierarchy)
+        if (!anim.GetBool(playerAnimationsScript.nimbusBool))
         {
             Instantiate(jumpEffect, transform.position, Quaternion.identity);
         }
@@ -234,6 +240,24 @@ public class PlayerMovement : MonoBehaviour
     public void PlayFallVFX()
     {
         Instantiate(dustEffect, transform.position, Quaternion.identity);
+    }
+
+    IEnumerator LerpNimbusShader(float time, float end)
+    {
+        float timePassed = 0;
+
+        float currentValueAtStart = 0;
+
+        while (timePassed < 1)
+        {
+            timePassed += Time.deltaTime / time;
+
+            nimbusRenderer.material.SetFloat("_DissolveCutoff", Mathf.Lerp(currentValueAtStart, end, timePassed));
+
+            yield return null;
+        }
+
+        nimbusRenderer.material.SetFloat("_DissolveCutoff", end);
     }
 
     public IEnumerator AttackMovement()
