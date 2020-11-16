@@ -40,7 +40,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3532554035863766073}
   serializedVersion: 6
-  lengthInSec: 3
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 1
   cullingMode: 0
@@ -4852,7 +4852,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5277492042137851410}
   serializedVersion: 6
-  lengthInSec: 3
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 1
   cullingMode: 0
@@ -9634,6 +9634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8531183030959873734}
   - component: {fileID: 7314731601634785109}
+  - component: {fileID: 6962498224140188708}
   m_Layer: 0
   m_Name: PS_Slash_Water
   m_TagString: Untagged
@@ -9752,6 +9753,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6962498224140188708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531183030959873733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16ba218e507cf3478fae4e8f13ad2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDisable: 1
+  removeParent: 1
 --- !u!1 &8531183031381845470
 GameObject:
   m_ObjectHideFlags: 0

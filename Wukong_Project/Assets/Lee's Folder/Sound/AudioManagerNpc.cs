@@ -1,5 +1,4 @@
-﻿using UnityEngine.Audio;
-using System;
+﻿using System;
 using UnityEngine;
 
 public class AudioManagerNpc : MonoBehaviour
@@ -19,13 +18,9 @@ public class AudioManagerNpc : MonoBehaviour
         }
 
     }
-    void Start()
-    {
-        //Play("theme"); example
-    }
+
     public void Play(string NpcSound1)
     {
         NPCsounds s = Array.Find(NpcSounds, sound => sound.NpcSound1 == NpcSound1);
     }
-    // FindObjectOfType<AudioManager>().Play("check"); use in the script where it needs to be called
 }

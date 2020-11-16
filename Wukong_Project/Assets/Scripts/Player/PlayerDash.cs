@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,8 +16,6 @@ public class PlayerDash : MonoBehaviour
     float currentCooldown;
 
     [HideInInspector] public PlayerInputActions inputActions;
-
-    public GameObject dustTrail;
 
     private void Awake()
     {
@@ -49,7 +46,7 @@ public class PlayerDash : MonoBehaviour
 
                 if (!moveScript.nimbus.activeInHierarchy)
                 {
-                    Instantiate(dustTrail, transform.position, transform.rotation);
+                    ObjectPooler.Instance.SpawnFromPool("Dodge Effect", transform.position, transform.rotation);
                 }
             }
         }
@@ -63,7 +60,7 @@ public class PlayerDash : MonoBehaviour
 
                 if (!moveScript.nimbus.activeInHierarchy)
                 {
-                    Instantiate(dustTrail, transform.position, transform.rotation);
+                    ObjectPooler.Instance.SpawnFromPool("Dodge Effect", transform.position, transform.rotation);
                 }
             }
         }

@@ -25,7 +25,7 @@ Material:
     type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -112,10 +112,12 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
+    - _Metallicness: 1
     - _Mode: 0
     - _NoiseScale: 50
     - _NoiseStrength: 3
     - _OcclusionStrength: 1
+    - _Occlussion: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -128,6 +130,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_68A29EE3: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColour: {r: 1.962264, g: 0.8102561, b: 0, a: 1}

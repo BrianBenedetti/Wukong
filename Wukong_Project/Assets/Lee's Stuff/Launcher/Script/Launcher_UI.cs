@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using System;
+﻿using UnityEngine;
 using System.Diagnostics;
 
 public class Launcher_UI : MonoBehaviour

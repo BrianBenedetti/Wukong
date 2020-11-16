@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,9 +35,6 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject nimbus;
     MeshRenderer nimbusRenderer;
-
-    public GameObject dustEffect;
-    public GameObject jumpEffect;
 
     public LayerMask groundMask;
 
@@ -214,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!anim.GetBool(playerAnimationsScript.nimbusBool))
         {
-            Instantiate(jumpEffect, transform.position, Quaternion.identity);
+            ObjectPooler.Instance.SpawnFromPool("Jump Effect", transform.position, Quaternion.identity);
         }
     }
 
@@ -239,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlayFallVFX()
     {
-        Instantiate(dustEffect, transform.position, Quaternion.identity);
+        ObjectPooler.Instance.SpawnFromPool("Dust Effect", transform.position, Quaternion.identity);
     }
 
     IEnumerator LerpNimbusShader(float time, float end)

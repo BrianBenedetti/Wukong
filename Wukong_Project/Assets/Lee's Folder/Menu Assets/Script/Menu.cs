@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +10,7 @@ public class Menu : MonoBehaviour
     GameObject currentSelected;
     public GameObject ControlsMenu;
     public GameObject CreditsMenu;
+
     private void Awake()
     {
        ControlsMenu.SetActive(false);

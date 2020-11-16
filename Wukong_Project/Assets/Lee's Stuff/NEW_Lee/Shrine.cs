@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shrine : MonoBehaviour, IInteractable
 {
@@ -8,8 +6,11 @@ public class Shrine : MonoBehaviour, IInteractable
     GameObject player;
     bool isSaved;
 
+    AudioManager audioManager;
+
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         player = PlayerManager.instance.player;
         SavePanel.SetActive(false);
         isSaved = false;
@@ -26,7 +27,7 @@ public class Shrine : MonoBehaviour, IInteractable
     {
         if (other.gameObject.tag == "Player" && isSaved == false)
         {
-            FindObjectOfType<AudioManager>().Play("close");
+            audioManager.Play("close");
             SavePanel.SetActive(true);
         }
         else if (isSaved == true)

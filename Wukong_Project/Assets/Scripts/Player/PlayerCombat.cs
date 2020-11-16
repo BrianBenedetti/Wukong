@@ -131,10 +131,10 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(maxHealth);
-        currentMana = 100;
+        currentMana = 0;
         manaBar.SetMaxValue(maxMana);
         manaBar.SetValue(currentMana);
-        currentRage = 100;
+        currentRage = 0;
         rageBar.SetMaxValue(maxRage);
         rageBar.SetValue(currentRage);
 
@@ -389,16 +389,16 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         switch (elementalFormsScript.currentElement)
         {
             case PlayerElementalForms.ElementalForms.fire:
-                Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
                 break;
             case PlayerElementalForms.ElementalForms.water:
-                Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
                 break;
             case PlayerElementalForms.ElementalForms.air:
-                Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
                 break;
             case PlayerElementalForms.ElementalForms.normal:
-                Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
                 break;
             default:
                 break;
@@ -410,19 +410,23 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         switch (elementalFormsScript.currentElement)
         {
             case PlayerElementalForms.ElementalForms.fire:
-                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                obj.transform.parent = transform;
                 obj.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             case PlayerElementalForms.ElementalForms.water:
-                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                obj1.transform.parent = transform;
                 obj1.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             case PlayerElementalForms.ElementalForms.air:
-                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                obj2.transform.parent = transform;
                 obj2.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             case PlayerElementalForms.ElementalForms.normal:
-                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                obj3.transform.parent = transform;
                 obj3.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             default:
@@ -435,19 +439,23 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         switch (elementalFormsScript.currentElement)
         {
             case PlayerElementalForms.ElementalForms.fire:
-                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                obj.transform.parent = transform;
                 obj.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             case PlayerElementalForms.ElementalForms.water:
-                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                obj1.transform.parent = transform;
                 obj1.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             case PlayerElementalForms.ElementalForms.air:
-                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                obj2.transform.parent = transform;
                 obj2.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             case PlayerElementalForms.ElementalForms.normal:
-                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                obj3.transform.parent = transform;
                 obj3.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             default:
@@ -460,19 +468,23 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         switch (elementalFormsScript.currentElement)
         {
             case PlayerElementalForms.ElementalForms.fire:
-                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                obj.transform.parent = transform;
                 obj.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             case PlayerElementalForms.ElementalForms.water:
-                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                obj1.transform.parent = transform;
                 obj1.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             case PlayerElementalForms.ElementalForms.air:
-                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                obj2.transform.parent = transform;
                 obj2.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             case PlayerElementalForms.ElementalForms.normal:
-                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                obj3.transform.parent = transform;
                 obj3.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             default:
@@ -550,7 +562,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         elementalFormsScript.SetMaterial(ring, 0, clothesDeathMat);
 
         transform.position = PlayerManager.instance.lastCheckpointPlayerPosition;
-        RestoreValues(60, 0, 0);
+        RestoreValues(100, 0, 0);
         controller.enabled = true;
         anim.SetBool(deathBool, false);
       
@@ -560,11 +572,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     {
         if(pos == 1)
         {
-            Instantiate(slamVFX, attackSlamPos.position, Quaternion.identity);
+            var obj = ObjectPooler.Instance.SpawnFromPool("Slam Effect", attackSlamPos.position, Quaternion.identity);
+            obj.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
         }else if(pos == 2)
         {
-            Instantiate(slamVFX, rageSlamPos.position, Quaternion.identity);
+            var obj = ObjectPooler.Instance.SpawnFromPool("Slam Effect", rageSlamPos.position, Quaternion.identity);
+            obj.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         }
     }
 
@@ -676,6 +690,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         controller.enabled = false;
         yield return new WaitForSeconds(3);
         Respawn();
+        elementalFormsScript.ToNormal();
     }
 
     private void OnDrawGizmos()

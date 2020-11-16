@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerElementalForms : MonoBehaviour
@@ -44,6 +42,10 @@ public class PlayerElementalForms : MonoBehaviour
     
     private void Start()
     {
+        transitionElementalVFX[0].SetActive(false);
+        transitionElementalVFX[1].SetActive(false);
+        transitionElementalVFX[2].SetActive(false);
+
         currentElement = ElementalForms.normal;
         currentResistances = allResistances[3];
         currentDamageType = DamageTypes.normal;
@@ -58,16 +60,7 @@ public class PlayerElementalForms : MonoBehaviour
             if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.Jump.triggered && currentElement != ElementalForms.normal
                 || combatScript.Enraged && currentElement != ElementalForms.normal)
             {
-                //set new element
-                currentElement = ElementalForms.normal;
-                //set new resistances
-                currentResistances = allResistances[3];
-                //set new damage type
-                currentDamageType = DamageTypes.normal;
-                //change hair and body materials
-                SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[3]);
-                SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[3]);
-                //change weapon VFX
+                ToNormal();
             }
             else if(gamepad.leftShoulder.isPressed && inputActions.PlayerControls.PrimaryAttack.triggered && currentElement != ElementalForms.fire
                 && !combatScript.Enraged && hasFire)
@@ -82,8 +75,7 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[0]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[0]);
                 //play transition VFX
-                Instantiate(transitionElementalVFX[0], transform.position, Quaternion.identity, transform);
-                //change weapon VFX
+                transitionElementalVFX[0].SetActive(true);
             }
             else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.SecondaryAttack.triggered && currentElement != ElementalForms.water
                 && !combatScript.Enraged && hasWater)
@@ -98,8 +90,7 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[1]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[1]);
                 //play transition VFX
-                Instantiate(transitionElementalVFX[1], transform.position, Quaternion.identity, transform);
-                //change weapon VFX
+                transitionElementalVFX[1].SetActive(true);
             }
             else if (gamepad.leftShoulder.isPressed && inputActions.PlayerControls.Interact.triggered && currentElement != ElementalForms.air
                 && !combatScript.Enraged && hasAir)
@@ -114,8 +105,7 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[2]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[2]);
                 //play VFX
-                Instantiate(transitionElementalVFX[2], transform.position, Quaternion.identity, transform);
-                //change weapon VFX
+                transitionElementalVFX[2].SetActive(true);
             }
         }
         else
@@ -123,17 +113,7 @@ public class PlayerElementalForms : MonoBehaviour
             //checks for input to change element
             if (inputActions.PlayerControls.NormalForm.triggered && currentElement != ElementalForms.normal || combatScript.Enraged && currentElement != ElementalForms.normal)
             {
-                //set new element
-                currentElement = ElementalForms.normal;
-                //set new resistances
-                currentResistances = allResistances[3];
-                //set new damage type
-                currentDamageType = DamageTypes.normal;
-                //change hair and body materials
-                SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[3]);
-                SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[3]);
-                //play transition VFX
-                //change weapon VFX
+                ToNormal();
             }
             else if (inputActions.PlayerControls.FireForm.triggered && currentElement != ElementalForms.fire && !combatScript.Enraged && hasFire)
             {
@@ -147,8 +127,7 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[0]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[0]);
                 //play transition VFX
-                Instantiate(transitionElementalVFX[0], transform.position, Quaternion.identity, transform);
-                //change weapon VFX
+                transitionElementalVFX[0].SetActive(true);
             }
             else if (inputActions.PlayerControls.WaterForm.triggered && currentElement != ElementalForms.water && !combatScript.Enraged && hasWater)
             {
@@ -162,8 +141,7 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[1]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[1]);
                 //play transition VFX
-                Instantiate(transitionElementalVFX[1], transform.position, Quaternion.identity, transform);
-                //change weapon VFX
+                transitionElementalVFX[1].SetActive(true);
             }
             else if (inputActions.PlayerControls.AirForm.triggered && currentElement != ElementalForms.air && !combatScript.Enraged && hasAir)
             {
@@ -177,10 +155,23 @@ public class PlayerElementalForms : MonoBehaviour
                 SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[2]);
                 SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[2]);
                 //play VFX
-                Instantiate(transitionElementalVFX[2], transform.position, Quaternion.identity, transform);
-                //change weapon VFX
+                transitionElementalVFX[2].SetActive(true);
             }
         }
+    }
+
+    public void ToNormal()
+    {
+        //set new element
+        currentElement = ElementalForms.normal;
+        //set new resistances
+        currentResistances = allResistances[3];
+        //set new damage type
+        currentDamageType = DamageTypes.normal;
+        //change hair and body materials
+        SetSkinnedMaterial(myHairRenderer, 0, elementalHairMaterials[3]);
+        SetSkinnedMaterial(myBodyRenderer, 0, elementalBodyMaterials[3]);
+        //change weapon VFX
     }
 
     public void SetSkinnedMaterial(SkinnedMeshRenderer renderer, int Mat_Nr, Material Mat)

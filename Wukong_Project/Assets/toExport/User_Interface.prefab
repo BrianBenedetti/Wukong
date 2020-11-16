@@ -442,6 +442,7 @@ MonoBehaviour:
   controlsbutton: {fileID: 1652096230590956633}
   Menubutton: {fileID: 1652096231096018839}
   Controlpanel: {fileID: 1652096229581720184}
+  ParticleSelect: {fileID: 0}
   PausePointer: {fileID: 429586636671173643}
   PauseControlsPointer: {fileID: 8549566947364589958}
   ControlsMenu: {fileID: 4321965968170437943}
@@ -770,7 +771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1652096229889222133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2618,7 +2619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2967577492146350612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3002,7 +3003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2967577492291655380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5227,7 +5228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3333401346886950266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5771,7 +5772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3333401347760174854
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6621,7 +6622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3333401348332284489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6759,7 +6760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4321965968170437942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12914,7 +12915,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1.6300049, y: -2.4509888}
   m_SizeDelta: {x: 13.009293, y: -4.9020844}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12951,7 +12952,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.92
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -13375,7 +13376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8552417304983499980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13442,7 +13443,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 92
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

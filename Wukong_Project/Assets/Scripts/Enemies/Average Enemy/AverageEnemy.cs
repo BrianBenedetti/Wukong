@@ -34,7 +34,6 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     bool knockback;
 
-    public GameObject slamVFX;
     public GameObject ashes;
 
     public Transform[] waypoints;
@@ -47,8 +46,6 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     readonly string damageText = "Damage Text";
     public List<string> lootOrbs = new List<string>();
-
-    ObjectPooler objectPooler;
 
     public LayerMask whatIsEnemy;
 
@@ -83,7 +80,6 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        objectPooler = ObjectPooler.Instance;
         source = GetComponent<AudioSource>();
         ashes.SetActive(false);
 
@@ -162,7 +158,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void Shoot()
     {
-        objectPooler.SpawnFromPool(myProjectile, projectileOrigin.position, Quaternion.identity);
+        ObjectPooler.Instance.SpawnFromPool(myProjectile, projectileOrigin.position, Quaternion.identity);
     }
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
@@ -189,7 +185,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     void ShowDamageText()
     {
-        var obj = objectPooler.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
+        var obj = ObjectPooler.Instance.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
         obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
 
@@ -203,7 +199,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
             {
                 if (randomNumber <= lootTable[j])
                 {
-                    objectPooler.SpawnFromPool(lootOrbs[j].ToString(),
+                    ObjectPooler.Instance.SpawnFromPool(lootOrbs[j].ToString(),
                         transform.position + new Vector3(Random.Range(-1, 1), 2,
                         Random.Range(-1, 1)), Quaternion.identity);
                     break;
@@ -218,7 +214,8 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
 
     public void PlaySlamVFX()
     {
-        Instantiate(slamVFX, transform.position, Quaternion.identity);
+        var obj = ObjectPooler.Instance.SpawnFromPool("Slam Effect", transform.position, Quaternion.identity);
+        obj.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
     }
 
     public IEnumerator Die()
@@ -230,7 +227,6 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
-        PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);
         yield return new WaitForSeconds(2);
         DropLoot();
         Destroy(gameObject);

@@ -58,15 +58,6 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public AudioClip death;
 
-    public GameObject fireSlash;
-
-    public GameObject waterSlash;
-
-    public GameObject airSlash;
-
-    public GameObject normalSlash;
-
-    public GameObject slamVFX;
     public GameObject ashes;
 
     public SkinnedMeshRenderer body;
@@ -205,19 +196,23 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         switch (myDamageType)
         {
             case DamageTypes.fire:
-                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                obj.transform.parent = transform;
                 obj.transform.localScale = new Vector3(4, 4, 4);
                 break;
             case DamageTypes.water:
-                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                obj1.transform.parent = transform;
                 obj1.transform.localScale = new Vector3(4, 4, 4);
                 break;
             case DamageTypes.air:
-                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                obj2.transform.parent = transform;
                 obj2.transform.localScale = new Vector3(4, 4, 4);
                 break;
             case DamageTypes.normal:
-                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                obj3.transform.parent = transform;
                 obj3.transform.localScale = new Vector3(4, 4, 4);
                 break;
             default:
@@ -227,7 +222,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public void PlaySlamVFX()
     {
-        var obj = Instantiate(slamVFX, attackSlamPos.position, Quaternion.identity);
+        var obj = ObjectPooler.Instance.SpawnFromPool("Slam Effect", attackSlamPos.position, Quaternion.identity);
         obj.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 
@@ -260,7 +255,6 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
-        PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);
         yield return new WaitForSeconds(2);
         DropLoot();
         AwardElement();

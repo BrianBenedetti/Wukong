@@ -77,9 +77,6 @@ public class NewPauseMENU : MonoBehaviour
 
             {
                 audioManager.Play("click");
-                // PausePointer = GameObject.FindGameObjectWithTag("Pointer");
-                //GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
-                // Destroy(ParticleS, 0.1f);
                 PauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 GamePaused = false;
@@ -91,9 +88,6 @@ public class NewPauseMENU : MonoBehaviour
 
             {
                 audioManager.Play("click");
-                //  PausePointer = GameObject.FindGameObjectWithTag("Pointer");
-                // GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
-                //  Destroy(ParticleS, 0.1f);
                 ControlsMenu.SetActive(true);
                 controlsmenu = true;
                 PausePointer.SetActive(false);
@@ -107,9 +101,6 @@ public class NewPauseMENU : MonoBehaviour
 
             {
                 audioManager.Play("click");
-                //PausePointer = GameObject.FindGameObjectWithTag("Pointer");
-                // GameObject ParticleS = GameObject.Instantiate(ParticleSelect, PausePointer.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
-                // Destroy(ParticleS, 0.1f);
                 SceneManager.LoadScene("Menu");
             }
         }

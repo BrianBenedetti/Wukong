@@ -47,8 +47,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     readonly string damageText = "Damage Text";
     public List<string> lootOrbs = new List<string>();
 
-    ObjectPooler objectPooler;
-
     public LayerMask whatIsEnemy;
 
     [Header("Components")]
@@ -58,14 +56,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     AudioSource source;
 
     public AudioClip death;
-
-    public GameObject fireSlash;
-
-    public GameObject waterSlash;
-
-    public GameObject airSlash;
-
-    public GameObject normalSlash;
 
     public GameObject ashes;
 
@@ -77,9 +67,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public MeshRenderer hair5;
     public MeshRenderer mask;
 
-
-
-
     void Start()
     {
         currentHealth = maxHealth;
@@ -87,7 +74,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        objectPooler = ObjectPooler.Instance;
         source = GetComponent<AudioSource>();
         ashes.SetActive(false);
 
@@ -181,7 +167,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     void ShowDamageText()
     {
-        var obj = objectPooler.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
+        var obj = ObjectPooler.Instance.SpawnFromPool(damageText, damageTextPos.position, Quaternion.identity);
         obj.GetComponent<TextMeshPro>().text = actualDamage.ToString();
     }
 
@@ -195,7 +181,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
             {
                 if (randomNumber <= lootTable[j])
                 {
-                    objectPooler.SpawnFromPool(lootOrbs[j].ToString(), transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
+                    ObjectPooler.Instance.SpawnFromPool(lootOrbs[j].ToString(), transform.position + new Vector3(Random.Range(-1, 1), 2, Random.Range(-1, 1)), Quaternion.identity);
                     break;
                 }
                 else
@@ -206,45 +192,28 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         }
     }
 
-    public void PlaySlashTop()
-    {
-        switch (myDamageType)
-        {
-            case DamageTypes.fire:
-                Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
-                break;
-            case DamageTypes.water:
-                Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
-                break;
-            case DamageTypes.air:
-                Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
-                break;
-            case DamageTypes.normal:
-                Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
-                break;
-            default:
-                break;
-        }
-    }
-
     public void PlaySlashBot()
     {
         switch (myDamageType)
         {
             case DamageTypes.fire:
-                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                obj.transform.parent = transform;
                 obj.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             case DamageTypes.water:
-                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                obj1.transform.parent = transform;
                 obj1.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             case DamageTypes.air:
-                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                obj2.transform.parent = transform;
                 obj2.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             case DamageTypes.normal:
-                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                obj3.transform.parent = transform;
                 obj3.transform.localRotation = Quaternion.Euler(180, 0, 0);
                 break;
             default:
@@ -257,19 +226,23 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         switch (myDamageType)
         {
             case DamageTypes.fire:
-                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                obj.transform.parent = transform;
                 obj.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             case DamageTypes.water:
-                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                obj1.transform.parent = transform;
                 obj1.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             case DamageTypes.air:
-                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                obj2.transform.parent = transform;
                 obj2.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             case DamageTypes.normal:
-                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                obj3.transform.parent = transform;
                 obj3.transform.localRotation = Quaternion.Euler(180, 0, -45);
                 break;
             default:
@@ -282,19 +255,23 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         switch (myDamageType)
         {
             case DamageTypes.fire:
-                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                obj.transform.parent = transform;
                 obj.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             case DamageTypes.water:
-                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                obj1.transform.parent = transform;
                 obj1.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             case DamageTypes.air:
-                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                obj2.transform.parent = transform;
                 obj2.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             case DamageTypes.normal:
-                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity, transform);
+                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                obj3.transform.parent = transform;
                 obj3.transform.localRotation = Quaternion.Euler(0, 0, -45);
                 break;
             default:
@@ -333,7 +310,6 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         source.PlayOneShot(death);
         GetComponent<Collider>().enabled = false;
         agent.enabled = false;
-        PlayerManager.instance.lockOnSystem.KilledOpponent(gameObject);
         yield return new WaitForSeconds(2);
         DropLoot();
         Destroy(gameObject);

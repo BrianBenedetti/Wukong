@@ -1,6 +1,4 @@
-﻿
-using UnityEngine.Audio;
-using System;
+﻿using System;
 using UnityEngine;
 
 public class AudioPlayerManager : MonoBehaviour
@@ -20,14 +18,10 @@ public class AudioPlayerManager : MonoBehaviour
         }
 
     }
-    void Start()
-    {
-        //Play("theme");
-    }
+
     public void Play(string playerSounds)
     {
         PlayerSounds s = Array.Find(Psounds, sound => sound.playerSounds == playerSounds);
     }
-    // FindObjectOfType<AudioManager>().Play("check"); use in the script where it needs to be called
 
 }
