@@ -119,7 +119,6 @@ MonoBehaviour:
   projectileDamage: 10
   slamDamage: 25
   lootTable: 32000000230000000f000000
-  slamVFX: {fileID: 118863864665275599, guid: dddaf111c6c4dba419d688ccdd265980, type: 3}
   ashes: {fileID: 928980598219709300}
   waypoints:
   - {fileID: 0}
@@ -200,7 +199,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 43e899c6b817fa142a306d611c3a5296, type: 3}
   m_Controller: {fileID: 9100000, guid: 8cee56340557a394c85e882ddf3b1d40, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

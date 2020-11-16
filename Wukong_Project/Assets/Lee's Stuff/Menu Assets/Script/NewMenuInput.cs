@@ -1,10 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class NewMenuInput : MonoBehaviour
 {
     public MenuInput menuinput;
+
+    //loading bar stuff
+    public GameObject loadingBar;
+    public Image loadingFill;
+    List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
 
     //all games objects being used
     public GameObject Point;
@@ -50,6 +58,8 @@ public class NewMenuInput : MonoBehaviour
 
     void Awake()
     {
+        loadingBar.SetActive(false);
+
         audioManager = FindObjectOfType<AudioManager>();
 
         //the controls menu will be disabled at the start
@@ -74,6 +84,25 @@ public class NewMenuInput : MonoBehaviour
                          
     }
 
+    void ShowLoadingBar()
+    {
+        loadingBar.SetActive(true);
+    }
+
+    IEnumerator LoadScreen()
+    {
+        float totalProgress = 0;
+        for (int i = 0; i < scenesToLoad.Count; i++)
+        {
+            while (!scenesToLoad[i].isDone)
+            {
+                totalProgress += scenesToLoad[i].progress;
+                loadingFill.fillAmount = totalProgress / scenesToLoad.Count;
+                yield return null;
+            }
+        }
+    }
+
     void StartGame()
     {
         if (ControlsM == false) 
@@ -83,7 +112,9 @@ public class NewMenuInput : MonoBehaviour
                 audioManager.Play("click");
                 GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
-                SceneManager.LoadScene(1);
+                scenesToLoad.Add(SceneManager.LoadSceneAsync(1));
+                ShowLoadingBar();
+                StartCoroutine(LoadScreen());
             }
             else if (SelectedButton == 2)
             {
@@ -197,7 +228,9 @@ public class NewMenuInput : MonoBehaviour
                     audioManager.Play("click");
                     GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
-                    SceneManager.LoadScene(1);                    
+                    scenesToLoad.Add(SceneManager.LoadSceneAsync(1));
+                    ShowLoadingBar();
+                    StartCoroutine(LoadScreen());
                 }
             }
             else if (mousePos.y <= 610 && mousePos.y >= 470 && mousePos.x > 950 && mousePos.x < 1500)

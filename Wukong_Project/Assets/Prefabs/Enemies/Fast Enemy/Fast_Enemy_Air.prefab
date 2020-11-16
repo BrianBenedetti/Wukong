@@ -121,14 +121,6 @@ MonoBehaviour:
     m_Bits: 512
   agent: {fileID: 0}
   death: {fileID: 8300000, guid: 9c9b4252f230e3c4c8bd0da7382f0749, type: 3}
-  fireSlash: {fileID: 4406726965804440673, guid: abf61d12582792a419cba0112c4ab25f,
-    type: 3}
-  waterSlash: {fileID: 8531183030959873733, guid: 0b3425f39aeb070458d84b56d9833947,
-    type: 3}
-  airSlash: {fileID: 2718011653336346681, guid: 8e79b3f4a083ec04aa5ff62aea5ed2ce,
-    type: 3}
-  normalSlash: {fileID: 8085470452112974784, guid: e5d6d0649d7b9f44c84bbff66ae9ba25,
-    type: 3}
   ashes: {fileID: 117296263222673318}
   body: {fileID: 6098495792933827261}
   hair1: {fileID: 3333824562479411657}
@@ -170,7 +162,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6aa4dd18373e168449304149d289dc28, type: 3}
   m_Controller: {fileID: 9100000, guid: 45fe3f33a995cd4489d7191ac85a4e81, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

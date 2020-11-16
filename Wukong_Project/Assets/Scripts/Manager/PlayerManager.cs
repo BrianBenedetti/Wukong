@@ -30,5 +30,10 @@ public class PlayerManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+#if UNITY_EDITOR
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
+#endif
     }
 }
