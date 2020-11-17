@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AirRockShader
+  m_Shader: {fileID: -6465566751694194690, guid: 6e31cfe13ef588042b08407f983cf4d9,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _moss_albedo:
+        m_Texture: {fileID: 5053470416564123199, guid: f6c01e94bac1a4341a3fe1e6655ac19d,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _moss_ao:
+        m_Texture: {fileID: -9111255778069498096, guid: f6c01e94bac1a4341a3fe1e6655ac19d,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _moss_normal:
+        m_Texture: {fileID: 2800000, guid: 00f625424c43e904096f25441f86f6f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _rock_albedo:
+        m_Texture: {fileID: -8708389179677615416, guid: e833c14e76ebfa44595348f748dbbe62,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _rock_ao:
+        m_Texture: {fileID: 4787135774448248116, guid: e833c14e76ebfa44595348f748dbbe62,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _rock_normal:
+        m_Texture: {fileID: -8708389179677615416, guid: e833c14e76ebfa44595348f748dbbe62,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_2465A7CC: 1
+    - Vector1_857CE6EF: 0.1
+    - _moss_height_blend: 15
+    - _moss_threshold: 0.398
+    m_Colors: []

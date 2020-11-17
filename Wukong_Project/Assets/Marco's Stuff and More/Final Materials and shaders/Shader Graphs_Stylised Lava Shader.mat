@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Stylised Lava Shader
+  m_Shader: {fileID: -6465566751694194690, guid: ccfdd9ed3279c5547a34737f486742ad,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _lava_albedo:
+        m_Texture: {fileID: 8318892250972757004, guid: 5770bdf2cd6461447b44f08faad8a3e8,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _lava_emission:
+        m_Texture: {fileID: 1131139633449350864, guid: 5770bdf2cd6461447b44f08faad8a3e8,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _lava_normals:
+        m_Texture: {fileID: 4224927004185005610, guid: 5770bdf2cd6461447b44f08faad8a3e8,
+          type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_F107EDA4: 0
+    - _fresnel_strength: 5
+    - _lava_depth: 2
+    - _lava_speed: 0.02
+    - _voronoi_amount: 0.05
+    - _voronoi_angleoffset: 1
+    - _voronoi_scale: 0.5
+    m_Colors:
+    - _Fresnel_Color: {r: 766.9961, g: 96.37647, b: 0, a: 0}
+    - _lava_scale: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _voronoi_speed: {r: 0, g: 0.1, b: 0, a: 0}
