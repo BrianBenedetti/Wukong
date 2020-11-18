@@ -115,7 +115,7 @@ public class NewPauseMENU : MonoBehaviour
                 PausePointer.SetActive(false);
                 PauseControlsPointer.SetActive(false);
                 ControlsMenu.SetActive(false);
-             
+
 
             }
             else if (selectB == 2)
@@ -127,17 +127,17 @@ public class NewPauseMENU : MonoBehaviour
                 PausePointer.SetActive(false);
                 PauseControlsPointer.SetActive(false);
                 ControlsMenu.SetActive(false);
-         
+
 
             }
         }
-   
+
     }
     public void Back()
     {
         if (controlsmenu == true)
         {
-      
+
             KMcontrols.SetActive(false);
             ControllerControls.SetActive(false);
             PauseMenuUI.SetActive(true);
@@ -146,12 +146,12 @@ public class NewPauseMENU : MonoBehaviour
             PauseControlsPointer.SetActive(false);
             controlsmenu = false;
             Time.timeScale = 0f;
-            
+
 
         }
         else if (controlsmenu == false)
         {
-          
+
 
             PauseMenuUI.SetActive(false);
             ControllerControls.SetActive(false);
@@ -168,7 +168,7 @@ public class NewPauseMENU : MonoBehaviour
     {
         if (controlsmenu == false)
         {
-           
+
             if (GamePaused == false)
             {
                 Cursor.lockState = CursorLockMode.None;
@@ -190,14 +190,14 @@ public class NewPauseMENU : MonoBehaviour
 
 
         }
-        
+
     }
 
     private void Update()
     {
         // Checks if the pointer needs to move down or up, in this case the poiter moves up one button
 
- if (controlsmenu == false && GamePaused == true)
+        if (controlsmenu == false && GamePaused == true)
 
         {
             if (move >= 0.5)
@@ -220,12 +220,12 @@ public class NewPauseMENU : MonoBehaviour
 
             }
             MoveThePointer();
-            if (mousePos.y >= 710 && mousePos.y <= 840 && mousePos.x > 780 && mousePos.x < 1130  && GamePaused == true)
+            if (mousePos.y >= 710 && mousePos.y <= 840 && mousePos.x > 780 && mousePos.x < 1130 && GamePaused == true)
             {
                 SelectedButton = 1;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
                 {
-                    
+
                     StartGame();
                 }
 
@@ -235,7 +235,7 @@ public class NewPauseMENU : MonoBehaviour
                 SelectedButton = 2;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
                 {
-                   
+
                     StartGame();
                 }
             }
@@ -248,7 +248,7 @@ public class NewPauseMENU : MonoBehaviour
                     StartGame();
                 }
             }
-        
+
         }
 
         else if (controlsmenu == true && GamePaused == true)
@@ -319,7 +319,7 @@ public class NewPauseMENU : MonoBehaviour
             resumebutton.SetActive(true);
             PausePointer.transform.position = PauseButtonPos3.position;
         }
-     
+
     }
     private void MoveThePoint()
     {
@@ -357,7 +357,7 @@ public class NewPauseMENU : MonoBehaviour
         PauseControlsPointer.SetActive(false);
         controlsmenu = false;
         ControlsMenu.SetActive(false);
-       
+
     }
     public void ConBack()
     {
@@ -369,7 +369,7 @@ public class NewPauseMENU : MonoBehaviour
         PauseControlsPointer.SetActive(false);
         controlsmenu = false;
         ControlsMenu.SetActive(false);
-       
+
     }
     public void ControlsBack()
     {
@@ -381,7 +381,7 @@ public class NewPauseMENU : MonoBehaviour
         PauseControlsPointer.SetActive(false);
         controlsmenu = false;
         ControlsMenu.SetActive(false);
-      
+
     }
     public void BackPause()
     {

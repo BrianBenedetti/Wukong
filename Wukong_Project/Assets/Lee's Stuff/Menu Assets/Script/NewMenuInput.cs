@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class NewMenuInput : MonoBehaviour
 {
     public MenuInput menuinput;
@@ -21,7 +20,7 @@ public class NewMenuInput : MonoBehaviour
     public GameObject ControlsMenu;
     public GameObject CreditsMenu;
     public GameObject ControllerControls;
-    public GameObject KMcontrols;    
+    public GameObject KMcontrols;
 
     //animated gameobjects
     public GameObject playbutton;
@@ -35,7 +34,7 @@ public class NewMenuInput : MonoBehaviour
     public GameObject button2;
     //check if the menu is active- to use an if statement
     private bool ControlsM;
-    
+
     // ints for with button is selected and how many buttons there are
     private int SelectedButton = 1;
     private int selectB = 1;
@@ -63,7 +62,7 @@ public class NewMenuInput : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
 
         //the controls menu will be disabled at the start
-        ControlsM = false;        
+        ControlsM = false;
 
         //setting which game objects should be active or not active at the start
         Pointer.SetActive(false);
@@ -72,16 +71,16 @@ public class NewMenuInput : MonoBehaviour
         ControlsMenu.SetActive(false);
         CreditsMenu.SetActive(false);
         ControllerControls.SetActive(false);
-        KMcontrols.SetActive(false);        
-        
+        KMcontrols.SetActive(false);
+
         //inputs
         menuinput = new MenuInput();
         menuinput.PlayerInput.Select.performed += ctx => StartGame();
         menuinput.PlayerInput.BackB.performed += ctx => Back();
         menuinput.PlayerInput.Move.performed += ctx => move = ctx.ReadValue<float>();
         menuinput.PlayerInput.Cursor.performed += ctx => mousePos = ctx.ReadValue<Vector2>();
-        
-                         
+
+
     }
 
     void ShowLoadingBar()
@@ -105,7 +104,7 @@ public class NewMenuInput : MonoBehaviour
 
     void StartGame()
     {
-        if (ControlsM == false) 
+        if (ControlsM == false)
         {
             if (SelectedButton == 1)
             {
@@ -125,7 +124,7 @@ public class NewMenuInput : MonoBehaviour
                 ControlsMenu.SetActive(true);
                 Point.SetActive(false);
                 Menu.SetActive(false);
-                Pointer.SetActive(true);               
+                Pointer.SetActive(true);
                 SelectedButton = 1;
             }
             else if (SelectedButton == 3)
@@ -138,17 +137,17 @@ public class NewMenuInput : MonoBehaviour
                 CreditsMenu.SetActive(true);
                 Point.SetActive(false);
                 Menu.SetActive(false);
-                Pointer.SetActive(false);               
+                Pointer.SetActive(false);
             }
             else if (SelectedButton == 4)
             {
                 audioManager.Play("click");
                 GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
-                Application.Quit();                
+                Application.Quit();
             }
         }
-        else if (ControlsM == true )
+        else if (ControlsM == true)
         {
             if (selectB == 1)
             {
@@ -156,7 +155,7 @@ public class NewMenuInput : MonoBehaviour
                 ControllerControls.SetActive(true);
                 Pointer.SetActive(false);
                 ControlsMenu.SetActive(false);
-                KMcontrols.SetActive(false);               
+                KMcontrols.SetActive(false);
                 ControlsM = false;
             }
             else if (selectB == 2)
@@ -165,12 +164,12 @@ public class NewMenuInput : MonoBehaviour
                 KMcontrols.SetActive(true);
                 ControllerControls.SetActive(false);
                 Pointer.SetActive(false);
-                ControlsMenu.SetActive(false);               
+                ControlsMenu.SetActive(false);
                 ControlsM = false;
             }
         }
     }
-   void Back()
+    void Back()
     {
         if (ControlsM == true)
         {
@@ -182,7 +181,7 @@ public class NewMenuInput : MonoBehaviour
             Menu.SetActive(true);
             Pointer.SetActive(false);
             ControllerControls.SetActive(false);
-            KMcontrols.SetActive(false);        
+            KMcontrols.SetActive(false);
         }
         else if (ControlsM == false)
         {
@@ -192,13 +191,13 @@ public class NewMenuInput : MonoBehaviour
             Point.SetActive(true);
             Menu.SetActive(true);
             ControllerControls.SetActive(false);
-            KMcontrols.SetActive(false);                   
+            KMcontrols.SetActive(false);
         }
     }
 
     private void Update()
     {
-   
+
         if (ControlsM == false)
         {
             if (move >= 0.5f)
@@ -221,9 +220,9 @@ public class NewMenuInput : MonoBehaviour
             }
             MoveThePointer();
             if (mousePos.y >= 620 && mousePos.y < 760 && mousePos.x > 950 && mousePos.x < 1500)
-            {                
+            {
                 SelectedButton = 1;
-                if(SelectedButton == 1 && menuinput.PlayerInput.MouseSelect.triggered)
+                if (SelectedButton == 1 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
                     audioManager.Play("click");
                     GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
@@ -249,7 +248,7 @@ public class NewMenuInput : MonoBehaviour
                 }
             }
             else if (mousePos.y <= 460f && mousePos.y >= 340f && mousePos.x > 950 && mousePos.x < 1500)
-            {        
+            {
                 SelectedButton = 3;
                 if (SelectedButton == 3 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
@@ -265,26 +264,26 @@ public class NewMenuInput : MonoBehaviour
                 }
             }
             else if (mousePos.y <= 330f && mousePos.y > 170 && mousePos.x > 950 && mousePos.x < 1500)
-            {                              
+            {
                 SelectedButton = 4;
                 if (SelectedButton == 4 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
                     audioManager.Play("click");
                     GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
-                    Application.Quit();                             
+                    Application.Quit();
                 }
             }
         }
         else if (ControlsM == true)
-        {           
+        {
             if (move >= 0.5f)
             {
                 if (selectB > 1)
                 {
                     audioManager.Play("select");
                     selectB -= 1;
-                    move = 0;                    
+                    move = 0;
                 }
             }
             else if (move <= -0.5f)
@@ -300,14 +299,14 @@ public class NewMenuInput : MonoBehaviour
             if (mousePos.y >= 550 && mousePos.y <= 840 && mousePos.x > 650 && mousePos.x < 1250)
             {
                 selectB = 1;
-                if(selectB == 1 && menuinput.PlayerInput.MouseSelect.triggered)
+                if (selectB == 1 && menuinput.PlayerInput.MouseSelect.triggered)
                 {
                     audioManager.Play("click");
                     ControllerControls.SetActive(true);
                     Pointer.SetActive(false);
                     ControlsMenu.SetActive(false);
                     KMcontrols.SetActive(false);
-                    ControlsM = false;                   
+                    ControlsM = false;
                 }
             }
             else if (mousePos.y >= 250 && mousePos.y <= 540 && mousePos.x > 650 && mousePos.x < 1250)
@@ -320,16 +319,16 @@ public class NewMenuInput : MonoBehaviour
                     ControllerControls.SetActive(false);
                     Pointer.SetActive(false);
                     ControlsMenu.SetActive(false);
-                    ControlsM = false;                   
+                    ControlsM = false;
 
                 }
             }
         }
     }
-  
+
     private void MoveThePointer()
     {
-        if (SelectedButton == 1 )
+        if (SelectedButton == 1)
         {
             quitbutton.SetActive(true);
             playbutton.SetActive(false);
@@ -337,7 +336,7 @@ public class NewMenuInput : MonoBehaviour
             creditsbutton.SetActive(true);
             Point.transform.position = ButtonPosition1.position;
         }
-        else if (SelectedButton == 2 )
+        else if (SelectedButton == 2)
         {
             quitbutton.SetActive(true);
             playbutton.SetActive(true);
@@ -345,18 +344,18 @@ public class NewMenuInput : MonoBehaviour
             creditsbutton.SetActive(true);
             Point.transform.position = ButtonPosition2.position;
         }
-        else if (SelectedButton == 3 )
+        else if (SelectedButton == 3)
         {
-         
+
             controlsbutton.SetActive(true);
             creditsbutton.SetActive(false);
             quitbutton.SetActive(true);
             playbutton.SetActive(true);
             Point.transform.position = ButtonPosition3.position;
         }
-        else if (SelectedButton == 4 )
+        else if (SelectedButton == 4)
         {
-           
+
             playbutton.SetActive(true);
             creditsbutton.SetActive(true);
             quitbutton.SetActive(false);
@@ -433,5 +432,5 @@ public class NewMenuInput : MonoBehaviour
         Menu.SetActive(true);
         ControllerControls.SetActive(false);
         SelectedButton = 1;
-    }     
+    }
 }

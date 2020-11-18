@@ -29,6 +29,36 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fire_05.unity
     guid: 0f8c7e08a7c844944866a65f7141053d
+  - enabled: 1
+    path: Assets/Scenes/Water_01.unity
+    guid: 15f8a2f0301099e408e800fb2ae8d604
+  - enabled: 1
+    path: Assets/Scenes/Water_02.unity
+    guid: 47d0a37e2d3ffc4429d12b902777cdd3
+  - enabled: 1
+    path: Assets/Scenes/Water_03.unity
+    guid: 2d41fd00916b8194e9a7460380d5f98a
+  - enabled: 1
+    path: Assets/Scenes/Water_05.unity
+    guid: 7ae9f8702f2973b42b4b556b1323970e
+  - enabled: 1
+    path: Assets/Scenes/Water_06.unity
+    guid: e50646a0ca939a543b283c3073bfd8ec
+  - enabled: 1
+    path: Assets/Scenes/Water_07.unity
+    guid: bed956c11ed221346960060dda4c1669
+  - enabled: 1
+    path: Assets/Scenes/Air_01.unity
+    guid: 0964e016ad6a2f541855ac9ca5d7b79a
+  - enabled: 1
+    path: Assets/Scenes/Air_02.unity
+    guid: b8bf7b335cdb4494bb1846a725faa677
+  - enabled: 1
+    path: Assets/Scenes/Air_03.unity
+    guid: 65916de40249a8c419f7e8bbc2c3d871
+  - enabled: 1
+    path: Assets/Scenes/Air_04.unity
+    guid: 8152330ac17bc1440a426fce049b8814
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 326ed3f6cb97e9d4ea985f0652263450,
       type: 2}
