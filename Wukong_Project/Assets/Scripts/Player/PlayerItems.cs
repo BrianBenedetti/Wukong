@@ -5,7 +5,7 @@ public class PlayerItems : MonoBehaviour
     [HideInInspector] public PlayerInputActions inputActions;
 
     float itemsScroll;
-    
+
     public InventoryObject inventory;
 
     //collection effect (Lee)
@@ -14,14 +14,8 @@ public class PlayerItems : MonoBehaviour
     //position
     public GameObject effectpos;
 
-    AudioManager audioManager;
-
-    Transform canvas;
-
     private void Awake()
     {
-        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
-        audioManager = FindObjectOfType<AudioManager>();
         inputActions = new PlayerInputActions();
         inputActions.PlayerControls.MouseCycle.performed += ctx => itemsScroll = ctx.ReadValue<float>();
         inputActions.PlayerControls.MouseCycle.canceled += ctx => itemsScroll = 0;
@@ -33,25 +27,25 @@ public class PlayerItems : MonoBehaviour
         //cycles the items in inventory
         if (itemsScroll < -0.1f || inputActions.PlayerControls.GamepadCycleRight.triggered)
         {
-            GameObject clone = Instantiate(scrollEffect, effectpos.transform.position, Quaternion.identity, canvas);
+            GameObject clone = Instantiate(scrollEffect, effectpos.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
             Destroy(clone, 0.5f);
-            audioManager.Play("swap");
+            FindObjectOfType<AudioManager>().Play("swap");
             inventory.MoveItem(0, inventory.Container.Items.Count - 1);
         }
         else if (itemsScroll > 0.1f || inputActions.PlayerControls.GamepadCycleLeft.triggered)
         {
-            GameObject clone = Instantiate(scrollEffect, effectpos.transform.position, Quaternion.identity, canvas);
+            GameObject clone = Instantiate(scrollEffect, effectpos.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
             Destroy(clone, 0.5f);
-            audioManager.Play("swap");
+            FindObjectOfType<AudioManager>().Play("swap");
             inventory.MoveItem(inventory.Container.Items.Count - 1, 0);
         }
- 
-            //checks to use item
-            if (inputActions.PlayerControls.UseItem.triggered)
+
+        //checks to use item
+        if (inputActions.PlayerControls.UseItem.triggered)
         {
-            GameObject clone = Instantiate(useEffect, effectpos.transform.position, Quaternion.identity, canvas);
-            Destroy(clone, 4f);
-            audioManager.Play("use");
+            GameObject clone = Instantiate(useEffect, effectpos.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+            Destroy(clone, 3f);
+            FindObjectOfType<AudioManager>().Play("use");
             inventory.UseItem();
         }
     }

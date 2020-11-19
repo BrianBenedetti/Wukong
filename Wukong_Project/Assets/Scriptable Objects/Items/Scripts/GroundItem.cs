@@ -21,8 +21,8 @@ public class GroundItem : MonoBehaviour, IInteractable
     public void Interact()
     {
         audioManager.Play("pick");
-        //GameObject clone = Instantiate(collectEffect, effectpos.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
-        //Destroy(clone, 4f);
+        GameObject clone = Instantiate(collectEffect, effectpos.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+        Destroy(clone, 4f);
         var playerItemsScript = player.GetComponent<PlayerItems>();
         playerItemsScript.inventory.AddItem(new Item(item), 1);
         var playerInteractionsScript = player.GetComponent<PlayerInteractions>();
