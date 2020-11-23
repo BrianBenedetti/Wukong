@@ -42,7 +42,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 1
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4856,7 +4856,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 1
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -9636,7 +9636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4406726965804440674}
   - component: {fileID: 6495206052781075809}
-  - component: {fileID: 1280862866795014224}
+  - component: {fileID: -4824070449175448156}
   m_Layer: 0
   m_Name: PS_Slash_Fire
   m_TagString: Untagged
@@ -9755,7 +9755,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1280862866795014224
+--- !u!114 &-4824070449175448156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9764,11 +9764,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4406726965804440673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16ba218e507cf3478fae4e8f13ad2d4, type: 3}
+  m_Script: {fileID: 11500000, guid: a692b3b20fc181e488567869736e743e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDisable: 2
-  removeParent: 1
+  time: 2.1
 --- !u!1 &8810492475750008477
 GameObject:
   m_ObjectHideFlags: 0
@@ -9811,7 +9810,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 2
   simulationSpeed: 1
-  stopAction: 1
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}

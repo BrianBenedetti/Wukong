@@ -182,7 +182,7 @@ MonoBehaviour:
   turnSmoothTime: 5
   lookRadius: 20
   startWaitTime: 2
-  knockbackAmount: 8
+  knockbackAmount: 35
   attackRadius: 1.5
   slamRadius: 6
   lightAttackDamage: 25
@@ -213,6 +213,14 @@ MonoBehaviour:
   hair4: {fileID: 3971337077212321723}
   hair5: {fileID: 6780351359145380523}
   mask: {fileID: 6788237948126685728}
+  fireSlash: {fileID: 4406726965804440673, guid: abf61d12582792a419cba0112c4ab25f,
+    type: 3}
+  waterSlash: {fileID: 8531183030959873733, guid: 0b3425f39aeb070458d84b56d9833947,
+    type: 3}
+  airSlash: {fileID: 2718011653336346681, guid: 8e79b3f4a083ec04aa5ff62aea5ed2ce,
+    type: 3}
+  normalSlash: {fileID: 8085470452112974784, guid: e5d6d0649d7b9f44c84bbff66ae9ba25,
+    type: 3}
 --- !u!95 &2760853769800401487
 Animator:
   serializedVersion: 3

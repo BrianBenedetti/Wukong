@@ -170,9 +170,9 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         {
             animator.SetTrigger(HurtTrigger);
             StartCoroutine(Knockback());
-            PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
-            PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
-            PlayerManager.instance.hitStop.Stop(0.1f);
+            PlayerManager.instance.mainCamShake.Shake(2, 0.1f);
+            //PlayerManager.instance.lockOnShake.Shake(2, 0.1f);
+            PlayerManager.instance.hitStop.Stop(0.2f);
         }
 
         ShowDamageText();

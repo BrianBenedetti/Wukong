@@ -129,6 +129,14 @@ MonoBehaviour:
   hair4: {fileID: 874360683891033578}
   hair5: {fileID: 2800687931390502709}
   mask: {fileID: 694321855869576474}
+  fireSlash: {fileID: 4406726965804440673, guid: abf61d12582792a419cba0112c4ab25f,
+    type: 3}
+  waterSlash: {fileID: 8531183030959873733, guid: 0b3425f39aeb070458d84b56d9833947,
+    type: 3}
+  airSlash: {fileID: 2718011653336346681, guid: 8e79b3f4a083ec04aa5ff62aea5ed2ce,
+    type: 3}
+  normalSlash: {fileID: 8085470452112974784, guid: e5d6d0649d7b9f44c84bbff66ae9ba25,
+    type: 3}
 --- !u!195 &2213173311301776892
 NavMeshAgent:
   m_ObjectHideFlags: 0

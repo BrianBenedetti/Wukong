@@ -68,6 +68,11 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public MeshRenderer hair5;
     public MeshRenderer mask;
 
+    public GameObject fireSlash;
+    public GameObject waterSlash;
+    public GameObject airSlash;
+    public GameObject normalSlash;
+
 
     // Start is called before the first frame update
     void Start()
@@ -140,6 +145,8 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
         Vector3 dir = transform.forward;
 
+        PlaySlamVFX();
+
         foreach (Collider enemy in enemiesHit)
         {
             enemy.GetComponent<IDamageable<int, DamageTypes>>().TakeDamage(heavyAttackDamage, myDamageType);
@@ -149,9 +156,9 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
 
     public void TakeDamage(int damageTaken, DamageTypes damageType)
     {
-        PlayerManager.instance.mainCamShake.Shake(1, 0.1f);
-        PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
-        PlayerManager.instance.hitStop.Stop(0.1f);
+        PlayerManager.instance.mainCamShake.Shake(2, 0.1f);
+        //PlayerManager.instance.lockOnShake.Shake(1, 0.1f);
+        PlayerManager.instance.hitStop.Stop(0.2f);
 
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
 
@@ -196,22 +203,22 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         switch (myDamageType)
         {
             case DamageTypes.fire:
-                var obj = ObjectPooler.Instance.SpawnFromPool("Fire Slash", slashSpawn.position, Quaternion.identity);
+                var obj = Instantiate(fireSlash, slashSpawn.position, Quaternion.identity);
                 obj.transform.parent = transform;
                 obj.transform.localScale = new Vector3(4, 4, 4);
                 break;
             case DamageTypes.water:
-                var obj1 = ObjectPooler.Instance.SpawnFromPool("Water Slash", slashSpawn.position, Quaternion.identity);
+                var obj1 = Instantiate(waterSlash, slashSpawn.position, Quaternion.identity);
                 obj1.transform.parent = transform;
                 obj1.transform.localScale = new Vector3(4, 4, 4);
                 break;
             case DamageTypes.air:
-                var obj2 = ObjectPooler.Instance.SpawnFromPool("Air Slash", slashSpawn.position, Quaternion.identity);
+                var obj2 = Instantiate(airSlash, slashSpawn.position, Quaternion.identity);
                 obj2.transform.parent = transform;
                 obj2.transform.localScale = new Vector3(4, 4, 4);
                 break;
             case DamageTypes.normal:
-                var obj3 = ObjectPooler.Instance.SpawnFromPool("Normal Slash", slashSpawn.position, Quaternion.identity);
+                var obj3 = Instantiate(normalSlash, slashSpawn.position, Quaternion.identity);
                 obj3.transform.parent = transform;
                 obj3.transform.localScale = new Vector3(4, 4, 4);
                 break;
