@@ -1,0 +1,1295 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!64 &6442085581903270249
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081954815037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &6442085582159694742
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055082210064184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!64 &6442085582198123341
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055082249000465}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &6442085582483641828
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081326176438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &6442085582590716795
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081566934575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &6442085582748745621
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081591653177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!64 &6442085582910502508
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081752890174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &6442085582953513477
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055080856010569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &6442085583152112758
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055080921946392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!1 &6442085583514970753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6442085583514970752}
+  m_Layer: 0
+  m_Name: WBridges 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6442085583514970752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6442085583514970753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6839942855695390665}
+  - {fileID: 6839942855290866687}
+  - {fileID: 6839942857155933831}
+  - {fileID: 6839942855915406242}
+  - {fileID: 6839942856894368939}
+  - {fileID: 6839942856575496716}
+  - {fileID: 6839942856941383042}
+  - {fileID: 6839942856105354739}
+  - {fileID: 6839942855520498239}
+  - {fileID: 6839942856476544149}
+  - {fileID: 6839942855420426074}
+  - {fileID: 6839942856148701572}
+  - {fileID: 6839942856318785923}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6442085583580321233
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055080275372165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!64 &6442085583680655550
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055080510844384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!1001 &5975158103790469358
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: 525669663099309469, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part02
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 331.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 390.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60335064
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6033506
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.36873853
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.3687385
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 242.862
+      objectReference: {fileID: 0}
+    - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4d9ca855c0e69d4eac7999347c90c98, type: 3}
+--- !u!4 &6839942855695390665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
+    type: 3}
+  m_PrefabInstance: {fileID: 5975158103790469358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085581903270252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 312.54034
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 391.87637
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6939742
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6939739
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13564692
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.13564683
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 157.88
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e99f65f1960774ea08b89b4ff03058, type: 2}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part02 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!1 &6172055081954815037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085581903270252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942857155933831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085581903270252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085582159694441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 310.83
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.240001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 379.1687
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6864455
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6864452
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.16968457
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.16968451
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 207.76999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a2ce87d94e91de149a05b6b7ee4d96e2, type: 2}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part01 (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!4 &6839942856941383042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582159694441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055082210064184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582159694441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085582198123328
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 308.41788
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 390.20074
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6939742
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6939739
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13564692
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.13564683
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 157.88
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e99f65f1960774ea08b89b4ff03058, type: 2}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part02 (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!1 &6172055082249000465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582198123328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942856894368939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582198123328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085582483641831
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 306.9086
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 381.2334
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6864455
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6864452
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.16968457
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.16968451
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 207.76999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e99f65f1960774ea08b89b4ff03058, type: 2}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part02 (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!1 &6172055081326176438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582483641831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942856575496716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582483641831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085582590716798
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 357.6054
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 401.41052
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.56386846
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5638684
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.42667603
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.4266759
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 254.229
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e99f65f1960774ea08b89b4ff03058, type: 2}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part02 (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!4 &6839942856476544149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582590716798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055081566934575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582590716798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085582748745320
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 347.68176
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.240001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 382.58
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a2ce87d94e91de149a05b6b7ee4d96e2, type: 2}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part01 (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!1 &6172055081591653177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582748745320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942856318785923 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582748745320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085582910502511
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 343.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 382.58
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e99f65f1960774ea08b89b4ff03058, type: 2}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part02 (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!4 &6839942856148701572 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582910502511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055081752890174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582910502511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085582953513496
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 349.83
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 407.78
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1e99f65f1960774ea08b89b4ff03058, type: 2}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part02 (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!1 &6172055080856010569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582953513496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942856105354739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582953513496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085583152112713
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 316.646
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.240001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 393.54507
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6939742
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6939739
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13564692
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.13564683
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 157.88
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a2ce87d94e91de149a05b6b7ee4d96e2, type: 2}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part01 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!1 &6172055080921946392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085583152112713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942855915406242 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085583152112713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085583580321236
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 354.26175
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.240001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 407.78
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a2ce87d94e91de149a05b6b7ee4d96e2, type: 2}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part01 (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!4 &6839942855520498239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085583580321236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055080275372165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085583580321236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6442085583680655537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 358.81
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.240001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 397.14563
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.56386846
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5638684
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.42667603
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.4266759
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 254.229
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a2ce87d94e91de149a05b6b7ee4d96e2, type: 2}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part01 (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!1 &6172055080510844384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085583680655537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942855420426074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085583680655537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8022720415551541963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6442085583514970752}
+    m_Modifications:
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 333.63147
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.240001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 386.63608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60335064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6033506
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.36873853
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.3687385
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 242.862
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247429718071853966, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_Name
+      value: WukongwaterAreaBridge_Part01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3cdb97f977d6be0438b63c667170c53a, type: 3}
+--- !u!4 &6839942855290866687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8022720415551541963}
+  m_PrefabAsset: {fileID: 0}
