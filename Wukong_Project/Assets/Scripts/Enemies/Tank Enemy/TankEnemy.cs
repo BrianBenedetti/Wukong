@@ -73,6 +73,11 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public GameObject airSlash;
     public GameObject normalSlash;
 
+    //element panels
+    //public Canvas elementCanvas;
+    public GameObject firePanel;
+    public GameObject waterPanel;
+    public GameObject airPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -253,6 +258,24 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         }
     }
 
+    void ShowPanel()
+    {
+        switch (myDamageType)
+        {
+            case DamageTypes.fire:
+                Instantiate(firePanel, firePanel.transform.position, Quaternion.identity);
+                break;
+            case DamageTypes.water:
+                Instantiate(waterPanel, waterPanel.transform.position, Quaternion.identity);
+                break;
+            case DamageTypes.air:
+                Instantiate(airPanel, airPanel.transform.position, Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+    }
+
     public IEnumerator Die()
     {
         //play dissolve shader effect
@@ -265,6 +288,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         yield return new WaitForSeconds(2);
         DropLoot();
         AwardElement();
+        ShowPanel();
         Destroy(gameObject);
     }
 

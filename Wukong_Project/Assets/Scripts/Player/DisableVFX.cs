@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class DisableVFX : MonoBehaviour, IPooledObject
+public class DisableVFX : MonoBehaviour
 {
     public float timeToDisable;
 
     public bool removeParent;
 
-    public void OnObjectSpawn()
+    public void OnEnable()
     {
         StartCoroutine(DisableAfterTime(timeToDisable));
     }

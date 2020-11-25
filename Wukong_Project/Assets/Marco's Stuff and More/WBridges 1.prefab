@@ -1,26 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!64 &6442085581903270249
+--- !u!64 &5054440593112701707
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055081954815037}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!64 &6442085582159694742
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055082210064184}
+  m_GameObject: {fileID: 6172055080275372165}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -28,55 +14,13 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
---- !u!64 &6442085582198123341
+--- !u!64 &1695888065809568908
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055082249000465}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!64 &6442085582483641828
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055081326176438}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!64 &6442085582590716795
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055081566934575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!64 &6442085582748745621
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055081591653177}
+  m_GameObject: {fileID: 6172055080510844384}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -84,21 +28,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
---- !u!64 &6442085582910502508
+--- !u!64 &1583810730686153524
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055081752890174}
+  m_GameObject: {fileID: 6172055080630817093}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!64 &6442085582953513477
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!64 &3958101464033119811
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,7 +56,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!64 &6442085583152112758
+--- !u!64 &6886561873292053228
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,6 +70,118 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!64 &1657161440106306187
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081299578227}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &1469330894957720032
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081326176438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &6658181058701002364
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081566934575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &8094950018500518805
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081591653177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!64 &363235699384137290
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081752890174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &3985317280613655059
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055081954815037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
+--- !u!64 &682690343138479586
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055082210064184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
+--- !u!64 &5177375532928072207
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172055082249000465}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4924356612168338406, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
 --- !u!1 &6442085583514970753
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,12 +191,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6442085583514970752}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WBridges 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6442085583514970752
 Transform:
@@ -169,34 +225,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &6442085583580321233
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055080275372165}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
---- !u!64 &6442085583680655550
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172055080510844384}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 674340280032488212, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
 --- !u!1001 &5975158103790469358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -208,6 +236,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part02
+      objectReference: {fileID: 0}
+    - target: {fileID: 525669663099309469, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 525669663099309469, guid: a4d9ca855c0e69d4eac7999347c90c98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
         type: 3}
@@ -264,8 +302,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.00001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 831727872501018817, guid: a4d9ca855c0e69d4eac7999347c90c98, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a4d9ca855c0e69d4eac7999347c90c98, type: 3}
+--- !u!1 &6172055081299578227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 525669663099309469, guid: a4d9ca855c0e69d4eac7999347c90c98,
+    type: 3}
+  m_PrefabInstance: {fileID: 5975158103790469358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6839942855695390665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 864793840862336807, guid: a4d9ca855c0e69d4eac7999347c90c98,
@@ -343,6 +388,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
@@ -430,17 +485,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
---- !u!4 &6839942856941383042 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6442085582159694441}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6172055082210064184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582159694441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942856941383042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
     type: 3}
   m_PrefabInstance: {fileID: 6442085582159694441}
   m_PrefabAsset: {fileID: 0}
@@ -516,17 +581,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!1 &6172055082249000465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6442085582198123328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6839942856894368939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582198123328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055082249000465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
     type: 3}
   m_PrefabInstance: {fileID: 6442085582198123328}
   m_PrefabAsset: {fileID: 0}
@@ -602,17 +677,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!1 &6172055081326176438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6442085582483641831}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6839942856575496716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582483641831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055081326176438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
     type: 3}
   m_PrefabInstance: {fileID: 6442085582483641831}
   m_PrefabAsset: {fileID: 0}
@@ -687,6 +772,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part02 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
@@ -774,6 +869,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
 --- !u!1 &6172055081591653177 stripped
@@ -860,17 +965,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part02 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
---- !u!4 &6839942856148701572 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6442085582910502511}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6172055081752890174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085582910502511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6839942856148701572 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceeaeff5ef38f143ba845ae385269cd,
     type: 3}
   m_PrefabInstance: {fileID: 6442085582910502511}
   m_PrefabAsset: {fileID: 0}
@@ -945,6 +1060,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceeaeff5ef38f143ba845ae385269cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fceeaeff5ef38f143ba845ae385269cd, type: 3}
@@ -1032,17 +1157,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
---- !u!1 &6172055080921946392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6442085583152112713}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6839942855915406242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6442085583152112713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055080921946392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
     type: 3}
   m_PrefabInstance: {fileID: 6442085583152112713}
   m_PrefabAsset: {fileID: 0}
@@ -1117,6 +1252,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
@@ -1204,6 +1349,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1bede858e6c9bb43b06d2bf96f447f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1bede858e6c9bb43b06d2bf96f447f0, type: 3}
 --- !u!1 &6172055080510844384 stripped
@@ -1285,11 +1440,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: WukongwaterAreaBridge_Part01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4247429718071853966, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247429718071853966, guid: 3cdb97f977d6be0438b63c667170c53a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3904778119005961946, guid: 3cdb97f977d6be0438b63c667170c53a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cdb97f977d6be0438b63c667170c53a, type: 3}
 --- !u!4 &6839942855290866687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3583236375713683764, guid: 3cdb97f977d6be0438b63c667170c53a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8022720415551541963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6172055080630817093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4247429718071853966, guid: 3cdb97f977d6be0438b63c667170c53a,
     type: 3}
   m_PrefabInstance: {fileID: 8022720415551541963}
   m_PrefabAsset: {fileID: 0}

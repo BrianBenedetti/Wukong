@@ -87,7 +87,6 @@ public class PlayerDash : MonoBehaviour
 
         moveScript.velocity.y = 0;
 
-
         while (Time.time < startTime + dashTime)
         {
             moveScript.controller.Move(transform.forward * dashSpeed * Time.deltaTime);

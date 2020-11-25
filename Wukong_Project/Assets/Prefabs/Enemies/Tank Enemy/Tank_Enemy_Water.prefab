@@ -221,6 +221,12 @@ MonoBehaviour:
     type: 3}
   normalSlash: {fileID: 8085470452112974784, guid: e5d6d0649d7b9f44c84bbff66ae9ba25,
     type: 3}
+  firePanel: {fileID: 5344454107997908295, guid: aaac566b4ed99cd48b3abcd874d652a2,
+    type: 3}
+  waterPanel: {fileID: 5344454107997908295, guid: 1825d1729a34d22488d4e908aa3c37a4,
+    type: 3}
+  airPanel: {fileID: 5344454107997908295, guid: 5eaa8d32f34c8c1478a15349c16fe752,
+    type: 3}
 --- !u!95 &7871201217681884789
 Animator:
   serializedVersion: 3

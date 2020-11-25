@@ -155,7 +155,7 @@ MonoBehaviour:
   rageSpeed: 10
   turnSmoothTime: 0.1
   gravity: -20
-  groundDistance: 0.1
+  groundDistance: 0.2
   jumpHeight: 2.1
   fallMultiplier: 2.5
   timeToMaxSpeed: 3
@@ -252,9 +252,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a4d80dd87a1fbb4abfe764119759dfe, type: 2}
   - {fileID: 11400000, guid: be032b3c7b9703042b3abd64d16fa0d6, type: 2}
   - {fileID: 11400000, guid: 3573ddf6923a7a240be139edc96abc96, type: 2}
-  hasFire: 1
-  hasWater: 1
-  hasAir: 1
+  hasFire: 0
+  hasWater: 0
+  hasAir: 0
 --- !u!114 &409033512456417228
 MonoBehaviour:
   m_ObjectHideFlags: 0
