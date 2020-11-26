@@ -243,6 +243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fast_Enemy_Water (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2213173311301775879, guid: 8042a1bbe5129264aa799f7b7c01740d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8042a1bbe5129264aa799f7b7c01740d, type: 3}
 --- !u!1001 &439421680
@@ -337,6 +342,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fast_Enemy_Normal
       objectReference: {fileID: 0}
+    - target: {fileID: 2213173311301775879, guid: ec00ccf1001c6b049bb633b7e4bb0b5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec00ccf1001c6b049bb633b7e4bb0b5b, type: 3}
 --- !u!1 &784205248
@@ -405,6 +415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Average_Enemy_Normal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797914584394110918, guid: 6afc39152306c824ca0c7e7544173e62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797914584394110972, guid: 6afc39152306c824ca0c7e7544173e62,
         type: 3}
@@ -554,6 +569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fast_Enemy_Water (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213173311301775879, guid: 8042a1bbe5129264aa799f7b7c01740d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8042a1bbe5129264aa799f7b7c01740d, type: 3}

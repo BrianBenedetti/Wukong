@@ -40,6 +40,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
     public Transform projectileOrigin;
     [HideInInspector] public Transform target;
     public Transform damageTextPos;
+    public Transform hitSpawn;
 
 
     public string myProjectile;
@@ -176,6 +177,7 @@ public class AverageEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         }
 
         ShowDamageText();
+        ObjectPooler.Instance.SpawnFromPool("Hit Effect", hitSpawn.position, Quaternion.identity);
 
         if (currentHealth <= 0)
         {

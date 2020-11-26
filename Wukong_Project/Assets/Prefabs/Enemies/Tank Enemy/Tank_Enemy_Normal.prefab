@@ -127,6 +127,7 @@ Transform:
   - {fileID: 5289934429167217035}
   - {fileID: 3650602508400612549}
   - {fileID: 7318823810156287798}
+  - {fileID: 5279952710094249062}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,6 +195,7 @@ MonoBehaviour:
   damageTextPos: {fileID: 5289934429167217035}
   slashSpawn: {fileID: 3650602508400612549}
   attackSlamPos: {fileID: 7318823810156287798}
+  hitSpawn: {fileID: 5279952710094249062}
   myDamageType: 0
   myResistances: {fileID: 11400000, guid: 3573ddf6923a7a240be139edc96abc96, type: 2}
   lootOrbs:
@@ -371,6 +373,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8164888773748839710}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8352381040901858132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5279952710094249062}
+  m_Layer: 8
+  m_Name: Hit Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5279952710094249062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352381040901858132}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.07, z: -0.015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8164888773748839710}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1279591000749499519
 PrefabInstance:

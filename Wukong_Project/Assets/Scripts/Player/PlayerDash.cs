@@ -44,7 +44,7 @@ public class PlayerDash : MonoBehaviour
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
 
-                if (!moveScript.nimbus.activeInHierarchy)
+                if (!moveScript.nimbus.activeInHierarchy && moveScript.isGrounded)
                 {
                     ObjectPooler.Instance.SpawnFromPool("Dodge Effect", transform.position, transform.rotation);
                 }
@@ -58,7 +58,7 @@ public class PlayerDash : MonoBehaviour
                 StartCoroutine(Dash());
                 animationsScript.PlayDodgeAnimation();
 
-                if (!moveScript.nimbus.activeInHierarchy)
+                if (!moveScript.nimbus.activeInHierarchy && moveScript.isGrounded)
                 {
                     ObjectPooler.Instance.SpawnFromPool("Dodge Effect", transform.position, transform.rotation);
                 }

@@ -241,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 2213173311301775879, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189247033867190151, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
@@ -375,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 2213173311301775879, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189247033867190151, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
@@ -484,7 +484,7 @@ PrefabInstance:
     - target: {fileID: 3797914584394110918, guid: 6afc39152306c824ca0c7e7544173e62,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797914584394110972, guid: 6afc39152306c824ca0c7e7544173e62,
         type: 3}
@@ -710,7 +710,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!208 &1180527451745478777
 NavMeshObstacle:
@@ -805,7 +805,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!33 &2456477734916622798
 MeshFilter:
@@ -1299,7 +1299,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &8720609100677259445
 GameObject:

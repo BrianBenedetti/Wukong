@@ -38,7 +38,8 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public Transform damageTextPos;
     public Transform slashSpawn;
     public Transform attackSlamPos;
-    
+    public Transform hitSpawn;
+
 
     public DamageTypes myDamageType;
     public DamageResistances myResistances;
@@ -168,6 +169,7 @@ public class TankEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         actualDamage = myResistances.CalculateDamageWithResistance(damageTaken, damageType);
 
         ShowDamageText();
+        ObjectPooler.Instance.SpawnFromPool("Hit Effect_TankEnemy", hitSpawn.position, Quaternion.identity);
 
         currentHealth -= actualDamage;
         if (currentHealth <= 0)

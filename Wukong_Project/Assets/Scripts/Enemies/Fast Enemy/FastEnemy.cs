@@ -39,6 +39,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     [HideInInspector] public Transform target;
     public Transform damageTextPos;
     public Transform slashSpawn;
+    public Transform hitSpawn;
     
 
     public DamageTypes myDamageType;
@@ -71,6 +72,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
     public GameObject waterSlash;
     public GameObject airSlash;
     public GameObject normalSlash;
+    
 
     void Start()
     {
@@ -163,6 +165,7 @@ public class FastEnemy : MonoBehaviour, IDamageable<int, DamageTypes>, IKillable
         }
 
         ShowDamageText();
+        ObjectPooler.Instance.SpawnFromPool("Hit Effect", hitSpawn.position, Quaternion.identity);
 
         if (currentHealth <= 0)
         {

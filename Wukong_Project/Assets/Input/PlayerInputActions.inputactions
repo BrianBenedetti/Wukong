@@ -575,6 +575,88 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Cutscene",
+            "id": "d2be56f2-409e-4814-b65e-7ab37b5782b5",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "d149f8bc-ca24-4a4c-8df4-cae2ac14d0f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=1)"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d64c17c4-0083-4b42-a0d7-4c62e135c26b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd74d708-0d5a-4464-8536-e8d9f0db633e",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4389ae78-1b1f-430d-bc0a-38c0f06d2b22",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59c80077-6076-4663-90b0-d8f8a4624ab5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5af0969b-a8ac-4e19-be75-f03c1bf5af36",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b7f2c58-68bc-411b-af41-3a6460f91006",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

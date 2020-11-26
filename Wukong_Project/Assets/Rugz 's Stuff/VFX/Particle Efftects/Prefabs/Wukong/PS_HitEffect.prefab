@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6163887815913768117}
+  - component: {fileID: 7510917248570056919}
+  - component: {fileID: 3788221158826748914}
   m_Layer: 0
   m_Name: PS_HitEffect
   m_TagString: Untagged
@@ -25,13 +27,39 @@ Transform:
   m_GameObject: {fileID: 6163887815913768116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.01, y: 4.17, z: 1.58}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 6163887816213809967}
   - {fileID: 6163887816686620704}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7510917248570056919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163887815913768116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816eda3585d755e43ba64c3292b9bd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3788221158826748914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163887815913768116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16ba218e507cf3478fae4e8f13ad2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDisable: 0.7
+  removeParent: 0
 --- !u!1 &6163887816213809966
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +167,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -4960,7 +4988,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3

@@ -111,7 +111,7 @@ public class NewMenuInput : MonoBehaviour
                 audioManager.Play("click");
                 GameObject clone = Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                 Destroy(clone, 0.05f);
-                scenesToLoad.Add(SceneManager.LoadSceneAsync(1));
+                scenesToLoad.Add(SceneManager.LoadSceneAsync(2));
                 ShowLoadingBar();
                 StartCoroutine(LoadScreen());
             }
@@ -227,7 +227,7 @@ public class NewMenuInput : MonoBehaviour
                     audioManager.Play("click");
                     GameObject clone = GameObject.Instantiate(ParticleSelect, Point.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
                     Destroy(clone, 0.05f);
-                    scenesToLoad.Add(SceneManager.LoadSceneAsync(1));
+                    scenesToLoad.Add(SceneManager.LoadSceneAsync(2));
                     ShowLoadingBar();
                     StartCoroutine(LoadScreen());
                 }

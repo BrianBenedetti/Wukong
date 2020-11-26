@@ -211,7 +211,7 @@ PrefabInstance:
     - target: {fileID: 2213173311301775879, guid: ec00ccf1001c6b049bb633b7e4bb0b5b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec00ccf1001c6b049bb633b7e4bb0b5b, type: 3}
@@ -310,7 +310,7 @@ PrefabInstance:
     - target: {fileID: 3797914584394110918, guid: 6afc39152306c824ca0c7e7544173e62,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797914584394110972, guid: 6afc39152306c824ca0c7e7544173e62,
         type: 3}
@@ -489,7 +489,7 @@ PrefabInstance:
     - target: {fileID: 2213173311301775879, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189247033867190151, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
@@ -623,7 +623,7 @@ PrefabInstance:
     - target: {fileID: 2213173311301775879, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189247033867190151, guid: 5abf3a49d1c5ad14292df8f15d0e9037,
         type: 3}
@@ -876,7 +876,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3405642802421469935
 Transform:
@@ -928,7 +928,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &3677248505083289739
 GameObject:
@@ -1019,7 +1019,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &5545489854417014524
 BoxCollider:

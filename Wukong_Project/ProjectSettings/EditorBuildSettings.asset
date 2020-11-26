@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Rugz 's Stuff/Scenes/Cinematic Intro.unity
+    guid: 85ce5cde3bc1ac541a8b54144960540e
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: bdc704e5324c9dc4799506938ab07412

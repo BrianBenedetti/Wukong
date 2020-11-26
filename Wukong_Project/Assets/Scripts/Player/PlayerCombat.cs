@@ -131,7 +131,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable<int, DamageTypes>, IKilla
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(maxHealth);
-        currentMana = 100;
+        currentMana = 0;
         manaBar.SetMaxValue(maxMana);
         manaBar.SetValue(currentMana);
         currentRage = 0;

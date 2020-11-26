@@ -95,6 +95,7 @@ Transform:
   - {fileID: 833309439963736473}
   - {fileID: 3797914583589567557}
   - {fileID: 3955048290937861749}
+  - {fileID: 8610938696238661883}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,6 +130,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 3797914583589567557}
   target: {fileID: 0}
   damageTextPos: {fileID: 3955048290937861749}
+  hitSpawn: {fileID: 8610938696238661883}
   myProjectile: Air Projectile
   lootOrbs:
   - Health Orb
@@ -303,6 +305,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5566003405085996246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8610938696238661883}
+  m_Layer: 8
+  m_Name: Hit Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8610938696238661883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566003405085996246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.07, z: -0.015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3797914584394110972}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &588338300046238300
 PrefabInstance:
   m_ObjectHideFlags: 0

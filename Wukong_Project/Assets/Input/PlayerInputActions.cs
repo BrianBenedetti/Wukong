@@ -588,6 +588,88 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Cutscene"",
+            ""id"": ""d2be56f2-409e-4814-b65e-7ab37b5782b5"",
+            ""actions"": [
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""d149f8bc-ca24-4a4c-8df4-cae2ac14d0f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=1)""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d64c17c4-0083-4b42-a0d7-4c62e135c26b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd74d708-0d5a-4464-8536-e8d9f0db633e"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4389ae78-1b1f-430d-bc0a-38c0f06d2b22"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59c80077-6076-4663-90b0-d8f8a4624ab5"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5af0969b-a8ac-4e19-be75-f03c1bf5af36"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b7f2c58-68bc-411b-af41-3a6460f91006"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -642,6 +724,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_PlayerControls_MouseCycle = m_PlayerControls.FindAction("Mouse Cycle", throwIfNotFound: true);
         m_PlayerControls_GamepadCycleRight = m_PlayerControls.FindAction("Gamepad Cycle Right", throwIfNotFound: true);
         m_PlayerControls_GamepadCycleLeft = m_PlayerControls.FindAction("Gamepad Cycle Left", throwIfNotFound: true);
+        // Cutscene
+        m_Cutscene = asset.FindActionMap("Cutscene", throwIfNotFound: true);
+        m_Cutscene_Skip = m_Cutscene.FindAction("Skip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -872,6 +957,39 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         }
     }
     public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
+
+    // Cutscene
+    private readonly InputActionMap m_Cutscene;
+    private ICutsceneActions m_CutsceneActionsCallbackInterface;
+    private readonly InputAction m_Cutscene_Skip;
+    public struct CutsceneActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public CutsceneActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Skip => m_Wrapper.m_Cutscene_Skip;
+        public InputActionMap Get() { return m_Wrapper.m_Cutscene; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CutsceneActions set) { return set.Get(); }
+        public void SetCallbacks(ICutsceneActions instance)
+        {
+            if (m_Wrapper.m_CutsceneActionsCallbackInterface != null)
+            {
+                @Skip.started -= m_Wrapper.m_CutsceneActionsCallbackInterface.OnSkip;
+                @Skip.performed -= m_Wrapper.m_CutsceneActionsCallbackInterface.OnSkip;
+                @Skip.canceled -= m_Wrapper.m_CutsceneActionsCallbackInterface.OnSkip;
+            }
+            m_Wrapper.m_CutsceneActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Skip.started += instance.OnSkip;
+                @Skip.performed += instance.OnSkip;
+                @Skip.canceled += instance.OnSkip;
+            }
+        }
+    }
+    public CutsceneActions @Cutscene => new CutsceneActions(this);
     private int m_KeyboardandMouseSchemeIndex = -1;
     public InputControlScheme KeyboardandMouseScheme
     {
@@ -912,5 +1030,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnMouseCycle(InputAction.CallbackContext context);
         void OnGamepadCycleRight(InputAction.CallbackContext context);
         void OnGamepadCycleLeft(InputAction.CallbackContext context);
+    }
+    public interface ICutsceneActions
+    {
+        void OnSkip(InputAction.CallbackContext context);
     }
 }
