@@ -79,8 +79,6 @@ public class NewMenuInput : MonoBehaviour
         menuinput.PlayerInput.BackB.performed += ctx => Back();
         menuinput.PlayerInput.Move.performed += ctx => move = ctx.ReadValue<float>();
         menuinput.PlayerInput.Cursor.performed += ctx => mousePos = ctx.ReadValue<Vector2>();
-
-
     }
 
     void ShowLoadingBar()

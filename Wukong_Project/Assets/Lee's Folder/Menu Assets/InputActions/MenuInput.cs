@@ -302,7 +302,7 @@ public class @MenuInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6dd2e1b5-c7c9-42f9-8fac-c453643ca5e1"",
-                    ""path"": ""<DualShockGamepad>/start"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

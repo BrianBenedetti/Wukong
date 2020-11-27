@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NewPauseMENU : MonoBehaviour
@@ -225,7 +223,6 @@ public class NewPauseMENU : MonoBehaviour
                 SelectedButton = 1;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
                 {
-
                     StartGame();
                 }
 
@@ -235,7 +232,6 @@ public class NewPauseMENU : MonoBehaviour
                 SelectedButton = 2;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
                 {
-
                     StartGame();
                 }
             }
@@ -244,7 +240,6 @@ public class NewPauseMENU : MonoBehaviour
                 SelectedButton = 3;
                 if (Pauseinput.PlayerInput.MouseSelect.triggered)
                 {
-
                     StartGame();
                 }
             }
